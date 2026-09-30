@@ -1,0 +1,75 @@
+/* Shared product palette; every rule is scoped to the redesigned pages. */
+.vega-redesign { --blue:#168cde; font-family:"Inter Variable",Inter,sans-serif; overflow-x:clip; color:#171a1f; background:#f5f6f7; }
+.vega-redesign .hero-product, .orion-page .orion-hero__visual { animation:none; }
+.vega-redesign .hero { height:calc(100svh - 72px); }
+.vega-redesign progress { accent-color:#168cde; width:min(280px,80%); height:6px; }
+.vega-redesign .stats p { font-size:clamp(36px,5.5vw,84px); }
+.vega-redesign :is(.subnav nav,.viewer-toolbar,.view-buttons) { min-width:0; }
+.orion-page { --o-blue:#168cde; --o-blue-deep:#0876c4; }
+.orion-page .orion-hero { min-height:660px; }
+.orion-page .orion-anatomy__media { align-self:start; position:relative; top:auto; }
+.orion-page .orion-explorer__stage { min-height:0; }
+.orion-page .orion-primary-button,.vega-redesign .button { min-height:44px; }
+.orion-page .drone-hotspot { position:absolute; left:0; top:0; width:34px; height:34px; padding:0; border:1px solid #fff; border-radius:50%; background:#168cde; color:#fff; font-size:24px; cursor:pointer; z-index:6; }
+.orion-page .drone-hotspot[aria-pressed=true] { background:#fff; color:#0876c4; }
+.orion-page :is(a,button):focus-visible { outline:2px solid #168cde; outline-offset:5px; }
+html[data-theme=dark] .orion-page { --o-ink:#edf3f7; --o-copy:#bdc8d0; --o-muted:#9badb9; --o-line:#33424c; --o-surface:#131d24; background:#0c1319; }
+html[data-theme=dark] .orion-page :is(.orion-rail,.orion-applications) { background:#101920; color:#edf3f7; border-color:#33424c; }
+html[data-theme=dark] .orion-page .orion-rail__links a { color:#bdc8d0; }
+html[data-theme=dark] .orion-page .orion-contact { color:#071c2d; }
+html[data-theme=dark] .vega-redesign { background:#0c1319; color:#edf3f7; }
+html[data-theme=dark] .vega-redesign :is(.features,.intro,.design-section,.performance,.technology,.payload-section,.applications,.specs-section,.subnav) { background:#101920; color:#edf3f7; border-color:#33424c; }
+html[data-theme=dark] .vega-redesign :is(.pending,.muted,.specs-title>p,.design-copy>p,.tech-heading>p,.tech-row p,.subnav nav a,.stats .eyebrow) { color:#b8c6d0; }
+html[data-theme=dark] .vega-redesign :is(.payload-select button,.specs-list dl div,.tech-row,.stats>div) { color:#edf3f7; border-color:#40515e; }
+html[data-theme=dark] .vega-redesign .payload-select button[aria-pressed=true] { color:#fff; background:#168cde; }
+html[data-theme=dark] .vega-redesign .application-mosaic article { color:#171a1f; }
+.home-page [data-motion-offscreen=true], .home-page [data-motion-offscreen=true] * { animation-play-state:paused!important; }
+@media(max-width:1024px),(max-height:739px),(pointer:coarse) {
+ .orion-page .orion-applications { height:auto; min-height:0; padding:80px 0; }
+ .orion-page .orion-application-list { display:grid; width:auto; }
+ .orion-page .orion-application-viewport { padding-inline:clamp(20px,5vw,64px); }
+ .orion-page .orion-application { width:100%; height:clamp(420px,65vw,650px); min-height:0; }
+}
+@media(max-width:720px) {
+ .orion-page .orion-hero { min-height:660px; height:calc(100svh - 58px); max-height:850px; }
+ .orion-page .orion-hero__copy { top:85px; }
+ .orion-page .orion-hero__title { font-size:clamp(90px,25vw,180px); }
+ .orion-page .orion-intro__statement h2 { font-size:clamp(40px,11vw,70px); overflow-wrap:break-word; }
+ .orion-page .orion-stat { min-height:180px; padding:22px 14px; }
+ .orion-page .orion-stat strong { font-size:48px; }
+ .orion-page .orion-anatomy__item { grid-template-columns:24px 24px minmax(0,1fr); gap:10px; }
+ .orion-page .orion-anatomy__media { min-height:360px; }
+ .orion-page .orion-application__copy { padding:24px; grid-template-columns:24px minmax(0,1fr); gap:10px; }
+ .orion-page .orion-application__copy svg { display:none; }
+ .orion-page .orion-capabilities article { padding:36px 8px; }
+ .orion-page .orion-contact h2 { font-size:clamp(44px,12vw,75px); }
+ .orion-page .drone-component-list { left:14px; right:14px; bottom:66px; max-width:none; }
+ .orion-page .drone-hotspot-info { bottom:145px; left:14px; right:14px; width:auto; padding:16px; }
+ .vega-redesign .stats { gap:20px; }
+ .vega-redesign .stats p { font-size:clamp(30px,7vw,48px); }
+}
+@media(prefers-reduced-motion:reduce) {
+ html:has(.orion-page),html:has(.vega-redesign) { scroll-behavior:auto; }
+ .orion-page *, .vega-redesign * { animation:none!important; transition:none!important; }
+}
+.orion-page .orion-3d-interact { position:absolute; z-index:9; top:28px; left:50%; transform:translateX(-50%); min-height:44px; padding:10px 16px; border:1px solid #628397; background:#101d26; color:#eaf5fa; font-size:12px; cursor:pointer; }
+.orion-page .orion-3d-interact[aria-pressed=true] { background:#168cde; border-color:#168cde; }
+.orion-page .orion-3d-interact:disabled { opacity:.45; cursor:wait; }
+html[data-theme=dark] .vega-redesign :is(.feature-image,.design-image,.payload-visual,.performance-stage,.model-gallery,.viewer-section) { color:#171a1f; }
+html[data-theme=dark] .vega-redesign .model-gallery .muted { color:#657787; }
+@media(max-width:720px) { .orion-page .orion-3d-interact { top:95px; left:14px; transform:none; font-size:11px; min-height:40px; } }
+/* VEGA — paleta y tipografía integradas con el resto de FLYTEK */
+.vega-redesign{--ink:#171a1f;--mineral:#f5f6f7;--blue:#168cde;--blue-deep:#0876c4;--line:#cbd5dc;--vega-muted:#5f6d77;--vega-surface:#e8eef2;--vega-surface-strong:#dce6ec;background:var(--mineral);color:var(--ink);font-family:"Inter Variable",Inter,sans-serif}
+.vega-redesign .hero{background:radial-gradient(ellipse at 55% 48%,#294452 0,#14242f 42%,#091116 100%);color:#f2f7fa}.vega-redesign .hero-top,.vega-redesign .hero-bottom p,.vega-redesign .hero-marker{color:#b8cbd6}.vega-redesign .hero-rule{background:#527082}.vega-redesign .orbit{border-color:#86bddd2b}
+.vega-redesign :is(.features,.intro,.design-section,.technology,.payload-section,.specs-section){background:var(--mineral);color:var(--ink)}.vega-redesign :is(.viewer-section,.product-motion,.design-image,.payload-visual,.applications,.model-gallery){background:var(--vega-surface);color:var(--ink)}.vega-redesign :is(.feature-image,.feature-image-1,.application-mosaic article,.gallery-thumb){background:var(--vega-surface-strong)}.vega-redesign .gallery-stage{background:radial-gradient(ellipse at 50% 55%,#fff 0,#e8eef2 60%,#dce6ec 100%)}.vega-redesign .viewer-canvas{background:radial-gradient(ellipse,#f7fafc,#dce6ec 72%);border-color:#9eb3c0}
+.vega-redesign :is(.muted,.pending,.section-head>span,.intro>p,.viewer-corner,.viewer-interact p,.component-info p,.component-info small,.design-copy>.eyebrow:last-child,.tech-center small,.tech-row .eyebrow,.payload-select>p,.payload-select button span,.payload-description small,.specs-title>p:last-child,.specs-list dd,.gallery-stage figcaption,.gallery-selector button){color:var(--vega-muted)}
+.vega-redesign :is(.subnav,.viewer-toolbar,.tech-diagram,.tech-center,.payload-section,.payload-select [role="group"],.payload-select button,.specs-list h3,.specs-list dl>div,.gallery-selector button,.model-gallery){border-color:var(--line)}.vega-redesign .subnav{background:#f5f6f7f2}.vega-redesign :is(.sub-brand span,.subnav nav a[aria-current],.payload-select button[aria-pressed=true],.payload-select button[aria-pressed=true] span,.gallery-selector button[aria-pressed=true]){color:var(--blue);border-color:var(--blue)}
+.vega-redesign :is(.button,.text-link,.outline-control,.view-button,.eyebrow,.hero-top,.pending,.hero-marker,.viewer-badge,.viewer-loading span,.viewer-interact p,.component-info p,.component-info small,.detail-callout,.tech-center small,.payload-select button span,.payload-description small,.integration-label,.sector-pending,.specs-title>p:last-child,.specs-list dd,.site-footer>a:last-of-type,.site-footer small,.gallery-stage figcaption,.gallery-option-label>span){font-family:"Inter Variable",Inter,sans-serif}
+.vega-redesign :is(.eyebrow,.hero-top){font-size:12px;line-height:1.6}.vega-redesign :is(.pending,.hero-marker,.viewer-badge,.viewer-loading span,.viewer-interact p,.outline-control,.view-button,.component-info p,.component-info small,.detail-callout,.tech-center small,.payload-select button span,.payload-description small,.integration-label,.sector-pending,.specs-title>p:last-child,.site-footer>a:last-of-type,.site-footer small,.gallery-stage figcaption){font-size:11px;line-height:1.5}.vega-redesign .subnav nav a{font-size:12px}.vega-redesign .specs-list dd{font-size:12px}.vega-redesign .feature-grid .pending{font-size:11px;max-width:160px}
+.vega-redesign .performance{background:#101920;color:#edf3f7}.vega-redesign .performance .muted,.vega-redesign .performance .pending{color:#b8c6d0}.vega-redesign .contact{background:#101920;color:#edf3f7}.vega-redesign .site-footer{background:#091116;color:#dce8ee}.vega-redesign .site-footer p,.vega-redesign .site-footer small{color:#a9bbc5}
+.vega-redesign :is(a,button):focus-visible{outline-color:#168cde}.vega-redesign .tech-dot{background:#168cde}.vega-redesign .payload-visual path{stroke:#168cde}.vega-redesign .payload-visual circle{fill:#168cde;stroke:#f5f6f7}
+html[data-theme=dark] .vega-redesign{--ink:#edf3f7;--mineral:#0c1319;--blue:#60bdff;--blue-deep:#8bd2ff;--line:#334a57;--vega-muted:#b8c6d0;--vega-surface:#101920;--vega-surface-strong:#15242e;background:var(--mineral);color:var(--ink)}
+html[data-theme=dark] .vega-redesign :is(.features,.intro,.design-section,.technology,.payload-section,.specs-section,.applications){background:var(--mineral);color:var(--ink)}html[data-theme=dark] .vega-redesign :is(.viewer-section,.product-motion,.design-image,.payload-visual,.model-gallery,.feature-image,.feature-image-1,.gallery-thumb){background:var(--vega-surface-strong);color:var(--ink)}html[data-theme=dark] .vega-redesign .subnav{background:#101920f2;color:var(--ink);border-color:var(--line)}html[data-theme=dark] .vega-redesign .gallery-stage{background:radial-gradient(ellipse at 50% 55%,#233845 0,#14242e 60%,#0c171e 100%)}html[data-theme=dark] .vega-redesign .viewer-canvas{background:radial-gradient(ellipse,#263e4d,#0d1921 72%);border-color:#405866}
+html[data-theme=dark] .vega-redesign :is(.muted,.pending,.section-head>span,.intro>p,.viewer-corner,.viewer-interact p,.component-info p,.component-info small,.tech-center small,.tech-row .eyebrow,.payload-select>p,.payload-select button span,.payload-description small,.specs-title>p:last-child,.specs-list dd,.gallery-stage figcaption,.gallery-selector button){color:var(--vega-muted)}
+html[data-theme=dark] .vega-redesign .application-mosaic article{background:#15242e;color:#edf3f7}html[data-theme=dark] .vega-redesign .application-mosaic article:first-child{background:#091116;color:#edf3f7}html[data-theme=dark] .vega-redesign :is(.payload-select button,.specs-list dl>div,.tech-row,.stats>div,.gallery-selector button){color:#edf3f7;border-color:var(--line)}html[data-theme=dark] .vega-redesign .payload-select button[aria-pressed=true]{background:#168cde;color:#fff}
+@media(max-width:720px){.vega-redesign :is(.eyebrow,.hero-top,.pending,.hero-marker,.viewer-badge,.viewer-loading span,.viewer-interact p,.outline-control,.view-button,.component-info p,.component-info small,.detail-callout,.tech-center small,.payload-select button span,.payload-description small,.integration-label,.sector-pending,.specs-title>p:last-child,.specs-list dd,.site-footer>a:last-of-type,.site-footer small,.gallery-stage figcaption){font-size:10px}.vega-redesign .subnav nav a{font-size:12px}.vega-redesign .gallery-option-label{font-size:12px}}

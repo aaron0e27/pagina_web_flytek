@@ -1,0 +1,2846 @@
+.vega-redesign * {
+  box-sizing: border-box;
+}
+html:has(.vega-redesign) {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+.vega-redesign {
+  margin: 0;
+  background: #f5f6f7;
+  color: #171a1f;
+  font-family: "Inter Variable", Inter, sans-serif;
+}
+.vega-redesign a {
+  color: inherit;
+  text-decoration: none;
+}
+.vega-redesign button,
+.vega-redesign a {
+  -webkit-tap-highlight-color: transparent;
+}
+.vega-redesign button {
+  font: inherit;
+}
+.vega-redesign a:focus-visible,
+.vega-redesign button:focus-visible,
+.vega-redesign canvas:focus-visible {
+  outline: 2px solid #7098ff;
+  outline-offset: 5px;
+}
+.vega-redesign .site-nav {
+  height: 92px;
+  padding: 0 4%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #171a1c;
+  color: #f1f2ed;
+  border-bottom: 1px solid #ffffff20;
+}
+.vega-redesign .brand {
+  font-size: 27px;
+  letter-spacing: -1.5px;
+  font-weight: 800;
+  line-height: 0.9;
+}
+.vega-redesign .brand span {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 4px;
+  margin-top: 9px;
+}
+.vega-redesign .site-nav nav {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  font-size: 12px;
+}
+.vega-redesign .eyebrow,
+.vega-redesign .hero-top {
+  font: 10px/1.7 monospace;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.vega-redesign .hero {
+  min-height: 760px;
+  height: calc(100svh - 92px);
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at 55% 48%,
+    #424a4b 0,
+    #22282a 35%,
+    #15191b 75%
+  );
+  color: #f0f2ec;
+  padding: 30px 4%;
+}
+.vega-redesign .hero-top {
+  display: flex;
+  justify-content: space-between;
+  color: #acb3b4;
+}
+.vega-redesign .hero h1 {
+  position: absolute;
+  top: 50px;
+  left: 3%;
+  font-size: clamp(150px, 26vw, 410px);
+  line-height: 1;
+  letter-spacing: -0.075em;
+  font-weight: 500;
+  margin: 0;
+  color: #f0f2ed;
+}
+.vega-redesign .hero h1 span {
+  font-size: 22px;
+  vertical-align: top;
+  letter-spacing: 0;
+  position: relative;
+  top: 45px;
+}
+.vega-redesign .hero-stage {
+  position: absolute;
+  inset: 24% 8% 14%;
+  display: grid;
+  place-items: center;
+}
+.vega-redesign .orbit {
+  position: absolute;
+  width: 70%;
+  height: 35%;
+  border: 1px solid #ffffff14;
+  border-radius: 50%;
+  transform: rotate(-15deg);
+}
+.vega-redesign .hero-bottom {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.vega-redesign .hero-bottom p {
+  font-size: 12px;
+  color: #adb4b6;
+}
+.vega-redesign .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  font: 11px monospace;
+  letter-spacing: 1px;
+  border: 1px solid #ffffff60;
+  padding: 18px 24px;
+  transition: background 0.2s;
+}
+.vega-redesign .button:hover {
+  background: #ffffff15;
+}
+.vega-redesign .section {
+  padding: 110px 6%;
+}
+.vega-redesign h2 {
+  font-size: clamp(40px, 5.7vw, 86px);
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+  font-weight: 400;
+  margin: 24px 0 36px;
+}
+.vega-redesign p {
+  line-height: 1.6;
+}
+@media (max-width: 700px) {
+  .vega-redesign .site-nav {
+    height: 76px;
+  }
+  .vega-redesign .site-nav nav {
+    gap: 15px;
+  }
+  .vega-redesign .hero {
+    min-height: 650px;
+    height: calc(100svh - 76px);
+  }
+  .vega-redesign .hero h1 {
+    top: 110px;
+  }
+  .vega-redesign .hero-bottom {
+    flex-wrap: wrap;
+  }
+  .vega-redesign .hero-bottom > .eyebrow {
+    display: none;
+  }
+  .vega-redesign .section {
+    padding: 76px 6%;
+  }
+}
+
+.vega-redesign .hero-product {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 40px 22px #0007);
+}
+.vega-redesign {
+  --ink: #171a1f;
+  --mineral: #f5f6f7;
+  --blue: #168cde;
+  --line: #cdd0ca;
+}
+.vega-redesign .muted {
+  color: #737970;
+}
+.vega-redesign .pending {
+  font: 10px/1.7 monospace;
+  letter-spacing: 0.3px;
+  color: #626961;
+}
+.vega-redesign .nav-trigger {
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  gap: 12px;
+}
+.vega-redesign .nav-pending {
+  color: #8e9698;
+  cursor: default;
+}
+.vega-redesign .nav-contact {
+  border: 1px solid #ffffff50;
+  padding: 12px 17px;
+  display: flex;
+  gap: 30px;
+}
+.vega-redesign .hero-marker {
+  position: absolute;
+  right: 5%;
+  top: 44%;
+  font: 9px/1.8 monospace;
+  color: #bdc8cd;
+  letter-spacing: 1px;
+}
+.vega-redesign .hero-marker:first-line {
+  font-size: 22px;
+}
+.vega-redesign .hero-rule {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #6b7472;
+}
+.vega-redesign .hero-stage {
+  inset: 22% 9% 11%;
+}
+.vega-redesign .hero-product {
+  filter: brightness(1.65) drop-shadow(0 40px 22px #0007);
+}
+.vega-redesign .subnav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: #f5f6f7f5;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  height: 65px;
+  padding: 0 4%;
+  gap: 45px;
+}
+.vega-redesign .sub-brand {
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+.vega-redesign .sub-brand span {
+  color: var(--blue);
+  font-size: 14px;
+  margin-left: 10px;
+}
+.vega-redesign .subnav nav {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: relative;
+  height: 100%;
+  min-width: 0;
+}
+.vega-redesign .subnav nav::-webkit-scrollbar {
+  display: none;
+}
+.vega-redesign .subnav nav a {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+}
+.vega-redesign .subnav nav a[aria-current] {
+  color: var(--blue);
+  border-color: var(--blue);
+}
+.vega-redesign .section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.vega-redesign .section-head .eyebrow {
+  margin: 0;
+}
+.vega-redesign .section-head > span {
+  color: #727971;
+}
+.vega-redesign .feature-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 45px;
+  align-items: start;
+  margin-top: 60px;
+}
+.vega-redesign .feature-grid figure {
+  margin: 0;
+}
+.vega-redesign .feature-grid figure:nth-child(2) {
+  padding-top: 90px;
+}
+.vega-redesign .feature-image {
+  position: relative;
+  height: 460px;
+  overflow: hidden;
+  background: #dfe5e9;
+}
+.vega-redesign .feature-image-1 {
+  height: 380px;
+  background: #e8edf1;
+}
+.vega-redesign .feature-image .eyebrow {
+  position: absolute;
+  left: 24px;
+  top: 23px;
+  z-index: 1;
+}
+.vega-redesign .feature-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.7s;
+}
+.vega-redesign .feature-image:hover img {
+  transform: scale(1.035);
+}
+.vega-redesign .image-cross {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  font-size: 28px;
+  font-weight: 200;
+}
+.vega-redesign .feature-grid figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+.vega-redesign h3 {
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: -0.6px;
+  margin: 0;
+}
+.vega-redesign .feature-grid .pending {
+  font-size: 9px;
+  max-width: 130px;
+}
+.vega-redesign .intro {
+  padding-top: 65px;
+  padding-bottom: 90px;
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+.vega-redesign .intro h2 {
+  max-width: 1000px;
+}
+.vega-redesign .intro > p {
+  color: #657064;
+  font-size: 14px;
+}
+.vega-redesign .text-link {
+  font: 10px/1.6 monospace;
+  letter-spacing: 1px;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  padding: 12px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 50px;
+  background: transparent;
+  cursor: pointer;
+}
+.vega-redesign .intro .text-link {
+  position: absolute;
+  bottom: 110px;
+  right: 6%;
+}
+.vega-redesign .viewer-section {
+  background: #dce3e8;
+  padding-bottom: 55px;
+  transform: translateY(var(--exit-shift, 0px));
+  margin-bottom: -1px;
+}
+.vega-redesign .viewer-section h2 {
+  font-size: clamp(36px, 4.5vw, 66px);
+  margin-bottom: 0;
+}
+.vega-redesign .viewer-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 9px monospace;
+  letter-spacing: 1px;
+}
+.vega-redesign .viewer-badge i {
+  height: 5px;
+  width: 5px;
+  background: var(--blue);
+  border-radius: 50%;
+}
+.vega-redesign .viewer-canvas {
+  position: relative;
+  min-height: 540px;
+  height: 65vh;
+  max-height: 780px;
+  background: radial-gradient(ellipse, #f5f6f7, #dce3e8 72%);
+  border-top: 1px solid #aeb7aa;
+  border-bottom: 1px solid #aeb7aa;
+  overflow: hidden;
+}
+.vega-redesign .canvas-mount {
+  position: absolute;
+  inset: 0;
+}
+.vega-redesign .canvas-mount canvas {
+  display: block;
+  touch-action: pan-y;
+  pointer-events: none;
+  outline-offset: -4px !important;
+}
+.vega-redesign .is-active .canvas-mount canvas {
+  touch-action: none;
+}
+.vega-redesign .viewer-fallback {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  left: 5%;
+  top: 3%;
+  object-fit: contain;
+  transition: opacity 0.4s;
+}
+.vega-redesign .is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.vega-redesign .viewer-corner {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  color: #697363;
+  pointer-events: none;
+}
+.vega-redesign .viewer-loading {
+  position: absolute;
+  bottom: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  background: #f5f6f7d9;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.vega-redesign .viewer-loading b {
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: 3px;
+}
+.vega-redesign .viewer-loading span {
+  font: 9px monospace;
+}
+.vega-redesign .viewer-loading [data-slot="progress"] {
+  height: 2px;
+  border-radius: 0;
+}
+.vega-redesign .viewer-error {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #eff0eee8;
+  padding: 20px;
+  text-align: center;
+  max-width: 90%;
+  width: 350px;
+  font-size: 13px;
+}
+.vega-redesign .viewer-interact {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  pointer-events: none;
+}
+.vega-redesign .viewer-interact button {
+  pointer-events: auto;
+}
+.vega-redesign .viewer-interact p {
+  font: 9px/1.5 monospace;
+  color: #626a5e;
+  margin-bottom: 0;
+}
+.vega-redesign .outline-control {
+  background: #edf2f5e8;
+  border: 1px solid #87927f;
+  padding: 12px 17px;
+  font: 9px/1.5 monospace;
+  letter-spacing: 1px;
+  cursor: pointer;
+  color: var(--ink);
+}
+.vega-redesign button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.vega-redesign .hotspot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: 34px;
+  width: 34px;
+  border: 1px solid #4166bd;
+  background: #f2f5f7df;
+  color: #2b55b4;
+  border-radius: 50%;
+  font: 10px monospace;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 0 0 7px #2b55b410;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.vega-redesign .hotspot.selected {
+  background: var(--blue);
+  color: white;
+  box-shadow: 0 0 0 9px #2b55b422;
+}
+.vega-redesign .viewer-toolbar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 22px 0;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #bfc7b9;
+}
+.vega-redesign .view-button {
+  background: none;
+  border: 1px solid transparent;
+  font: 10px monospace;
+  cursor: pointer;
+  padding: 11px 16px;
+  color: #586151;
+}
+.vega-redesign .view-button[aria-pressed="true"] {
+  border-color: #7c8974;
+  color: var(--ink);
+}
+.vega-redesign .view-button:hover {
+  background: #ffffff50;
+}
+.vega-redesign .view-button.zoom {
+  border: 1px solid #b2bcab;
+  font-size: 16px;
+  padding: 7px 14px;
+}
+.vega-redesign .component-info {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding-top: 25px;
+}
+.vega-redesign .component-info p {
+  font: 10px monospace;
+  color: #55604e;
+}
+.vega-redesign .component-info small {
+  width: 100%;
+  font: 9px monospace;
+  color: #68715f;
+}
+.vega-redesign .component-info .text-link {
+  margin-left: auto;
+}
+.vega-redesign .product-motion {
+  height: 560px;
+  position: relative;
+  overflow: hidden;
+  background: #dce3e8;
+  display: grid;
+  place-items: center;
+}
+.vega-redesign .product-motion > span {
+  font-size: clamp(60px, 13vw, 210px);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  white-space: nowrap;
+  color: #c5cbbf;
+  position: absolute;
+  top: 19%;
+  left: 2%;
+}
+.vega-redesign .product-motion img {
+  position: relative;
+  width: 70%;
+  height: 90%;
+  object-fit: contain;
+}
+.vega-redesign .product-motion p {
+  position: absolute;
+  bottom: 10px;
+  right: 6%;
+  color: #626c59;
+}
+.vega-redesign .design-section {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 50px;
+  align-items: center;
+}
+.vega-redesign .design-copy {
+  position: sticky;
+  top: 120px;
+  align-self: start;
+}
+.vega-redesign .design-copy > .eyebrow:last-child {
+  display: block;
+  margin-top: 90px;
+  color: #6c7367;
+}
+.vega-redesign .design-image {
+  position: relative;
+  min-height: 680px;
+  overflow: hidden;
+  background: #e1e7eb;
+}
+.vega-redesign .design-image img {
+  position: absolute;
+  top: 8%;
+  width: 150%;
+  max-width: none;
+  left: -23%;
+  height: 85%;
+  object-fit: contain;
+}
+.vega-redesign .detail-callout {
+  position: absolute;
+  left: 9%;
+  bottom: 8%;
+  font: 9px monospace;
+  border-top: 1px solid #7d8871;
+  padding-top: 16px;
+  width: 70%;
+}
+.vega-redesign .performance {
+  background: #191e20;
+  color: #eff1eb;
+  position: relative;
+  overflow: hidden;
+}
+.vega-redesign .performance .muted {
+  color: #929d9e;
+}
+.vega-redesign .performance h2 {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+.vega-redesign .performance-stage {
+  position: absolute;
+  top: 12%;
+  right: 0;
+  width: 68%;
+  height: 68%;
+}
+.vega-redesign .performance-stage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(1.6);
+  opacity: 0.95;
+}
+.vega-redesign .performance-lines {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 15%;
+  bottom: 10%;
+  border-top: 1px solid #ffffff1b;
+  border-bottom: 1px solid #ffffff1b;
+  pointer-events: none;
+}
+.vega-redesign .stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  position: relative;
+  margin-top: 280px;
+}
+.vega-redesign .stats > div {
+  border-top: 1px solid #ffffff45;
+  padding-top: 25px;
+}
+.vega-redesign .stats p {
+  font-size: 62px;
+  margin: 14px 0 5px;
+  line-height: 1;
+}
+.vega-redesign .stats .pending {
+  color: #a6afb0;
+  font-size: 9px;
+}
+.vega-redesign .technology {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8%;
+  align-items: center;
+}
+.vega-redesign .tech-diagram {
+  position: relative;
+  border-left: 1px solid #afc2cf;
+  padding-left: 60px;
+  margin-top: 50px;
+}
+.vega-redesign .tech-center {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #afc2cf;
+  margin-bottom: 30px;
+  padding-bottom: 28px;
+}
+.vega-redesign .tech-center > span {
+  font-size: 40px;
+  letter-spacing: -2px;
+}
+.vega-redesign .tech-center small {
+  font: 8px monospace;
+  color: #707b66;
+}
+.vega-redesign .tech-row {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  padding: 25px 0;
+}
+.vega-redesign .tech-row:before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  left: -60px;
+  top: 35px;
+  height: 1px;
+  background: #afc2cf;
+}
+.vega-redesign .tech-dot {
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  left: -63px;
+  top: 33px;
+  border-radius: 50%;
+  background: #168cde;
+}
+.vega-redesign .tech-row .eyebrow {
+  color: #768269;
+}
+.vega-redesign .tech-row h3 {
+  font-size: 20px;
+}
+.vega-redesign .payload-section {
+  border-top: 1px solid var(--line);
+}
+.vega-redesign .payload-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 50px;
+  margin-top: 70px;
+  align-items: center;
+}
+.vega-redesign .payload-select > p {
+  color: #626e57;
+  margin-bottom: 25px;
+}
+.vega-redesign .payload-select [role="group"] {
+  border-top: 1px solid var(--line);
+}
+.vega-redesign .payload-select [role="group"] button {
+  display: flex;
+  width: 100%;
+  gap: 30px;
+  align-items: center;
+  padding: 23px 8px;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+.vega-redesign .payload-select button span {
+  font: 9px monospace;
+  color: #727d68;
+}
+.vega-redesign .payload-select button span:last-child {
+  margin-left: auto;
+  font-size: 18px;
+}
+.vega-redesign .payload-select button[aria-pressed="true"] {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+}
+.vega-redesign .payload-select button[aria-pressed="true"] span {
+  color: var(--blue);
+}
+.vega-redesign .payload-description {
+  padding-top: 30px;
+  min-height: 165px;
+}
+.vega-redesign .payload-description h3 {
+  font-size: 18px;
+}
+.vega-redesign .payload-description small {
+  display: block;
+  font: 9px/1.7 monospace;
+  color: #6f7767;
+  max-width: 280px;
+}
+.vega-redesign .payload-visual {
+  position: relative;
+  aspect-ratio: 100/64;
+  background: #e3e9ed;
+}
+.vega-redesign .payload-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: payloadReveal 0.5s ease;
+}
+.vega-redesign .payload-visual svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.vega-redesign .payload-visual path {
+  stroke: #3e68be;
+  fill: none;
+  stroke-width: 0.16;
+  stroke-dasharray: 80;
+  animation: drawLine 0.7s ease;
+}
+.vega-redesign .payload-visual circle {
+  fill: #4678db;
+  stroke: #f5f6f7;
+  stroke-width: 0.4;
+}
+.vega-redesign .integration-label {
+  position: absolute;
+  right: 5%;
+  top: 80%;
+  font: 8px/1.7 monospace;
+  color: #3259a8;
+}
+.vega-redesign .applications {
+  background: #e1e7eb;
+}
+.vega-redesign .application-mosaic {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-rows: 310px 310px;
+  gap: 20px;
+  margin-top: 50px;
+}
+.vega-redesign .application-mosaic article {
+  position: relative;
+  overflow: hidden;
+  background: #ced8df;
+  padding: 28px;
+}
+.vega-redesign .application-mosaic article:first-child {
+  grid-row: span 2;
+  background: #222b2c;
+  color: #e8eee4;
+}
+.vega-redesign .application-mosaic article:nth-child(3) {
+  background: #bbccd8;
+}
+.vega-redesign .application-mosaic article > img {
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  right: 0;
+  top: 4%;
+  object-fit: contain;
+  transition: transform 0.8s;
+}
+.vega-redesign .application-mosaic article:first-child > img {
+  width: 115%;
+  height: 75%;
+  right: -7%;
+  filter: brightness(1.5);
+}
+.vega-redesign .application-mosaic article:hover > img {
+  transform: scale(1.04);
+}
+.vega-redesign .application-mosaic article > div {
+  position: absolute;
+  left: 28px;
+  bottom: 28px;
+  right: 28px;
+}
+.vega-redesign .application-mosaic h3 {
+  font-size: 22px;
+}
+.vega-redesign .application-mosaic article:first-child .pending {
+  color: #b4c0b5;
+}
+.vega-redesign .sector-pending {
+  font: 8px monospace;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+.vega-redesign .specs-section {
+  display: grid;
+  grid-template-columns: 0.85fr 1.4fr;
+  gap: 10%;
+}
+.vega-redesign .specs-title {
+  position: sticky;
+  top: 110px;
+  align-self: start;
+}
+.vega-redesign .specs-title h2 {
+  font-size: clamp(80px, 9vw, 140px);
+  margin: 35px 0 25px;
+}
+.vega-redesign .specs-title h3 {
+  font-size: 32px;
+}
+.vega-redesign .specs-title > p:last-child {
+  font: 10px/1.7 monospace;
+  color: #6d7862;
+  max-width: 200px;
+  margin-top: 25px;
+}
+.vega-redesign .specs-list > div {
+  margin-bottom: 45px;
+}
+.vega-redesign .specs-list h3 {
+  font-size: 21px;
+  border-bottom: 1px solid #969f8f;
+  padding-bottom: 20px;
+}
+.vega-redesign .specs-list dl {
+  margin: 0;
+}
+.vega-redesign .specs-list dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 19px 0;
+  border-bottom: 1px solid #d3d8ce;
+  font-size: 12px;
+}
+.vega-redesign .specs-list dd {
+  font: 9px/1.6 monospace;
+  color: #6d7765;
+  margin: 0;
+  text-align: right;
+}
+.vega-redesign .contact {
+  background: #1b2427;
+  color: #e9eee7;
+}
+.vega-redesign .contact h2 {
+  max-width: 1000px;
+  font-size: clamp(48px, 7vw, 108px);
+}
+.vega-redesign .contact-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #ffffff35;
+  padding-top: 30px;
+  margin-top: 70px;
+}
+.vega-redesign .contact-bottom p {
+  font: 11px monospace;
+  color: #9faeac;
+}
+.vega-redesign .contact .button {
+  border-color: #a8babc;
+  min-width: 230px;
+  background: #e4ecf1;
+  color: #1b2427;
+}
+.vega-redesign .contact .button:hover {
+  background: #bdd0e0;
+}
+.vega-redesign .site-footer {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 45px;
+  align-items: center;
+  background: #11181b;
+  color: #c8d1cb;
+  padding: 60px 6% 28px;
+}
+.vega-redesign .site-footer p {
+  font-size: 12px;
+  color: #93a099;
+}
+.vega-redesign .site-footer > a:last-of-type {
+  text-align: right;
+  font: 9px monospace;
+}
+.vega-redesign .site-footer small {
+  font: 9px/1.6 monospace;
+  color: #82928b;
+}
+.vega-redesign .site-footer .draft-note {
+  grid-column: span 2;
+  text-align: right;
+}
+.vega-redesign .contact-placeholder {
+  min-height: 70vh;
+}
+.vega-redesign .contact-placeholder h1 {
+  font-size: clamp(50px, 8vw, 110px);
+  line-height: 1;
+  letter-spacing: -0.055em;
+  font-weight: 400;
+}
+.vega-redesign .contact-placeholder p {
+  font-size: 13px;
+  color: #66715e;
+}
+.vega-redesign .skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  transform: translateY(-160%);
+  background: #fff;
+  padding: 16px;
+  z-index: 100;
+}
+.vega-redesign .skip-link:focus {
+  transform: none;
+}
+.vega-redesign .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@keyframes payloadReveal {
+  from {
+    opacity: 0.5;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 80;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@media (min-width: 1600px) {
+  .vega-redesign .section {
+    padding-left: max(6%, calc((100% - 1500px) / 2));
+    padding-right: max(6%, calc((100% - 1500px) / 2));
+  }
+}
+@media (max-width: 1100px) {
+  .vega-redesign .site-nav nav {
+    gap: 23px;
+  }
+  .vega-redesign .subnav {
+    gap: 25px;
+  }
+  .vega-redesign .subnav nav {
+    gap: 20px;
+  }
+  .vega-redesign .feature-image {
+    height: 370px;
+  }
+  .vega-redesign .feature-image-1 {
+    height: 320px;
+  }
+  .vega-redesign .design-image {
+    min-height: 530px;
+  }
+  .vega-redesign .tech-diagram {
+    padding-left: 42px;
+  }
+  .vega-redesign .tech-row:before {
+    left: -42px;
+    width: 26px;
+  }
+  .vega-redesign .tech-dot {
+    left: -45px;
+  }
+  .vega-redesign .payload-layout {
+    gap: 30px;
+  }
+  .vega-redesign .viewer-section {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+@media (max-width: 800px) {
+  .vega-redesign .site-nav {
+    height: 80px;
+  }
+  .vega-redesign .site-nav nav {
+    gap: 18px;
+  }
+  .vega-redesign .nav-pending {
+    display: none;
+  }
+  .vega-redesign .hero {
+    height: calc(100svh - 80px);
+    min-height: 620px;
+  }
+  .vega-redesign .hero h1 {
+    top: 90px;
+  }
+  .vega-redesign .hero h1 span {
+    display: none;
+  }
+  .vega-redesign .hero-stage {
+    inset: 23% 0% 17%;
+  }
+  .vega-redesign .hero-marker {
+    top: 35%;
+    font-size: 8px;
+  }
+  .vega-redesign .hero-bottom > .eyebrow {
+    display: none;
+  }
+  .vega-redesign .hero-bottom {
+    bottom: 30px;
+  }
+  .vega-redesign .hero-bottom p {
+    font-size: 10px;
+  }
+  .vega-redesign .subnav {
+    height: 58px;
+    padding: 0 5%;
+    gap: 25px;
+  }
+  .vega-redesign .subnav nav {
+    gap: 22px;
+  }
+  .vega-redesign .sub-brand {
+    font-size: 18px;
+  }
+  .vega-redesign .section {
+    padding: 75px 6%;
+  }
+  .vega-redesign .section-head > span.eyebrow {
+    display: none;
+  }
+  .vega-redesign .feature-grid {
+    gap: 22px;
+    margin-top: 35px;
+  }
+  .vega-redesign .feature-grid figure:nth-child(2) {
+    padding-top: 60px;
+  }
+  .vega-redesign .feature-image {
+    height: 300px;
+  }
+  .vega-redesign .feature-image-1 {
+    height: 250px;
+  }
+  .vega-redesign .feature-image .eyebrow {
+    left: 15px;
+    top: 15px;
+    font-size: 8px;
+  }
+  .vega-redesign .feature-grid figcaption {
+    display: block;
+  }
+  .vega-redesign .feature-grid h3 {
+    font-size: 19px;
+  }
+  .vega-redesign .feature-grid .pending {
+    max-width: none;
+    font-size: 8px;
+  }
+  .vega-redesign .intro .text-link {
+    position: static;
+    margin-top: 20px;
+  }
+  .vega-redesign .viewer-section .section-head {
+    align-items: start;
+  }
+  .vega-redesign .viewer-badge {
+    font-size: 7px;
+    max-width: 100px;
+    line-height: 1.8;
+  }
+  .vega-redesign .viewer-canvas {
+    min-height: 480px;
+    height: 60vh;
+  }
+  .vega-redesign .component-info {
+    gap: 12px;
+  }
+  .vega-redesign .component-info .text-link {
+    margin-left: 0;
+  }
+  .vega-redesign .product-motion {
+    height: 410px;
+  }
+  .vega-redesign .product-motion img {
+    width: 92%;
+  }
+  .vega-redesign .design-section {
+    gap: 20px;
+  }
+  .vega-redesign .design-image {
+    min-height: 440px;
+  }
+  .vega-redesign .design-copy > .eyebrow:last-child {
+    margin-top: 45px;
+    font-size: 8px;
+  }
+  .vega-redesign .detail-callout {
+    font-size: 7px;
+  }
+  .vega-redesign .performance-stage {
+    top: 23%;
+    width: 90%;
+    height: 53%;
+    right: -10%;
+  }
+  .vega-redesign .stats {
+    gap: 18px;
+    margin-top: 220px;
+  }
+  .vega-redesign .stats .eyebrow {
+    font-size: 8px;
+  }
+  .vega-redesign .stats .pending {
+    font-size: 8px;
+    overflow-wrap: anywhere;
+  }
+  .vega-redesign .technology {
+    gap: 35px;
+  }
+  .vega-redesign .tech-row h3 {
+    font-size: 17px;
+  }
+  .vega-redesign .tech-row {
+    gap: 10px;
+  }
+  .vega-redesign .tech-row .pending {
+    font-size: 8px;
+  }
+  .vega-redesign .payload-layout {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 25px;
+  }
+  .vega-redesign .payload-select [role="group"] button {
+    gap: 14px;
+    font-size: 12px;
+  }
+  .vega-redesign .application-mosaic {
+    grid-template-rows: 270px 270px;
+  }
+  .vega-redesign .application-mosaic article {
+    padding: 20px;
+  }
+  .vega-redesign .application-mosaic article > div {
+    left: 20px;
+    bottom: 20px;
+  }
+  .vega-redesign .application-mosaic h3 {
+    font-size: 19px;
+  }
+  .vega-redesign .specs-section {
+    gap: 40px;
+  }
+  .vega-redesign .specs-list dl > div {
+    font-size: 11px;
+  }
+  .vega-redesign .specs-list dd {
+    font-size: 8px;
+    max-width: 135px;
+  }
+  .vega-redesign .site-footer {
+    gap: 30px;
+  }
+  .vega-redesign .site-footer p {
+    font-size: 10px;
+  }
+}
+@media (max-width: 540px) {
+  .vega-redesign .site-nav {
+    padding: 0 5%;
+  }
+  .vega-redesign .brand {
+    font-size: 23px;
+  }
+  .vega-redesign .brand span {
+    font-size: 6px;
+    letter-spacing: 3.6px;
+  }
+  .vega-redesign .site-nav nav {
+    gap: 14px;
+    font-size: 10px;
+  }
+  .vega-redesign .nav-trigger {
+    font-size: 10px;
+    gap: 5px;
+  }
+  .vega-redesign .nav-contact {
+    padding: 10px;
+    gap: 10px;
+  }
+  .vega-redesign .site-nav nav > a[href*="aplicaciones"] {
+    display: none;
+  }
+  .vega-redesign .hero {
+    min-height: 580px;
+    max-height: 840px;
+  }
+  .vega-redesign .hero-top {
+    font-size: 8px;
+  }
+  .vega-redesign .hero h1 {
+    top: 110px;
+    font-size: 29vw;
+    left: 3%;
+  }
+  .vega-redesign .hero-stage {
+    inset: 30% -5% 16%;
+  }
+  .vega-redesign .hero-marker {
+    top: 29%;
+    right: 6%;
+    font-size: 7px;
+  }
+  .vega-redesign .hero-bottom {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .vega-redesign .hero-bottom p {
+    margin: 0;
+  }
+  .vega-redesign .hero-bottom .button {
+    padding: 15px 20px;
+    min-width: 210px;
+  }
+  .vega-redesign .section-head {
+    margin-bottom: 20px;
+  }
+  .vega-redesign .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  .vega-redesign h2 {
+    font-size: 42px;
+    margin-top: 24px;
+    letter-spacing: -0.055em;
+  }
+  .vega-redesign .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+  .vega-redesign .feature-grid figure:nth-child(2) {
+    padding-top: 0;
+  }
+  .vega-redesign .feature-image,
+  .vega-redesign .feature-image-1 {
+    height: 330px;
+  }
+  .vega-redesign .feature-grid figcaption {
+    display: flex;
+    padding: 20px 0;
+  }
+  .vega-redesign .feature-grid .pending {
+    font-size: 8px;
+    max-width: 140px;
+  }
+  .vega-redesign .intro {
+    padding-top: 55px;
+    padding-bottom: 60px;
+  }
+  .vega-redesign .viewer-section .section-head {
+    display: block;
+  }
+  .vega-redesign .viewer-badge {
+    max-width: none;
+    margin-top: 25px;
+  }
+  .vega-redesign .viewer-canvas {
+    height: 480px;
+    min-height: 480px;
+  }
+  .vega-redesign .viewer-corner {
+    font-size: 7px;
+  }
+  .vega-redesign .viewer-toolbar {
+    gap: 4px;
+    padding: 16px 0;
+  }
+  .vega-redesign .view-button {
+    padding: 10px 11px;
+    font-size: 9px;
+  }
+  .vega-redesign .view-button.zoom {
+    padding: 5px 12px;
+  }
+  .vega-redesign .viewer-interact p {
+    font-size: 8px;
+    max-width: 270px;
+    margin: 8px auto;
+  }
+  .vega-redesign .hotspot {
+    width: 30px;
+    height: 30px;
+    font-size: 9px;
+  }
+  .vega-redesign .component-info {
+    display: block;
+  }
+  .vega-redesign .component-info small {
+    display: block;
+    line-height: 1.7;
+    margin-top: 15px;
+  }
+  .vega-redesign .product-motion {
+    height: 320px;
+  }
+  .vega-redesign .product-motion p {
+    font-size: 7px;
+  }
+  .vega-redesign .design-section {
+    grid-template-columns: 1fr;
+  }
+  .vega-redesign .design-copy {
+    position: static;
+  }
+  .vega-redesign .design-copy h2 br:nth-child(2) {
+    display: initial;
+  }
+  .vega-redesign .design-copy > .eyebrow:last-child {
+    margin: 25px 0;
+  }
+  .vega-redesign .design-image {
+    min-height: 410px;
+  }
+  .vega-redesign .performance h2 {
+    font-size: 45px;
+  }
+  .vega-redesign .performance-stage {
+    top: 24%;
+    width: 110%;
+    right: -10%;
+    height: 45%;
+  }
+  .vega-redesign .stats {
+    margin-top: 240px;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .vega-redesign .stats > div {
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    align-items: center;
+    padding-top: 15px;
+  }
+  .vega-redesign .stats p {
+    font-size: 28px;
+    margin: 0;
+    text-align: right;
+  }
+  .vega-redesign .stats .pending {
+    grid-column: span 2;
+    font-size: 8px;
+    margin-top: 10px;
+  }
+  .vega-redesign .technology {
+    grid-template-columns: 1fr;
+  }
+  .vega-redesign .tech-diagram {
+    margin-top: 0;
+  }
+  .vega-redesign .payload-layout {
+    grid-template-columns: 1fr;
+    margin-top: 35px;
+    gap: 20px;
+  }
+  .vega-redesign .payload-description {
+    min-height: 130px;
+  }
+  .vega-redesign .payload-visual {
+    order: -1;
+  }
+  .vega-redesign .application-mosaic {
+    grid-template-columns: 1fr;
+    grid-template-rows: 430px 340px 340px;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  .vega-redesign .application-mosaic article:first-child {
+    grid-row: auto;
+  }
+  .vega-redesign .application-mosaic article > img {
+    width: 85%;
+    height: 75%;
+  }
+  .vega-redesign .application-mosaic article:first-child > img {
+    width: 110%;
+    height: 75%;
+  }
+  .vega-redesign .specs-section {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .vega-redesign .specs-title {
+    position: static;
+  }
+  .vega-redesign .specs-title h2 {
+    margin: 25px 0;
+    font-size: 90px;
+  }
+  .vega-redesign .specs-title h3 br {
+    display: initial;
+  }
+  .vega-redesign .specs-title > p:last-child {
+    max-width: none;
+  }
+  .vega-redesign .specs-list > div {
+    margin-bottom: 35px;
+  }
+  .vega-redesign .specs-list dd {
+    max-width: 160px;
+    font-size: 8px;
+  }
+  .vega-redesign .contact h2 {
+    font-size: 49px;
+  }
+  .vega-redesign .contact-bottom {
+    display: block;
+    margin-top: 40px;
+  }
+  .vega-redesign .contact-bottom .button {
+    margin-top: 20px;
+    width: 100%;
+  }
+  .vega-redesign .site-footer {
+    grid-template-columns: 1fr 1fr;
+    padding: 50px 6% 25px;
+    gap: 30px 20px;
+  }
+  .vega-redesign .site-footer p {
+    grid-column: span 2;
+    grid-row: 2;
+  }
+  .vega-redesign .site-footer > a:last-of-type {
+    font-size: 8px;
+  }
+  .vega-redesign .site-footer small {
+    font-size: 8px;
+  }
+  .vega-redesign .site-footer .draft-note {
+    grid-column: span 2;
+    text-align: left;
+  }
+  .vega-redesign .contact-placeholder h1 {
+    margin-top: 30px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html:has(.vega-redesign) {
+    scroll-behavior: auto;
+  }
+  .vega-redesign *,
+  .vega-redesign *:before,
+  .vega-redesign *:after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .vega-redesign .product-motion img,
+  .vega-redesign .hero-product,
+  .vega-redesign .hero h1,
+  .vega-redesign [data-title-motion] {
+    transform: none !important;
+  }
+  .vega-redesign .viewer-section {
+    transform: none !important;
+  }
+}
+
+/* Product study: real mesh renders, shared with the 3D exploration. */
+.vega-redesign .model-gallery { background: #e1e5df; border-top: 1px solid #c7cec5; }
+.vega-redesign .model-gallery h2 { margin-bottom: 52px; }
+.vega-redesign .gallery-stage { position: relative; isolation: isolate; display: grid; place-items: center; height: clamp(400px, 49vw, 720px); margin: 0; overflow: hidden; background: radial-gradient(ellipse at 50% 55%, #fbfcf7 0%, #e8ece4 60%, #d8dfd4 100%); }
+.vega-redesign .gallery-wordmark { position: absolute; top: 5%; left: 5%; z-index: -1; font-size: clamp(130px, 23vw, 360px); letter-spacing: -.08em; line-height: 1; color: #c5cfc070; }
+.vega-redesign .gallery-stage > img { width: 86%; height: 86%; object-fit: contain; filter: drop-shadow(0 30px 17px #313f2826); animation: payloadReveal .55s ease; }
+.vega-redesign .gallery-cross { position: absolute; color: #829078; font: 24px monospace; }
+.vega-redesign .gallery-cross-start { top: 26px; right: 30px; }
+.vega-redesign .gallery-cross-end { bottom: 66px; left: 30px; }
+.vega-redesign .gallery-stage figcaption { position: absolute; left: 30px; right: 30px; bottom: 24px; display: flex; justify-content: space-between; font: 9px monospace; letter-spacing: 1px; color: #596550; }
+.vega-redesign .gallery-selector { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin: 28px 0 30px; }
+.vega-redesign .gallery-selector button { border: 0; border-bottom: 1px solid #aebba5; padding: 0 0 18px; background: transparent; text-align: left; cursor: pointer; color: #525e4a; }
+.vega-redesign .gallery-selector button[aria-pressed="true"] { border-bottom: 2px solid var(--blue); color: var(--blue); }
+.vega-redesign .gallery-thumb { display: grid; place-items: center; aspect-ratio: 1.85; background: #d4dbcf; overflow: hidden; margin-bottom: 18px; }
+.vega-redesign .gallery-thumb img { width: 91%; height: 100%; object-fit: contain; transition: transform .4s; }
+.vega-redesign .gallery-selector button:hover .gallery-thumb img { transform: scale(1.06); }
+.vega-redesign .gallery-option-label { display: flex; align-items: center; gap: 12px; font-size: 11px; line-height: 1.5; }
+.vega-redesign .gallery-option-label > span { font: 9px monospace; }
+.vega-redesign .gallery-option-label > span:last-child { margin-left: auto; }
+@media (max-width: 800px) {
+  .vega-redesign .gallery-stage { height: 460px; }
+  .vega-redesign .gallery-selector { gap: 14px; }
+  .vega-redesign .gallery-option-label { font-size: 10px; gap: 6px; }
+  .vega-redesign .gallery-option-label > span:first-child { display: none; }
+}
+@media (max-width: 540px) {
+  .vega-redesign .model-gallery h2 { margin-bottom: 30px; }
+  .vega-redesign .gallery-stage { height: 320px; }
+  .vega-redesign .gallery-stage > img { width: 96%; height: 80%; }
+  .vega-redesign .gallery-wordmark { top: 14%; font-size: 27vw; }
+  .vega-redesign .gallery-stage figcaption { left: 16px; right: 16px; font-size: 7px; letter-spacing: .5px; }
+  .vega-redesign .gallery-cross-start { top: 12px; right: 12px; }
+  .vega-redesign .gallery-cross-end { bottom: 50px; left: 12px; }
+  .vega-redesign .gallery-selector { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 15px; }
+  .vega-redesign .gallery-option-label { font-size: 11px; }
+}
+/* ========================================
+   VEGA — PALETA FLYTEK DEFINITIVA
+   Debe permanecer al final de vega.css
+======================================== */
+
+.vega-redesign {
+  --ink: #171a1f;
+  --mineral: #f5f7f9;
+  --blue: #168cde;
+  --blue-deep: #0876c4;
+  --line: #cbd7df;
+  --vega-muted: #5f6f7a;
+  --vega-surface: #e8f0f5;
+  --vega-surface-strong: #dce8ef;
+
+  background: var(--mineral);
+  color: var(--ink);
+  font-family: "Inter Variable", Inter, Arial, sans-serif;
+}
+
+/* Portada */
+
+.vega-redesign .hero {
+  background: radial-gradient(
+    ellipse at 55% 48%,
+    #294452 0%,
+    #14242f 42%,
+    #091116 100%
+  );
+  color: #f2f7fa;
+}
+
+.vega-redesign .hero-top,
+.vega-redesign .hero-bottom p,
+.vega-redesign .hero-marker {
+  color: #b8cbd6;
+}
+
+.vega-redesign .hero-rule {
+  background: #527082;
+}
+
+.vega-redesign .orbit {
+  border-color: rgba(96, 189, 255, 0.2);
+}
+
+/* Fondos principales */
+
+.vega-redesign .features,
+.vega-redesign .intro,
+.vega-redesign .design-section,
+.vega-redesign .technology,
+.vega-redesign .payload-section,
+.vega-redesign .specs-section {
+  background: var(--mineral);
+  color: var(--ink);
+}
+
+.vega-redesign .viewer-section,
+.vega-redesign .product-motion,
+.vega-redesign .design-image,
+.vega-redesign .payload-visual,
+.vega-redesign .applications,
+.vega-redesign .model-gallery {
+  background: var(--vega-surface);
+  color: var(--ink);
+}
+
+.vega-redesign .feature-image,
+.vega-redesign .feature-image-1,
+.vega-redesign .application-mosaic article,
+.vega-redesign .gallery-thumb {
+  background: var(--vega-surface-strong);
+}
+
+/* Elimina específicamente los verdes de la galería */
+
+.vega-redesign .model-gallery {
+  background: #e8f0f5;
+  border-color: #cbd7df;
+}
+
+.vega-redesign .gallery-stage {
+  background: radial-gradient(
+    ellipse at 50% 55%,
+    #ffffff 0%,
+    #e8f0f5 60%,
+    #dce8ef 100%
+  );
+}
+
+.vega-redesign .gallery-wordmark {
+  color: rgba(22, 140, 222, 0.12);
+}
+
+.vega-redesign .gallery-cross {
+  color: #168cde;
+}
+
+.vega-redesign .gallery-stage figcaption {
+  color: #5f6f7a;
+  font-family: "Inter Variable", Inter, sans-serif;
+  font-size: 11px;
+}
+
+.vega-redesign .gallery-selector button {
+  color: #445762;
+  border-color: #aebfca;
+}
+
+.vega-redesign .gallery-selector button[aria-pressed="true"] {
+  color: #168cde;
+  border-color: #168cde;
+}
+
+.vega-redesign .gallery-thumb {
+  background: #dce8ef;
+}
+
+/* Texto secundario */
+
+.vega-redesign .muted,
+.vega-redesign .pending,
+.vega-redesign .section-head > span,
+.vega-redesign .intro > p,
+.vega-redesign .viewer-corner,
+.vega-redesign .viewer-interact p,
+.vega-redesign .component-info p,
+.vega-redesign .component-info small,
+.vega-redesign .tech-center small,
+.vega-redesign .tech-row .eyebrow,
+.vega-redesign .payload-select > p,
+.vega-redesign .payload-select button span,
+.vega-redesign .payload-description small,
+.vega-redesign .specs-title > p:last-child,
+.vega-redesign .specs-list dd {
+  color: var(--vega-muted);
+}
+
+/* Bordes y controles */
+
+.vega-redesign .subnav,
+.vega-redesign .viewer-toolbar,
+.vega-redesign .tech-diagram,
+.vega-redesign .tech-center,
+.vega-redesign .payload-select [role="group"],
+.vega-redesign .payload-select button,
+.vega-redesign .specs-list h3,
+.vega-redesign .specs-list dl > div,
+.vega-redesign .gallery-selector button {
+  border-color: var(--line);
+}
+
+.vega-redesign .subnav {
+  background: rgba(245, 247, 249, 0.96);
+}
+
+.vega-redesign .sub-brand span,
+.vega-redesign .subnav nav a[aria-current],
+.vega-redesign .payload-select button[aria-pressed="true"],
+.vega-redesign .gallery-selector button[aria-pressed="true"] {
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+/* Elementos azules */
+
+.vega-redesign .tech-dot {
+  background: var(--blue);
+}
+
+.vega-redesign .payload-visual path {
+  stroke: var(--blue);
+}
+
+.vega-redesign .payload-visual circle {
+  fill: var(--blue);
+  stroke: var(--mineral);
+}
+
+.vega-redesign a:focus-visible,
+.vega-redesign button:focus-visible {
+  outline-color: var(--blue);
+}
+
+/* Secciones oscuras */
+
+.vega-redesign .performance,
+.vega-redesign .contact {
+  background: #101920;
+  color: #edf3f7;
+}
+
+.vega-redesign .performance .muted,
+.vega-redesign .performance .pending {
+  color: #b8c6d0;
+}
+
+.vega-redesign .site-footer {
+  background: #091116;
+  color: #dce8ee;
+}
+
+.vega-redesign .site-footer p,
+.vega-redesign .site-footer small {
+  color: #a9bbc5;
+}
+
+/* Tipografía pequeña más legible */
+
+.vega-redesign .eyebrow,
+.vega-redesign .hero-top {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.vega-redesign .pending,
+.vega-redesign .hero-marker,
+.vega-redesign .viewer-badge,
+.vega-redesign .viewer-loading span,
+.vega-redesign .viewer-interact p,
+.vega-redesign .component-info p,
+.vega-redesign .component-info small,
+.vega-redesign .payload-select button span,
+.vega-redesign .payload-description small,
+.vega-redesign .specs-list dd {
+  font-family: "Inter Variable", Inter, sans-serif;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* Modo oscuro */
+
+html[data-theme="dark"] .vega-redesign {
+  --ink: #edf3f7;
+  --mineral: #0c1319;
+  --blue: #60bdff;
+  --blue-deep: #8bd2ff;
+  --line: #334a57;
+  --vega-muted: #b8c6d0;
+  --vega-surface: #101920;
+  --vega-surface-strong: #15242e;
+
+  background: var(--mineral);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .vega-redesign .features,
+html[data-theme="dark"] .vega-redesign .intro,
+html[data-theme="dark"] .vega-redesign .design-section,
+html[data-theme="dark"] .vega-redesign .technology,
+html[data-theme="dark"] .vega-redesign .payload-section,
+html[data-theme="dark"] .vega-redesign .specs-section {
+  background: var(--mineral);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .vega-redesign .viewer-section,
+html[data-theme="dark"] .vega-redesign .product-motion,
+html[data-theme="dark"] .vega-redesign .design-image,
+html[data-theme="dark"] .vega-redesign .payload-visual,
+html[data-theme="dark"] .vega-redesign .model-gallery,
+html[data-theme="dark"] .vega-redesign .feature-image,
+html[data-theme="dark"] .vega-redesign .gallery-thumb {
+  background: var(--vega-surface-strong);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .vega-redesign .gallery-stage {
+  background: radial-gradient(
+    ellipse at 50% 55%,
+    #233845 0%,
+    #14242e 60%,
+    #0c171e 100%
+  );
+}
+
+html[data-theme="dark"] .vega-redesign .gallery-wordmark {
+  color: rgba(96, 189, 255, 0.1);
+}
+
+html[data-theme="dark"] .vega-redesign .gallery-selector button {
+  color: #b8c6d0;
+  border-color: var(--line);
+}
+
+html[data-theme="dark"] .vega-redesign .gallery-selector button[aria-pressed="true"] {
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+html[data-theme="dark"] .vega-redesign .subnav {
+  background: rgba(16, 25, 32, 0.96);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+html[data-theme="dark"] .vega-redesign .application-mosaic article {
+  background: #15242e;
+  color: #edf3f7;
+}
+
+/* Responsive */
+
+@media (max-width: 720px) {
+  .vega-redesign .eyebrow,
+  .vega-redesign .pending,
+  .vega-redesign .hero-marker,
+  .vega-redesign .viewer-badge,
+  .vega-redesign .component-info p,
+  .vega-redesign .component-info small,
+  .vega-redesign .payload-select button span,
+  .vega-redesign .payload-description small,
+  .vega-redesign .specs-list dd,
+  .vega-redesign .gallery-stage figcaption {
+    font-size: 10px;
+  }
+
+  .vega-redesign .subnav nav a,
+  .vega-redesign .gallery-option-label {
+    font-size: 12px;
+  }
+}
+
+/*VEGA — VISOR 3D AMPLIADO*/
+.vega-redesign .viewer-section {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.vega-redesign .viewer-section > .section-head {
+  padding-left: clamp(24px, 6vw, 96px);
+  padding-right: clamp(24px, 6vw, 96px);
+  padding-bottom: 40px;
+}
+
+.vega-redesign .viewer-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(300px, 25vw, 390px);
+  width: 100%;
+  min-height: 760px;
+  height: min(88svh, 900px);
+  border-top: 1px solid var(--line);
+  background: var(--vega-surface);
+}
+
+.vega-redesign .viewer-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: none;
+  border: 0;
+  border-right: 1px solid var(--line);
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    #f8fbfd 0%,
+    #e8f0f5 58%,
+    #d7e3ea 100%
+  );
+}
+
+.vega-redesign .canvas-mount,
+.vega-redesign .canvas-mount canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.vega-redesign .viewer-control-panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  padding: 28px;
+  overflow-y: auto;
+  background: var(--mineral);
+}
+
+.vega-redesign .viewer-control-heading {
+  display: grid;
+  gap: 8px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.vega-redesign .viewer-control-heading span,
+.vega-redesign .viewer-panel-label,
+.vega-redesign .viewer-zoom > span {
+  color: var(--vega-muted);
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+}
+
+.vega-redesign .viewer-control-heading strong {
+  font-size: clamp(18px, 1.5vw, 24px);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.vega-redesign .viewer-toolbar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.vega-redesign .view-button {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.vega-redesign .view-button > span {
+  color: var(--vega-muted);
+  font-size: 9px;
+}
+
+.vega-redesign .view-button > strong {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.vega-redesign .view-button:hover {
+  background: rgba(22, 140, 222, 0.08);
+  border-color: #78bce9;
+}
+
+.vega-redesign .view-button[aria-pressed="true"] {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #ffffff;
+}
+
+.vega-redesign .view-button[aria-pressed="true"] > span {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.vega-redesign .viewer-zoom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.vega-redesign .viewer-zoom > div {
+  display: flex;
+  gap: 8px;
+}
+
+.vega-redesign .view-button.zoom {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  min-height: 44px;
+  padding: 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.vega-redesign .viewer-parts {
+  padding-top: 24px;
+}
+
+.vega-redesign .viewer-parts-list {
+  display: grid;
+  gap: 0;
+  margin-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.vega-redesign .viewer-parts-list button {
+  display: grid;
+  grid-template-columns: 30px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 12px 4px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.vega-redesign .viewer-parts-list button > span {
+  color: var(--vega-muted);
+  font-size: 9px;
+}
+
+.vega-redesign .viewer-parts-list button > strong {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.vega-redesign .viewer-parts-list button:hover,
+.vega-redesign .viewer-parts-list button[aria-pressed="true"] {
+  color: var(--blue);
+}
+
+.vega-redesign .viewer-parts-list button[aria-pressed="true"] {
+  border-bottom-color: var(--blue);
+}
+
+.vega-redesign .component-info {
+  display: block;
+  min-height: 138px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.vega-redesign .component-info .eyebrow {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--blue);
+}
+
+.vega-redesign .component-info p {
+  max-width: 34ch;
+  margin: 0;
+  color: var(--vega-muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.vega-redesign .component-info .text-link {
+  margin-top: 16px;
+  margin-left: 0;
+}
+
+.vega-redesign .viewer-interact {
+  position: static;
+  margin-top: auto;
+  padding-top: 24px;
+  text-align: left;
+  pointer-events: auto;
+}
+
+.vega-redesign .viewer-interact .outline-control {
+  width: 100%;
+  min-height: 46px;
+}
+
+.vega-redesign .viewer-interact p {
+  margin: 12px 0 0;
+  color: var(--vega-muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.vega-redesign .viewer-corner {
+  top: 24px;
+  left: 24px;
+}
+
+/* Modo oscuro del visor */
+
+html[data-theme="dark"] .vega-redesign .viewer-workspace {
+  background: #101920;
+}
+
+html[data-theme="dark"] .vega-redesign .viewer-canvas {
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    #263e4d 0%,
+    #14242e 58%,
+    #0c171e 100%
+  );
+  border-color: var(--line);
+}
+
+html[data-theme="dark"] .vega-redesign .viewer-control-panel {
+  background: #101920;
+}
+
+html[data-theme="dark"] .vega-redesign .view-button {
+  color: #edf3f7;
+  border-color: var(--line);
+}
+
+html[data-theme="dark"] .vega-redesign .viewer-parts-list button {
+  color: #edf3f7;
+  border-color: var(--line);
+}
+
+html[data-theme="dark"]
+  .vega-redesign
+  .viewer-parts-list
+  button[aria-pressed="true"] {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+}
+
+/* Tablet */
+
+@media (max-width: 1024px) {
+  .vega-redesign .viewer-workspace {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    min-height: 680px;
+    height: min(82svh, 780px);
+  }
+
+  .vega-redesign .viewer-control-panel {
+    padding: 22px;
+  }
+
+  .vega-redesign .viewer-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .vega-redesign .view-button {
+    min-height: 44px;
+  }
+}
+
+/* Celular: render arriba y controles debajo */
+
+@media (max-width: 760px) {
+  .vega-redesign .viewer-section > .section-head {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 28px;
+  }
+
+  .vega-redesign .viewer-workspace {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+  }
+
+  .vega-redesign .viewer-canvas {
+    flex: none;
+    width: 100%;
+    height: 62svh;
+    min-height: 430px;
+    max-height: 620px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .vega-redesign .viewer-control-panel {
+    width: 100%;
+    height: auto;
+    padding: 22px 18px 28px;
+    overflow: visible;
+  }
+
+  .vega-redesign .viewer-toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .vega-redesign .view-button {
+    min-width: 0;
+    min-height: 48px;
+    padding: 10px;
+  }
+
+  .vega-redesign .view-button > strong {
+    overflow: hidden;
+    font-size: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .vega-redesign .viewer-parts-list button {
+    min-height: 56px;
+  }
+
+  .vega-redesign .component-info {
+    min-height: 0;
+  }
+
+  .vega-redesign .component-info p {
+    max-width: none;
+    font-size: 12px;
+  }
+
+  .vega-redesign .viewer-interact {
+    margin-top: 0;
+  }
+
+  .vega-redesign .viewer-corner {
+    top: 16px;
+    left: 16px;
+  }
+
+  .vega-redesign .hotspot {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Celulares pequeños */
+
+@media (max-width: 420px) {
+  .vega-redesign .viewer-canvas {
+    height: 56svh;
+    min-height: 380px;
+  }
+
+  .vega-redesign .viewer-control-panel {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .vega-redesign .viewer-toolbar {
+    gap: 6px;
+  }
+
+  .vega-redesign .view-button {
+    grid-template-columns: 22px minmax(0, 1fr);
+    gap: 5px;
+    padding: 9px 8px;
+  }
+}
+
+/* ========================================
+   VEGA 3D — COMPOSICIÓN TIPO ORION
+======================================== */
+
+.vega-redesign .viewer-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(310px, 25vw, 390px);
+  width: 100%;
+  min-height: 760px;
+  height: min(88svh, 900px);
+  background: #0c151c;
+  border-top: 1px solid #29404d;
+}
+
+.vega-redesign .viewer-stage {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(4, 12, 17, 0.1), rgba(4, 12, 17, 0.48)),
+    radial-gradient(
+      ellipse at 50% 46%,
+      #294655 0%,
+      #152832 42%,
+      #091218 100%
+    );
+}
+
+.vega-redesign .viewer-stage::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(rgba(93, 174, 219, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(93, 174, 219, 0.07) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 75%, transparent);
+}
+
+.vega-redesign .viewer-stage::after {
+  position: absolute;
+  right: 13%;
+  bottom: 7%;
+  left: 13%;
+  z-index: 1;
+  height: 17%;
+  pointer-events: none;
+  content: "";
+  background: radial-gradient(
+    ellipse,
+    rgba(0, 0, 0, 0.7),
+    transparent 68%
+  );
+  border-radius: 50%;
+  filter: blur(17px);
+}
+
+.vega-redesign .viewer-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  border: 0;
+  background: transparent;
+}
+
+.vega-redesign .canvas-mount,
+.vega-redesign .canvas-mount canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.vega-redesign .canvas-mount canvas {
+  display: block;
+  cursor: grab;
+  touch-action: none;
+}
+
+.vega-redesign .canvas-mount canvas:active {
+  cursor: grabbing;
+}
+
+.vega-redesign .viewer-model-badge {
+  position: absolute;
+  top: 26px;
+  left: 28px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #ecf6fb;
+  pointer-events: none;
+}
+
+.vega-redesign .viewer-model-badge span {
+  color: #60bdff;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+}
+
+.vega-redesign .viewer-model-badge strong {
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.vega-redesign .viewer-floating-views {
+  position: absolute;
+  bottom: 88px;
+  left: 28px;
+  z-index: 7;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  max-width: calc(100% - 190px);
+}
+
+.vega-redesign .viewer-floating-views button,
+.vega-redesign .viewer-floating-parts button {
+  min-height: 36px;
+  padding: 8px 12px;
+  border: 1px solid rgba(168, 194, 208, 0.34);
+  background: rgba(10, 23, 31, 0.84);
+  color: #bad0dc;
+  font-family: "Inter Variable", Inter, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+}
+
+.vega-redesign .viewer-floating-views button:hover,
+.vega-redesign .viewer-floating-views button[aria-pressed="true"],
+.vega-redesign .viewer-floating-parts button:hover,
+.vega-redesign .viewer-floating-parts button[aria-pressed="true"] {
+  background: #168cde;
+  border-color: #168cde;
+  color: #ffffff;
+}
+
+.vega-redesign .viewer-floating-zoom {
+  position: absolute;
+  top: 26px;
+  right: 28px;
+  z-index: 7;
+  display: flex;
+  flex-direction: column;
+}
+
+.vega-redesign .viewer-floating-zoom button {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid rgba(168, 194, 208, 0.34);
+  background: rgba(10, 23, 31, 0.84);
+  color: #e1eff6;
+  font-size: 20px;
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+}
+
+.vega-redesign .viewer-floating-zoom button + button {
+  border-top: 0;
+}
+
+.vega-redesign .viewer-floating-zoom button:hover {
+  background: #168cde;
+  color: #ffffff;
+}
+
+.vega-redesign .viewer-floating-parts {
+  position: absolute;
+  bottom: 29px;
+  left: 28px;
+  z-index: 7;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  max-width: calc(100% - 260px);
+}
+
+.vega-redesign .viewer-floating-parts button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.vega-redesign .viewer-floating-parts button span {
+  color: #60bdff;
+  font-size: 17px;
+  line-height: 1;
+}
+
+.vega-redesign
+  .viewer-floating-parts
+  button[aria-pressed="true"]
+  span,
+.vega-redesign .viewer-floating-parts button:hover span {
+  color: #ffffff;
+}
+
+.vega-redesign .viewer-floating-help {
+  position: absolute;
+  right: 28px;
+  bottom: 34px;
+  z-index: 6;
+  max-width: 220px;
+  margin: 0;
+  color: #91a9b7;
+  font-size: 8px;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  text-align: right;
+  pointer-events: none;
+}
+
+.vega-redesign .viewer-detail-panel {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 42px;
+  min-width: 0;
+  padding: 30px;
+  border-left: 1px solid #29404d;
+  background: #101920;
+  color: #edf5f8;
+}
+
+.vega-redesign .viewer-detail-index {
+  color: #60bdff;
+  font-size: clamp(54px, 6vw, 90px);
+  font-weight: 500;
+  line-height: 0.8;
+  opacity: 0.24;
+}
+
+.vega-redesign .viewer-detail-panel > div {
+  align-self: end;
+  padding-bottom: 20px;
+}
+
+.vega-redesign .viewer-detail-panel .eyebrow {
+  display: block;
+  margin-bottom: 18px;
+  color: #60bdff;
+}
+
+.vega-redesign .viewer-detail-panel h3 {
+  margin: 0 0 20px;
+  color: #edf5f8;
+  font-size: clamp(26px, 2.4vw, 38px);
+  font-weight: 480;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.vega-redesign .viewer-detail-panel p {
+  max-width: 34ch;
+  margin: 0;
+  color: #b8c9d2;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.vega-redesign .viewer-detail-panel .text-link {
+  margin-top: 25px;
+  color: #60bdff;
+}
+
+.vega-redesign .viewer-detail-panel.has-selection {
+  box-shadow: inset 3px 0 0 #168cde;
+}
+
+.vega-redesign .hotspot {
+  z-index: 8;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  background: #168cde;
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.vega-redesign .hotspot.selected {
+  background: #ffffff;
+  color: #0876c4;
+  box-shadow: 0 0 0 8px rgba(22, 140, 222, 0.2);
+}
+
+/* Tablet y móvil */
+
+@media (max-width: 900px) {
+  .vega-redesign .viewer-workspace {
+    display: block;
+    height: auto;
+    min-height: 0;
+  }
+
+  .vega-redesign .viewer-stage {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: visible;
+    background: #0c151c;
+  }
+
+  .vega-redesign .viewer-canvas {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: clamp(430px, 68svh, 620px);
+    background:
+      linear-gradient(
+        180deg,
+        rgba(4, 12, 17, 0.1),
+        rgba(4, 12, 17, 0.48)
+      ),
+      radial-gradient(
+        ellipse at 50% 46%,
+        #294655 0%,
+        #152832 42%,
+        #091218 100%
+      );
+  }
+
+  .vega-redesign .viewer-floating-views,
+  .vega-redesign .viewer-floating-parts {
+    position: static;
+    inset: auto;
+    max-width: none;
+    padding: 0 16px;
+    background: #0c151c;
+  }
+
+  .vega-redesign .viewer-floating-views {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding-top: 18px;
+  }
+
+  .vega-redesign .viewer-floating-parts {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-top: 12px;
+    padding-bottom: 20px;
+  }
+
+  .vega-redesign .viewer-floating-views button,
+  .vega-redesign .viewer-floating-parts button {
+    justify-content: center;
+    min-width: 0;
+    min-height: 44px;
+  }
+
+  .vega-redesign .viewer-floating-zoom {
+    top: 18px;
+    right: 16px;
+  }
+
+  .vega-redesign .viewer-floating-help {
+    display: none;
+  }
+
+  .vega-redesign .viewer-detail-panel {
+    min-height: 270px;
+    grid-template-columns: 70px minmax(0, 1fr);
+    grid-template-rows: auto;
+    align-items: start;
+    gap: 22px;
+    padding: 28px 20px;
+    border-top: 1px solid #29404d;
+    border-left: 0;
+  }
+
+  .vega-redesign .viewer-detail-panel > div {
+    align-self: start;
+    padding: 0;
+  }
+
+  .vega-redesign .viewer-detail-index {
+    font-size: 58px;
+  }
+
+  .vega-redesign .viewer-detail-panel h3 {
+    font-size: 28px;
+  }
+
+  .vega-redesign .viewer-detail-panel p {
+    max-width: 52ch;
+  }
+}
+
+@media (max-width: 540px) {
+  .vega-redesign .viewer-canvas {
+    height: 52svh;
+    min-height: 390px;
+    max-height: 540px;
+  }
+
+  .vega-redesign .viewer-model-badge {
+    top: 16px;
+    left: 16px;
+  }
+
+  .vega-redesign .viewer-floating-views {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .vega-redesign .viewer-detail-panel {
+    display: block;
+    min-height: 0;
+  }
+
+  .vega-redesign .viewer-detail-index {
+    display: block;
+    margin-bottom: 26px;
+    font-size: 52px;
+  }
+
+  .vega-redesign .viewer-detail-panel h3 {
+    font-size: 25px;
+  }
+
+  .vega-redesign .viewer-detail-panel p {
+    font-size: 12px;
+  }
+}

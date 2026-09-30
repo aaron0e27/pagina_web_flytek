@@ -1,0 +1,75 @@
+:root { color-scheme:light; --page-bg:#fff; --page-text:#171a1f; }
+html[data-theme="dark"] { color-scheme:dark; --page-bg:#0c1319; --page-text:#edf3f7; }
+body { background:var(--page-bg); color:var(--page-text); transition:background-color .25s ease,color .25s ease; }
+html[data-theme="dark"] .flytek-header { background:#0f181f; color:#edf3f7; border-color:#2b3943; }
+html[data-theme="dark"] .flytek-header .flytek-brand img,
+html[data-theme="dark"] .home-footer img { filter:brightness(0) invert(1); }
+html[data-theme="dark"] .flytek-icon-button,
+html[data-theme="dark"] .flytek-menu-button { border-color:#40505c; }
+html[data-theme="dark"] .flytek-icon-button:hover,
+html[data-theme="dark"] .flytek-menu-button:hover { background:#1d2a33; }
+
+/* Principal en modo oscuro. */
+html[data-theme="dark"] .home-page { background:#0c1319; color:#edf3f7; --flytek-black:#edf3f7; --flytek-text:#bdc8d0; --flytek-border:#33424c; --flytek-surface:#131d24; --flytek-white:#101920; }
+html[data-theme="dark"] .home-page .home-company,
+html[data-theme="dark"] .home-page .home-sectors,
+html[data-theme="dark"] .home-page .home-contact { background:#0c1319; }
+html[data-theme="dark"] .home-page .home-fleet { background:#121d25; }
+html[data-theme="dark"] .home-page .home-section-line,
+html[data-theme="dark"] .home-page .home-values article,
+html[data-theme="dark"] .home-page .home-contact-bottom,
+html[data-theme="dark"] .home-page .home-footer-bottom,
+html[data-theme="dark"] .home-page .home-platform-selector { border-color:#33424c; }
+html[data-theme="dark"] .home-page .home-platform-stage { background:#121d25; }
+html[data-theme="dark"] .home-page .home-company-grid p,
+html[data-theme="dark"] .home-page .home-fleet-heading p,
+html[data-theme="dark"] .home-page .home-sectors-title p,
+html[data-theme="dark"] .home-page .home-values p,
+html[data-theme="dark"] .home-page .home-platform-copy>p:not(.home-label),
+html[data-theme="dark"] .home-page .home-contact-bottom p { color:#aebbc4; }
+html[data-theme="dark"] .home-page .home-company-grid .home-lead,
+html[data-theme="dark"] .home-page .home-flight-copy { color:#edf3f7; }
+html[data-theme="dark"] .home-page .home-platform-selector button:hover { background:#1b2933; }
+html[data-theme="dark"] .home-page .home-platform-stage>span { color:#263640; }
+html[data-theme="dark"] .home-page .home-platform-stage small { color:#9eb0bc; }
+html[data-theme="dark"] .home-page .home-platform-copy li { border-color:#40505b; }
+html[data-theme="dark"] .home-page .home-platform-pending { background:linear-gradient(135deg,#18242d,#101920); }
+html[data-theme="dark"] .home-page .home-pending-art { border-color:#4d606d; color:#93a5b0; }
+html[data-theme="dark"] .home-page .home-flight-scene { background:linear-gradient(135deg,#121d25,#182630); border-color:#34444f; color:#557082; }
+html[data-theme="dark"] .home-page .home-flight-copy p { color:#aebbc4; }
+html[data-theme="dark"] .home-page .home-flight-data { color:#91a6b4; }
+html[data-theme="dark"] .home-page .home-footer { background:#111a21; color:#edf3f7; }
+html[data-theme="dark"] .home-page .home-application-card,
+html[data-theme="dark"] .home-page .home-application-copy ul,
+html[data-theme="dark"] .home-page .home-application-copy li { border-color:#33424c; }
+html[data-theme="dark"] .home-page .home-application-copy>p:not(.home-label) { color:#aebbc4; }
+html[data-theme="dark"] .home-page .home-application-image { background:#152129; }
+html[data-theme="dark"] .home-page .home-flight-orion { filter:drop-shadow(0 16px 12px #0008); }
+
+/* FÉNIX conserva el contraste editorial y cambia las superficies claras. */
+html[data-theme="dark"] .fenix-page { --flytek-black:#edf3f7; --flytek-text:#bdc7cf; --flytek-muted:#8f9da7; --flytek-border:#34434d; --flytek-surface:#152028; --flytek-white:#101920; background:#0c1319; color:#edf3f7; }
+html[data-theme="dark"] .fenix-page .product-nav { background:#101920; border-color:#35444f; }
+html[data-theme="dark"] .fenix-page :is(.key-stats,.intro,.explore,.arrival,.engineering,.control-panel,.payloads,.applications,.specifications,.support,.contact) { background:#0c1319; color:#edf3f7; }
+html[data-theme="dark"] .fenix-page :is(.intro-visual,.viewer-shell,.navigation-panel,.payload-stage,.payload-closeup,.custom-integration) { background:#152129; }
+html[data-theme="dark"] .fenix-page :is(.stat-length,.stat-endurance,.stat-wind,.stat-weight) { border-color:#34434d; }
+html[data-theme="dark"] .fenix-page :is(.viewer-controls button,.zoom-controls button,.hotspot-info) { background:#17242c; color:#edf3f7; border-color:#3b4b56; }
+html[data-theme="dark"] .fenix-page .viewer-controls button[aria-pressed="true"] { background:#e8f0f5; color:#121a20; }
+html[data-theme="dark"] .fenix-page .control-panel { background:#111c23; }
+html[data-theme="dark"] .fenix-page .connection-path svg { background:#111c23; }
+html[data-theme="dark"] .fenix-page .support-grid article { background:#121d24; border-color:#34434d; }
+html[data-theme="dark"] .fenix-page :is(input,textarea) { color:#edf3f7; border-color:#52616b; }
+html[data-theme="dark"] .fenix-page footer { background:#080d11; }
+html[data-theme="dark"] .fenix-page .skip { background:#edf3f7; color:#111820; }
+@media(prefers-reduced-motion:reduce) { body { transition:none; } }
+
+/* FÉNIX: explicit surfaces and text prevent pale text on light statistic cards. */
+html[data-theme="dark"] .fenix-page .stat-wind,
+html[data-theme="dark"] .fenix-page .stat-length { background:#192a35; color:#f1f6fa; }
+html[data-theme="dark"] .fenix-page .stat-weight { background:#1279b7; color:#fff; }
+html[data-theme="dark"] .fenix-page .stats-mosaic .stat-label,
+html[data-theme="dark"] .fenix-page .stats-mosaic strong,
+html[data-theme="dark"] .fenix-page .stats-mosaic small { color:inherit; }
+html[data-theme="dark"] .fenix-page .stats-mosaic p { color:#d2dee7; }
+html[data-theme="dark"] .fenix-page .stat-length > svg { color:#a9c4d5; }
+html[data-theme="dark"] .fenix-page .stat-rule { background:#a5d9f6; }
+html[data-theme="dark"] .fenix-page .stats-heading { color:#edf3f7; border-color:#34434d; }

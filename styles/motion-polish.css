@@ -1,0 +1,120 @@
+/* Movimiento compartido: sin alterar el layout ni los transform de los visores 3D. */
+.scroll-page {
+  --motion-ease: cubic-bezier(.22, 1, .36, 1);
+}
+.scroll-page :is(a, button, summary):focus-visible {
+  outline: 2px solid #168cde;
+  outline-offset: 5px;
+}
+.scroll-page:is(.home-page, .vega-page, .orion-page) :is(section[id], article[id]) {
+  scroll-margin-top: 140px;
+}
+.scroll-page :is(.home-button, .home-text-link, .home-link-light, .vega-link, .small-cta) {
+  transition: color .25s ease, background-color .25s ease, box-shadow .4s ease,
+    translate .4s var(--motion-ease);
+}
+.scroll-page :is(.home-text-link, .home-link-light, .home-button, .vega-link, .small-cta) > svg {
+  transition: translate .4s var(--motion-ease);
+}
+.scroll-page :is(.home-values > article, .vega-stat-grid > article) {
+  transition: translate .45s var(--motion-ease), box-shadow .45s ease;
+}
+.home-application-image img {
+  transition: scale .8s var(--motion-ease);
+}
+/* La portada no bloquea navegación ni teclado durante una espera artificial. */
+.home-page .home-loader {
+  pointer-events: none;
+  animation: home-loader-exit .35s ease .55s forwards;
+}
+.home-page .home-loader-progress span {
+  animation-duration: .7s;
+}
+@keyframes flytek-content-in {
+  from { opacity: .15; translate: 0 10px; }
+  to { opacity: 1; translate: 0 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .home-hero-copy, .vega-hero-bottom, .orion-hero-copy {
+    animation: flytek-content-in .8s var(--motion-ease) both;
+  }
+  .vega-application-copy,
+  .home-accordion [role="region"]:not([hidden]),
+  .vega-integration details[open] > p {
+    animation: flytek-content-in .45s var(--motion-ease) both;
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .scroll-page :is(.home-button, .small-cta):hover {
+    translate: 0 -2px;
+    box-shadow: 0 8px 22px #168cde20;
+  }
+  .scroll-page :is(.home-text-link, .home-link-light, .home-button, .vega-link, .small-cta):hover > svg {
+    translate: 3px -2px;
+  }
+  .scroll-page :is(.home-values > article, .vega-stat-grid > article):hover {
+    translate: 0 -3px;
+    box-shadow: 0 12px 32px #1028380a;
+  }
+  .home-application-card:hover .home-application-image img { scale: 1.025; }
+}
+/* En pantallas pequeñas se evita el movimiento decorativo continuo. */
+@media (max-width: 767px), (pointer: coarse) {
+  .home-page .home-word-group,
+  .home-page .home-flight-drone,
+  .home-page .home-flight-orion,
+  .vega-page .vega-hero-photo,
+  .orion-page .orion-hero-drone,
+  .orion-page .orion-payload-drone,
+  .orion-page .orion-ring { animation: none; }
+}
+/* Pausar revela el estado final; no deja contenido congelado a media entrada. */
+.home-page.home-paused *, .vega-page.vega-paused * {
+  animation: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html:has(.scroll-page) { scroll-behavior: auto !important; }
+  .scroll-page *, .scroll-page *::before, .scroll-page *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .home-page .home-loader { display: none; }
+}
+
+/* En tablet y móvil los controles del visor fluyen debajo del lienzo:
+   evita que vistas, componentes y ficha seleccionada se tapen entre sí. */
+@media (max-width: 1024px) {
+  .scroll-page :is(.vega-3d-shell, .orion-3d-shell) { height: auto; }
+  .scroll-page :is(.vega-3d-scene, .orion-3d-scene) {
+    position: relative;
+    inset: auto;
+    height: clamp(340px, 55vw, 500px);
+    overflow: hidden;
+  }
+  .scroll-page :is(.vega-3d-views, .orion-3d-views, .drone-component-list) {
+    position: relative;
+    inset: auto;
+    margin: 16px;
+    width: auto;
+    max-width: none;
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+  .scroll-page:is(.vega-page, .orion-page) .drone-hotspot-info {
+    position: relative;
+    inset: auto;
+    width: auto;
+    margin: 16px;
+  }
+  .scroll-page :is(.vega-3d-help, .orion-3d-help) { display: none; }
+  .scroll-page :is(.vega-3d-shell, .orion-3d-shell)::after { display: none; }
+}
+.scroll-page :is(.drone-hotspot, .drone-component-list button):focus-visible {
+  outline: 2px solid #168cde;
+  outline-offset: 4px;
+}
+
+
+
+

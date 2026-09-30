@@ -1,0 +1,29 @@
+/* GSAP controla estas propiedades sólo mientras las escenas están activas.
+   Al pausar, cambiar de ruta o reducir movimiento se restaura el diseño original. */
+.scroll-page.scroll-scenes-active :is(
+  .home-word-group, .home-hero-copy,
+  .orion-hero-drone, .orion-hero-copy, .orion-payload-drone,
+  .vega-hero-photo, .vega-hero-bottom
+) { animation: none !important; }
+.scroll-page.scroll-scenes-active :is(.home-application-image, .home-application-image img) {
+  transition: none;
+}
+.scroll-page.scroll-scenes-active .home-application-card:hover .home-application-image img {
+  transform: none;
+  scale: 1;
+}
+.scroll-page { overflow-x: clip; }
+@media (min-width: 1025px) and (min-height: 680px) and (pointer: fine) {
+  .scroll-page.scroll-scenes-active.home-page .home-hero {
+    height: 100svh;
+    min-height: 0;
+  }
+  .scroll-page.scroll-scenes-active :is(.orion-hero, .vega-hero) {
+    height: calc(100svh - 56px);
+    min-height: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-page :is(.home-hero, .orion-hero, .vega-hero) { position: relative; }
+}
+
