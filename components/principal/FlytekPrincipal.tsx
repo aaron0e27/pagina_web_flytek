@@ -65,7 +65,54 @@ export default function FlytekPrincipal() {
     root.current?.querySelectorAll(".home-platform-stage, .home-flight-scene").forEach(element => observer.observe(element));
     return () => observer.disconnect();
   }, [platform]);
-  useScrollScenes(root, "home", !paused && !showIntro);
+  useEffect(() => {
+  const host = root.current;
+  if (!host) return;
+
+  const navigateToSection = async (event: MouseEvent) => {
+    const anchor = (event.target as HTMLElement).closest<HTMLAnchorElement>(
+      'a[href^="/#"]',
+    );
+
+    if (!anchor || window.location.pathname !== "/") return;
+
+    const id = anchor.hash.slice(1);
+    const target = document.getElementById(id);
+
+    if (!target) return;
+
+    event.preventDefault();
+
+    const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+
+    ScrollTrigger.refresh();
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const margin =
+          Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+
+        const top =
+          target.getBoundingClientRect().top + window.scrollY - margin;
+
+        window.scrollTo({
+          top,
+          behavior: "smooth",
+        });
+
+        window.history.replaceState(null, "", `#${id}`);
+      });
+    });
+  };
+
+  host.addEventListener("click", navigateToSection);
+
+  return () => {
+    host.removeEventListener("click", navigateToSection);
+  };
+}, []);
+
+useScrollScenes(root, "home", !paused && !showIntro);
   return (
     <div ref={root} className={`fenix-page home-page scroll-page${paused ? " home-paused" : ""}`}>
       {showIntro && (

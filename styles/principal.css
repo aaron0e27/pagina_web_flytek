@@ -200,3 +200,10 @@ html.flytek-loading body { overflow:hidden; }
   .home-page .home-sector-buttons button { flex:0 0 auto; }
 }
 body:has(.home-page) .flytek-header{position:sticky;top:0;z-index:120}
+.home-page #drones {
+  scroll-margin-top: -90px;
+}
+
+.home-page #sectores {
+  scroll-margin-top: -120px;
+}
