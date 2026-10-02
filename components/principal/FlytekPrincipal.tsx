@@ -291,7 +291,6 @@ useScrollScenes(root, "home", !paused && !showIntro);
                   aria-controls="platform-detail"
                   onClick={() => setPlatform(index)}
                 >
-                  <span>0{index + 1}</span>
                   {item.name}
                   <ArrowUpRight size={20} />
                 </button>
@@ -327,10 +326,10 @@ useScrollScenes(root, "home", !paused && !showIntro);
                     <small>IMAGEN / MODELO PENDIENTE</small>
                   </div>
                 )}
-                <small>FLYTEK / {drone.name}</small>
+                <small>{drone.name}</small>
               </div>
               <div className="home-platform-copy" key={drone.id}>
-                <p className="home-label">0{platform + 1} / PLATAFORMAS FLYTEK</p>
+                <p className="home-label">PLATAFORMAS FLYTEK</p>
                 <h3>{drone.title}</h3>
                 <p>{drone.description}</p>
                 <ul>

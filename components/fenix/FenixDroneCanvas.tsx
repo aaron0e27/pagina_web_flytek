@@ -61,7 +61,7 @@ export default function FenixDroneCanvas({ arrival = false }: { arrival?: boolea
         if (inView) void start();
         api.current?.active(inView && !document.hidden);
       },
-      { rootMargin: "100px" },
+      { rootMargin: "1200px 0px" },
     );
     observer.observe(el);
     const visibility = () => api.current?.active(inView && !document.hidden);

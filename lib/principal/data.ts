@@ -2,9 +2,9 @@
 export const homeCopy = {
   headline: "Ingeniería que eleva tu operación.",
   introduction:
-    "Diseñamos e integramos drones industriales para convertir una nueva perspectiva en información útil para tu equipo.",
+    "Flytek Innovations S. de R. L. de C.V. es la empresa dedicada al diseño, integración y comercialización de vehículos aéreos no tripulados de grado industrial también conocidos como drones.",
   company:
-    "Somos Flytek Innovations. Una empresa mexicana dedicada al diseño, integración y comercialización de vehículos aéreos no tripulados de grado industrial.",
+    "Somos una empresa mexicana que ofrece drones de grado industrial para vigilancia, inspección, seguridad perimetral, tareas de búsqueda y rescate entre muchas más, estas tareas se llevan a cabo de manera óptima debido a las configuraciones, programación y payloads (cargas útiles) que podemos instalar en los drones.",
   email: "info@flytek.com.mx",
   phone: "+52 56 5440 7312",
 };
@@ -13,35 +13,35 @@ export const platforms: readonly { id: string; name: string; title: string; desc
   {
     id: "fenix",
     name: "FÉNIX",
-    title: "Piensa en grande.\nVuela con FÉNIX.",
+    title: "Magno en todo sentido.",
     description:
-      "Explora su diseño, las posibilidades de integración y las cargas útiles para tu operación.",
+      "El drone para la industria",
     image: "/fenix/media/fenix.webp",
     href: "/fenix",
     available: true,
-    features: ["Diseño industrial", "Cargas útiles", "Exploración 3D"],
+    features: ["Diseño industrial", "Cargas útiles", "Uso en interiores"],
   },
   {
     id: "orion",
     name: "ORION MX",
-    title: "Otra perspectiva.\nIncluso en interiores.",
+    title: "El drone para la inspección.",
     description:
-      "Una plataforma compacta para explorar espacios reducidos y acercarte a los detalles de tu inspección.",
+      "Trabajo Inteligente en espacio compacto.",
     image: "/orion-mx/orion-hero.webp",
     href: "/orion-mx",
     available: true,
-    features: ["Formato compacto", "Inspección", "Uso en interiores"],
+    features: ["Formato compacto", "Inspección", "Flexible"],
   },
   {
     id: "vega",
     name: "VEGA",
-    title: "Una plataforma.\nMás posibilidades.",
+    title: "El drone que necesitas.",
     description:
-      "Diseño plegable y posibilidades de integración para acompañar operaciones en distintos entornos.",
+      "Versátil y robusto para el trabajo.",
     image: "/vega/images/vega-estudio.png",
     href: "/vega",
     available: true,
-    features: ["Estructura plegable", "Sensores", "Interior y exterior"],
+    features: ["Estructura plegable", "Delivery", "Uso en exteriores"],
   },
 ] as const;
 export const sectors = [

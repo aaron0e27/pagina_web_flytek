@@ -17,7 +17,7 @@ export const vegaCopy = {
   propuesta_de_producto_contenido_tecnico_pendiente_de_validacion:
     "Propuesta de producto · Contenido técnico pendiente de validación",
   flytek_plataformas: "FLYTEK / PLATAFORMAS",
-  label_01_vega: "01 — VEGA",
+  label_01_vega: "VEGA",
   vega_2: "VEGA",
   plataforma_vega: "PLATAFORMA VEGA",
   vista_general: "VISTA GENERAL",
