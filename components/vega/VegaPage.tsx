@@ -32,27 +32,7 @@ export default function VegaPage() {
             <br />
             <span className="muted">{vegaCopy.cada_detalle_a_la_vista}</span>
           </h2>
-          <div className="feature-grid">
-            {vegaData.features.map((f, i) => (
-              <figure key={f.title} data-reveal>
-                <div className={"feature-image feature-image-" + i}>
-                  <span className="eyebrow">{f.label}</span>
-                  <img
-                    src={f.image}
-                    alt={"VEGA — " + f.title}
-                    width="1440"
-                    height="920"
-                    loading="lazy"
-                  />
-                  <span className="image-cross">＋</span>
-                </div>
-                <figcaption>
-                  <h3>{f.title}</h3>
-                  <p className="pending">{f.description}</p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+          
         </section>
         <VegaGallery />
         <section className="intro section">

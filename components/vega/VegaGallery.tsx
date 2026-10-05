@@ -1,41 +1,62 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { galleryData } from "@/lib/vega/gallery";
 
 export function VegaGallery() {
-  const [selected, setSelected] = useState(0);
-  const view = galleryData.views[selected];
+  const [active, setActive] = useState(0);
+  const videos = useRef<(HTMLVideoElement | null)[]>([]);
+  const total = galleryData.items.length;
+
+  // El video solo corre mientras su panel está abierto (y si no hay "reducir movimiento").
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    videos.current.forEach((video, i) => {
+      if (!video) return;
+      if (i === active && !reduce) void video.play().catch(() => {});
+      else video.pause();
+    });
+  }, [active]);
 
   return (
-    <section className="section model-gallery" aria-labelledby="gallery-title">
-      <div className="section-head" data-reveal>
-        <p className="eyebrow">{galleryData.eyebrow}</p>
-        <span className="eyebrow">{galleryData.instruction}</span>
-      </div>
-      <h2 id="gallery-title" data-title-motion>
-        {galleryData.title}<br />
-        <span className="muted">{galleryData.subtitle}</span>
-      </h2>
-      <figure className="gallery-stage">
-        <span className="gallery-wordmark" aria-hidden="true">VEGA</span>
-        <span className="gallery-cross gallery-cross-start" aria-hidden="true">＋</span>
-        <img key={view.id} src={view.image} alt={view.alt} width="1440" height="920" loading="lazy" />
-        <span className="gallery-cross gallery-cross-end" aria-hidden="true">＋</span>
-        <figcaption aria-live="polite">
-          <span>{view.detail}</span>
-          <span>{String(selected + 1).padStart(2, "0")} / 04</span>
-        </figcaption>
-      </figure>
-      <div className="gallery-selector" role="group" aria-label="Perspectivas de VEGA">
-        {galleryData.views.map((item, index) => (
-          <button key={item.id} type="button" aria-pressed={selected === index} onClick={() => setSelected(index)}>
-            <span className="gallery-thumb"><img src={item.image} alt="" width="1440" height="920" loading="lazy" /></span>
-            <span className="gallery-option-label"><span>{String(index + 1).padStart(2, "0")}</span>{item.label}<span aria-hidden="true">↗</span></span>
+    <>
+      <div className="shutter" role="group" aria-label="VEGA en campo">
+        {galleryData.items.map((item, i) => (
+          <button
+            key={item.id}
+            type="button"
+            className="shutter-panel"
+            data-active={active === i}
+            aria-pressed={active === i}
+            aria-label={item.alt}
+            onMouseEnter={() => setActive(i)}
+            onFocus={() => setActive(i)}
+            onClick={() => setActive(i)}
+          >
+            {item.kind === "video" ? (
+              <video
+                ref={(el) => { videos.current[i] = el; }}
+                src={item.video}
+                poster={item.image}
+                muted
+                loop
+                playsInline
+                preload="none"
+                style={{ objectPosition: item.position }}
+              />
+            ) : (
+              <img src={item.image} alt="" loading="lazy" decoding="async" style={{ objectPosition: item.position }} />
+            )}
+            <span className="shutter-index">{String(i + 1).padStart(2, "0")}</span>
+            <span className="shutter-label">{item.label}</span>
+            <span className="shutter-caption">
+              <span>{item.detail}</span>
+              <span>{String(i + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}</span>
+            </span>
           </button>
         ))}
       </div>
-      <a className="text-link" href="#explorador">{galleryData.detailLink}<span>↘</span></a>
-    </section>
+      <p className="shutter-hint">{galleryData.instruction}</p>
+    </>
   );
 }
