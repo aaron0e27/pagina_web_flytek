@@ -1,4 +1,5 @@
 import { vegaCopy } from "@/lib/vega/copy";
+import { VegaApplicationsCollage } from "./VegaApplicationsCollage";
 import { vegaData, PENDING, specificationValues } from "@/lib/vega/data";
 export function VegaStory() {
   return (
@@ -94,8 +95,8 @@ export function VegaStory() {
   );
 }
 export function VegaApplications() {
-  return (
-    <section className="section applications" id="aplicaciones">
+      return (
+      <section className="section applications" id="aplicaciones">
       <div className="section-head" data-reveal>
         <p className="eyebrow">{vegaCopy.label_07_aplicaciones}</p>
         <span className="eyebrow">{vegaCopy.producto_operacion}</span>
@@ -104,39 +105,10 @@ export function VegaApplications() {
       <p className="pending">
         {vegaCopy.aplicaciones_sectores_y_fotografias_de_operacion_por_definir}
       </p>
-      <div className="application-mosaic">
-        {vegaData.applications.map((a, i) => (
-          <article key={a.title} data-reveal>
-            <span className="eyebrow">
-              0{i + 1}
-              {vegaCopy.vega_3}
-            </span>
-            <img
-              src={a.image}
-              alt={a.title + ": imagen ilustrativa de la aplicación"}
-              loading="lazy"
-              width="1440"
-              height="920"
-            />
-            <div>
-              <h3>{a.title}</h3>
-              <p className="pending">{a.description}</p>
-              {a.sectorHref ? (
-                <a href={a.sectorHref} className="text-link">
-                  {vegaCopy.ver_sector}
-                </a>
-              ) : (
-                <span className="sector-pending">
-                  {vegaCopy.sector_por_definir}
-                </span>
-              )}
-            </div>
-          </article>
-        ))}
-      </div>
+      <VegaApplicationsCollage />
     </section>
-  );
-}
+    );
+  }
 export function VegaSpecs() {
   return (
     <section className="section specs-section" id="especificaciones">

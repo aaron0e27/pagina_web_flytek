@@ -39,26 +39,59 @@ export const viewerData = {
   }, 
   ],
 };
-export const payloads = [
+type PayloadItem = {
+  id: string;
+  label: string;
+  description: string;
+  image: string;
+  alt: string;
+  fit: "cover" | "contain";
+  position: string;
+};
+export const payloads : PayloadItem[] = [
   {
-    id: "a",
-    label: "Imagen y observación",
-    description: "Cámara térmica, zoom óptico o cámara dual: distintas perspectivas según la información que necesitas capturar.",
-    image: "/vega/images/vega-estudio.png",
-    anchor: [52, 52] as [number, number],
+    id: "medicion",
+    label: "Medición precisa",
+    description: "Sensores térmicos radiométricos, cámaras multiespectrales y unidades de medición especiales para obtener mediciones con excelente precisión sin importar el medio.",
+    image: "/vega/images/PayloadTermica.jpg",
+    alt: "Medición precisa con sensores térmicos radiométricos",
+    fit: "cover",
+    position: "50% 50%",
   },
   {
-    id: "b",
-    label: "Análisis del entorno",
-    description: "Consulta la integración de una cámara multiespectral y el flujo de captura apropiado para tu proyecto.",
-    image: "/vega/images/vega-superior.png",
-    anchor: [50, 50] as [number, number],
+    id: "imagen",
+    label: "Imagen estable",
+    description: "Estabilizador de video en dos o tres ejes que permite cualquier ángulo de visión, para tener siempre la mejor perspectiva en inspección y vigilancia.",
+    image: "/vega/images/camara.png",
+    alt: "Imagen estabilizada durante la operación",
+    fit: "cover",
+    position: "50% 50%",
   },
   {
-    id: "c",
-    label: "Apoyo a la operación",
-    description: "Iluminación y megáfono como opciones de integración. Sensores anticolisión y vuelo nocturno sujetos a configuración.",
-    image: "/vega/images/vega-detalle.png",
-    anchor: [50, 54] as [number, number],
+    id: "inspeccion",
+    label: "Inspecciona con mayor seguridad y eficiencia",
+    description: "Cámara térmica con sensor radiométrico para valores de temperatura precisos de ±5 °C, acompañada de una cámara Full HD para no perder ningún detalle.",
+    image: "/vega/images/Payload43n1.jpg",
+    alt: "Inspección con cámara térmica y cámara Full HD",
+    fit: "cover",
+    position: "50% 50%",
   },
+  {
+    id: "entrega",
+    label: "Entrega de carga",
+    description: "Sistema de entrega de carga con control remoto, para transportar y soltar paquetes de manera segura y eficiente.",
+    image: "/vega/images/payloadGas.jpg",
+    alt: "Entrega de carga con control remoto",
+    fit: "cover",
+    position: "50% 50%",
+  },
+  {
+    id: "mantenimiento",
+    label: "Mantenimiento",
+    description: "Sistema de mantenimiento con control remoto, para realizar tareas de mantenimiento de manera segura y eficiente.",
+    image: "/vega/images/PayloadOblicual.jpg",
+    alt: "Mantenimiento con control remoto",
+    fit: "cover",
+    position: "50% 50%",
+  }
 ];
