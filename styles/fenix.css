@@ -3721,3 +3721,20 @@ html:has(.fenix-page) {
     transform: none !important;
   }
 }
+
+/* Más fondo alrededor del contenido original del hero */
+.fenix-page .hero {
+  box-sizing: content-box;
+  margin-top: 0;
+  margin-bottom: 0;
+  box-shadow: none;
+  border-top: 70px solid #11171b;
+  border-bottom: 100px solid #11171b;
+}
+
+@media (max-width: 767px) {
+  .fenix-page .hero {
+    border-top-width: 24px;
+    border-bottom-width: 48px;
+  }
+}
