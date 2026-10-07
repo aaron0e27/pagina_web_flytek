@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowDown, ArrowUpRight, ArrowRight, Box, Camera, ChevronRight, Crosshair, Layers3, Radar, ScanLine, ShieldCheck } from "lucide-react";
 import SiteHeader from "@/components/shared/SiteHeader";
 import Orion3DViewer from "@/components/orion-mx/Orion3DViewer";
+import OrionFlight from "@/components/orion-mx/OrionFlight";
 import { OrionMotion } from "@/components/orion-mx/OrionMotion";
 import { orionAssets, orionSpecs, orionStats } from "@/lib/orion-mx/data";
 
@@ -61,6 +62,8 @@ export default function OrionPage() {
       <div className="orion-explorer__heading"><div className="orion-section-tag orion-section-tag--light orion-reveal"><span>03</span> EXPLORACIÓN 3D</div><h2 id="explorer-title" className="orion-reveal">Conoce cada ángulo.</h2><p className="orion-reveal">Gira, acerca y selecciona los puntos de interés para recorrer la plataforma.</p></div>
       <div className="orion-explorer__stage orion-reveal"><Orion3DViewer /></div>
     </section>
+
+    <OrionFlight />
 
     <section className="orion-applications" id="aplicaciones" aria-labelledby="applications-title">
       <div className="orion-applications__heading"><div className="orion-section-tag orion-reveal"><span>04</span> APLICACIONES</div><h2 id="applications-title" className="orion-reveal">Acércate al punto<br />que importa.</h2></div>
