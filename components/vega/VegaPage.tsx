@@ -18,8 +18,9 @@ export default function VegaPage() {
         {vegaCopy.saltar_al_contenido}
       </a>
       <main id="vega-page">
-        <VegaHero />
         <VegaSubNav />
+        <VegaHero />
+        
         <section className="section features" id="caracteristicas">
           <div className="section-head" data-reveal>
             <p className="eyebrow">{vegaCopy.label_01_conoce_vega}</p>

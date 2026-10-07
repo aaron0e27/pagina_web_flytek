@@ -131,7 +131,7 @@ export default function FenixDroneCanvas({ arrival = false }: { arrival?: boolea
         <>
           <div className="viewer-top">
             <span className="eyebrow">EXPLORACIÓN 360°</span>
-            <span className="model-note">MODELO FÉNIX / INTERACTIVO</span>
+            <span className="model-note">INTERACTIVO</span>
           </div>
           <div className="viewer-controls" aria-label="Vistas del modelo">
             {views.map(([id, label]) => (
@@ -183,8 +183,7 @@ export default function FenixDroneCanvas({ arrival = false }: { arrival?: boolea
             ))}
           </div>
           <div className="viewer-help">
-            Arrastra para explorar <span>·</span> Pellizca para acercar <span>·</span> Toca + para
-            descubrir
+             ARRASTRA. GIRA. DESCUBRE.
           </div>
           {selected && (
             <aside className="hotspot-info" aria-live="polite">

@@ -16,7 +16,7 @@
 .home-hero-copy .home-label { grid-column:1/-1; color:#a8c6df; }
 .home-page .home-hero-copy h1 { font-size:clamp(36px,4.4vw,70px); max-width:700px; line-height:1.04; font-weight:500; letter-spacing:-.05em; }
 .home-page .home-link-light { display:inline-flex; align-items:center; gap:30px; border-bottom:1px solid #ffffff70; padding:14px 0; font-size:13px; justify-self:end; }
-.home-page .home-hero-copy .home-link-light { grid-column:1/-1; justify-self:center; margin-top:8px; }
+.home-page .home-hero-copy .home-link-light { grid-column:1/-1; justify-self:center; margin-top:8px; border-bottom: none; }
 .home-link-light:hover { color:#7bcaff; }
 .home-page .home-hero-foot { position:absolute; bottom:30px; left:5%; right:5%; display:flex; justify-content:space-between; align-items:center; font-size:10px; letter-spacing:.09em; color:#bad0e2; }
 .home-hero-foot button { display:flex; align-items:center; gap:10px; border:1px solid #ffffff40; padding:10px 14px; font-size:11px; }
