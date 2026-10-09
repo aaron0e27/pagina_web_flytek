@@ -3,9 +3,12 @@ import Link from "next/link";
 import { ArrowDown, ArrowUpRight, ArrowRight, Box, Camera, ChevronRight, Crosshair, Layers3, Radar, ScanLine, ShieldCheck } from "lucide-react";
 import SiteHeader from "@/components/shared/SiteHeader";
 import Orion3DViewer from "@/components/orion-mx/Orion3DViewer";
+import OrionFlight from "@/components/orion-mx/OrionFlight";
 import { OrionMotion } from "@/components/orion-mx/OrionMotion";
-import { orionAssets, orionSpecs, orionStats } from "@/lib/orion-mx/data";
-
+import OrionAscent from "@/components/orion-mx/OrionAscent";
+import OrionSpecs from "@/components/orion-mx/OrionSpecs";
+import { orionAssets, orionStats } from "@/lib/orion-mx/data";
+import OrionCapabilities from "@/components/orion-mx/OrionCapabilities";
 
 const applications = [
   { index: "01", title: "Inspección industrial", copy: "Acércate a turbinas, maquinaria y activos críticos sin detener la lectura visual del entorno.", image: "/orion-mx/orion-turbine.webp" },
@@ -29,7 +32,7 @@ export default function OrionPage() {
   <div className="orion-rail__links">
     <Link href="#sistema">Sistema</Link>
     <Link href="#explorar">Explorar</Link>
-    <Link href="#aplicaciones">Aplicaciones</Link>
+    <Link href="#recorrido">Recorrido</Link>
     <Link href="#especificaciones">Especificaciones</Link>
   </div>
   <Link href="#contacto" className="orion-rail__talk">
@@ -57,27 +60,18 @@ export default function OrionPage() {
       </div>
     </section>
 
+    <OrionAscent />
+
     <section className="orion-explorer" id="explorar" aria-labelledby="explorer-title">
       <div className="orion-explorer__heading"><div className="orion-section-tag orion-section-tag--light orion-reveal"><span>03</span> EXPLORACIÓN 3D</div><h2 id="explorer-title" className="orion-reveal">Conoce cada ángulo.</h2><p className="orion-reveal">Gira, acerca y selecciona los puntos de interés para recorrer la plataforma.</p></div>
       <div className="orion-explorer__stage orion-reveal"><Orion3DViewer /></div>
     </section>
 
-    <section className="orion-applications" id="aplicaciones" aria-labelledby="applications-title">
-      <div className="orion-applications__heading"><div className="orion-section-tag orion-reveal"><span>04</span> APLICACIONES</div><h2 id="applications-title" className="orion-reveal">Acércate al punto<br />que importa.</h2></div>
-      <div className="orion-application-viewport"><div className="orion-application-list">{applications.map((a) => <article className="orion-application" key={a.index}><div className="orion-application__image"><Image unoptimized src={a.image} alt={"ORION — " + a.title} fill sizes="(max-width: 760px) 100vw, 82vw" /></div><div className="orion-application__copy"><span>{a.index}</span><h3>{a.title}</h3><p>{a.copy}</p><ChevronRight /></div></article>)}</div></div>
-    </section>
+    <OrionFlight />
 
-    <section className="orion-capabilities">
-      <div className="orion-capabilities__line" />
-      <article className="orion-reveal"><Layers3 /><span>01 / MATERIAL</span><h3>Ligero en forma.<br />Serio en función.</h3><p>La fibra de carbono combina rigidez y bajo peso para una plataforma de dos kilogramos.</p></article>
-      <article className="orion-reveal"><ShieldCheck /><span>02 / PROTECCIÓN</span><h3>Preparado para<br />trabajar cerca.</h3><p>Protectores de propela y asistencia anticolisión para entornos que exigen maniobras precisas.</p></article>
-      <article className="orion-reveal"><Camera /><span>03 / INTEGRACIÓN</span><h3>Una plataforma.<br />Distintas miradas.</h3><p>Opciones de cámara y estabilización que se ajustan a los objetivos de cada operación.</p></article>
-    </section>
+    <OrionCapabilities />
 
-    <section className="orion-specs" id="especificaciones" aria-labelledby="specs-title">
-      <div className="orion-specs__intro"><div className="orion-section-tag orion-section-tag--light orion-reveal"><span>05</span> DATOS TÉCNICOS</div><h2 id="specs-title" className="orion-reveal">La precisión también se mide.</h2><p className="orion-reveal">Configuración de referencia. Nuestro equipo puede ayudarte a definir la integración adecuada para tu operación.</p></div>
-      <div>{orionSpecs.map((group, index) => <div className="orion-spec-group orion-reveal" key={group.name}><div className="orion-spec-group__title"><span>{String(index + 1).padStart(2, "0")}</span><h3>{group.name}</h3></div><dl>{group.items.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl></div>)}</div>
-    </section>
+    <OrionSpecs />
 
     <section className="orion-contact" id="contacto" aria-labelledby="contact-title">
       <div className="orion-contact__glow" /><div className="orion-contact__number">O</div><div className="orion-contact__copy"><p className="orion-eyebrow orion-reveal">FLYTEK INNOVATIONS / ORION</p><h2 id="contact-title" className="orion-reveal">Tu siguiente inspección puede empezar aquí.</h2><p className="orion-reveal">Cuéntanos el entorno, el objetivo y el tipo de captura que necesitas.</p><div className="orion-contact__actions orion-reveal"><Link href="mailto:info@flytek.com.mx" className="orion-primary-button">Hablar con un especialista <ArrowRight /></Link><Link href="tel:+525654407312" className="orion-text-link">+52 56 5440 7312</Link></div></div>

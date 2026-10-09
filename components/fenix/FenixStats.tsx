@@ -8,9 +8,6 @@ export default function FenixStats() {
         <span className="section-index" data-motion="tech">
           CARACTERÍSTICAS CLAVE
         </span>
-        <span>
-          FÉNIX <ArrowUpRight size={16} />
-        </span>
       </div>
       <div className="stats-mosaic">
         <article className="stat-endurance" data-motion="image">

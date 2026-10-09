@@ -16,7 +16,7 @@ export function useScrollScenes(root: RefObject<HTMLElement | null>, page: Page,
         const desktop = !!context.conditions?.desktop;
         host.classList.add("scroll-scenes-active");
         if (page === "home") {
-          const distance = desktop ? 1 : .4;
+          const distance = desktop ? 1 : .7;
           gsap.timeline({ scrollTrigger: { trigger: ".home-hero", start: "top top", end: () => "+=" + innerHeight * (desktop ? 1.05 : .65), pin: desktop, scrub: 1, invalidateOnRefresh: true } })
             .to(".home-word-group", { y: -140 * distance, scale: 1.22, opacity: .12, ease: "none" }, 0)
             .to(".home-hero-video", { scale: 1.2, yPercent: 5, ease: "none" }, 0)
@@ -40,7 +40,7 @@ export function useScrollScenes(root: RefObject<HTMLElement | null>, page: Page,
         }
         const targets = page === "home" ? ".home-company-grid h2, .home-fleet-heading h2, .home-sectors-title h2, .home-support h2, .home-contact h2, .home-application-image, .home-sector-detail>img" : page === "orion" ? ".orion-intro h2, .orion-anatomy h2, .orion-explorer h2, .orion-applications h2, .orion-contact h2, .orion-anatomy__media img" : "h2, .feature-image, .design-image, .performance-stage img";
         gsap.utils.toArray<HTMLElement>(targets, host).forEach(element => {
-          gsap.fromTo(element, { y: desktop ? 44 : 22 }, { y: 0, ease: "none", scrollTrigger: { trigger: element, start: "top 95%", end: "top 55%", scrub: 1 } });
+          gsap.fromTo(element, { y: desktop ? 44 : 32 }, { y: 0, ease: "none", scrollTrigger: { trigger: element, start: "top 95%", end: "top 55%", scrub: 1 } });
         });
         return () => { host.classList.remove("scroll-scenes-active"); };
       });

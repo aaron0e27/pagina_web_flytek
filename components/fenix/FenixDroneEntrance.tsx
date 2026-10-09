@@ -15,7 +15,7 @@ export default function FenixDroneEntrance() {
       <FenixDroneCanvas arrival />
       <div className="arrival-bottom wrap">
         <span>ASCENSO CONTROLADO / HOVER ESTABLE</span>
-        <span>MODELO FÉNIX / MOVIMIENTO ILUSTRATIVO</span>
+        <span>MOVIMIENTO ILUSTRATIVO</span>
       </div>
     </section>
   );

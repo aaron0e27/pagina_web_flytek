@@ -4,7 +4,7 @@ export const homeCopy = {
   introduction:
     "Flytek Innovations S. de R. L. de C.V. es la empresa dedicada al diseño, integración y comercialización de vehículos aéreos no tripulados de grado industrial también conocidos como drones.",
   company:
-    "Somos una empresa mexicana que ofrece drones de grado industrial para vigilancia, inspección, seguridad perimetral, tareas de búsqueda y rescate entre muchas más, estas tareas se llevan a cabo de manera óptima debido a las configuraciones, programación y payloads (cargas útiles) que podemos instalar en los drones.",
+    "Somos la empresa mexicana que ofrece drones de grado industrial para vigilancia, inspección, seguridad perimetral, tareas de búsqueda y rescate entre muchas más, estas tareas se llevan a cabo de manera óptima debido a las configuraciones, programación y payloads (cargas útiles) que podemos instalar en los drones.",
   email: "info@flytek.com.mx",
   phone: "+52 56 5440 7312",
 };

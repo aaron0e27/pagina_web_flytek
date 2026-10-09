@@ -16,15 +16,11 @@ export default function Fenix3DViewer() {
             <br />
             {fenixCopy.viewer.description[1]}
           </p>
-          <span className="section-index">ARRASTRA. GIRA. DESCUBRE.</span>
         </div>
       </div>
-      <div className="wrap fenix-viewer-wrap" data-motion="image">
+      <div className="wrap fenix-viewer-wrap">
         <FenixDroneCanvas />
       </div>
-      <p className="asset-disclaimer wrap">
-        Modelo tridimensional de FÉNIX. La configuración final puede variar según la integración.
-      </p>
     </section>
   );
 }

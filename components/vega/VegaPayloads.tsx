@@ -47,26 +47,13 @@ export function VegaPayloads() {
           <img
             key={p.image}
             src={p.image}
-            alt={"Vista de VEGA para " + p.label + "; payload aún no definido"}
+            alt={p.alt}
             width="1440"
             height="920"
             loading="lazy"
+            decoding="async"
+            style={{ objectFit: p.fit, objectPosition: p.position }}
           />
-          <svg
-            viewBox="0 0 100 64"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path
-              d={`M ${p.anchor[0]} ${p.anchor[1] * 0.64} L 74 49 L 95 49`}
-            />
-            <circle cx={p.anchor[0]} cy={p.anchor[1] * 0.64} r=".8" />
-          </svg>
-          <span className="integration-label">
-            {vegaCopy.integracion}
-            <br />
-            {vegaCopy.por_definir}
-          </span>
         </div>
       </div>
     </section>

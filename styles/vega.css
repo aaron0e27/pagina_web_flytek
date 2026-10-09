@@ -2893,3 +2893,121 @@ html[data-theme="dark"]
   .vega-redesign .shutter-label { writing-mode: horizontal-tb; transform: none; top: 18px; bottom: auto; }
   .vega-redesign .shutter-index { display: none; }
 }
+/* ===== 06: visor del selector con fotos reales (marco + responsive) ===== */
+.vega-redesign .payload-select [role="group"] button { line-height: 1.35; }
+
+/* PC: foto dentro de un marco de tamaño controlado */
+.vega-redesign .payload-visual {
+  --frame: 12px;                       /* grosor del "paspartú" alrededor de la foto */
+  justify-self: end;
+  width: min(100%, var(--payload-max, 700px), calc(62vh * 1.5625));
+  aspect-ratio: 100 / 64;
+  border: 1px solid var(--line);
+  box-shadow: 0 26px 50px -34px rgba(10, 26, 42, .45);
+}
+.vega-redesign .payload-visual img {
+  position: absolute; inset: var(--frame);
+  width: calc(100% - 2 * var(--frame));
+  height: calc(100% - 2 * var(--frame));
+}
+
+/* Celular y tablet: texto al lado de la foto */
+@media (max-width: 900px) {
+  .vega-redesign .payload-layout {
+    grid-template-columns: minmax(0, 40%) minmax(0, 1fr);
+    grid-template-areas: "intro intro" "list list" "visual desc";
+    gap: 18px 16px; margin-top: 30px; align-items: stretch;
+  }
+  .vega-redesign .payload-select { display: contents; }
+  .vega-redesign .payload-select > p { grid-area: intro; margin: 0; }
+  .vega-redesign .payload-select > [role="group"] { grid-area: list; }
+  .vega-redesign .payload-description {
+    grid-area: desc; align-self: center; min-width: 0; min-height: 0; padding-top: 0;
+  }
+  .vega-redesign .payload-description h3 { font-size: 16px; line-height: 1.25; margin: 0 0 8px; }
+  .vega-redesign .payload-description .pending { font-size: 12px; line-height: 1.55; margin: 0 0 8px; }
+  .vega-redesign .payload-description small { font-size: 10px; line-height: 1.5; max-width: none; }
+  .vega-redesign .payload-visual {
+    --frame: 6px; grid-area: visual; order: 0; justify-self: stretch; align-self: stretch;
+    width: 100%; aspect-ratio: auto; min-height: 200px;
+  }
+}
+@media (max-width: 420px) {
+  .vega-redesign .payload-layout { grid-template-columns: minmax(0, 38%) minmax(0, 1fr); gap: 16px 12px; }
+  .vega-redesign .payload-description h3 { font-size: 15px; }
+}
+/* ===== 07: aplicaciones — selector + mosaico enmarcado ===== */
+.vega-redesign .app-stage {
+  display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.6fr);
+  gap: 50px; align-items: center; margin-top: 56px;
+}
+.vega-redesign .app-info-body { min-height: 190px; animation: payloadReveal .5s ease; }
+.vega-redesign .app-info .eyebrow { color: var(--vega-muted); }
+.vega-redesign .app-info h3 { font-size: 24px; line-height: 1.2; margin: 10px 0 14px; }
+.vega-redesign .app-info p {
+  margin: 0 0 16px; max-width: 46ch; color: var(--vega-muted);
+  font: 13px/1.65 "Inter Variable", Inter, sans-serif;
+}
+
+/* Lista de opciones (mismo estilo que el selector de payloads) */
+.vega-redesign .app-list { margin-top: 28px; border-top: 1px solid var(--line); }
+.vega-redesign .app-list button {
+  display: flex; width: 100%; gap: 24px; align-items: center; padding: 16px 8px;
+  background: none; border: 0; border-bottom: 1px solid var(--line);
+  color: inherit; font-size: 14px; line-height: 1.35; text-align: left; cursor: pointer;
+}
+.vega-redesign .app-list button span {
+  font: 500 11px "Inter Variable", Inter, sans-serif; letter-spacing: .08em; color: var(--vega-muted);
+}
+.vega-redesign .app-list button span:last-child { margin-left: auto; font-size: 18px; letter-spacing: 0; }
+.vega-redesign .app-list button[aria-pressed="true"] { color: var(--blue); border-bottom-color: var(--blue); }
+.vega-redesign .app-list button[aria-pressed="true"] span { color: var(--blue); }
+
+/* Mosaico de marcos: solo fotos, sin texto encima */
+.vega-redesign .app-mosaic {
+  display: grid; gap: 12px; justify-self: end;
+  width: min(100%, var(--apps-max, 860px)); height: clamp(380px, 38vw, 540px);
+  grid-template-columns: 1.5fr 1fr; grid-template-rows: 1fr 1fr;
+  grid-template-areas: "a b" "a c";
+  transition: grid-template-columns .8s cubic-bezier(.2,.7,.2,1), grid-template-rows .8s cubic-bezier(.2,.7,.2,1);
+}
+.vega-redesign .app-mosaic[data-active="0"] { grid-template-columns: 2.2fr 1fr; grid-template-rows: 1fr 1fr; }
+.vega-redesign .app-mosaic[data-active="1"] { grid-template-columns: 1fr 1.9fr; grid-template-rows: 1.9fr 1fr; }
+.vega-redesign .app-mosaic[data-active="2"] { grid-template-columns: 1fr 1.9fr; grid-template-rows: 1fr 1.9fr; }
+.vega-redesign .app-frame:nth-child(1) { grid-area: a; }
+.vega-redesign .app-frame:nth-child(2) { grid-area: b; }
+.vega-redesign .app-frame:nth-child(3) { grid-area: c; }
+
+.vega-redesign .app-frame {
+  --frame: 10px;                        /* grosor del marco alrededor de cada foto */
+  position: relative; min-width: 0; min-height: 0; padding: 0; overflow: hidden; cursor: pointer;
+  background: var(--mineral); border: 1px solid var(--line);
+  box-shadow: 0 20px 40px -30px rgba(10, 26, 42, .45);
+  transition: border-color .5s;
+}
+html[data-theme="dark"] .vega-redesign .app-frame { background: var(--vega-surface-strong); }
+.vega-redesign .app-frame img {
+  position: absolute; inset: var(--frame);
+  width: calc(100% - 2 * var(--frame)); height: calc(100% - 2 * var(--frame));
+  object-fit: cover; filter: grayscale(.9) brightness(.85);
+  transition: filter .8s ease;
+}
+.vega-redesign .app-frame[data-active="true"] { border-color: var(--blue); }
+.vega-redesign .app-frame[data-active="true"] img { filter: none; }
+.vega-redesign .app-frame:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+/* Celular y tablet: texto arriba, tira de 3 marcos abajo */
+@media (max-width: 900px) {
+  .vega-redesign .app-stage { grid-template-columns: 1fr; gap: 24px; margin-top: 36px; }
+  .vega-redesign .app-info-body { min-height: 0; }
+  .vega-redesign .app-info h3 { font-size: 20px; margin: 8px 0 10px; }
+  .vega-redesign .app-list { display: none; }   /* los marcos hacen de selector */
+  .vega-redesign .app-mosaic {
+    width: 100%; height: 240px; justify-self: stretch;
+    grid-template-areas: "a b c";
+  }
+  .vega-redesign .app-mosaic[data-active="0"] { grid-template-columns: 2.4fr 1fr 1fr; grid-template-rows: 1fr; }
+  .vega-redesign .app-mosaic[data-active="1"] { grid-template-columns: 1fr 2.4fr 1fr; grid-template-rows: 1fr; }
+  .vega-redesign .app-mosaic[data-active="2"] { grid-template-columns: 1fr 1fr 2.4fr; grid-template-rows: 1fr; }
+  .vega-redesign .app-frame { --frame: 6px; }
+}

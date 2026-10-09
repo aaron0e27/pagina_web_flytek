@@ -60,13 +60,9 @@
 }
 /* En pantallas pequeñas se evita el movimiento decorativo continuo. */
 @media (max-width: 767px), (pointer: coarse) {
-  .home-page .home-word-group,
-  .home-page .home-flight-drone,
-  .home-page .home-flight-orion,
-  .vega-page .vega-hero-photo,
-  .orion-page .orion-hero-drone,
-  .orion-page .orion-payload-drone,
-  .orion-page .orion-ring { animation: none; }
+  .orion-page .orion-ring {
+    animation: none;
+  }
 }
 /* Pausar revela el estado final; no deja contenido congelado a media entrada. */
 .home-page.home-paused *, .vega-page.vega-paused * {
