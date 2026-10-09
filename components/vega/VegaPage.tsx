@@ -32,7 +32,6 @@ export default function VegaPage() {
             <br />
             <span className="muted">{vegaCopy.cada_detalle_a_la_vista}</span>
           </h2>
-          
         </section>
         <VegaGallery />
         <section className="intro section">
