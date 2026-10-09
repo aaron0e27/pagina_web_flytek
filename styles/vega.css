@@ -248,29 +248,30 @@ html:has(.vega-redesign) {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: #f5f6f7f5;
-  border-bottom: 1px solid var(--line);
   display: flex;
   align-items: center;
-  height: 65px;
-  padding: 0 4%;
-  gap: 45px;
+  height: 58px;
+  padding: 0 64px;
+  gap: 25px;
+  background: #fff;
+  border-bottom: 1px solid #e3e5e8;
 }
 .vega-redesign .sub-brand {
-  font-size: 21px;
-  font-weight: 600;
-  letter-spacing: -1px;
+  font-size: 20px;
+  font-weight: 650;
+  letter-spacing: -0.04em;
   white-space: nowrap;
 }
 .vega-redesign .sub-brand span {
-  color: var(--blue);
-  font-size: 14px;
-  margin-left: 10px;
+  margin-left: 17px;
+  color: #c7cbd0;
+  font-weight: 300;
 }
 .vega-redesign .subnav nav {
+  flex: 0 1 auto;
   display: flex;
-  align-items: stretch;
-  gap: 24px;
+  align-items: center;
+  gap: 23px;
   overflow-x: auto;
   scrollbar-width: none;
   position: relative;
@@ -283,7 +284,9 @@ html:has(.vega-redesign) {
 .vega-redesign .subnav nav a {
   display: flex;
   align-items: center;
-  font-size: 11px;
+  font-size: 12px;
+  line-height: 44px;
+  color: #51565e;
   white-space: nowrap;
   border-bottom: 2px solid transparent;
 }
@@ -3011,3 +3014,4 @@ html[data-theme="dark"] .vega-redesign .app-frame { background: var(--vega-surfa
   .vega-redesign .app-mosaic[data-active="2"] { grid-template-columns: 1fr 1fr 2.4fr; grid-template-rows: 1fr; }
   .vega-redesign .app-frame { --frame: 6px; }
 }
+.vega-redesign .subnav .sub-brand span { color: #c7cbd0 !important; }

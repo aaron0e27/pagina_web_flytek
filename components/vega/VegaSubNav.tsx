@@ -51,7 +51,7 @@ export function VegaSubNav() {
   return (
     <div className="subnav">
       <a href="#descripcion" className="sub-brand">
-        VEGA
+        VEGA<span> / </span>
       </a>
       <nav ref={nav} aria-label="Secciones de VEGA">
         {vegaData.nav.map(([id, label]) => (
