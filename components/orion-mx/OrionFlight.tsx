@@ -23,7 +23,7 @@ export default function OrionFlight() {
 
       // Solo en pantallas grandes y sin "reducir movimiento": escena fija con scroll horizontal.
       // En celular y tablet queda una lista vertical normal (foto + texto).
-      mm.add("(min-width: 901px) and (min-height: 560px) and (prefers-reduced-motion: no-preference)", () => {
+      mm.add("(min-height: 480px) and (prefers-reduced-motion: no-preference)", () => {
         section.classList.add("is-staged");
         const slides = gsap.utils.toArray<HTMLElement>(".orion-flight__slide", section);
         const imgs = slides.map((s) => s.querySelector<HTMLElement>(".orion-flight__clip img")!);
@@ -36,7 +36,7 @@ export default function OrionFlight() {
           defaults: { ease: "none" },
           scrollTrigger: {
             trigger: section,
-            start: "top top+=58",
+            start: () => "top top+=" + (document.querySelector(".orion-rail")?.getBoundingClientRect().height ?? 58),
             end: () => "+=" + Math.round(innerHeight * 0.8 * (total - 1)),
             pin: true,
             scrub: 0.8,
@@ -71,6 +71,7 @@ export default function OrionFlight() {
       // si no, la sección de Aplicaciones (que está más abajo) se activa antes de tiempo.
       const settle = () => {
         if (disposed) return;
+        ScrollTrigger.config({ ignoreMobileResize: true });
         ScrollTrigger.sort();
         ScrollTrigger.refresh();
       };
@@ -90,7 +91,7 @@ export default function OrionFlight() {
   }, [total]);
 
   return (
-    <section ref={root} className="orion-flight" aria-labelledby="orion-flight-title">
+    <section ref={root} className="orion-flight" id="recorrido" aria-labelledby="orion-flight-title">
       <div className="orion-flight__head">
         <div className="orion-section-tag orion-section-tag--light"><span>→</span> RECORRIDO</div>
         <h2 id="orion-flight-title">

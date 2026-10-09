@@ -109,6 +109,7 @@ export function VegaApplications() {
     </section>
     );
   }
+  
 export function VegaSpecs() {
   return (
     <section className="section specs-section" id="especificaciones">
