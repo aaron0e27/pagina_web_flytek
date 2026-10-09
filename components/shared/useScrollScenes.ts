@@ -46,7 +46,7 @@ export function useScrollScenes(root: RefObject<HTMLElement | null>, page: Page,
       });
       let frame = 0;
       const refresh = () => { if (disposed) return; cancelAnimationFrame(frame); frame = requestAnimationFrame(() => { if (!disposed) ScrollTrigger.refresh(); }); };
-      host.addEventListener("load", refresh, true);
+      if (page !== "home") host.addEventListener("load", refresh, true);
       void document.fonts.ready.then(refresh);
       cleanup = () => { cancelAnimationFrame(frame); host.removeEventListener("load", refresh, true); media.revert(); };
     });
