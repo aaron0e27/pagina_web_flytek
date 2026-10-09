@@ -1,29 +1,38 @@
-.flytek-header { position:relative; z-index:120; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:32px; padding:16px 5%; min-height:72px; background:#fff; color:#171a1f; border-bottom:1px solid #dfe3e6; font-family:"Inter Variable",Inter,sans-serif; }
+header.flytek-header { position:relative; z-index:120; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:32px; padding:16px 5%; min-height:72px; background:#fff; color:#171a1f; border-bottom:1px solid #dfe3e6; font-family:"Inter Variable",Inter,sans-serif; }
 .flytek-header a { color:inherit; text-decoration:none; }
-.flytek-brand { display:flex; align-items:center; width:112px; }
-.flytek-header .flytek-brand img { width:112px; height:36px; object-fit:contain; filter:brightness(0); transform: translateX(22px); }
-.flytek-main-links { display:flex; justify-content:center; gap:34px; font-size:12px; }
-.flytek-main-links a:hover,.flytek-header-contact:hover { color:#0876c4; }
-.flytek-controls { display:flex; align-items:center; gap:10px; transform:translateX(-15px); }
-.flytek-header-contact { display:flex; align-items:center; gap:10px; border-bottom:1px solid #1897f2; padding:8px 4px; font-size:12px; }
-.flytek-icon-button,.flytek-menu-button { height:38px; border:1px solid #d4d9dd; display:flex; align-items:center; justify-content:center; background:transparent; color:inherit; }
-.flytek-icon-button { width:38px; border-radius:50%; }
-.flytek-menu-button{gap:10px;padding:0 10px;font-family:"Inter Variable",Inter,sans-serif;font-size:12px;font-weight:400;line-height:1;letter-spacing:0}.flytek-menu-button span{font:inherit}
-.flytek-icon-button:hover,.flytek-menu-button:hover { background:#eef2f4; }
-.flytek-menu { position:absolute; z-index:4; top:calc(100% + 12px); right:5%; width:min(480px,90vw); padding:28px 32px 20px; background:#111d27; color:#f2f7fa; border-radius:18px; border:1px solid #ffffff1a; box-shadow:0 30px 80px #0007,0 0 0 1px #1897f224; animation:flytek-menu-in .3s cubic-bezier(.16,1,.3,1) both; overflow:hidden; }
-.flytek-menu::before { content:""; position:absolute; inset:0 0 auto; height:3px; background:linear-gradient(90deg,#1897f2,#5fd0ff,#1897f2); }
-.flytek-menu[hidden] { display:none; }
-.flytek-menu-heading { display:flex; justify-content:space-between; padding-bottom:18px; border-bottom:1px solid #ffffff20; font-size:9px; letter-spacing:.16em; color:#6fb3e0; }
-.flytek-menu nav { display:block; }
-.flytek-menu nav a { display:grid; grid-template-columns:30px 1fr auto; align-items:center; gap:14px; padding:15px 10px; margin:0 -10px; border-radius:10px; border-bottom:1px solid #ffffff14; transition:background .2s ease,padding-left .2s ease,color .2s ease; }
-.flytek-menu nav a b { color:#5a86ab; font-size:9px; font-weight:500; transition:color .2s ease; }
-.flytek-menu nav a span { font-size:24px; letter-spacing:-.035em; }
-.flytek-menu nav a svg { width:18px; transition:transform .25s ease; }
-.flytek-menu nav a:hover { background:#ffffff0d; padding-left:16px; color:#60bdff; }
-.flytek-menu nav a:hover b { color:#60bdff; }
-.flytek-menu nav a:hover svg { transform:translate(4px,-4px); }
-.flytek-menu-pending { display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; padding-top:18px; font-size:8px; letter-spacing:.1em; color:#7f95a5; }
-.flytek-menu-backdrop { position:fixed; z-index:3; inset:72px 0 0; width:100%; height:calc(100vh - 72px); background:#08101882; border:0; cursor:default; }
+.flytek-header .flytek-brand { display:flex; align-items:center; width:112px; }
+.flytek-header .flytek-brand img { width:112px; height:36px; object-fit:contain; filter:brightness(0); transform:translateX(22px); }
+.flytek-header .flytek-main-links { display:flex; justify-content:center; gap:34px; font-size:12px; }
+.flytek-header .flytek-main-links a:hover,.flytek-header .flytek-header-contact:hover { color:#0876c4; }
+.flytek-header .flytek-controls { display:flex; align-items:center; gap:10px; margin-right:15px; }
+.flytek-header .flytek-header-contact { display:flex; align-items:center; gap:10px; border-bottom:1px solid #1897f2; padding:8px 4px; font-size:12px; }
+.flytek-header .flytek-icon-button,.flytek-header .flytek-menu-button { height:38px; border:1px solid #d4d9dd; display:flex; align-items:center; justify-content:center; background:transparent; color:inherit; }
+.flytek-header .flytek-icon-button { width:38px; border-radius:50%; }
+.flytek-header .flytek-menu-button { gap:10px; padding:0 10px; font-family:"Inter Variable",Inter,sans-serif; font-size:12px; font-weight:400; line-height:1; letter-spacing:0; }
+.flytek-header .flytek-menu-button span { font:inherit; }
+.flytek-header .flytek-icon-button:hover,.flytek-header .flytek-menu-button:hover { background:#eef2f4; }
+.flytek-header .flytek-menu { position:absolute; z-index:4; top:calc(50% + 31px); right:calc(5% + 27px); width:min(480px,90vw); padding:28px 32px 20px; background:#111d27; color:#f2f7fa; border-radius:18px; border:1px solid #ffffff1a; box-shadow:0 30px 80px #0007,0 0 0 1px #1897f224; animation:flytek-menu-in .3s cubic-bezier(.16,1,.3,1) both; overflow:hidden; }
+.flytek-header .flytek-menu::before { content:""; position:absolute; inset:0 0 auto; height:3px; background:linear-gradient(90deg,#1897f2,#5fd0ff,#1897f2); }
+.flytek-header .flytek-menu[hidden] { display:none; }
+.flytek-header .flytek-menu-heading { display:flex; justify-content:space-between; padding-bottom:18px; border-bottom:1px solid #ffffff20; font-size:9px; letter-spacing:.16em; color:#6fb3e0; }
+.flytek-header .flytek-menu nav { display:block; }
+.flytek-header .flytek-menu nav a { display:grid; grid-template-columns:30px 1fr auto; align-items:center; gap:14px; padding:15px 10px; margin:0 -10px; border-radius:10px; border-bottom:1px solid #ffffff14; transition:background .2s ease,padding-left .2s ease,color .2s ease; }
+.flytek-header .flytek-menu nav a b { color:#5a86ab; font-size:9px; font-weight:500; transition:color .2s ease; }
+.flytek-header .flytek-menu nav a span { font-size:24px; letter-spacing:-.035em; }
+.flytek-header .flytek-menu nav a svg { width:18px; transition:transform .25s ease; }
+.flytek-header .flytek-menu nav a:hover { background:#ffffff0d; padding-left:16px; color:#60bdff; }
+.flytek-header .flytek-menu nav a:hover b { color:#60bdff; }
+.flytek-header .flytek-menu nav a:hover svg { transform:translate(4px,-4px); }
+.flytek-header .flytek-menu-backdrop { position:fixed; z-index:3; inset:72px 0 0; width:100%; height:calc(100vh - 72px); background:#08101882; border:0; cursor:default; }
 @keyframes flytek-menu-in { from { opacity:0; transform:translateY(-10px) scale(.98); } to { opacity:1; transform:none; } }
-@media(max-width:720px) { .flytek-header { grid-template-columns:auto 1fr; gap:16px; padding:12px 5%; min-height:64px; } .flytek-main-links,.flytek-header-contact { display:none; } .flytek-controls { justify-self:end; } .flytek-menu-button span { display:none; } .flytek-menu-button { width:38px; padding:0; } .flytek-menu { right:0; width:100%; max-width:none; padding-inline:5%; border-radius: 0%;} .flytek-menu-backdrop { inset:64px 0 0; } }
-.flytek-header button.flytek-menu-button{font-family:"Inter Variable",Inter,sans-serif;font-size:12px;font-weight:400;line-height:18px;letter-spacing:normal;appearance:none}
+.flytek-header button.flytek-menu-button { font-family:"Inter Variable",Inter,sans-serif; font-size:12px; font-weight:400; line-height:18px; letter-spacing:normal; appearance:none; }
+@media(max-width:720px) {
+  header.flytek-header { grid-template-columns:auto 1fr; gap:16px; padding:12px 5%; min-height:64px; }
+  .flytek-header .flytek-main-links,.flytek-header .flytek-header-contact { display:none; }
+  .flytek-header .flytek-controls { justify-self:end; margin-right:0; }
+  .flytek-header .flytek-menu-button span { display:none; }
+  .flytek-header .flytek-menu-button { width:38px; padding:0; }
+  .flytek-header .flytek-brand img { transform:none; }
+  .flytek-header .flytek-menu { top:100%; right:0; left:0; width:auto; max-width:none; padding-inline:5%; border-radius:0; max-height:calc(100vh - 64px); max-height:calc(100dvh - 64px); overflow-y:auto; }
+  .flytek-header .flytek-menu-backdrop { inset:64px 0 0; height:calc(100vh - 64px); }
+}

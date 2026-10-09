@@ -15,7 +15,255 @@ html:has(.orion-page){scroll-behavior:smooth;scroll-padding-top:58px}.orion-page
 @media(max-width:720px){.orion-hero{height:760px}.orion-hero__copy{top:105px}.orion-hero__visual{height:58%;right:-36%;width:145%}.orion-hero__footer{grid-template-columns:1fr 1fr}.orion-scroll-cue{display:none}.orion-stats{grid-template-columns:1fr 1fr}.orion-anatomy__media{min-height:470px}.orion-3d-shell{height:540px}.orion-3d-views{bottom:18px;left:14px;overflow-x:auto;right:14px}.orion-3d-help{display:none}.orion-capabilities{grid-template-columns:1fr}.orion-capabilities article{border-bottom:1px solid var(--o-line);border-right:0;min-height:390px}.orion-contact__copy{width:100%}.orion-contact__actions{align-items:start;flex-direction:column}}
 .orion-3d>.orion-section-head{display:none}.drone-component-list{bottom:26px;display:flex;flex-wrap:wrap;gap:7px;left:27px;max-width:calc(100% - 240px);position:absolute;z-index:8}.drone-component-list button{align-items:center;background:rgba(13,24,34,.82);border:1px solid rgba(168,194,208,.35);color:#b9dfff;cursor:pointer;display:inline-flex;font-size:10px;gap:7px;min-height:34px;padding:7px 11px}.drone-component-list button span{color:var(--o-blue);font-size:17px}.drone-component-list button:hover,.drone-component-list button[aria-pressed=true]{background:var(--o-blue);border-color:var(--o-blue);color:#fff}.drone-component-list button:hover span,.drone-component-list button[aria-pressed=true] span{color:#fff}
 @media(prefers-reduced-motion:reduce){.orion-hero__signal span{animation:none}.orion-application__image img{transition:none}}
-body:has(.orion-page) .flytek-header .flytek-brand img {
-  transform: translateX(-73.5px);
-}
 .orion-rail{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:25px;height:58px;padding:0 64px;background:#fff;border-bottom:1px solid #e3e5e8}.orion-rail__brand{font-size:20px;font-weight:650;letter-spacing:-.04em;white-space:nowrap;transform:none}.orion-rail__brand span{margin-left:17px;color:#c7cbd0;font-weight:300}.orion-rail__links{flex:1;display:flex;align-items:center;gap:23px;overflow-x:auto;scrollbar-width:none;white-space:nowrap}.orion-rail__links::-webkit-scrollbar{display:none}.orion-rail__links a{font-size:12px;line-height:44px;color:#51565e}.orion-rail__links a:hover{color:#0876c4}.orion-rail__talk{display:flex;align-items:center;gap:18px;justify-self:auto;white-space:nowrap;border-bottom:0;padding:0;color:#51565e;font-size:12px}.orion-rail__talk:hover{color:#0876c4}@media(max-width:1023px){.orion-rail{height:56px;padding-inline:20px;gap:16px}.orion-rail__brand{font-size:18px}.orion-rail__brand span{margin-left:10px}.orion-rail__links{gap:20px}.orion-rail__talk{display:none}}
+/* ===== Visor 3D en celular: la descripción va debajo del modelo, nunca encima ===== */
+@media (max-width: 720px) {
+  .orion-page .orion-3d-shell { height: auto; display: flex; flex-direction: column; padding-bottom: 16px; }
+  .orion-page .orion-3d-shell:after { display: none; }
+  .orion-page .orion-3d-shell .orion-3d-scene { position: relative; inset: auto; flex: none; order: 0; height: clamp(300px, 44svh, 400px); }
+  .orion-page .orion-3d-shell .orion-3d-views { position: static; order: 1; margin: 12px 14px 0; display: flex; gap: 7px; overflow-x: auto; scrollbar-width: none; }
+  .orion-page .orion-3d-shell .orion-3d-views::-webkit-scrollbar { display: none; }
+  .orion-page .orion-3d-shell .orion-3d-views button { flex: 0 0 auto; }
+  .orion-page .orion-3d-shell .drone-component-list { position: static; order: 2; max-width: none; margin: 10px 14px 0; }
+  .orion-page .orion-3d-shell .drone-hotspot-info { position: static; order: 3; width: auto; margin: 12px 14px 0; padding: 14px 16px; }
+  .orion-page .orion-3d-shell .drone-hotspot-info h3 { font-size: 18px; margin: 8px 0; }
+  .orion-page .orion-3d-shell .drone-hotspot-info p { font-size: 12.5px; line-height: 1.5; }
+}
+/* ===== Recorrido ORION: escena fija con desplazamiento horizontal ===== */
+.orion-flight{background:#091116;border-top:1px solid #ffffff14;color:#fff;padding:clamp(80px,9vw,130px) clamp(28px,6vw,96px)}
+.orion-flight__head{align-items:end;display:grid;gap:40px;grid-template-columns:.8fr 1.8fr .8fr;margin-bottom:56px}
+.orion-flight__head h2{font-size:clamp(44px,5.4vw,84px);font-weight:480;letter-spacing:-.06em;line-height:.92;margin:0}
+.orion-flight__head p{color:#9babb5;font-size:14px;line-height:1.65;margin:0;max-width:34ch}
+.orion-flight__stage{display:grid;gap:64px}
+.orion-flight__slide{align-items:center;display:grid;gap:clamp(24px,4vw,64px);grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+.orion-flight__photo{aspect-ratio:16/9;margin:0;position:relative}
+.orion-flight__photo:before{background:linear-gradient(var(--o-blue),var(--o-blue)) 0 0/22px 2px no-repeat,linear-gradient(var(--o-blue),var(--o-blue)) 0 0/2px 22px no-repeat,linear-gradient(var(--o-blue),var(--o-blue)) 100% 0/22px 2px no-repeat,linear-gradient(var(--o-blue),var(--o-blue)) 100% 0/2px 22px no-repeat,linear-gradient(var(--o-blue),var(--o-blue)) 0 100%/22px 2px no-repeat,linear-gradient(var(--o-blue),var(--o-blue)) 0 100%/2px 22px no-repeat,linear-gradient(var(--o-blue),var(--o-blue)) 100% 100%/22px 2px no-repeat,linear-gradient(var(--o-blue),var(--o-blue)) 100% 100%/2px 22px no-repeat;content:"";inset:-9px;pointer-events:none;position:absolute;z-index:2}
+.orion-flight__clip{background:#10161b;height:100%;overflow:hidden;position:relative;width:100%}
+.orion-flight__clip img{display:block;height:100%;object-fit:cover;width:100%}
+.orion-flight__shade{background:#091116;inset:0;opacity:0;pointer-events:none;position:absolute}
+.orion-flight__copy{align-content:center;display:grid;gap:14px}
+.orion-flight__index{color:var(--o-blue);font-size:clamp(64px,8vw,120px);font-weight:300;letter-spacing:-.06em;line-height:.9}
+.orion-flight__index small{color:#6c7b86;font-size:14px;letter-spacing:.1em;margin-left:8px}
+.orion-flight__kicker{color:#72c5f4;font-size:10px;font-weight:650;letter-spacing:.16em;text-transform:uppercase}
+.orion-flight__copy h3{font-size:clamp(26px,3vw,44px);font-weight:480;letter-spacing:-.04em;line-height:1.05;margin:0}
+.orion-flight__copy p{color:#9babb5;font-size:14px;line-height:1.65;margin:0;max-width:40ch}
+.orion-flight__path{display:none}
+
+.orion-flight.is-staged{display:grid;grid-template-rows:auto minmax(0,1fr) auto;height:calc(100svh - 58px);min-height:560px;padding-block:clamp(24px,4vh,52px)}
+.orion-flight.is-staged .orion-flight__head{margin-bottom:clamp(14px,3vh,30px)}
+.orion-flight.is-staged .orion-flight__head h2{font-size:clamp(38px,min(5vw,8vh),78px)}
+.orion-flight.is-staged .orion-flight__stage{display:block;min-height:0;overflow:hidden;position:relative}
+.orion-flight.is-staged .orion-flight__slide{background:#091116;inset:0;padding:10px;position:absolute}
+.orion-flight.is-staged .orion-flight__photo{aspect-ratio:auto;height:100%}
+.orion-flight.is-staged .orion-flight__path{display:grid;gap:12px;margin-top:clamp(14px,3vh,26px)}
+.orion-flight__line{background:#ffffff26;height:2px;position:relative}
+.orion-flight__bar{background:var(--o-blue);inset:0;position:absolute;transform:scaleX(0);transform-origin:left}
+.orion-flight__drone{background:var(--o-blue);box-shadow:0 0 0 6px rgba(24,151,242,.22);height:10px;left:0;position:absolute;top:-4px;transform:translateX(-50%) rotate(45deg);width:10px}
+.orion-flight__path ul{color:#5f6e79;display:flex;font-size:10px;justify-content:space-between;letter-spacing:.14em;list-style:none;margin:0;padding:0;text-transform:uppercase}
+.orion-flight__path li{transition:color .3s}
+.orion-flight__path li[data-active=true]{color:#fff}
+
+@media(max-width:900px){
+  .orion-flight__head{grid-template-columns:1fr;gap:18px;margin-bottom:40px}
+  .orion-flight__stage{gap:56px}
+  .orion-flight__slide{gap:22px;grid-template-columns:1fr}
+  .orion-flight__index{font-size:56px}
+}
+/* Recorrido ORION en celular: misma escena fija, foto arriba y texto abajo */
+@media(max-width:900px){
+  .orion-flight.is-staged{height:calc(100svh - 56px);min-height:0;padding:18px 20px 16px}
+  .orion-flight.is-staged .orion-flight__head{gap:8px;grid-template-columns:1fr;margin-bottom:12px}
+  .orion-flight.is-staged .orion-flight__head h2{font-size:clamp(28px,8.5vw,40px)}
+  .orion-flight.is-staged .orion-flight__head p{display:none}
+  .orion-flight.is-staged .orion-flight__slide{gap:14px;grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;padding:12px}
+  .orion-flight.is-staged .orion-flight__copy{gap:6px}
+  .orion-flight.is-staged .orion-flight__index{font-size:36px}
+  .orion-flight.is-staged .orion-flight__copy h3{font-size:22px}
+  .orion-flight.is-staged .orion-flight__copy p{font-size:12.5px;line-height:1.5}
+  .orion-flight.is-staged .orion-flight__path ul{font-size:8px;letter-spacing:.08em}
+}
+/* ===== Ascenso ORION: despegue y hover controlado (integrado a la página) ===== */
+.orion-ascent{background:#fff;color:var(--o-ink);height:clamp(640px,92svh,820px);overflow:hidden;position:relative}
+.orion-ascent:before{background:radial-gradient(ellipse 46% 38% at 50% 74%,rgba(24,151,242,.09),transparent 70%);content:"";inset:0;pointer-events:none;position:absolute}
+.orion-ascent .orion-section-tag--light{color:var(--o-ink)}
+.orion-ascent__text{left:clamp(28px,6vw,96px);max-width:520px;pointer-events:none;position:absolute;top:clamp(56px,8vw,110px);z-index:3}
+.orion-ascent__text h2{color:var(--o-black);font-size:clamp(44px,5.6vw,88px);font-weight:480;letter-spacing:-.06em;line-height:.92;margin:26px 0 20px}
+.orion-ascent__text em{color:var(--o-blue);font-style:normal}
+.orion-ascent__text p{color:var(--o-copy);font-size:14px;line-height:1.65;margin:0;max-width:36ch}
+.orion-ascent__scene{inset:0;position:absolute;z-index:2;touch-action:pan-y}
+.orion-ascent__scene canvas{display:block;height:100%;touch-action:pan-y;width:100%}
+
+/* Altímetro: el marcador sube a la par del dron */
+.orion-ascent__alt{bottom:13%;display:flex;flex-direction:column;justify-content:space-between;position:absolute;right:clamp(28px,6vw,96px);top:14%;z-index:1}
+.orion-ascent__alt i{background:var(--o-line);display:block;height:1px;width:22px}
+.orion-ascent__alt i:nth-child(odd){background:var(--o-muted);width:40px}
+.orion-ascent__alt b{animation:orion-alt-rise 4.2s cubic-bezier(.22,1,.36,1) both;background:var(--o-blue);bottom:0;box-shadow:0 0 0 4px rgba(24,151,242,.16);height:9px;position:absolute;right:-4px;width:9px}
+@keyframes orion-alt-rise{from{bottom:0}to{bottom:calc(52% - 4px)}}
+
+/* Piso: sombra + anillos de estabilización */
+.orion-ascent__floor{bottom:12%;height:7%;left:28%;pointer-events:none;position:absolute;right:28%;z-index:1}
+.orion-ascent__shadow{animation:orion-shadow-in 4.2s cubic-bezier(.22,1,.36,1) both,orion-shadow-breathe 6.9s ease-in-out 4.2s infinite;background:radial-gradient(ellipse,rgba(17,22,25,.38),transparent 68%);filter:blur(10px);inset:0;position:absolute}
+@keyframes orion-shadow-in{from{opacity:0;transform:scale(.25)}to{opacity:1;transform:scale(1)}}
+@keyframes orion-shadow-breathe{0%,100%{transform:scale(1)}50%{transform:scale(.92);opacity:.85}}
+.orion-ascent__ring{animation:orion-ring 3.2s ease-out 4s infinite;border:1px solid rgba(24,151,242,.55);border-radius:50%;inset:8% 18%;opacity:0;position:absolute}
+.orion-ascent__ring--2{animation-delay:5.6s}
+@keyframes orion-ring{0%{opacity:.7;transform:scale(.5)}100%{opacity:0;transform:scale(1.5)}}
+
+/* Texto: fundido al entrar */
+.orion-ascent__text>*{animation:orion-ascent-text .9s cubic-bezier(.22,1,.36,1) both}
+.orion-ascent__text h2{animation-delay:.12s}
+.orion-ascent__text p{animation-delay:.24s}
+@keyframes orion-ascent-text{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+.orion-ascent__fallback{height:70%;inset:15% 15%;object-fit:contain;position:absolute;width:70%;z-index:2}
+.orion-ascent__bottom{align-items:center;border-top:1px solid var(--o-line);bottom:0;color:var(--o-muted);display:flex;font-size:10px;gap:20px;justify-content:space-between;left:clamp(28px,6vw,96px);letter-spacing:.12em;padding:18px 0 22px;position:absolute;right:clamp(28px,6vw,96px);z-index:4}
+.orion-ascent__bottom button{align-items:center;background:#fff;border:1px solid var(--o-line);color:var(--o-ink);cursor:pointer;display:inline-flex;font-size:10px;gap:8px;letter-spacing:.12em;min-height:36px;padding:0 14px;transition:background .2s,border-color .2s,color .2s}
+.orion-ascent__bottom button:hover:not(:disabled){background:var(--o-blue);border-color:var(--o-blue);color:#fff}
+.orion-ascent__bottom button:disabled{cursor:default;opacity:.4}
+
+@media(max-width:900px){
+  .orion-ascent{height:min(86svh,740px);min-height:600px}
+  .orion-ascent__text{max-width:none;right:20px;left:20px;top:44px}
+  .orion-ascent__text h2{font-size:clamp(40px,12vw,56px);margin:18px 0 14px}
+  .orion-ascent__text p{font-size:13px;max-width:30ch}
+  .orion-ascent__scene{top:30%}
+  .orion-ascent__alt{display:none}
+  .orion-ascent__floor{bottom:17%;left:16%;right:16%}
+  .orion-ascent__bottom{bottom:0;flex-wrap:wrap;left:20px;padding:14px 0 16px;right:20px;row-gap:10px}
+  .orion-ascent__bottom span:last-child{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .orion-ascent__bottom button,.orion-ascent__ring,.orion-ascent__alt b{display:none}
+  .orion-ascent__shadow,.orion-ascent__text>*{animation:none}
+}
+/* Menos aire entre 02 Anatomía y Ascenso */
+.orion-anatomy{padding-bottom:clamp(48px,6vw,88px)}
+.orion-ascent__text{top:clamp(36px,4.5vw,64px)}
+@media(max-width:900px){
+  .orion-anatomy{padding-bottom:40px}
+  .orion-ascent__text{top:28px}
+}
+/* ===== Datos técnicos interactivos (05) ===== */
+.orion-specs__body{min-width:0}
+.orion-specs__kpis{display:grid;gap:1px;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);margin-bottom:44px}
+.orion-specs__kpi{background:var(--o-black);display:flex;flex-direction:column;gap:6px;opacity:0;padding:22px 18px 20px;transform:translateY(14px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--i)*90ms)}
+.orion-specs__kpis[data-run="true"] .orion-specs__kpi{opacity:1;transform:none}
+.orion-specs__kpi strong{font-size:clamp(30px,3.4vw,46px);font-variant-numeric:tabular-nums;font-weight:480;letter-spacing:-.04em;line-height:1}
+.orion-specs__kpi small{color:var(--o-blue);font-size:12px;font-weight:600;letter-spacing:.06em;margin-left:5px}
+.orion-specs__kpi span{color:#fff;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.orion-specs__kpi em{color:#8c949a;font-size:11px;font-style:normal;line-height:1.4}
+
+.orion-specs__tabs{display:flex;gap:8px;margin-bottom:28px;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x proximity;scrollbar-width:none}
+.orion-specs__tabs::-webkit-scrollbar{display:none}
+.orion-specs__tabs button{align-items:center;background:transparent;border:1px solid rgba(255,255,255,.22);color:#c3c9ce;cursor:pointer;display:inline-flex;flex:0 0 auto;font:inherit;font-size:13px;gap:10px;min-height:44px;padding:0 18px;scroll-snap-align:center;transition:background .25s,border-color .25s,color .25s}
+.orion-specs__tabs button span{color:var(--o-blue);font-size:10px;letter-spacing:.1em}
+.orion-specs__tabs button:hover{border-color:var(--o-blue);color:#fff}
+.orion-specs__tabs button.is-active{background:var(--o-blue);border-color:var(--o-blue);color:#fff}
+.orion-specs__tabs button.is-active span{color:#062033}
+.orion-specs__tabs button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+.orion-specs__panel{min-height:320px}
+.orion-specs__section+.orion-specs__section{margin-top:34px}
+.orion-specs__section h3{align-items:center;color:#fff;display:flex;font-size:18px;font-weight:480;gap:14px;margin:0 0 6px}
+.orion-specs__section h3:after{background:rgba(255,255,255,.16);content:"";flex:1;height:1px}
+.orion-specs__panel dl{margin:0}
+.orion-specs__panel dl>div{animation:orion-spec-row .55s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(var(--r)*45ms);border-bottom:1px solid rgba(255,255,255,.1);display:grid;gap:18px;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);padding:16px 0;transition:background .2s,padding .2s}
+.orion-specs__panel dl>div:hover{background:linear-gradient(90deg,rgba(24,151,242,.14),transparent);padding-left:12px}
+.orion-specs__panel dt{color:#91999e;font-size:12px}
+.orion-specs__panel dd{font-size:14px;margin:0;text-align:right}
+@keyframes orion-spec-row{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+.orion-specs__hint{color:#6f777d;display:none;font-size:10px;letter-spacing:.12em;margin:22px 0 0;text-align:center;text-transform:uppercase}
+
+/* Botón descargar */
+.orion-specs__download{align-items:center;background:linear-gradient(135deg,rgba(24,151,242,.18),rgba(24,151,242,.04));border:1px solid rgba(24,151,242,.55);color:#fff;display:flex;gap:16px;margin-top:40px;max-width:430px;overflow:hidden;padding:16px 18px;position:relative;text-decoration:none;transition:border-color .3s,transform .3s}
+.orion-specs__download:before{background:linear-gradient(100deg,transparent,rgba(255,255,255,.18),transparent);content:"";inset:0;position:absolute;transform:translateX(-120%);transition:transform .8s}
+.orion-specs__download:hover:before,.orion-specs__download:focus-visible:before{transform:translateX(120%)}
+.orion-specs__download:hover{border-color:#72c5f4;transform:translateY(-2px)}
+.orion-specs__download:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.orion-specs__doc{align-items:center;background:var(--o-blue);color:#062033;display:flex;flex:0 0 auto;height:54px;justify-content:center;position:relative;width:44px}
+.orion-specs__doc i{background:#062033;height:1px;opacity:0;position:absolute;width:20px}
+.orion-specs__doc i:nth-of-type(1){bottom:16px}
+.orion-specs__doc i:nth-of-type(2){bottom:11px;width:14px}
+.orion-specs__doc i:nth-of-type(3){bottom:6px;width:17px}
+.orion-specs__download:hover .orion-specs__doc i{opacity:.7}
+.orion-specs__download-copy{display:flex;flex:1;flex-direction:column;gap:4px;min-width:0}
+.orion-specs__download-copy b{font-size:15px;font-weight:560}
+.orion-specs__download-copy small{color:#9fb4c3;font-size:11px;letter-spacing:.04em}
+.orion-specs__download-arrow{align-items:center;border:1px solid rgba(255,255,255,.35);display:flex;flex:0 0 auto;height:38px;justify-content:center;width:38px}
+.orion-specs__download:hover .orion-specs__download-arrow{animation:orion-spec-arrow .9s ease-in-out infinite;background:var(--o-blue);border-color:var(--o-blue)}
+@keyframes orion-spec-arrow{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
+
+@media(max-width:980px){
+  .orion-specs__download{max-width:none}
+}
+@media(max-width:720px){
+  .orion-specs__kpis{grid-template-columns:1fr 1fr;margin-bottom:32px}
+  .orion-specs__kpi{padding:18px 14px}
+  .orion-specs__tabs{margin-left:-20px;margin-right:-20px;padding:0 20px 6px}
+  .orion-specs__panel dl>div{gap:12px;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);padding:14px 0}
+  .orion-specs__panel dl>div:hover{padding-left:0}
+  .orion-specs__hint{display:block}
+  .orion-specs__panel{min-height:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .orion-specs__panel dl>div,.orion-specs__download-arrow{animation:none!important}
+  .orion-specs__kpi{opacity:1;transform:none;transition:none}
+}
+/* ===== Capacidades ORION (01-03) interactivas + menos espacio ===== */
+.orion-caps{background:var(--o-surface);padding:clamp(56px,6vw,88px) clamp(28px,6vw,96px) clamp(44px,5vw,72px)}
+.orion-caps__list{display:flex;gap:12px;height:clamp(440px,48vw,540px)}
+.orion-caps__item{background:#fff;border:1px solid var(--o-line);cursor:pointer;display:flex;flex:1 1 0;flex-direction:column;min-width:0;overflow:hidden;padding:26px;position:relative;transition:flex-grow .7s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s}
+.orion-caps__item[data-active="true"]{border-color:var(--o-blue);box-shadow:0 18px 40px -24px rgba(24,151,242,.55);flex-grow:2.7}
+.orion-caps__item:focus-visible{outline:2px solid var(--o-blue);outline-offset:2px}
+.orion-caps__item header{align-items:center;display:flex;justify-content:space-between}
+.orion-caps__item header span{color:var(--o-muted);font-size:10px;letter-spacing:.16em}
+.orion-caps__item header svg{color:var(--o-blue)}
+.orion-caps__metric{display:flex;flex-direction:column;gap:6px;margin:auto 0 26px}
+.orion-caps__metric strong{color:var(--o-black);font-size:clamp(46px,5vw,76px);font-weight:460;letter-spacing:-.06em;line-height:.9;transition:color .3s}
+.orion-caps__item[data-active="true"] .orion-caps__metric strong{color:var(--o-blue)}
+.orion-caps__metric small{font-size:.32em;letter-spacing:.04em;margin-left:6px}
+.orion-caps__metric em{color:var(--o-muted);font-size:11px;font-style:normal;letter-spacing:.1em;text-transform:uppercase}
+.orion-caps__text h3{font-size:clamp(22px,2.2vw,34px);font-weight:500;letter-spacing:-.04em;line-height:1.05;margin:0}
+.orion-caps__text p{color:var(--o-copy);font-size:14px;line-height:1.6;margin:0;max-height:0;max-width:34ch;opacity:0;overflow:hidden;transition:max-height .6s cubic-bezier(.22,1,.36,1),opacity .4s,margin .4s}
+.orion-caps__item[data-active="true"] .orion-caps__text p{margin-top:14px;max-height:120px;opacity:1;transition-delay:.15s}
+
+/* Visuales de fondo (solo CSS) */
+.orion-caps__visual{inset:68px 0 auto;height:30%;opacity:.9;pointer-events:none;position:absolute}
+.orion-caps__weave{background:repeating-linear-gradient(45deg,#e7eaee 0 6px,#f6f7f8 6px 12px),#f6f7f8;-webkit-mask-image:linear-gradient(#000 40%,transparent);mask-image:linear-gradient(#000 40%,transparent)}
+.orion-caps__weave:before{background:repeating-linear-gradient(-45deg,rgba(17,22,25,.08) 0 6px,transparent 6px 12px);content:"";inset:0;position:absolute}
+.orion-caps__weave i{animation:orion-caps-scan 4s ease-in-out infinite;background:linear-gradient(90deg,transparent,rgba(24,151,242,.45),transparent);inset:0 auto 0 -30%;position:absolute;width:30%}
+@keyframes orion-caps-scan{0%{transform:translateX(0)}60%,100%{transform:translateX(480%)}}
+.orion-caps__radar{align-items:center;display:flex;justify-content:center}
+.orion-caps__radar i{animation:orion-caps-radar 3.6s ease-out infinite;aspect-ratio:1;border:1px solid rgba(24,151,242,.55);border-radius:50%;height:90%;opacity:0;position:absolute}
+.orion-caps__radar i:nth-child(2){animation-delay:1.2s}
+.orion-caps__radar i:nth-child(3){animation-delay:2.4s}
+.orion-caps__radar b{background:var(--o-blue);border-radius:50%;box-shadow:0 0 0 6px rgba(24,151,242,.18);height:12px;width:12px}
+@keyframes orion-caps-radar{0%{opacity:.8;transform:scale(.15)}100%{opacity:0;transform:scale(1)}}
+.orion-caps__reticle{inset:68px 26px auto}
+.orion-caps__reticle i{border:2px solid var(--o-blue);height:18px;position:absolute;width:18px}
+.orion-caps__reticle i:nth-child(1){border-bottom:0;border-right:0;left:0;top:0}
+.orion-caps__reticle i:nth-child(2){border-bottom:0;border-left:0;right:0;top:0}
+.orion-caps__reticle i:nth-child(3){border-right:0;border-top:0;bottom:0;left:0}
+.orion-caps__reticle i:nth-child(4){border-left:0;border-top:0;bottom:0;right:0}
+.orion-caps__reticle b{animation:orion-caps-rec 1.2s steps(2) infinite;background:#e5484d;border-radius:50%;height:8px;left:28px;position:absolute;top:10px;width:8px}
+.orion-caps__reticle em{bottom:12px;color:var(--o-muted);font-size:9px;font-style:normal;left:28px;letter-spacing:.14em;position:absolute}
+.orion-caps__reticle:after{background:linear-gradient(var(--o-blue),var(--o-blue)) center/1px 22px no-repeat,linear-gradient(var(--o-blue),var(--o-blue)) center/22px 1px no-repeat;content:"";inset:0;position:absolute}
+@keyframes orion-caps-rec{50%{opacity:.15}}
+
+/* Menos hueco con la sección 05 */
+.orion-specs{padding-top:clamp(64px,8vw,112px)}
+
+/* Celular: tarjetas que se apilan al desplazarse */
+@media(max-width:900px){
+  .orion-caps{padding:44px 20px 28px}
+  .orion-caps__list{display:block;height:auto}
+  .orion-caps__item,.orion-caps__item[data-active="true"]{border-color:var(--o-line);box-shadow:0 -14px 30px -22px rgba(17,22,25,.35);cursor:default;margin-bottom:22px;min-height:360px;padding:22px;position:sticky;top:calc(76px + var(--i)*14px);transition:none}
+  .orion-caps__item:last-child{margin-bottom:0}
+  .orion-caps__item[data-active="true"] .orion-caps__metric strong{color:var(--o-black)}
+  .orion-caps__text p,.orion-caps__item[data-active="true"] .orion-caps__text p{margin-top:12px;max-height:none;opacity:1}
+  .orion-caps__metric{margin:150px 0 20px}
+  .orion-caps__visual{height:96px;inset:64px 0 auto}
+  .orion-caps__reticle{inset:64px 22px auto}
+  .orion-caps__metric strong{font-size:54px}
+}
+@media(prefers-reduced-motion:reduce){.orion-caps__visual *,.orion-caps__visual:after{animation:none!important}.orion-caps__item,.orion-caps__text p{transition:none}}
