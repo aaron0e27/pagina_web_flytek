@@ -95,26 +95,50 @@ export const payloads : PayloadItem[] = [
     alt: "Mantenimiento con control remoto",
     fit: "cover",
     position: "50% 50%",
-  },
+  }
 ];
 
-export const payloadCapabilities = [
+/* ===== Visor 3D con el mismo formato de ORION ===== */
+export type VegaPoint = {
+  id: string;
+  name: string;
+  position: XYZ;
+  direction: XYZ;
+  description: string;
+};
+
+// Posiciones de cámara (el modelo se normaliza a ~3.6 unidades, igual que ORION).
+export const vegaViews = {
+  general: [2.7, 1.9, 3.5],
+  front: [0, 0.6, 5.1],
+  top: [0.01, 6.6, 0.01],
+  side: [5.1, 0.6, 0],
+} as const;
+
+// Puntos ilustrativos: ajusta position/direction al probar con el modelo real.
+export const vegaPoints: VegaPoint[] = [
   {
-    title: "Medición precisa",
-    text: "Sensores térmicos radiométricos, cámaras multiespectrales y unidades de medición especiales para obtener mediciones con excelente precisión sin importar el medio.",
-    image: "/vega/images/PayloadDual.jpg",
-    alt: "Medición precisa con sensores térmicos radiométricos",
+    id: "central-body",
+    name: "Estructura central",
+    position: [0, 0.36, 0],
+    direction: [1, 0.8, 1.2],
+    description:
+      "La estructura central concentra los principales sistemas de la plataforma y distribuye el peso entre sus brazos.",
   },
   {
-    title: "Imagen estable",
-    text: "Estabilizador de video en dos o tres ejes que permite cualquier ángulo de visión, para tener siempre la mejor perspectiva en inspección y vigilancia.",
-    image: "/vega/images/imagen-estable.webp",
-    alt: "Imagen estabilizada durante la operación",
+    id: "propulsion",
+    name: "Sistema de propulsión",
+    position: [0.81, 0.24, 0.78],
+    direction: [1, 0.5, 1],
+    description:
+      "El conjunto de brazos, motores y hélices proporciona estabilidad y respuesta durante las maniobras de vuelo.",
   },
   {
-    title: "Inspecciona con mayor seguridad y eficiencia",
-    text: "Cámara térmica con sensor radiométrico para valores de temperatura precisos de ±5 °C, acompañada de una cámara Full HD para no perder ningún detalle.",
-    image: "/vega/images/inspeccion-segura.webp",
-    alt: "Inspección con cámara térmica y cámara Full HD",
+    id: "payload",
+    name: "Zona de carga útil",
+    position: [0, -0.39, 0.21],
+    direction: [0, -0.4, 1.2],
+    description:
+      "La zona inferior permite integrar cámaras, sensores y otras cargas útiles según las necesidades de cada operación.",
   },
 ];

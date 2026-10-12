@@ -27,7 +27,6 @@ export function useScrollScenes(root: RefObject<HTMLElement | null>, page: Page,
             .to(".orion-hero__title", { xPercent: -8, opacity: .18, ease: "none" }, 0)
             .to(".orion-hero__visual", { scale: 1.12, xPercent: -8, ease: "none" }, 0)
             .to(".orion-hero__grid", { opacity: .15, ease: "none" }, 0);
-          gsap.fromTo(".orion-capabilities__line", { scaleX: 0 }, { scaleX: 1, ease: "none", scrollTrigger: { trigger: ".orion-capabilities", start: "top 90%", end: "top 40%", scrub: .9 } });
           const track = host.querySelector<HTMLElement>(".orion-application-list");
           const viewport = host.querySelector<HTMLElement>(".orion-application-viewport");
           if (desktop && track && viewport) gsap.to(track, { x: () => -Math.max(0, track.scrollWidth - viewport.clientWidth + parseFloat(getComputedStyle(viewport).paddingLeft)), ease: "none", scrollTrigger: { trigger: ".orion-applications", start: "top top+=58", end: () => "+=" + Math.max(innerWidth, track.scrollWidth - viewport.clientWidth), pin: true, scrub: .9, invalidateOnRefresh: true } });
@@ -38,7 +37,7 @@ export function useScrollScenes(root: RefObject<HTMLElement | null>, page: Page,
             .to(".hero-top,.hero-bottom", { opacity: 0, ease: "none" }, 0);
           gsap.fromTo(".product-motion img", { xPercent: -6, yPercent: 6, rotation: -5, scale: .93 }, { xPercent: 4, yPercent: -3, rotation: 3, scale: 1, ease: "none", scrollTrigger: { trigger: ".product-motion", start: "top bottom", end: "bottom top", scrub: 1.2 } });
         }
-        const targets = page === "home" ? ".home-company-grid h2, .home-fleet-heading h2, .home-sectors-title h2, .home-support h2, .home-contact h2, .home-application-image, .home-sector-detail>img" : page === "orion" ? ".orion-intro h2, .orion-anatomy h2, .orion-explorer h2, .orion-applications h2, .orion-contact h2, .orion-anatomy__media img" : "h2, .feature-image, .design-image, .performance-stage img";
+        const targets = page === "home" ? ".home-company-grid h2, .home-fleet-heading h2, .home-sectors-title h2, .home-support h2, .home-contact h2, .home-application-image, .home-sector-detail>img" : page === "orion" ? ".orion-intro h2, .orion-anatomy h2, .orion-explorer h2, .orion-contact h2, .orion-anatomy__media img" : "h2, .feature-image, .design-image, .performance-stage img";
         gsap.utils.toArray<HTMLElement>(targets, host).forEach(element => {
           gsap.fromTo(element, { y: desktop ? 44 : 32 }, { y: 0, ease: "none", scrollTrigger: { trigger: element, start: "top 95%", end: "top 55%", scrub: 1 } });
         });

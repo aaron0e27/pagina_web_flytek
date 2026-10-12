@@ -27,10 +27,6 @@ export function VegaHero() {
       </span>
       <div className="hero-bottom">
         <p>{vegaData.tagline}</p>
-        <a className="button" href="#caracteristicas">
-          {vegaCopy.conocer_vega}
-          <span>↓</span>
-        </a>
         <span className="eyebrow">
           {vegaCopy.diseno_tecnologia_integracion}
         </span>

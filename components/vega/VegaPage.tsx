@@ -7,7 +7,8 @@ import { VegaSubNav } from "./VegaSubNav";
 import { VegaAnimations } from "./VegaAnimations";
 import { VegaViewer } from "./VegaViewer";
 import { VegaPayloads } from "./VegaPayloads";
-import { VegaStory, VegaSpecs, VegaApplications } from "./VegaStory";
+import { VegaStory, VegaApplications } from "./VegaStory";
+import { VegaSpecs } from "./VegaSpecs";
 import { vegaData } from "@/lib/vega/data";
 export default function VegaPage() {
   return (

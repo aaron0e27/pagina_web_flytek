@@ -56,12 +56,11 @@ export const specTabs: SpecTab[] = [
     short: "03",
     sections: [
       {
-        title: "Ángulo amplio",
+        title: "Estabilización y precisión",
         items: [
-          ["Sensor", "48 MP"],
-          ["Foto / video", "JPG / MP4"],
-          ["Resolución de video", "3840 × 2160"],
-          ["Almacenamiento", "Memoria SD"],
+          ["Estabilizador de video", "3 ejes"],
+          ["Zoom digital", "x165 (cámara 4K)"],
+          ["Precisión térmica", "±5 °C, radiométrica"],
         ],
       },
       {

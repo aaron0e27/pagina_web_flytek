@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, ArrowRight, Box, Camera, ChevronRight, Crosshair, Layers3, Radar, ScanLine, ShieldCheck } from "lucide-react";
+import { ArrowDown, ArrowUpRight, ArrowRight, Crosshair } from "lucide-react";
 import SiteHeader from "@/components/shared/SiteHeader";
 import Orion3DViewer from "@/components/orion-mx/Orion3DViewer";
 import OrionFlight from "@/components/orion-mx/OrionFlight";
@@ -9,18 +9,7 @@ import OrionAscent from "@/components/orion-mx/OrionAscent";
 import OrionSpecs from "@/components/orion-mx/OrionSpecs";
 import { orionAssets, orionStats } from "@/lib/orion-mx/data";
 import OrionCapabilities from "@/components/orion-mx/OrionCapabilities";
-
-const applications = [
-  { index: "01", title: "Inspección industrial", copy: "Acércate a turbinas, maquinaria y activos críticos sin detener la lectura visual del entorno.", image: "/orion-mx/orion-turbine.webp" },
-  { index: "02", title: "Túneles e infraestructura", copy: "Recorre ductos, galerías técnicas y estructuras de acceso limitado con una plataforma compacta.", image: "/orion-mx/orion-tunnel.webp" },
-  { index: "03", title: "Imagen especializada", copy: "Configura el sistema de captura con opciones Full HD y térmicas para adaptar la misión a cada operación.", image: orionAssets.viewB },
-] as const;
-
-const anatomy = [
-  { index: "01", kicker: "Estructura", title: "Compacto por diseño.", copy: "Un cuerpo de fibra de carbono de 40 centímetros, protegido para trabajar cerca de superficies y obstáculos.", icon: Box },
-  { index: "02", kicker: "Percepción", title: "Lee antes de avanzar.", copy: "Hasta ocho sensores LiDAR apoyan la navegación y ayudan a mantener conciencia del espacio durante la inspección.", icon: Radar },
-  { index: "03", kicker: "Captura", title: "El detalle es la misión.", copy: "Integra video HD, configuraciones Full HD o térmicas y estabilización de dos o tres ejes.", icon: Camera },
-] as const;
+import OrionSupport from "@/components/orion-mx/OrionSupport";
 
 export default function OrionPage() {
   return <main className="orion-page" id="inicio">
@@ -49,15 +38,8 @@ export default function OrionPage() {
 
     <section className="orion-intro" id="sistema" aria-labelledby="intro-title">
       <div className="orion-section-tag orion-reveal"><span>01</span> EL SISTEMA</div>
-      <div className="orion-intro__statement"><h2 id="intro-title" className="orion-reveal">Diseñado para entrar donde la inspección empieza a complicarse.</h2><p className="orion-reveal">ORION concentra estructura, percepción e imagen en un formato ágil para interiores y espacios reducidos.</p></div>
+      <div className="orion-intro__statement"><h2 id="intro-title" className="orion-reveal">Diseñado para entrar donde la inspección empieza a complicarse.</h2><p className="orion-reveal">Seguro, innovador y adaptable: un equipo pensado para operaciones precisas, donde ORION trabaja para que tu personal no tenga que arriesgarse.</p></div>
       <div className="orion-stats orion-reveal">{orionStats.map((s) => <div className="orion-stat" key={s.label}><span>{s.label}</span><strong>{s.value}</strong><small>{s.unit}</small></div>)}</div>
-    </section>
-
-    <section className="orion-anatomy" aria-labelledby="anatomy-title">
-      <div className="orion-anatomy__media"><Image unoptimized src={orionAssets.viewA} alt="ORION visto en perspectiva" fill sizes="(max-width: 900px) 100vw, 52vw" /><div className="orion-anatomy__label"><ScanLine size={18} />VISTA DE SISTEMA / 01</div></div>
-      <div className="orion-anatomy__content"><div className="orion-section-tag orion-reveal"><span>02</span> ANATOMÍA ORION</div><h2 id="anatomy-title" className="orion-reveal">Tres capas.<br />Una sola misión.</h2>
-        <div>{anatomy.map(({ icon: Icon, ...item }) => <article className="orion-anatomy__item orion-reveal" key={item.index}><div className="orion-anatomy__index">{item.index}</div><Icon size={22} strokeWidth={1.5} /><div><span>{item.kicker}</span><h3>{item.title}</h3><p>{item.copy}</p></div></article>)}</div>
-      </div>
     </section>
 
     <OrionAscent />
@@ -73,8 +55,10 @@ export default function OrionPage() {
 
     <OrionSpecs />
 
+    <OrionSupport />
+
     <section className="orion-contact" id="contacto" aria-labelledby="contact-title">
-      <div className="orion-contact__glow" /><div className="orion-contact__number">O</div><div className="orion-contact__copy"><p className="orion-eyebrow orion-reveal">FLYTEK INNOVATIONS / ORION</p><h2 id="contact-title" className="orion-reveal">Tu siguiente inspección puede empezar aquí.</h2><p className="orion-reveal">Cuéntanos el entorno, el objetivo y el tipo de captura que necesitas.</p><div className="orion-contact__actions orion-reveal"><Link href="mailto:info@flytek.com.mx" className="orion-primary-button">Hablar con un especialista <ArrowRight /></Link><Link href="tel:+525654407312" className="orion-text-link">+52 56 5440 7312</Link></div></div>
+      <div className="orion-contact__glow" /><div className="orion-contact__number">O</div><div className="orion-contact__copy"><p className="orion-eyebrow orion-reveal">FLYTEK INNOVATIONS / ORION</p><h2 id="contact-title" className="orion-reveal">Tu siguiente inspección puede empezar aquí.</h2><p className="orion-reveal">Cuéntanos el entorno, el objetivo y el tipo de captura que necesitas.</p><div className="orion-contact__actions orion-reveal"><Link href="mailto:info@flytek.com.mx" className="orion-primary-button">Hablar con un especialista <ArrowRight /></Link><Link href="tel:+525654407312" className="orion-text-link">+52 56 5440 7312</Link><Link href="tel:+525522188546" className="orion-text-link">+52 55 2218 8546</Link></div></div>
     </section>
   </main>;
 }
