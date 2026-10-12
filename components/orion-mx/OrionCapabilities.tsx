@@ -7,19 +7,19 @@ const caps = [
   {
     id: "material",
     icon: Layers3,
-    kicker: "01 / MATERIAL",
-    title: ["Ligero en forma.", "Serio en función."],
-    copy: "La fibra de carbono combina rigidez y bajo peso en una plataforma compacta de menos de dos kilogramos.",
+    kicker: "01 / RESISTENCIA",
+    title: ["Hecho para", "ambientes difíciles."],
+    copy: "Frame de fibra de carbono con materiales de grado aeroespacial, validado bajo esfuerzos y cargas para asegurar un buen rendimiento.",
     metric: "1,980",
     unit: "g",
-    note: "peso del dron",
+    note: "peso total del dron",
   },
   {
     id: "proteccion",
     icon: ShieldCheck,
-    kicker: "02 / PROTECCIÓN",
-    title: ["Preparado para", "trabajar cerca."],
-    copy: "Protectores de propela y asistencia anticolisión para entornos que exigen maniobras precisas.",
+    kicker: "02 / SEGURIDAD",
+    title: ["Trabaja cerca.", "Sin arriesgar a nadie."],
+    copy: "Su distancia de seguridad permite acercamientos de hasta 0.5 m sin preocuparte por una colisión. ORION hace la labor sin exponer a tu personal.",
     metric: "0.5",
     unit: "m",
     note: "acercamiento seguro",
@@ -27,12 +27,12 @@ const caps = [
   {
     id: "integracion",
     icon: Camera,
-    kicker: "03 / INTEGRACIÓN",
+    kicker: "03 / PERSONALIZABLE",
     title: ["Una plataforma.", "Distintas miradas."],
-    copy: "Opciones de cámara y estabilización que se ajustan a los objetivos de cada operación.",
-    metric: "48",
-    unit: "MP",
-    note: "+ cámara térmica",
+    copy: "Lo adaptamos a tu trabajo: sensores especializados, cámaras multiespectrales, térmicas y fotogramétricas, y lámparas de alta luminosidad.",
+    metric: "5",
+    unit: "opciones",
+    note: "de integración",
   },
 ] as const;
 
@@ -47,7 +47,7 @@ function Visual({ id }: { id: string }) {
   return (
     <div className="orion-caps__visual orion-caps__reticle" aria-hidden="true">
       <i /><i /><i /><i /><b />
-      <em>REC · FULL HD / TÉRMICA</em>
+      <em>MULTIESPECTRAL · TÉRMICA</em>
     </div>
   );
 }

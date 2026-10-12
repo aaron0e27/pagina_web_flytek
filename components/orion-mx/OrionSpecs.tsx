@@ -1,48 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState, type KeyboardEvent, type TouchEvent } from "react";
+import { useRef, useState, type KeyboardEvent, type TouchEvent } from "react";
 import { ArrowDown, FileText } from "lucide-react";
-import { SPEC_PDF, SPEC_PDF_NAME, specKpis, specTabs } from "@/lib/orion-mx/specs-data";
+import { SPEC_PDF, SPEC_PDF_NAME, specTabs } from "@/lib/orion-mx/specs-data";
 
-function Kpis() {
-  const box = useRef<HTMLDivElement>(null);
-  const [run, setRun] = useState(false);
-  const [vals, setVals] = useState(() => specKpis.map(() => 0));
-
-  useEffect(() => {
-    const el = box.current!;
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setRun(true); io.disconnect(); } }, { threshold: 0.35 });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!run) return;
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) { setVals(specKpis.map((k) => k.value)); return; }
-    let raf = 0;
-    const t0 = performance.now();
-    const tick = (now: number) => {
-      const p = Math.min(1, (now - t0) / 1600);
-      const e = 1 - Math.pow(1 - p, 3);
-      setVals(specKpis.map((k) => Math.round(k.value * e)));
-      if (p < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [run]);
-
-  return (
-    <div ref={box} className="orion-specs__kpis" data-run={run}>
-      {specKpis.map((k, i) => (
-        <div className="orion-specs__kpi" key={k.label} style={{ ["--i" as string]: i }}>
-          <strong>{vals[i].toLocaleString("es-MX")}<small>{k.suffix}</small></strong>
-          <span>{k.label}</span>
-          <em>{k.note}</em>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 export default function OrionSpecs() {
   const [tab, setTab] = useState(0);
@@ -89,7 +50,6 @@ export default function OrionSpecs() {
       </div>
 
       <div className="orion-specs__body">
-        <Kpis />
 
         <div className="orion-specs__tabs" role="tablist" aria-label="Categorías de especificaciones" ref={list} onKeyDown={onKey}>
           {specTabs.map((t, i) => (

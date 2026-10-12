@@ -3011,3 +3011,391 @@ html[data-theme="dark"] .vega-redesign .app-frame { background: var(--vega-surfa
   .vega-redesign .app-mosaic[data-active="2"] { grid-template-columns: 1fr 1fr 2.4fr; grid-template-rows: 1fr; }
   .vega-redesign .app-frame { --frame: 6px; }
 }
+
+/* =====================================================================
+   VEGA · Visor 3D (mismo formato que ORION) + Rendimiento interactivo
+   ===================================================================== */
+.vega-redesign .vega-3d{background:#f5f6f7}
+.vega-redesign .vega-3d h2{margin:0 0 34px}
+.vega-redesign .vega-3d-shell{background:radial-gradient(circle at 50% 45%,#253945,#111d25 49%,#091116 100%);border:1px solid #294452;color:#eaf5fa;height:680px;overflow:hidden;position:relative}
+.vega-redesign .vega-3d-shell:before{background-image:linear-gradient(rgba(117,181,219,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(117,181,219,.14) 1px,transparent 1px);background-size:52px 52px;content:"";inset:0;-webkit-mask-image:linear-gradient(to bottom,#000,transparent 88%);mask-image:linear-gradient(to bottom,#000,transparent 88%);pointer-events:none;position:absolute}
+.vega-redesign .vega-3d-shell:after{background:radial-gradient(ellipse,rgba(0,0,0,.62),transparent 68%);border-radius:50%;bottom:8%;content:"";filter:blur(14px);height:18%;left:12%;pointer-events:none;position:absolute;right:12%}
+.vega-redesign .vega-3d-scene{cursor:grab;inset:0;outline:none;position:absolute;z-index:2}
+.vega-redesign .vega-3d-scene:active{cursor:grabbing}
+.vega-redesign .vega-3d-scene canvas{display:block;height:100%;width:100%}
+.vega-redesign .vega-3d-fallback{align-items:center;color:#b8c8d2;display:grid;inset:0;justify-items:center;pointer-events:none;position:absolute;z-index:5}
+.vega-redesign .vega-3d-fallback img{grid-area:1/1;height:70%;object-fit:contain;opacity:.4;width:70%}
+.vega-redesign .vega-3d-orbit{animation:vega-3d-spin 1.6s linear infinite;border:1px solid rgba(114,197,244,.25);border-top-color:#72c5f4;border-radius:50%;grid-area:1/1;height:64px;width:64px}
+.vega-redesign .vega-3d-fallback p{bottom:34px;font-size:10px;letter-spacing:.1em;margin:0;position:absolute}
+.vega-redesign .vega-3d-fallback button{background:var(--blue);border:0;bottom:70px;color:#fff;cursor:pointer;font-size:11px;padding:10px 16px;pointer-events:auto;position:absolute}
+@keyframes vega-3d-spin{to{transform:rotate(360deg)}}
+.vega-redesign .vega-3d-badge{display:flex;flex-direction:column;gap:6px;left:27px;pointer-events:none;position:absolute;top:25px;z-index:3}
+.vega-redesign .vega-3d-badge span{color:#72c5f4;font-size:9px;letter-spacing:.16em}
+.vega-redesign .vega-3d-badge strong{font-size:20px;font-weight:500}
+.vega-redesign .vega-3d-views{bottom:88px;display:flex;gap:7px;left:27px;position:absolute;z-index:4}
+.vega-redesign .vega-3d-views button{background:rgba(13,24,34,.75);border:1px solid rgba(168,194,208,.27);color:#b9cbd5;cursor:pointer;font-size:10px;letter-spacing:.08em;padding:10px 14px}
+.vega-redesign .vega-3d-views button[aria-pressed=true],.vega-redesign .vega-3d-views button:hover:not(:disabled){background:var(--blue);border-color:var(--blue);color:#fff}
+.vega-redesign .vega-3d-views button:disabled,.vega-redesign .vega-3d-zoom button:disabled,.vega-redesign .vega-3d-parts button:disabled{cursor:default;opacity:.45}
+.vega-redesign .vega-3d-zoom{display:flex;flex-direction:column;position:absolute;right:27px;top:25px;z-index:4}
+.vega-redesign .vega-3d-zoom button{background:rgba(13,24,34,.75);border:1px solid rgba(168,194,208,.27);color:#dcecf4;cursor:pointer;display:grid;height:44px;place-items:center;width:44px}
+.vega-redesign .vega-3d-zoom button+button{border-top:0}
+.vega-redesign .vega-3d-zoom button:hover:not(:disabled){background:var(--blue);border-color:var(--blue)}
+.vega-redesign .vega-3d-zoom svg{height:18px;width:18px}
+.vega-redesign .vega-3d-help{bottom:31px;color:#91a9b7;font-size:9px;letter-spacing:.13em;margin:0;position:absolute;right:27px;z-index:3}
+.vega-redesign .vega-3d-parts{bottom:26px;display:flex;flex-wrap:wrap;gap:7px;left:27px;max-width:calc(100% - 240px);position:absolute;z-index:8}
+.vega-redesign .vega-3d-parts button{align-items:center;background:rgba(13,24,34,.82);border:1px solid rgba(168,194,208,.35);color:#b9dfff;cursor:pointer;display:inline-flex;font-size:10px;gap:7px;min-height:34px;padding:7px 11px}
+.vega-redesign .vega-3d-parts button span{color:#72c5f4;font-size:17px;line-height:1}
+.vega-redesign .vega-3d-parts button:hover:not(:disabled),.vega-redesign .vega-3d-parts button[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+.vega-redesign .vega-3d-parts button:hover:not(:disabled) span,.vega-redesign .vega-3d-parts button[aria-pressed=true] span{color:#fff}
+.vega-redesign .vega-3d-hotspot{background:var(--blue);border:1px solid #fff;border-radius:50%;color:#fff;cursor:pointer;font-size:22px;height:34px;left:0;line-height:1;padding:0;position:absolute;top:0;width:34px;z-index:6}
+.vega-redesign .vega-3d-hotspot:before{animation:vega-3d-ping 2s ease-out infinite;border:1px solid #72c5f4;border-radius:50%;content:"";inset:-1px;position:absolute}
+.vega-redesign .vega-3d-hotspot[aria-pressed=true]{background:#fff;color:#0876c4}
+@keyframes vega-3d-ping{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1.9)}}
+.vega-redesign .vega-3d-info{background:rgba(9,17,22,.88);border:1px solid rgba(114,197,244,.4);padding:18px 20px;position:absolute;right:90px;top:25px;width:min(320px,calc(100% - 220px));z-index:9;animation:vega-3d-in .45s cubic-bezier(.22,1,.36,1)}
+.vega-redesign .vega-3d-info span{color:#72c5f4;font-size:9px;letter-spacing:.16em}
+.vega-redesign .vega-3d-info h3{font-size:20px;font-weight:500;margin:8px 0}
+.vega-redesign .vega-3d-info p{color:#b8c8d2;font-size:13px;line-height:1.6;margin:0 0 14px}
+.vega-redesign .vega-3d-info button{align-items:center;background:transparent;border:0;border-bottom:1px solid #72c5f4;color:#fff;cursor:pointer;display:inline-flex;font-size:11px;gap:8px;padding:0 0 3px}
+@keyframes vega-3d-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.vega-redesign .vega-3d-note{color:#5f6f7a;font-size:12px;margin:16px 0 0}
+.vega-redesign .vega-3d-note strong{color:var(--blue)}
+
+@media(max-width:1000px){
+  .vega-redesign .vega-3d-parts{max-width:calc(100% - 54px)}
+  .vega-redesign .vega-3d-help{display:none}
+  .vega-redesign .vega-3d-info{right:84px;width:min(300px,calc(100% - 200px))}
+}
+@media(max-width:720px){
+  .vega-redesign .vega-3d-shell{display:flex;flex-direction:column;height:auto;padding-bottom:16px}
+  .vega-redesign .vega-3d-shell:before{-webkit-mask-image:linear-gradient(to bottom,#000,transparent 60%);mask-image:linear-gradient(to bottom,#000,transparent 60%)}
+  .vega-redesign .vega-3d-shell:after{display:none}
+  .vega-redesign .vega-3d-scene{flex:none;height:clamp(300px,44svh,400px);inset:auto;order:0;position:relative}
+  .vega-redesign .vega-3d-badge{left:16px;top:16px}
+  .vega-redesign .vega-3d-zoom{right:12px;top:12px}
+  .vega-redesign .vega-3d-zoom button{height:40px;width:40px}
+  .vega-redesign .vega-3d-views{margin:12px 14px 0;order:1;overflow-x:auto;position:static;scrollbar-width:none}
+  .vega-redesign .vega-3d-views::-webkit-scrollbar{display:none}
+  .vega-redesign .vega-3d-views button{flex:0 0 auto}
+  .vega-redesign .vega-3d-parts{margin:10px 14px 0;max-width:none;order:2;position:static}
+  .vega-redesign .vega-3d-info{margin:12px 14px 0;order:3;padding:14px 16px;position:static;width:auto}
+  .vega-redesign .vega-3d-info h3{font-size:18px}
+  .vega-redesign .vega-3d-info p{font-size:12.5px;line-height:1.5}
+  .vega-redesign .vega-3d-note{font-size:11.5px}
+}
+@media(prefers-reduced-motion:reduce){
+  .vega-redesign .vega-3d-orbit,.vega-redesign .vega-3d-hotspot:before,.vega-redesign .vega-3d-info{animation:none}
+}
+
+/* ---------- 04 Rendimiento interactivo ---------- */
+.vega-redesign .vega-perf{background:#101920;color:#edf3f7;overflow:hidden;position:relative}
+.vega-redesign .vega-perf:before{background-image:linear-gradient(rgba(117,181,219,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(117,181,219,.07) 1px,transparent 1px);background-size:56px 56px;content:"";inset:0;-webkit-mask-image:radial-gradient(ellipse at 50% 55%,#000,transparent 72%);mask-image:radial-gradient(ellipse at 50% 55%,#000,transparent 72%);pointer-events:none;position:absolute}
+.vega-redesign .vega-perf>*{position:relative}
+.vega-redesign .vega-perf .muted{color:#8fa3b0}
+.vega-redesign .vega-perf h2{margin:0 0 44px}
+.vega-redesign .vega-perf__board{align-items:center;display:grid;gap:clamp(24px,4vw,64px);grid-template-columns:1.25fr 1fr}
+.vega-redesign .vega-perf__stage{position:relative}
+.vega-redesign .vega-perf__frame{aspect-ratio:1440/920;position:relative;width:100%}
+.vega-redesign .vega-perf__frame img{filter:brightness(1.7);height:100%;object-fit:contain;position:absolute;width:100%}
+.vega-redesign .vega-perf__corner{border:1px solid rgba(114,197,244,.55);height:22px;position:absolute;width:22px}
+.vega-redesign .vega-perf__corner--a{border-bottom:0;border-right:0;left:0;top:0}
+.vega-redesign .vega-perf__corner--b{border-left:0;border-top:0;bottom:0;right:0}
+.vega-redesign .vega-perf__ov{inset:0;opacity:0;pointer-events:none;position:absolute;transition:opacity .5s}
+.vega-redesign .vega-perf[data-metric=autonomia] .vega-perf__ov--autonomia,
+.vega-redesign .vega-perf[data-metric=viento] .vega-perf__ov--viento,
+.vega-redesign .vega-perf[data-metric=peso] .vega-perf__ov--peso,
+.vega-redesign .vega-perf[data-metric=longitud] .vega-perf__ov--longitud{opacity:1}
+/* autonomía: anillos sobre el cuerpo central */
+.vega-redesign .vega-perf__ov--autonomia i{animation:vega-perf-ring 2.4s ease-out infinite;border:1px solid #72c5f4;border-radius:50%;height:16%;left:42.5%;position:absolute;top:28%;width:16%}
+.vega-redesign .vega-perf__ov--autonomia i+i{animation-delay:1.2s}
+@keyframes vega-perf-ring{0%{opacity:.9;transform:scale(.4)}100%{opacity:0;transform:scale(1.6)}}
+/* viento: ráfagas que cruzan los brazos */
+.vega-redesign .vega-perf__ov--viento i{background:linear-gradient(90deg,transparent,rgba(114,197,244,.8),transparent);height:1px;position:absolute;width:30%}
+.vega-redesign .vega-perf__ov--viento i:nth-child(1){animation:vega-perf-gust 2.2s linear infinite;left:-30%;top:24%}
+.vega-redesign .vega-perf__ov--viento i:nth-child(2){animation:vega-perf-gust 2.2s linear .9s infinite;left:-30%;top:52%}
+.vega-redesign .vega-perf__ov--viento b{animation:vega-perf-gust 2.6s linear 1.4s infinite;background:linear-gradient(90deg,transparent,rgba(114,197,244,.55),transparent);height:1px;left:-30%;position:absolute;top:38%;width:24%}
+.vega-redesign .vega-perf__ov--viento b:nth-of-type(2){display:none}
+.vega-redesign .vega-perf__ov--viento b:nth-of-type(3){display:none}
+@keyframes vega-perf-gust{from{transform:translateX(0)}to{transform:translateX(480%)}}
+/* peso: línea de carga desde el cuerpo hasta el tren inferior */
+.vega-redesign .vega-perf__ov--peso i:first-child{background:linear-gradient(#72c5f4,transparent);height:44%;left:50.8%;position:absolute;top:34%;transform-origin:top;width:1px;animation:vega-perf-grow 1.4s cubic-bezier(.22,1,.36,1) both}
+.vega-redesign .vega-perf__ov--peso i:last-child{animation:vega-perf-ring 2.4s ease-out infinite;border:1px solid #72c5f4;border-radius:50%;height:10%;left:45.8%;position:absolute;top:68%;width:10%}
+@keyframes vega-perf-grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+/* longitud: cota horizontal */
+.vega-redesign .vega-perf__ov--longitud i{animation:vega-perf-span 1.2s cubic-bezier(.22,1,.36,1) both;background:#72c5f4;height:1px;left:4%;position:absolute;right:4%;top:90%;transform-origin:center}
+.vega-redesign .vega-perf__ov--longitud i:before,.vega-redesign .vega-perf__ov--longitud i:after{background:#72c5f4;content:"";height:13px;position:absolute;top:-6px;width:1px}
+.vega-redesign .vega-perf__ov--longitud i:before{left:0}
+.vega-redesign .vega-perf__ov--longitud i:after{right:0}
+.vega-redesign .vega-perf__ov--longitud em{color:#72c5f4;font-size:11px;font-style:normal;left:50%;letter-spacing:.14em;position:absolute;top:92%;transform:translateX(-50%)}
+@keyframes vega-perf-span{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* Panel: medidor circular */
+.vega-redesign .vega-perf__panel{display:grid;gap:26px;justify-items:center;text-align:center}
+.vega-redesign .vega-perf__gauge{aspect-ratio:1;max-width:320px;position:relative;width:100%}
+.vega-redesign .vega-perf__gauge svg{height:100%;inset:0;position:absolute;width:100%}
+.vega-redesign .vega-perf__ticks line{stroke:rgba(143,163,176,.45);stroke-width:1.2}
+.vega-redesign .vega-perf__track,.vega-redesign .vega-perf__arc{fill:none;stroke-linecap:round;stroke-width:5;transform:rotate(135deg);transform-origin:120px 120px}
+.vega-redesign .vega-perf__track{stroke:rgba(255,255,255,.1);stroke-dasharray:414.7 552.9}
+.vega-redesign .vega-perf__arc{animation:vega-perf-arc 1.3s cubic-bezier(.22,1,.36,1) both;stroke:var(--blue);stroke-dasharray:414.7 552.9;filter:drop-shadow(0 0 6px rgba(22,140,222,.55))}
+@keyframes vega-perf-arc{from{stroke-dasharray:0 552.9}to{stroke-dasharray:414.7 552.9}}
+.vega-redesign .vega-perf__readout{align-items:center;display:flex;flex-direction:column;inset:0;justify-content:center;position:absolute}
+.vega-redesign .vega-perf__readout small{color:#8fa3b0;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.vega-redesign .vega-perf__readout strong{font-size:clamp(54px,6vw,84px);font-variant-numeric:tabular-nums;font-weight:460;letter-spacing:-.05em;line-height:1}
+.vega-redesign .vega-perf__readout span{color:#72c5f4;font-size:14px;letter-spacing:.12em}
+.vega-redesign .vega-perf__copy{animation:vega-3d-in .6s cubic-bezier(.22,1,.36,1) both;max-width:380px}
+.vega-redesign .vega-perf__copy p{color:#b8c6d0;font-size:14px;line-height:1.65;margin:12px 0}
+.vega-redesign .vega-perf__note{color:#8fa3b0;font-size:9px;letter-spacing:.14em;text-transform:uppercase}
+
+/* Selector */
+.vega-redesign .vega-perf__tabs{display:grid;gap:12px;grid-template-columns:repeat(4,1fr);margin-top:48px}
+.vega-redesign .vega-perf__tabs button{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.14);color:#c9d6de;cursor:pointer;display:grid;gap:6px;overflow:hidden;padding:18px 18px 22px;position:relative;text-align:left;transition:background .3s,border-color .3s}
+.vega-redesign .vega-perf__tabs button:hover{border-color:rgba(114,197,244,.55)}
+.vega-redesign .vega-perf__tabs button.is-active{background:rgba(22,140,222,.14);border-color:var(--blue);color:#fff}
+.vega-redesign .vega-perf__tab-index{color:#72c5f4;font-size:10px;letter-spacing:.14em}
+.vega-redesign .vega-perf__tab-label{font-size:12px}
+.vega-redesign .vega-perf__tabs strong{font-size:clamp(18px,1.9vw,26px);font-weight:480;letter-spacing:-.03em}
+.vega-redesign .vega-perf__tabs i{background:var(--blue);bottom:0;height:3px;left:0;position:absolute;transform:scaleX(0);transform-origin:left;width:100%}
+.vega-redesign .vega-perf__tabs button.is-active i{transform:scaleX(1)}
+.vega-redesign .vega-perf__tabs button.is-active i.is-running{animation:vega-perf-fill 5.2s linear both}
+@keyframes vega-perf-fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+@media(max-width:900px){
+  /* Celular: todo el tablero cabe en una pantalla (imagen + medidor + texto + botones) */
+  .vega-redesign .vega-perf{padding-bottom:48px;padding-top:64px}
+  .vega-redesign .vega-perf h2{font-size:clamp(34px,10vw,46px);margin-bottom:18px}
+  .vega-redesign .vega-perf .section-head{margin-bottom:14px}
+  .vega-redesign .vega-perf__board{gap:6px;grid-template-columns:1fr}
+  .vega-redesign .vega-perf__stage{margin:0 auto;width:min(100%,calc(22vh * 1.565));width:min(100%,calc(22svh * 1.565))}
+  .vega-redesign .vega-perf__panel{gap:8px}
+  .vega-redesign .vega-perf__gauge{max-width:min(190px,24svh)}
+  .vega-redesign .vega-perf__readout strong{font-size:clamp(38px,12vw,52px)}
+  .vega-redesign .vega-perf__readout small{font-size:9px}
+  .vega-redesign .vega-perf__readout span{font-size:12px}
+  .vega-redesign .vega-perf__copy{min-height:96px}
+  .vega-redesign .vega-perf__copy p{font-size:13px;line-height:1.55;margin:6px 0}
+  .vega-redesign .vega-perf__tabs{gap:8px;grid-template-columns:1fr 1fr;margin-top:12px}
+  .vega-redesign .vega-perf__tabs button{gap:3px;padding:10px 12px 14px}
+  .vega-redesign .vega-perf__tab-label{font-size:11px}
+  .vega-redesign .vega-perf__tabs strong{font-size:17px}
+}
+@media(max-width:900px) and (max-height:720px){
+  .vega-redesign .vega-perf__stage{width:min(100%,calc(18svh * 1.565))}
+  .vega-redesign .vega-perf__gauge{max-width:20svh}
+  .vega-redesign .vega-perf__copy{min-height:84px}
+  .vega-redesign .vega-perf__copy p{font-size:12px;margin:4px 0}
+  .vega-redesign .vega-perf__tabs button{padding:8px 12px 12px}
+}
+@media(prefers-reduced-motion:reduce){
+  .vega-redesign .vega-perf__ov *,.vega-redesign .vega-perf__arc,.vega-redesign .vega-perf__copy{animation:none!important}
+  .vega-redesign .vega-perf__tabs button.is-active i{animation:none}
+}
+
+/* ---------- 05 Tecnología: mapa interactivo del sistema ---------- */
+.vega-redesign .vega-tech{align-items:center;gap:6%;grid-template-columns:1fr 1.05fr}
+.vega-redesign .vega-tech__copy>p:not(.eyebrow){color:#4d5259;font-size:15px;line-height:1.65;max-width:42ch}
+.vega-redesign .vega-tech__detail{animation:vega-3d-in .5s cubic-bezier(.22,1,.36,1) both;background:#fff;border:1px solid #d9dde3;border-left:3px solid var(--blue);margin-top:34px;max-width:480px;min-height:178px;padding:22px 24px}
+.vega-redesign .vega-tech__detail>p{color:#171a1f;font-size:15px;line-height:1.6;margin:10px 0 14px}
+.vega-redesign .vega-tech__detail ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0 0 12px;padding:0}
+.vega-redesign .vega-tech__detail li{background:#e8f0f5;color:#0876c4;font-size:11px;letter-spacing:.06em;padding:6px 10px}
+.vega-redesign .vega-tech__detail small{color:#5f6f7a;font-size:11px}
+.vega-redesign .vega-tech__map{aspect-ratio:1;background:radial-gradient(circle,#d3dde6 1px,transparent 1.4px) 0 0/22px 22px,#fff;border:1px solid #d9dde3;margin:0 auto;max-width:560px;position:relative;width:100%}
+.vega-redesign .vega-tech__map svg{height:100%;inset:0;position:absolute;width:100%}
+.vega-redesign .vega-tech__orbit{fill:none;stroke:#cfd9e1;stroke-dasharray:1 2.2;stroke-width:.35}
+.vega-redesign .vega-tech__orbit--far{stroke:#e0e7ed}
+.vega-redesign .vega-tech__line{stroke:#c4d0da;stroke-width:.35;transition:stroke .4s,stroke-width .4s}
+.vega-redesign .vega-tech__line.is-active{stroke:var(--blue);stroke-width:.6}
+.vega-redesign .vega-tech__signal{fill:var(--blue);filter:drop-shadow(0 0 1.2px rgba(22,140,222,.9))}
+.vega-redesign .vega-tech__hub{align-items:center;background:#171a1f;border-radius:50%;box-shadow:0 14px 34px -14px rgba(23,26,31,.7);color:#fff;display:flex;flex-direction:column;height:24%;justify-content:center;left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);width:24%}
+.vega-redesign .vega-tech__hub span{font-size:clamp(16px,2.4vw,24px);font-weight:600;letter-spacing:-.03em}
+.vega-redesign .vega-tech__hub small{color:#8fa3b0;font-size:7px;letter-spacing:.2em;margin-top:2px}
+.vega-redesign .vega-tech__hub i{animation:vega-tech-spin 14s linear infinite;border:1px dashed var(--blue);border-radius:50%;inset:-9px;position:absolute}
+@keyframes vega-tech-spin{to{transform:rotate(360deg)}}
+.vega-redesign .vega-tech__node{align-items:center;background:#fff;border:1px solid #c4d0da;color:#171a1f;cursor:pointer;display:inline-flex;font-size:clamp(11px,1.3vw,13px);gap:9px;min-height:44px;padding:0 14px 0 8px;position:absolute;transform:translate(-50%,-50%);transition:background .3s,border-color .3s,color .3s,box-shadow .3s;white-space:nowrap;z-index:2}
+.vega-redesign .vega-tech__node b{align-items:center;background:#e8f0f5;color:#0876c4;display:grid;font-size:10px;height:28px;letter-spacing:.06em;place-items:center;transition:background .3s,color .3s;width:28px}
+.vega-redesign .vega-tech__node:hover{border-color:var(--blue)}
+.vega-redesign .vega-tech__node.is-active{background:var(--blue);border-color:var(--blue);box-shadow:0 14px 28px -14px rgba(22,140,222,.8);color:#fff}
+.vega-redesign .vega-tech__node.is-active b{background:rgba(255,255,255,.2);color:#fff}
+
+@media(max-width:900px){
+  .vega-redesign .vega-tech{gap:28px;grid-template-columns:1fr}
+  .vega-redesign .vega-tech__map{order:2}
+  .vega-redesign .vega-tech__detail{margin-top:22px;max-width:none;min-height:0;padding:18px 18px}
+  .vega-redesign .vega-tech__node{font-size:11px;gap:6px;min-height:44px;padding:0 10px 0 6px}
+  .vega-redesign .vega-tech__node b{height:26px;width:26px}
+  .vega-redesign .vega-tech__hub small{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .vega-redesign .vega-tech__hub i,.vega-redesign .vega-tech__detail{animation:none}
+}
+
+/* ---------- 08 Especificaciones interactivas ---------- */
+.vega-redesign .vega-specs{background:var(--mineral,#f5f6f7);color:var(--ink,#171a1f);display:grid;gap:8%;grid-template-columns:.85fr 1.4fr}
+.vega-redesign .vega-specs__intro{align-self:start;position:sticky;top:110px}
+.vega-redesign .vega-specs__intro h2{font-size:clamp(70px,9vw,140px);margin:35px 0 25px}
+.vega-redesign .vega-specs__intro h3{font-size:32px;font-weight:480;margin:0}
+.vega-redesign .vega-specs__note{color:#5f6f7a;font-size:12px;line-height:1.7;margin:22px 0 0;max-width:34ch}
+.vega-redesign .vega-specs__cta{align-items:center;background:#171a1f;color:#fff!important;display:flex;gap:18px;justify-content:space-between;margin-top:34px;max-width:420px;overflow:hidden;padding:18px 20px;position:relative;transition:transform .3s,background .3s}
+.vega-redesign .vega-specs__cta:hover{background:#0876c4;transform:translateY(-2px)}
+.vega-redesign .vega-specs__cta b{display:block;font-size:14px;font-weight:560}
+.vega-redesign .vega-specs__cta small{color:#b8c8d2;display:block;font-size:11px;margin-top:4px}
+.vega-redesign .vega-specs__cta i{align-items:center;border:1px solid rgba(255,255,255,.4);display:flex;flex:0 0 auto;font-style:normal;height:38px;justify-content:center;transition:background .3s,transform .3s;width:38px}
+.vega-redesign .vega-specs__cta:hover i{background:#fff;color:#0876c4;transform:translate(2px,-2px)}
+.vega-redesign .vega-specs__body{min-width:0}
+.vega-redesign .vega-specs__tabs{display:flex;gap:8px;margin-bottom:26px;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x proximity;scrollbar-width:none}
+.vega-redesign .vega-specs__tabs::-webkit-scrollbar{display:none}
+.vega-redesign .vega-specs__tabs button{align-items:center;background:#fff;border:1px solid #cfd8df;color:#4d5259;cursor:pointer;display:inline-flex;flex:0 0 auto;font-size:13px;gap:10px;min-height:44px;padding:0 18px;scroll-snap-align:center;transition:background .25s,border-color .25s,color .25s}
+.vega-redesign .vega-specs__tabs button span{color:var(--blue);font-size:10px;letter-spacing:.1em}
+.vega-redesign .vega-specs__tabs button:hover{border-color:var(--blue)}
+.vega-redesign .vega-specs__tabs button.is-active{background:var(--blue);border-color:var(--blue);color:#fff}
+.vega-redesign .vega-specs__tabs button.is-active span{color:#062033}
+.vega-redesign .vega-specs__panel{min-height:340px}
+.vega-redesign .vega-specs__meter{align-items:center;display:flex;gap:14px;margin-bottom:6px}
+.vega-redesign .vega-specs__meter div{display:flex;gap:4px}
+.vega-redesign .vega-specs__meter i{background:#d3dbe2;height:6px;width:26px}
+.vega-redesign .vega-specs__meter i.is-on{animation:vega-specs-bar .8s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(var(--r)*90ms);background:var(--blue);transform-origin:left}
+@keyframes vega-specs-bar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.vega-redesign .vega-specs__meter span{color:#5f6f7a;font-size:11px;letter-spacing:.04em}
+.vega-redesign .vega-specs__panel dl{margin:0}
+.vega-redesign .vega-specs__panel dl>div{animation:vega-specs-row .55s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(var(--r)*60ms);align-items:center;border-bottom:1px solid #d3dbe2;display:grid;gap:18px;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);padding:20px 0;transition:background .2s,padding .2s}
+.vega-redesign .vega-specs__panel dl>div:hover{background:linear-gradient(90deg,rgba(22,140,222,.1),transparent);padding-left:12px}
+.vega-redesign .vega-specs__panel dt{color:#5f6f7a;font-size:13px}
+.vega-redesign .vega-specs__panel dd{font-size:16px;font-weight:500;margin:0;text-align:right}
+.vega-redesign .vega-specs__panel dd.is-pending{color:#8a97a0;font-size:11px;font-weight:400;letter-spacing:.08em;text-transform:uppercase}
+.vega-redesign .vega-specs__panel .has-value dt{color:#171a1f}
+@keyframes vega-specs-row{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+.vega-redesign .vega-specs__hint{color:#8a97a0;display:none;font-size:10px;letter-spacing:.12em;margin:22px 0 0;text-align:center;text-transform:uppercase}
+
+@media(max-width:900px){
+  .vega-redesign .vega-specs{gap:34px;grid-template-columns:1fr}
+  .vega-redesign .vega-specs__intro{position:static}
+  .vega-redesign .vega-specs__intro h2{font-size:clamp(64px,22vw,96px);margin:20px 0 14px}
+  .vega-redesign .vega-specs__intro h3{font-size:24px}
+  .vega-redesign .vega-specs__cta{max-width:none}
+  .vega-redesign .vega-specs__tabs{margin-left:-6vw;margin-right:-6vw;padding:0 6vw 6px}
+  .vega-redesign .vega-specs__panel{min-height:0}
+  .vega-redesign .vega-specs__panel dl>div{gap:12px;padding:16px 0}
+  .vega-redesign .vega-specs__panel dl>div:hover{padding-left:0}
+  .vega-redesign .vega-specs__panel dd{font-size:15px}
+  .vega-redesign .vega-specs__hint{display:block}
+}
+@media(prefers-reduced-motion:reduce){
+  .vega-redesign .vega-specs__panel dl>div,.vega-redesign .vega-specs__meter i{animation:none!important}
+}
+
+/* ---------- 05 Tecnología: mapa interactivo del sistema ---------- */
+.vega-redesign .vega-tech{align-items:center;gap:6%;grid-template-columns:1fr 1.05fr}
+.vega-redesign .vega-tech__copy>p:not(.eyebrow){color:#4d5259;font-size:15px;line-height:1.65;max-width:42ch}
+.vega-redesign .vega-tech__detail{animation:vega-3d-in .5s cubic-bezier(.22,1,.36,1) both;background:#fff;border:1px solid #d9dde3;border-left:3px solid var(--blue);margin-top:34px;max-width:480px;min-height:178px;padding:22px 24px}
+.vega-redesign .vega-tech__detail>p{color:#171a1f;font-size:15px;line-height:1.6;margin:10px 0 14px}
+.vega-redesign .vega-tech__detail ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0 0 12px;padding:0}
+.vega-redesign .vega-tech__detail li{background:#e8f0f5;color:#0876c4;font-size:11px;letter-spacing:.06em;padding:6px 10px}
+.vega-redesign .vega-tech__detail small{color:#5f6f7a;font-size:11px}
+.vega-redesign .vega-tech__map{aspect-ratio:1;background:radial-gradient(circle,#d3dde6 1px,transparent 1.4px) 0 0/22px 22px,#fff;border:1px solid #d9dde3;margin:0 auto;max-width:560px;position:relative;width:100%}
+.vega-redesign .vega-tech__map svg{height:100%;inset:0;position:absolute;width:100%}
+.vega-redesign .vega-tech__orbit{fill:none;stroke:#cfd9e1;stroke-dasharray:1 2.2;stroke-width:.35}
+.vega-redesign .vega-tech__orbit--far{stroke:#e0e7ed}
+.vega-redesign .vega-tech__line{stroke:#c4d0da;stroke-width:.35;transition:stroke .4s,stroke-width .4s}
+.vega-redesign .vega-tech__line.is-active{stroke:var(--blue);stroke-width:.6}
+.vega-redesign .vega-tech__signal{fill:var(--blue);filter:drop-shadow(0 0 1.2px rgba(22,140,222,.9))}
+.vega-redesign .vega-tech__hub{align-items:center;background:#171a1f;border-radius:50%;box-shadow:0 14px 34px -14px rgba(23,26,31,.7);color:#fff;display:flex;flex-direction:column;height:24%;justify-content:center;left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);width:24%}
+.vega-redesign .vega-tech__hub span{font-size:clamp(16px,2.4vw,24px);font-weight:600;letter-spacing:-.03em}
+.vega-redesign .vega-tech__hub small{color:#8fa3b0;font-size:7px;letter-spacing:.2em;margin-top:2px}
+.vega-redesign .vega-tech__hub i{animation:vega-tech-spin 14s linear infinite;border:1px dashed var(--blue);border-radius:50%;inset:-9px;position:absolute}
+@keyframes vega-tech-spin{to{transform:rotate(360deg)}}
+.vega-redesign .vega-tech__node{align-items:center;background:#fff;border:1px solid #c4d0da;color:#171a1f;cursor:pointer;display:inline-flex;font-size:clamp(11px,1.3vw,13px);gap:9px;min-height:44px;padding:0 14px 0 8px;position:absolute;transform:translate(-50%,-50%);transition:background .3s,border-color .3s,color .3s,box-shadow .3s;white-space:nowrap;z-index:2}
+.vega-redesign .vega-tech__node b{align-items:center;background:#e8f0f5;color:#0876c4;display:grid;font-size:10px;height:28px;letter-spacing:.06em;place-items:center;transition:background .3s,color .3s;width:28px}
+.vega-redesign .vega-tech__node:hover{border-color:var(--blue)}
+.vega-redesign .vega-tech__node.is-active{background:var(--blue);border-color:var(--blue);box-shadow:0 14px 28px -14px rgba(22,140,222,.8);color:#fff}
+.vega-redesign .vega-tech__node.is-active b{background:rgba(255,255,255,.2);color:#fff}
+
+@media(max-width:900px){
+  .vega-redesign .vega-tech{gap:28px;grid-template-columns:1fr}
+  .vega-redesign .vega-tech__map{order:2}
+  .vega-redesign .vega-tech__detail{margin-top:22px;max-width:none;min-height:0;padding:18px 18px}
+  .vega-redesign .vega-tech__node{font-size:11px;gap:6px;min-height:44px;padding:0 10px 0 6px}
+  .vega-redesign .vega-tech__node b{height:26px;width:26px}
+  .vega-redesign .vega-tech__hub small{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .vega-redesign .vega-tech__hub i,.vega-redesign .vega-tech__detail{animation:none}
+}
+
+/* ---------- 08 Especificaciones interactivas ---------- */
+.vega-redesign .vega-specs{background:var(--mineral,#f5f6f7);color:var(--ink,#171a1f);display:grid;gap:8%;grid-template-columns:.85fr 1.4fr}
+.vega-redesign .vega-specs__intro{align-self:start;position:sticky;top:110px}
+.vega-redesign .vega-specs__intro h2{font-size:clamp(70px,9vw,140px);margin:35px 0 25px}
+.vega-redesign .vega-specs__intro h3{font-size:32px;font-weight:480;margin:0}
+.vega-redesign .vega-specs__note{color:#5f6f7a;font-size:12px;line-height:1.7;margin:22px 0 0;max-width:34ch}
+.vega-redesign .vega-specs__cta{align-items:center;background:#171a1f;color:#fff!important;display:flex;gap:18px;justify-content:space-between;margin-top:34px;max-width:420px;overflow:hidden;padding:18px 20px;position:relative;transition:transform .3s,background .3s}
+.vega-redesign .vega-specs__cta:hover{background:#0876c4;transform:translateY(-2px)}
+.vega-redesign .vega-specs__cta b{display:block;font-size:14px;font-weight:560}
+.vega-redesign .vega-specs__cta small{color:#b8c8d2;display:block;font-size:11px;margin-top:4px}
+.vega-redesign .vega-specs__cta i{align-items:center;border:1px solid rgba(255,255,255,.4);display:flex;flex:0 0 auto;font-style:normal;height:38px;justify-content:center;transition:background .3s,transform .3s;width:38px}
+.vega-redesign .vega-specs__cta:hover i{background:#fff;color:#0876c4;transform:translate(2px,-2px)}
+.vega-redesign .vega-specs__body{min-width:0}
+.vega-redesign .vega-specs__tabs{display:flex;gap:8px;margin-bottom:26px;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x proximity;scrollbar-width:none}
+.vega-redesign .vega-specs__tabs::-webkit-scrollbar{display:none}
+.vega-redesign .vega-specs__tabs button{align-items:center;background:#fff;border:1px solid #cfd8df;color:#4d5259;cursor:pointer;display:inline-flex;flex:0 0 auto;font-size:13px;gap:10px;min-height:44px;padding:0 18px;scroll-snap-align:center;transition:background .25s,border-color .25s,color .25s}
+.vega-redesign .vega-specs__tabs button span{color:var(--blue);font-size:10px;letter-spacing:.1em}
+.vega-redesign .vega-specs__tabs button:hover{border-color:var(--blue)}
+.vega-redesign .vega-specs__tabs button.is-active{background:var(--blue);border-color:var(--blue);color:#fff}
+.vega-redesign .vega-specs__tabs button.is-active span{color:#062033}
+.vega-redesign .vega-specs__panel{min-height:340px}
+.vega-redesign .vega-specs__meter{align-items:center;display:flex;gap:14px;margin-bottom:6px}
+.vega-redesign .vega-specs__meter div{display:flex;gap:4px}
+.vega-redesign .vega-specs__meter i{background:#d3dbe2;height:6px;width:26px}
+.vega-redesign .vega-specs__meter i.is-on{animation:vega-specs-bar .8s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(var(--r)*90ms);background:var(--blue);transform-origin:left}
+@keyframes vega-specs-bar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.vega-redesign .vega-specs__meter span{color:#5f6f7a;font-size:11px;letter-spacing:.04em}
+.vega-redesign .vega-specs__panel dl{margin:0}
+.vega-redesign .vega-specs__panel dl>div{animation:vega-specs-row .55s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(var(--r)*60ms);align-items:center;border-bottom:1px solid #d3dbe2;display:grid;gap:18px;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);padding:20px 0;transition:background .2s,padding .2s}
+.vega-redesign .vega-specs__panel dl>div:hover{background:linear-gradient(90deg,rgba(22,140,222,.1),transparent);padding-left:12px}
+.vega-redesign .vega-specs__panel dt{color:#5f6f7a;font-size:13px}
+.vega-redesign .vega-specs__panel dd{font-size:16px;font-weight:500;margin:0;text-align:right}
+.vega-redesign .vega-specs__panel dd.is-pending{color:#8a97a0;font-size:11px;font-weight:400;letter-spacing:.08em;text-transform:uppercase}
+.vega-redesign .vega-specs__panel .has-value dt{color:#171a1f}
+@keyframes vega-specs-row{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+.vega-redesign .vega-specs__hint{color:#8a97a0;display:none;font-size:10px;letter-spacing:.12em;margin:22px 0 0;text-align:center;text-transform:uppercase}
+
+@media(max-width:900px){
+  .vega-redesign .vega-specs{gap:34px;grid-template-columns:1fr}
+  .vega-redesign .vega-specs__intro{position:static}
+  .vega-redesign .vega-specs__intro h2{font-size:clamp(64px,22vw,96px);margin:20px 0 14px}
+  .vega-redesign .vega-specs__intro h3{font-size:24px}
+  .vega-redesign .vega-specs__cta{max-width:none}
+  .vega-redesign .vega-specs__tabs{margin-left:-6vw;margin-right:-6vw;padding:0 6vw 6px}
+  .vega-redesign .vega-specs__panel{min-height:0}
+  .vega-redesign .vega-specs__panel dl>div{gap:12px;padding:16px 0}
+  .vega-redesign .vega-specs__panel dl>div:hover{padding-left:0}
+  .vega-redesign .vega-specs__panel dd{font-size:15px}
+  .vega-redesign .vega-specs__hint{display:block}
+}
+@media(prefers-reduced-motion:reduce){
+  .vega-redesign .vega-specs__panel dl>div,.vega-redesign .vega-specs__meter i{animation:none!important}
+}
+/* ===== Visor 3D VEGA: pantalla completa y dron resaltado ===== */
+.vega-redesign .vega-3d{background:#0a1218;color:#eaf5fa;overflow-x:clip}
+.vega-redesign .vega-3d h2{color:#fff}
+.vega-redesign .vega-3d .eyebrow{color:#9fb8c8}
+.vega-redesign .vega-3d-note{color:#9fb8c8}
+.vega-redesign .vega-3d-shell{background:radial-gradient(ellipse 56% 60% at 50% 47%,#a9cbdd 0%,#6a8ea3 24%,#35546a 52%,#13222c 82%,#0a1218 100%);border:0;border-bottom:1px solid #2c4a5b;border-top:1px solid #2c4a5b;margin-inline:calc(50% - 50vw);width:100vw}
+.vega-redesign .vega-3d-shell:before{background-image:linear-gradient(rgba(220,240,252,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(220,240,252,.12) 1px,transparent 1px)}
+.vega-redesign .vega-3d-shell:after{background:radial-gradient(ellipse,rgba(205,232,248,.55),transparent 70%)}
+@media(min-width:721px){
+  .vega-redesign .vega-3d-shell{height:clamp(560px,100svh,940px)}
+  .vega-redesign .vega-3d-badge{left:max(27px,6%)}
+  .vega-redesign .vega-3d-zoom{right:max(27px,6%)}
+  .vega-redesign .vega-3d-views,.vega-redesign .vega-3d-parts{left:max(27px,6%)}
+  .vega-redesign .vega-3d-help{right:max(27px,6%)}
+}
+@media(max-width:720px){
+  .vega-redesign .vega-3d-scene{height:clamp(340px,56svh,520px)}
+}
+
+/* ===== 04 Rendimiento: dron 3D en lugar de foto ===== */
+.vega-redesign .vega-perf__frame:before{background:radial-gradient(ellipse 52% 50% at 50% 50%,rgba(150,196,222,.5),rgba(60,100,125,.26) 48%,transparent 74%);content:"";inset:-6%;pointer-events:none;position:absolute}
+.vega-redesign .vega-perf__frame img{transition:opacity .8s}
+.vega-redesign .vega-perf__frame.is-3d img{opacity:0}
+.vega-redesign .vega-perf__scene{inset:0;position:absolute}
+.vega-redesign .vega-perf__scene canvas{display:block;height:100%;width:100%}
+.vega-redesign .vega-perf__ov{z-index:2}
+.vega-redesign .vega-perf__ov--autonomia i{left:42%;top:34%}

@@ -37,7 +37,7 @@ export default function OrionFlight() {
           scrollTrigger: {
             trigger: section,
             start: () => "top top+=" + (document.querySelector(".orion-rail")?.getBoundingClientRect().height ?? 58),
-            end: () => "+=" + Math.round(innerHeight * 0.8 * (total - 1)),
+            end: () => "+=" + Math.round(innerHeight * 0.55 * (total - 1)),
             pin: true,
             scrub: 0.8,
             invalidateOnRefresh: true,
@@ -93,7 +93,7 @@ export default function OrionFlight() {
   return (
     <section ref={root} className="orion-flight" id="recorrido" aria-labelledby="orion-flight-title">
       <div className="orion-flight__head">
-        <div className="orion-section-tag orion-section-tag--light"><span>→</span> RECORRIDO</div>
+        <div className="orion-section-tag orion-section-tag--light"><span>04</span> RECORRIDO</div>
         <h2 id="orion-flight-title">
           {orionFlight.title[0]}
           <br />

@@ -1,290 +1,180 @@
 "use client";
-import { vegaCopy } from "@/lib/vega/copy";
 
 import { useEffect, useRef, useState } from "react";
-
+import { Minus, Plus, RotateCcw } from "lucide-react";
+import { vegaCopy } from "@/lib/vega/copy";
 import { vegaData } from "@/lib/vega/data";
-import { viewerData } from "@/lib/vega/viewer-data";
-import type { SceneController } from "./VegaDroneScene";
+import { vegaPoints } from "@/lib/vega/viewer-data";
+import type { VegaSceneAPI } from "@/lib/vega/viewer-scene";
+
+const views = [
+  ["general", "General"],
+  ["front", "Frontal"],
+  ["top", "Superior"],
+  ["side", "Lateral"],
+] as const;
+
 export function VegaViewer() {
-  const root = useRef<HTMLDivElement>(null);
-  const mount = useRef<HTMLDivElement>(null);
-  const api = useRef<SceneController | null>(null);
-  const markers = useRef<(HTMLButtonElement | null)[]>([]);
-  const [status, setStatus] = useState<
-    "waiting" | "loading" | "ready" | "error"
-  >("waiting");
+  const section = useRef<HTMLElement>(null);
+  const host = useRef<HTMLDivElement>(null);
+  const scene = useRef<VegaSceneAPI | null>(null);
+  const [ready, setReady] = useState(false);
+  const [error, setError] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [active] = useState(true);
-  const [selected, setSelected] = useState<string | null>(null);
-  const [view, setView] = useState("general");
   const [attempt, setAttempt] = useState(0);
+  const [view, setView] = useState<(typeof views)[number][0]>("general");
+  const [selected, setSelected] = useState<string | null>(null);
+  const point = vegaPoints.find((p) => p.id === selected);
+
   useEffect(() => {
-    let cancelled = false;
-    let began = false;
-    const abort = new AbortController();
-    let controller: SceneController | null = null;
-    const observer = new IntersectionObserver(
-      async (entries) => {
-        if (!entries[0]?.isIntersecting || began) return;
-        began = true;
-        setStatus("loading");
-        try {
-          const { createDroneScene } = await import("./VegaDroneScene");
-          if (cancelled) return;
-          controller = await createDroneScene(
-            mount.current!,
-            markers.current,
-            (percent) => {
-              if (!cancelled) setProgress(percent);
-            },
-            () => {
-              if (!cancelled) setStatus("error");
-            },
-            abort.signal,
-          );
-          if (cancelled) {
-            controller.dispose();
-            return;
-          }
-          api.current = controller;
-          setStatus("ready");
-        } catch {
-          if (!cancelled) setStatus("error");
+    const element = host.current;
+    const root = section.current;
+    if (!element || !root) return;
+    let disposed = false;
+    let visible = false;
+    let started = false;
+    const start = async () => {
+      if (started) return;
+      started = true;
+      setError(false);
+      try {
+        const { createVegaScene } = await import("@/lib/vega/viewer-scene");
+        if (disposed) return;
+        const api = await createVegaScene(element, {
+          reduced: matchMedia("(prefers-reduced-motion: reduce)").matches,
+          onReady: () => !disposed && setReady(true),
+          onError: () => !disposed && setError(true),
+          onFocus: (id) => !disposed && (setSelected(id), setView("general")),
+          onProgress: (p) => !disposed && setProgress(p),
+        });
+        if (disposed) api.dispose();
+        else {
+          scene.current = api;
+          api.active(visible && !document.hidden);
         }
+      } catch {
+        if (!disposed) setError(true);
+      }
+    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible) void start();
+        scene.current?.active(visible && !document.hidden);
       },
-      { rootMargin: "300px" },
+      { rootMargin: "300px 0px" },
     );
-    if (root.current) observer.observe(root.current);
+    const onVisibility = () => scene.current?.active(visible && !document.hidden);
+    observer.observe(root);
+    document.addEventListener("visibilitychange", onVisibility);
     return () => {
-      cancelled = true;
-      abort.abort();
+      disposed = true;
       observer.disconnect();
-      controller?.dispose();
-      api.current = null;
+      document.removeEventListener("visibilitychange", onVisibility);
+      scene.current?.dispose();
+      scene.current = null;
     };
   }, [attempt]);
-  useEffect(() => {
-    api.current?.setInteractive(active);
-  }, [active, status]);
-  function chooseView(id: string) {
-    setView(id);
+
+  const reset = () => {
+    scene.current?.view("general");
+    setView("general");
     setSelected(null);
-    api.current?.view(id);
-  }
-  function chooseHotspot(i: number) {
-    setSelected(viewerData.hotspots[i].id);
-    setView("");
-    api.current?.hotspot(i);
-  }
-  const hotspot = viewerData.hotspots.find((h) => h.id === selected);
+  };
+  const retry = () => {
+    scene.current?.dispose();
+    scene.current = null;
+    setReady(false);
+    setProgress(0);
+    setAttempt((n) => n + 1);
+  };
+  const off = !ready || error;
+
   return (
-    <section
-      ref={root}
-      className="viewer-section section"
-      id="explorador"
-      aria-labelledby="viewer-heading"
-    >
+    <section ref={section} className="section vega-3d" id="explorador" aria-labelledby="vega-3d-title">
       <div className="section-head">
-        <div>
-          <p className="eyebrow">{vegaCopy.label_02_explorador_interactivo}</p>
-          <h2 id="viewer-heading">{vegaCopy.tu_punto_de_vista}</h2>
-        </div>
-        <span className="viewer-badge">
-          <i />
-          {vegaCopy.modelo_original_vega}
-        </span>
+        <p className="eyebrow">{vegaCopy.label_02_explorador_interactivo}</p>
+        <span className="eyebrow">Arrastra, gira y revisa la estructura.</span>
       </div>
-      <div className="viewer-workspace">
-  <div className="viewer-stage">
-    <div className="viewer-canvas is-active">
-      <img
-        className={
-          "viewer-fallback " + (status === "ready" ? "is-hidden" : "")
-        }
-        src={vegaData.assets.hero}
-        alt="Vista general de VEGA, alternativa al modelo interactivo"
-        width="1440"
-        height="920"
-      />
+      <h2 id="vega-3d-title">{vegaCopy.tu_punto_de_vista}</h2>
 
-      <div className="canvas-mount" ref={mount} />
+      <div className="vega-3d-shell">
+        <div ref={host} className="vega-3d-scene" tabIndex={0}>
+          {(!ready || error) && (
+            <div className="vega-3d-fallback" role="status" aria-live="polite">
+              <img src={vegaData.assets.hero} alt="" width="1440" height="920" />
+              <span className="vega-3d-orbit" aria-hidden="true" />
+              <p>
+                {error
+                  ? "El visor 3D no está disponible en este dispositivo."
+                  : `Cargando modelo 3D… ${Math.round(progress)}%`}
+              </p>
+              {error && <button type="button" onClick={retry}>Reintentar carga</button>}
+            </div>
+          )}
+        </div>
 
-      <div className="viewer-model-badge">
-        <span>MODELO WEB</span>
-        <strong>VEGA</strong>
+        <div className="vega-3d-badge">
+          <span>MODELO WEB</span>
+          <strong>VEGA</strong>
+        </div>
+
+        <div className="vega-3d-views" role="group" aria-label="Vistas del modelo">
+          {views.map(([id, label]) => (
+            <button
+              key={id}
+              type="button"
+              disabled={off}
+              aria-pressed={view === id}
+              onClick={() => {
+                scene.current?.view(id);
+                setView(id);
+                setSelected(null);
+              }}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
+        <div className="vega-3d-zoom">
+          <button type="button" aria-label="Acercar modelo" disabled={off} onClick={() => scene.current?.zoom(0.82)}><Plus /></button>
+          <button type="button" aria-label="Alejar modelo" disabled={off} onClick={() => scene.current?.zoom(1.2)}><Minus /></button>
+          <button type="button" aria-label="Restablecer vista" disabled={off} onClick={reset}><RotateCcw /></button>
+        </div>
+
+        <p className="vega-3d-help">ARRASTRA PARA GIRAR · UTILIZA LOS BOTONES PARA ACERCAR</p>
+
+        <div className="vega-3d-parts" aria-label="Componentes de VEGA">
+          {vegaPoints.map((p) => (
+            <button
+              key={p.id}
+              type="button"
+              disabled={off}
+              aria-pressed={selected === p.id}
+              onClick={() => scene.current?.focus(p.id)}
+            >
+              <span>+</span>
+              {p.name}
+            </button>
+          ))}
+        </div>
+
+        {point && (
+          <aside className="vega-3d-info" aria-live="polite">
+            <span>COMPONENTE VEGA</span>
+            <h3>{point.name}</h3>
+            <p>{point.description}</p>
+            <button type="button" onClick={reset}>
+              Volver a vista general <RotateCcw size={14} />
+            </button>
+          </aside>
+        )}
       </div>
 
-      {status === "ready" &&
-        viewerData.hotspots.map((part, index) => (
-          <button
-            key={part.id}
-            ref={(element) => {
-              markers.current[index] = element;
-            }}
-            type="button"
-            onClick={() => chooseHotspot(index)}
-            className={
-              "hotspot " + (selected === part.id ? "selected" : "")
-            }
-            aria-label={"Explorar " + part.label}
-            aria-pressed={selected === part.id}
-          >
-            +
-          </button>
-        ))}
-
-      {(status === "loading" || status === "waiting") && (
-        <div className="viewer-loading" role="status">
-          <b>{vegaCopy.vega_2}</b>
-
-          <span>
-            {vegaCopy.cargando_modelo}
-            {Math.round(progress)}%
-          </span>
-
-          <progress
-            max={100}
-            value={progress}
-            aria-label="Carga del modelo VEGA"
-          />
-        </div>
-      )}
-
-      {status === "error" && (
-        <div className="viewer-error" role="status">
-          <p>
-            {vegaCopy.el_visor_3d_no_esta_disponible}
-            <br />
-            {vegaCopy.puedes_continuar_explorando_la_pagina}
-          </p>
-
-          <button
-            className="outline-control"
-            onClick={() => {
-              api.current?.dispose();
-              api.current = null;
-              setProgress(0);
-              setAttempt((current) => current + 1);
-            }}
-          >
-            {vegaCopy.reintentar_carga}
-          </button>
-        </div>
-      )}
-    </div>
-
-    <div
-      className="viewer-floating-views"
-      role="group"
-      aria-label="Vistas del modelo"
-    >
-      {viewerData.views.map((item) => (
-        <button
-          key={item.id}
-          type="button"
-          disabled={status !== "ready"}
-          aria-pressed={view === item.id}
-          onClick={() => chooseView(item.id)}
-        >
-          {item.label}
-        </button>
-      ))}
-    </div>
-
-    <div className="viewer-floating-zoom">
-      <button
-        type="button"
-        disabled={status !== "ready"}
-        onClick={() => api.current?.zoom(0.87)}
-        aria-label="Acercar modelo"
-      >
-        +
-      </button>
-
-      <button
-        type="button"
-        disabled={status !== "ready"}
-        onClick={() => api.current?.zoom(1.15)}
-        aria-label="Alejar modelo"
-      >
-        −
-      </button>
-
-      <button
-        type="button"
-        disabled={status !== "ready"}
-        onClick={() => chooseView("general")}
-        aria-label="Restablecer vista"
-      >
-        ↻
-      </button>
-    </div>
-
-    <div
-      className="viewer-floating-parts"
-      aria-label="Partes principales de VEGA"
-    >
-      {viewerData.hotspots.map((part, index) => (
-        <button
-          key={part.id}
-          type="button"
-          disabled={status !== "ready"}
-          aria-pressed={selected === part.id}
-          onClick={() => chooseHotspot(index)}
-        >
-          <span>+</span>
-          {part.shortLabel}
-        </button>
-      ))}
-    </div>
-
-    <p className="viewer-floating-help">
-      ARRASTRA PARA GIRAR · PELLIZCA O UTILIZA LOS BOTONES PARA ACERCAR
-    </p>
-  </div>
-
-  <aside
-    className={"viewer-detail-panel " + (hotspot ? "has-selection" : "")}
-    aria-live="polite"
-  >
-    <span className="viewer-detail-index">
-      {hotspot
-        ? String(
-            viewerData.hotspots.findIndex(
-              (part) => part.id === hotspot.id,
-            ) + 1,
-          ).padStart(2, "0")
-        : "00"}
-    </span>
-
-    <div>
-      <span className="eyebrow">
-        {hotspot ? "COMPONENTE VEGA" : "EXPLORACIÓN 3D"}
-      </span>
-
-      <h3>
-        {hotspot ? hotspot.label : "Selecciona una parte del dron"}
-      </h3>
-
-      <p>
-        {hotspot
-          ? hotspot.description
-          : "Utiliza los botones para enfocar un componente y conocer su función sin ocultar el modelo tridimensional."}
+      <p className="vega-3d-note">
+        Selecciona los puntos <strong>+</strong> para conocer cada componente y acercarte a esa zona.
       </p>
-
-      {hotspot && (
-        <button
-          type="button"
-          onClick={() => chooseView("general")}
-          className="text-link"
-        >
-          VOLVER A VISTA GENERAL ↗
-        </button>
-      )}
-    </div>
-  </aside>
-</div>
       <div className="sr-only">
         <p>{vegaCopy.tambien_puedes_explorar_vega_usando_los_botones_de}</p>
       </div>
