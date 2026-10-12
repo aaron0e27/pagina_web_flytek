@@ -95,7 +95,28 @@ export const payloads : PayloadItem[] = [
     alt: "Mantenimiento con control remoto",
     fit: "cover",
     position: "50% 50%",
-  }
+  },
+];
+
+export const payloadCapabilities = [
+  {
+    title: "Medición precisa",
+    text: "Sensores térmicos radiométricos, cámaras multiespectrales y unidades de medición especiales para obtener mediciones con excelente precisión sin importar el medio.",
+    image: "/vega/images/PayloadDual.jpg",
+    alt: "Medición precisa con sensores térmicos radiométricos",
+  },
+  {
+    title: "Imagen estable",
+    text: "Estabilizador de video en dos o tres ejes que permite cualquier ángulo de visión, para tener siempre la mejor perspectiva en inspección y vigilancia.",
+    image: "/vega/images/imagen-estable.webp",
+    alt: "Imagen estabilizada durante la operación",
+  },
+  {
+    title: "Inspecciona con mayor seguridad y eficiencia",
+    text: "Cámara térmica con sensor radiométrico para valores de temperatura precisos de ±5 °C, acompañada de una cámara Full HD para no perder ningún detalle.",
+    image: "/vega/images/inspeccion-segura.webp",
+    alt: "Inspección con cámara térmica y cámara Full HD",
+  },
 ];
 
 /* ===== Visor 3D con el mismo formato de ORION ===== */
