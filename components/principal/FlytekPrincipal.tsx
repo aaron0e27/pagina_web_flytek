@@ -5,43 +5,41 @@ import { ArrowDown, ArrowUpRight, Minus, Plus, Pause, Play } from "lucide-react"
 import SiteHeader from "@/components/shared/SiteHeader";
 import { fenixAssets } from "@/lib/fenix/assets";
 import { homeCopy, platforms, sectors, support } from "@/lib/principal/data";
-export default function FlytekPrincipal() {
+export default function FlytekPrincipal({
+  initiallyShowIntro,
+}: {
+  initiallyShowIntro: boolean;
+}) {
   const root = useRef<HTMLDivElement>(null);
   const video = useRef<HTMLVideoElement>(null);
   const [paused, setPaused] = useState(true);
   const [platform, setPlatform] = useState(0);
   const [sector, setSector] = useState(0);
   const [openSupport, setOpenSupport] = useState<number | null>(0);
-  const [showIntro, setShowIntro] = useState(false);
+  const [showIntro, setShowIntro] = useState(initiallyShowIntro);
   const drone = platforms[platform];
   const mission = sectors[sector];
-  useEffect(() => {
-    let introSeen = false;
-    try {
-      introSeen = sessionStorage.getItem("flytek-intro-seen") === "true";
-    } catch {
-      introSeen = false;
-    }
-    if (introSeen) {
-      setShowIntro(false);
-      return;
-    }
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion) return;
-    setShowIntro(true);
-    const timer = window.setTimeout(
-      () => {
-        try {
-          sessionStorage.setItem("flytek-intro-seen", "true");
-        } catch {}
-        setShowIntro(false);
-      },
-      900,
-    );
-    return () => {
-      window.clearTimeout(timer);
-    };
-  }, []);
+useEffect(() => {
+  if (!showIntro) return;
+
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (reducedMotion) {
+    setShowIntro(false);
+    return;
+  }
+
+  const timer = window.setTimeout(() => {
+    document.cookie = "flytek-intro-seen=true; path=/; SameSite=Lax";
+    setShowIntro(false);
+  }, 900);
+
+  return () => {
+    window.clearTimeout(timer);
+  };
+}, []);
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => setPaused(media.matches);
@@ -148,9 +146,8 @@ useScrollScenes(root, "home", !paused && !showIntro);
         <section className="home-hero" id="inicio" aria-labelledby="home-heading">
           <video
             ref={video}
-            className="home-hero-video"
+            className={`home-hero-video${showIntro ? " home-hero-video--hidden" : ""}`}
             src={fenixAssets.video}
-            poster={fenixAssets.inspection}
             muted
             loop
             playsInline

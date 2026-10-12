@@ -79,7 +79,8 @@ export const payloads : PayloadItem[] = [
   {
     id: "entrega",
     label: "Entrega de carga",
-    description: "Sistema de entrega de carga con control remoto, para transportar y soltar paquetes de manera segura y eficiente.",
+    description:
+      "Sistema de entrega de carga con control remoto, para transportar y soltar paquetes de manera segura y eficiente.",
     image: "/vega/images/payloadGas.jpg",
     alt: "Entrega de carga con control remoto",
     fit: "cover",
@@ -88,7 +89,8 @@ export const payloads : PayloadItem[] = [
   {
     id: "mantenimiento",
     label: "Mantenimiento",
-    description: "Sistema de mantenimiento con control remoto, para realizar tareas de mantenimiento de manera segura y eficiente.",
+    description:
+      "Sistema de mantenimiento con control remoto, para realizar tareas de mantenimiento de manera segura y eficiente.",
     image: "/vega/images/PayloadOblicual.jpg",
     alt: "Mantenimiento con control remoto",
     fit: "cover",

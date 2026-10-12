@@ -305,3 +305,4 @@ body:has(.home-page) .flytek-header{position:sticky;top:0;z-index:120}
     font-size: 11px;
   }
 }
+.home-hero-video--hidden { opacity: 0; }
