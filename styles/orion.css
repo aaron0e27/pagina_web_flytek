@@ -294,3 +294,7 @@ html:has(.orion-page){scroll-behavior:smooth;scroll-padding-top:58px}.orion-page
   .orion-support__item strong{font-size:clamp(40px,12vw,56px);margin:18px 0 16px}
 }
 @media(prefers-reduced-motion:reduce){.orion-support__live{animation:none}}
+/* Tarjetas claras: mantienen su propia paleta oscura-sobre-blanco en modo oscuro */
+.orion-caps__item,.orion-support{--o-ink:#171a1f;--o-copy:#4d5259;--o-muted:#6b7280;--o-line:#d9dde3;color:#171a1f}
+.orion-caps__text h3,.orion-support__head h2,.orion-support__item h3{color:#111619}
+.orion-caps__text p,.orion-support__head p,.orion-support__item p{color:#4d5259}

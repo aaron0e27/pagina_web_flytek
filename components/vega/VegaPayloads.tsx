@@ -1,61 +1,70 @@
 "use client";
-import { vegaCopy } from "@/lib/vega/copy";
 
 import { useState } from "react";
-import { payloads } from "@/lib/vega/viewer-data";
+import { payloads } from "@/lib/vega/payloads-data";
+import { vegaData } from "@/lib/vega/data";
+
 export function VegaPayloads() {
   const [selected, setSelected] = useState(0);
   const p = payloads[selected];
   return (
-    <section id="payloads" className="section payload-section">
+    <section id="payloads" className="section vega-pay" aria-labelledby="vega-pay-title">
       <div className="section-head" data-reveal>
-        <p className="eyebrow">{vegaCopy.label_06_payloads_e_integracion}</p>
-        <span className="eyebrow">{vegaCopy.configuracion_por_definir}</span>
+        <p className="eyebrow">05 / CARGAS ÚTILES</p>
+        <span className="eyebrow">COMPATIBLES CON VEGA</span>
       </div>
-      <h2 data-reveal>
-        {vegaCopy.un_punto_de_partida}
+      <h2 id="vega-pay-title" data-reveal>
+        Elige la carga
         <br />
-        <span className="muted">{vegaCopy.tu_configuracion}</span>
+        <span className="muted">para tu misión.</span>
       </h2>
-      <div className="payload-layout">
-        <div className="payload-select">
-          <p className="eyebrow">{vegaCopy.explora_la_integracion}</p>
-          <div role="group" aria-label="Opciones de payload provisionales">
-            {payloads.map((item, i) => (
-              <button
-                key={item.id}
-                aria-pressed={selected === i}
-                onClick={() => setSelected(i)}
-              >
-                <span>0{i + 1}</span>
-                {item.label}
-                <span>↗</span>
-              </button>
-            ))}
-          </div>
-          <div className="payload-description" aria-live="polite">
-            <h3>{p.label}</h3>
-            <p className="pending">{p.description}</p>
-            <small>
-              {
-                vegaCopy.compatibilidad_y_ubicacion_de_integracion_pendientes_de_confirmar
-              }
-            </small>
-          </div>
+
+      <div className="vega-pay__cards" role="tablist" aria-label="Cargas útiles compatibles">
+        {payloads.map((item, i) => (
+          <button
+            key={item.id}
+            type="button"
+            role="tab"
+            id={`vega-pay-tab-${i}`}
+            aria-selected={i === selected}
+            aria-controls="vega-pay-panel"
+            className={i === selected ? "is-active" : ""}
+            onClick={() => setSelected(i)}
+          >
+            <span className="vega-pay__thumb">
+              <img src={item.image} alt="" loading="lazy" decoding="async" />
+            </span>
+            <span className="vega-pay__n">0{i + 1}</span>
+            <span className="vega-pay__name">{item.short}</span>
+          </button>
+        ))}
+      </div>
+
+      <div
+        id="vega-pay-panel"
+        role="tabpanel"
+        aria-labelledby={`vega-pay-tab-${selected}`}
+        className="vega-pay__panel"
+        key={p.id}
+      >
+        <div className="vega-pay__image">
+          <img src={p.image} alt={p.alt} loading="lazy" decoding="async" />
         </div>
-        <div className="payload-visual">
-          <img
-            key={p.image}
-            src={p.image}
-            alt={p.alt}
-            width="1440"
-            height="920"
-            loading="lazy"
-            decoding="async"
-            style={{ objectFit: p.fit, objectPosition: p.position }}
-          />
+        <div className="vega-pay__info" aria-live="polite">
+          <span className="eyebrow">0{selected + 1} / {p.use}</span>
+          <h3>{p.label}</h3>
+          <p>{p.description}</p>
+          <ul>
+            {p.chips.map((c) => (
+              <li key={c}>{c}</li>
+            ))}
+          </ul>
+          <a className="vega-pay__quote" href={vegaData.contactHref}>
+            Cotizar esta configuración <span aria-hidden="true">↗</span>
+          </a>
         </div>
       </div>
+      <p className="vega-pay__note">Todas las cargas se integran con VEGA hasta 1.5 kg sugeridos. ¿Necesitas otra? Cuéntanos tu misión.</p>
     </section>
   );
 }

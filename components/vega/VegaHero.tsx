@@ -19,12 +19,6 @@ export function VegaHero() {
           fetchPriority="high"
         />
       </div>
-      <span className="hero-marker">
-        ＋<br />
-        {vegaCopy.plataforma_vega}
-        <br />
-        {vegaCopy.vista_general}
-      </span>
       <div className="hero-bottom">
         <p>{vegaData.tagline}</p>
         <span className="eyebrow">

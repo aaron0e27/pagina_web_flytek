@@ -1,79 +1,79 @@
-/** Only the product name and supplied asset are confirmed. Editorial copy is provisional. */
-import { vegaApplications } from "./reference-data";
-export const PENDING = "Consultar según configuración.";
-export const specificationValues: Record<string,string> = { Dimensiones: "Longitud de referencia: 1.5 m", Peso: "8 kg de referencia", Autonomía: "Hasta 45 min, según configuración", "Resistencia al viento": "36 km/h de referencia" };
+/** Datos de VEGA tomados de la ficha técnica oficial (Flytek_Vega_Ficha_Tecnica.pdf). */
+export const SPEC_PDF = "/vega/Flytek_Vega_Ficha_Tecnica.pdf";
+export const SPEC_PDF_NAME = "Flytek_Vega_Ficha_Tecnica.pdf";
+
 export const vegaData = {
   name: "VEGA",
-  tagline: "Versátil por diseño. Listo para tu misión.",
-  description: PENDING,
-  contactHref: "mailto:info@flytek.com.mx?subject=Informacion%20sobre%20VEGA",
+  tagline: "Plataforma aérea multipropósito. Hasta 90 minutos de vuelo.",
+  intro:
+    "VEGA combina gran autonomía, cargas útiles personalizables y navegación asistida o autónoma para que una sola plataforma resuelva distintas misiones, desde inspección hasta seguridad pública.",
+  contactHref: "mailto:info@flytek.com.mx?subject=Cotizacion%20VEGA",
+  contactSecurityHref: "mailto:info@flytek.com.mx?subject=VEGA%20para%20seguridad%20publica",
   nav: [
     ["descripcion", "Descripción"],
-    ["caracteristicas", "Características"],
-    ["diseno", "Diseño"],
+    ["explorador", "Explorar 3D"],
     ["rendimiento", "Rendimiento"],
-    ["tecnologia", "Tecnología"],
-    ["payloads", "Payloads"],
-    ["aplicaciones", "Aplicaciones"],
+    ["tecnologia", "Navegación"],
+    ["payloads", "Cargas útiles"],
+    ["seguridad-publica", "Seguridad pública"],
     ["especificaciones", "Especificaciones"],
     ["contacto", "Contacto"],
   ],
   assets: {
     model: "/vega/models/vega.glb",
-    hero: "/vega/images/vega-estudio.png",
-    detail: "/vega/images/vega-detalle.png",
-    top: "/vega/images/vega-superior.png",
-    rear: "/vega/images/vega-posterior.png",
-    side: "/vega/images/vega-lateral.png",
+    hero: "/vega/images/vega-estudio.webp",
+    side: "/vega/images/vega-lateral.webp",
   },
+  // Franja de datos clave (value es número para la animación de conteo)
   stats: [
-    { label: "Autonomía de referencia", value: "45 min" },
-    { label: "Resistencia al viento", value: "36 km/h" },
-    { label: "Peso de referencia", value: "8 kg" },
-  ],
-  features: [
-    {
-      title: "Diseño y construcción",
-      description: "Una estructura plegable y distintas posibilidades de integración para tu operación.",
-      image: "/vega/images/vega-detalle.png",
-      label: "01 / DETALLE DEL MODELO",
-    },
-    {
-      title: "Perspectiva completa",
-      description: "Explora la plataforma desde distintos ángulos y define con Flytek la configuración de tu equipo.",
-      image: "/vega/images/vega-superior.png",
-      label: "02 / VISTA SUPERIOR",
-    },
-  ],
-  technology: [
-    { label: "Navegación y control", description: PENDING },
-    { label: "Comunicación", description: PENDING },
-    { label: "Integración", description: PENDING },
+    { value: 90, unit: "min", label: "Autonomía máxima", note: "sin carga útil" },
+    { value: 40, unit: "km", label: "Alcance de radiocontrol", note: "configurable de 10 a 40 km" },
+    { value: 35, unit: "km/h", label: "Resistencia al viento", note: "operación estable" },
+    { value: 1.5, unit: "kg", label: "Carga útil máxima", note: "sugerida", decimals: 1 },
   ],
   specs: [
-    { title: "Plataforma", rows: ["Dimensiones", "Peso", "Materiales"] },
     {
-      title: "Rendimiento",
-      rows: ["Autonomía", "Velocidad", "Alcance", "Capacidad de carga"],
-    },
-    {
-      title: "Entorno operativo",
+      title: "Aeronave",
       rows: [
-        "Resistencia al viento",
-        "Temperatura de operación",
-        "Grado de protección",
+        ["Dimensiones (hélices desplegadas)", "1.23 × 1.23 × 0.51 m"],
+        ["Peso sin carga (con batería)", "6 kg"],
+        ["Peso con carga útil estándar", "6.5 kg"],
+        ["Hélices", "22 pulgadas / 558.8 mm"],
       ],
     },
     {
-      title: "Sistemas",
-      rows: ["Navegación", "Transmisión", "Sensores compatibles"],
+      title: "Rendimiento",
+      rows: [
+        ["Autonomía máxima sin carga", "1 h 30 min"],
+        ["Autonomía con carga estándar", "1 h"],
+        ["Velocidad máxima", "72 km/h"],
+        ["Resistencia al viento", "35 km/h"],
+        ["Temperatura de operación", "0 a 40 °C"],
+      ],
+    },
+    {
+      title: "Control y enlace",
+      rows: [
+        ["Alcance del radiocontrol", "10 a 40 km (configurable, sin obstrucción)"],
+        ["Frecuencias", "2.4 y/o 5.8 GHz"],
+        ["Navegación", "Asistida por GPS y autónoma por puntos de control"],
+        ["Seguridad", "Regreso a casa por pérdida de señal o batería baja"],
+      ],
+    },
+    {
+      title: "Carga y energía",
+      rows: [
+        ["Carga útil estándar", "500 g"],
+        ["Carga útil máxima sugerida", "1.5 kg"],
+        ["Batería", "LiHV / 798 Wh"],
+        ["Transporte", "Estuche de alto impacto"],
+      ],
     },
   ],
-  applications: vegaApplications.map(a => ({ title: a.title, description: a.text, image: a.image, sectorHref: "/#sectores" })),
   cta: {
-    title: "¿VEGA puede integrarse a tu operación?",
-    description: "Integración, capacitación y soporte nacional para acompañar a tu equipo.",
-    label: "HABLEMOS",
+    title: "Configura VEGA para tu operación",
+    description: "Cuéntanos tu misión y te ayudamos a elegir la carga útil ideal. Integración, capacitación y soporte nacional incluidos.",
+    label: "SOLICITAR COTIZACIÓN",
+    secondary: "DESCARGAR FICHA TÉCNICA",
   },
 } as const;
-

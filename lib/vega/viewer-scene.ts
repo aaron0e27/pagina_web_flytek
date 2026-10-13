@@ -54,6 +54,14 @@ export async function createVegaScene(host: HTMLElement, options: Options): Prom
   controls.enableDamping = true;
   controls.dampingFactor = 0.08;
   controls.enablePan = false;
+  // La rueda / touchpad sigue moviendo la página; el zoom con rueda solo funciona con Ctrl (o pellizco).
+  controls.enableZoom = false;
+  const onWheel = (e: WheelEvent) => {
+    if (!e.ctrlKey) return;
+    e.preventDefault();
+    api.zoom(e.deltaY > 0 ? 1.08 : 0.92);
+  };
+  renderer.domElement.addEventListener("wheel", onWheel, { passive: false });
   controls.target.set(0, 0, 0);
   // En celular, el deslizamiento vertical sigue moviendo la página.
   renderer.domElement.style.touchAction = "pan-y";
@@ -160,6 +168,7 @@ export async function createVegaScene(host: HTMLElement, options: Options): Prom
       cancelAnimationFrame(frame);
       ro.disconnect();
       controls.removeEventListener("start", beginFree);
+      renderer.domElement.removeEventListener("wheel", onWheel);
       controls.dispose();
       markers.forEach((m) => m.remove());
       scene.traverse((o) => {

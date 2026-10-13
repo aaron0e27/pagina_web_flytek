@@ -1,4 +1,4 @@
-// Valores de referencia de VEGA (mismos que "specificationValues" en lib/vega/data.ts).
+// Valores de la ficha técnica de VEGA.
 export type PerfMetric = {
   id: "autonomia" | "viento" | "peso" | "longitud";
   label: string;
@@ -7,6 +7,7 @@ export type PerfMetric = {
   decimals?: number;
   unit: string;
   text: string;
+  note: string;
 };
 
 export const perfMetrics: PerfMetric[] = [
@@ -14,30 +15,34 @@ export const perfMetrics: PerfMetric[] = [
     id: "autonomia",
     label: "Autonomía",
     prefix: "Hasta",
-    value: 45,
+    value: 90,
     unit: "min",
-    text: "Tiempo de vuelo de referencia. Puede variar según la carga útil y las condiciones de la operación.",
+    text: "90 minutos sin carga útil y 1 hora con la carga estándar de 500 g. Batería LiHV de 798 Wh.",
+    note: "1 h 30 min sin carga · 1 h con carga estándar",
   },
   {
     id: "viento",
     label: "Resistencia al viento",
-    value: 36,
+    value: 35,
     unit: "km/h",
-    text: "Estabilidad de referencia frente a ráfagas para mantener una operación segura en exteriores.",
+    text: "Estabilidad frente a ráfagas de hasta 35 km/h, con velocidad máxima de 72 km/h y operación de 0 a 40 °C.",
+    note: "Velocidad máxima 72 km/h",
   },
   {
     id: "peso",
     label: "Peso",
-    value: 8,
+    value: 6,
     unit: "kg",
-    text: "Peso de referencia de la plataforma. Cambia según la configuración y las cargas útiles integradas.",
+    text: "6 kg sin carga (batería incluida) y 6.5 kg con la carga útil estándar. Admite hasta 1.5 kg de carga útil sugerida.",
+    note: "6.5 kg con carga estándar",
   },
   {
     id: "longitud",
-    label: "Longitud",
-    value: 1.5,
-    decimals: 1,
+    label: "Dimensiones",
+    value: 1.23,
+    decimals: 2,
     unit: "m",
-    text: "Longitud de referencia con la estructura desplegada. Su diseño plegable facilita el transporte.",
+    text: "1.23 × 1.23 × 0.51 m con las hélices de 22 pulgadas desplegadas. Viaja en un estuche de alto impacto.",
+    note: "1.23 × 1.23 × 0.51 m",
   },
 ];

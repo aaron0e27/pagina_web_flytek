@@ -1,17 +1,49 @@
 "use client";
 
-import { useRef, useState, type KeyboardEvent, type TouchEvent } from "react";
-import { vegaCopy } from "@/lib/vega/copy";
-import { vegaData, PENDING, specificationValues } from "@/lib/vega/data";
+import { useEffect, useRef, useState, type KeyboardEvent, type TouchEvent } from "react";
+import { ArrowDown, FileText } from "lucide-react";
+import { vegaData, SPEC_PDF, SPEC_PDF_NAME } from "@/lib/vega/data";
 
 const groups = vegaData.specs;
 
+/** Texto que aparece letra por letra al entrar en pantalla (cada palabra se mantiene unida). */
+function Letters({ text, from = 0 }: { text: string; from?: number }) {
+  let n = from;
+  return (
+    <>
+      {text.split(" ").map((word, w) => (
+        <span key={w} className="vega-ospecs__word" aria-hidden="true">
+          {word.split("").map((ch, i) => (
+            <span key={i} className="vega-ospecs__ch" style={{ ["--i" as string]: n++ }}>{ch}</span>
+          ))}
+          {" "}
+        </span>
+      ))}
+    </>
+  );
+}
+
 export function VegaSpecs() {
+  const root = useRef<HTMLElement>(null);
   const [tab, setTab] = useState(0);
+  const [seen, setSeen] = useState(false);
   const list = useRef<HTMLDivElement>(null);
   const touch = useRef<{ x: number; y: number } | null>(null);
   const group = groups[tab];
-  const known = group.rows.filter((r) => specificationValues[r]).length;
+
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setSeen(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(root.current!);
+    return () => io.disconnect();
+  }, []);
 
   const go = (n: number) => {
     const next = (n + groups.length) % groups.length;
@@ -35,28 +67,32 @@ export function VegaSpecs() {
     if (Math.abs(dx) > 56 && Math.abs(dx) > Math.abs(dy) * 1.6) go(tab + (dx < 0 ? 1 : -1));
   };
 
+  const l1 = "Especificaciones";
+  const l2 = "técnicas.";
+
   return (
-    <section className="section vega-specs" id="especificaciones" aria-labelledby="vega-specs-title">
-      <div className="vega-specs__intro">
-        <p className="eyebrow">{vegaCopy.label_08_especificaciones}</p>
-        <h2 id="vega-specs-title">{vegaCopy.vega_2}</h2>
-        <h3>
-          {vegaCopy.especificaciones}
+    <section ref={root} className={"vega-ospecs" + (seen ? " is-in" : "")} id="especificaciones" aria-labelledby="vega-specs-title">
+      <div className="vega-ospecs__intro">
+        <div className="vega-ospecs__tag"><span>07</span> DATOS TÉCNICOS</div>
+        <h2 id="vega-specs-title" aria-label="Especificaciones técnicas.">
+          <Letters text={l1} />
           <br />
-          {vegaCopy.tecnicas}
-        </h3>
-        <p className="vega-specs__note">{vegaCopy.informacion_tecnica_pendiente_de_validacion}</p>
-        <a className="vega-specs__cta" href={vegaData.contactHref}>
-          <span>
-            <b>¿Necesitas la configuración exacta?</b>
-            <small>Un asesor de Flytek te ayuda a definirla.</small>
+          <Letters text={l2} from={l1.length} />
+        </h2>
+        <p>Datos de la ficha técnica oficial de VEGA. Nuestro equipo puede ayudarte a definir la configuración adecuada para tu operación.</p>
+
+        <a className="vega-ospecs__download" href={SPEC_PDF} download={SPEC_PDF_NAME}>
+          <span className="vega-ospecs__doc" aria-hidden="true"><FileText size={22} strokeWidth={1.4} /><i /><i /><i /></span>
+          <span className="vega-ospecs__download-copy">
+            <b>Descargar ficha técnica</b>
+            <small>Ficha técnica VEGA · PDF</small>
           </span>
-          <i aria-hidden="true">↗</i>
+          <span className="vega-ospecs__download-arrow" aria-hidden="true"><ArrowDown size={18} /></span>
         </a>
       </div>
 
-      <div className="vega-specs__body">
-        <div className="vega-specs__tabs" role="tablist" aria-label="Categorías de especificaciones" ref={list} onKeyDown={onKey}>
+      <div className="vega-ospecs__body">
+        <div className="vega-ospecs__tabs" role="tablist" aria-label="Categorías de especificaciones" ref={list} onKeyDown={onKey}>
           {groups.map((g, i) => (
             <button
               key={g.title}
@@ -79,32 +115,20 @@ export function VegaSpecs() {
           id="vega-spec-panel"
           role="tabpanel"
           aria-labelledby={`vega-spec-tab-${tab}`}
-          className="vega-specs__panel"
+          className="vega-ospecs__panel"
           key={group.title}
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
-          <div className="vega-specs__meter" aria-label={`${known} de ${group.rows.length} valores de referencia`}>
-            <div>
-              {group.rows.map((r, i) => (
-                <i key={r} className={specificationValues[r] ? "is-on" : ""} style={{ ["--r" as string]: i }} />
-              ))}
-            </div>
-            <span>{known} de {group.rows.length} con valor de referencia</span>
-          </div>
           <dl>
-            {group.rows.map((label, i) => {
-              const value = specificationValues[label];
-              return (
-                <div key={label} style={{ ["--r" as string]: i }} className={value ? "has-value" : ""}>
-                  <dt>{label}</dt>
-                  <dd className={value ? "" : "is-pending"}>{value ?? "Según configuración"}</dd>
-                </div>
-              );
-            })}
+            {group.rows.map(([label, value], i) => (
+              <div key={label} style={{ ["--r" as string]: i }}>
+                <dt>{label}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
           </dl>
-          <p className="vega-specs__hint" aria-hidden="true">← desliza para cambiar de categoría →</p>
-          <span className="sr-only">{PENDING}</span>
+          <p className="vega-ospecs__hint" aria-hidden="true">← desliza para cambiar de categoría →</p>
         </div>
       </div>
     </section>

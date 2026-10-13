@@ -22,7 +22,7 @@ export function VegaGallery() {
             onFocus={() => setActive(i)}
             onClick={() => setActive(i)}
           >
-            <img src={item.image} alt="" loading="lazy" decoding="async" style={{ objectPosition: item.position }} />
+            <img src={item.image} alt="" loading={i < 2 ? "eager" : "lazy"} decoding="async" style={{ objectPosition: item.position }} />
             <span className="shutter-index">{String(i + 1).padStart(2, "0")}</span>
             <span className="shutter-label">{item.label}</span>
             <span className="shutter-caption">
