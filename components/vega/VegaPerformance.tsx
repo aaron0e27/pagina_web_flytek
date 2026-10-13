@@ -35,6 +35,7 @@ export function VegaPerformance() {
   const [ready, setReady] = useState(false);
   const [index, setIndex] = useState(0);
   const [inView, setInView] = useState(false);
+  const [near, setNear] = useState(false); // la escena 3D empieza a cargar antes de llegar
   const [auto, setAuto] = useState(true); // se detiene si la persona elige una métrica
   const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(false);
@@ -46,12 +47,14 @@ export function VegaPerformance() {
     const el = root.current!;
     const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.3 });
     io.observe(el);
-    return () => io.disconnect();
+    const ioNear = new IntersectionObserver(([e]) => { if (e.isIntersecting) setNear(true); }, { rootMargin: "1000px 0px" });
+    ioNear.observe(el);
+    return () => { io.disconnect(); ioNear.disconnect(); };
   }, []);
 
-    // Modelo 3D del dron: se carga cuando la sección entra en pantalla.
+  // Modelo 3D del dron: se carga cuando la sección entra en pantalla.
   useEffect(() => {
-    if (!inView || scene.current || !host.current) return;
+    if (!near || scene.current || !host.current) return;
     let cancelled = false;
     (async () => {
       try {
@@ -64,16 +67,16 @@ export function VegaPerformance() {
         if (cancelled) { api.dispose(); return; }
         scene.current = api;
         api.mode(metric.id as PerfMode);
-        api.active(true);
       } catch { /* se queda la foto */ }
     })();
     return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inView]);
+  }, [near]);
 
   useEffect(() => { scene.current?.mode(metric.id as PerfMode); }, [metric.id]);
-  useEffect(() => { scene.current?.active(inView && !document.hidden); }, [inView]);
+  useEffect(() => { scene.current?.active(inView && !document.hidden); }, [inView, ready]);
   useEffect(() => () => { scene.current?.dispose(); scene.current = null; }, []);
+
   const cycling = auto && !paused && inView && !reduced;
   useEffect(() => {
     if (!cycling) return;
@@ -81,7 +84,7 @@ export function VegaPerformance() {
     return () => clearTimeout(t);
   }, [cycling, index]);
 
-    // En celular, al elegir una métrica se mantiene todo el tablero a la vista.
+  // En celular, al elegir una métrica se mantiene todo el tablero a la vista.
   const keepInView = () => {
     if (!matchMedia("(max-width: 900px)").matches) return;
     const r = app.current?.getBoundingClientRect();
@@ -111,7 +114,7 @@ export function VegaPerformance() {
       onBlurCapture={() => setPaused(false)}
     >
       <div className="section-head">
-        <p className="eyebrow">{vegaCopy.label_04_rendimiento}</p>
+        <p className="eyebrow">03 / RENDIMIENTO</p>
         <span className="eyebrow">{vegaCopy.datos_tecnicos}</span>
       </div>
       <h2 id="vega-perf-title" data-title-motion>
@@ -120,11 +123,10 @@ export function VegaPerformance() {
         <span className="muted">{vegaCopy.en_perspectiva}</span>
       </h2>
 
-      <div className="vega-perf__app" ref={app}></div>
-
+      <div className="vega-perf__app" ref={app}>
       <div className="vega-perf__board">
         <div className="vega-perf__stage" aria-hidden="true">
-        <div className={`vega-perf__frame${ready ? " is-3d" : ""}`}>
+          <div className={`vega-perf__frame${ready ? " is-3d" : ""}`}>
             <img src={vegaData.assets.side} width="1440" height="920" loading="lazy" alt="" />
             <div ref={host} className="vega-perf__scene" />
             {/* Resaltes por métrica: se muestran según data-metric */}
@@ -157,7 +159,7 @@ export function VegaPerformance() {
           <div className="vega-perf__copy" key={metric.id}>
             <span className="eyebrow">0{index + 1} / {metric.label}</span>
             <p>{metric.text}</p>
-            <span className="vega-perf__note">Según configuración</span>
+            <span className="vega-perf__note">{metric.note}</span>
           </div>
         </div>
       </div>
@@ -178,6 +180,7 @@ export function VegaPerformance() {
             <i className={cycling && i === index ? "is-running" : ""} aria-hidden="true" />
           </button>
         ))}
+      </div>
       </div>
     </section>
   );

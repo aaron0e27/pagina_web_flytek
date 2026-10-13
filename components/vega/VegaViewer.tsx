@@ -62,7 +62,7 @@ export function VegaViewer() {
         if (visible) void start();
         scene.current?.active(visible && !document.hidden);
       },
-      { rootMargin: "300px 0px" },
+      { rootMargin: "800px 0px" },
     );
     const onVisibility = () => scene.current?.active(visible && !document.hidden);
     observer.observe(root);
