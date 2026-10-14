@@ -24,7 +24,7 @@
 .home-page .home-section-line { display:flex; justify-content:space-between; gap:20px; border-top:1px solid #cbd1d6; padding-top:18px; font-size:10px; letter-spacing:.08em; color:#626a72; }
 .home-page .home-company { padding-block:100px; }
 .home-company-grid { display:grid; grid-template-columns:1.1fr 1fr; gap:12%; padding:65px 0; }
-.home-page .home-company-grid p { color:#606871; font-size:15px; max-width:530px; }
+.home-page .home-company-grid p { color: #606871; font-size: 15px; max-width: 530px; text-align: center; margin-inline: auto; }
 .home-page .home-company-grid .home-lead { font-size:22px; line-height:1.5; color:#171a1f; margin-bottom:24px; letter-spacing:-.02em; }
 .home-page .home-text-link { display:inline-flex; align-items:center; gap:20px; border-bottom:1px solid #1897f2; padding:16px 0; font-size:14px; margin-top:20px; }
 .home-text-link:hover { color:#0876c4; }

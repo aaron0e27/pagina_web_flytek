@@ -174,10 +174,6 @@ useScrollScenes(root, "home", !paused && !showIntro);
           </div>
         </section>
         <section className="home-company home-container" id="empresa">
-          <div className="home-section-line">
-            <span className="home-label">01 / SOMOS FLYTEK</span>
-            <span>TECNOLOGÍA CON PROPÓSITO</span>
-          </div>
           <div className="home-company-grid" data-home-reveal>
             <h2>
               El futuro se ve
@@ -187,9 +183,6 @@ useScrollScenes(root, "home", !paused && !showIntro);
             <div>
               <p className="home-lead">{homeCopy.introduction}</p>
               <p>{homeCopy.company}</p>
-              <a className="home-text-link" href="#contacto">
-                Conversemos sobre tu operación <ArrowUpRight size={20} />
-              </a>
             </div>
           </div>
           <div
@@ -261,10 +254,6 @@ useScrollScenes(root, "home", !paused && !showIntro);
         </section>
         <section className="home-fleet" id="drones">
           <div className="home-container">
-            <div className="home-section-line">
-              <span className="home-label">02 / NUESTRAS PLATAFORMAS</span>
-              <span>ELIGE TU PERSPECTIVA</span>
-            </div>
             <div className="home-fleet-heading" data-home-reveal>
               <h2>
                 Una misión.
@@ -349,10 +338,6 @@ useScrollScenes(root, "home", !paused && !showIntro);
           </div>
         </section>
         <section className="home-sectors home-container" id="sectores">
-          <div className="home-section-line">
-            <span className="home-label">03 / APLICACIONES</span>
-            <span>DEL VUELO A LA ACCIÓN</span>
-          </div>
           <div className="home-sectors-title" data-home-reveal>
             <h2>
               Donde hay un reto,
@@ -410,9 +395,6 @@ useScrollScenes(root, "home", !paused && !showIntro);
               >
                 <div className="home-application-image">
                   <img src={item.image} alt={item.alt} width="1200" height="800" loading="lazy" />
-                  <span>
-                    0{index + 1} / {item.name.toUpperCase()}
-                  </span>
                 </div>
                 <div className="home-application-copy">
                   <p className="home-label">{item.tag}</p>
@@ -423,13 +405,6 @@ useScrollScenes(root, "home", !paused && !showIntro);
                       <li key={capability}>{capability}</li>
                     ))}
                   </ul>
-                  <a
-                    className="home-text-link"
-                    href={`mailto:${homeCopy.email}?subject=${encodeURIComponent(`Proyecto de ${item.name} — Flytek`)}`}
-                  >
-                    Evaluar una misión de {item.name}
-                    <ArrowUpRight size={19} />
-                  </a>
                 </div>
               </article>
             ))}
@@ -438,7 +413,6 @@ useScrollScenes(root, "home", !paused && !showIntro);
         <section className="home-support" id="soporte">
           <div className="home-container home-support-grid">
             <div data-home-reveal>
-              <p className="home-label">04 / ACOMPAÑAMIENTO</p>
               <h2>
                 No solo un dron.
                 <br />
