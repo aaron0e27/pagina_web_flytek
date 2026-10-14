@@ -1,18 +1,22 @@
+import { Crosshair, Megaphone, Moon } from "lucide-react";
 import { vegaData } from "@/lib/vega/data";
 
 const items = [
   {
     n: "01",
+    icon: Crosshair,
     title: "Seguimiento automático",
     text: "Cámara multisensor 4 en 1 para seguir objetivos de forma automática durante las operaciones de vuelo.",
   },
   {
     n: "02",
+    icon: Moon,
     title: "Observación nocturna",
     text: "Cámaras térmicas para ver y vigilar en la oscuridad, cuando más se necesita.",
   },
   {
     n: "03",
+    icon: Megaphone,
     title: "Disuasión",
     text: "Carga útil personalizable con altavoces y luces para comunicarte y disuadir a distancia.",
   },
@@ -33,7 +37,8 @@ export function VegaSecurity() {
       <div className="vega-security__grid">
         {items.map((it) => (
           <article key={it.n} className="vega-security__item" data-reveal>
-            <span>{it.n}</span>
+            <span className="vega-security__n">{it.n}</span>
+            <it.icon className="vega-security__icon" size={30} strokeWidth={1.3} aria-hidden="true" />
             <h3>{it.title}</h3>
             <p>{it.text}</p>
           </article>
