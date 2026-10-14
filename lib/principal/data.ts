@@ -23,7 +23,7 @@ export const platforms: readonly { id: string; name: string; title: string; desc
   },
   {
     id: "orion",
-    name: "ORION MX",
+    name: "ORION ",
     title: "El drone para la inspección.",
     description:
       "Trabajo Inteligente en espacio compacto.",
@@ -53,15 +53,15 @@ export const sectors = [
       "Apoya la vigilancia y la observación perimetral con una perspectiva aérea y cargas útiles adaptadas a tu operación.",
     image: "/fenix/media/thermal.webp",
     alt: "Vista térmica para observación del entorno",
-    tag: "OBSERVACIÓN / VIGILANCIA",
+    tag: "SEGURIDAD",
     detailTitle: "Información aérea para proteger tu operación.",
     detailText:
       "Integra cámaras térmicas, zoom e iluminación para observar áreas amplias, perímetros y puntos de difícil acceso.",
     capabilities: [
-      "Vigilancia perimetral",
+      "Vigilancia Perimetral",
       "Observación térmica",
-      "Apoyo durante incidentes",
-      "Transmisión de imagen",
+      "Busqueda y Rescate",
+      "Patrullaje",
     ],
   },
   {
@@ -69,10 +69,10 @@ export const sectors = [
     name: "Inspección",
     title: "Acércate a los detalles que importan.",
     description:
-      "Observa infraestructura desde nuevos ángulos y reúne información visual para apoyar las decisiones de tu equipo técnico.",
+      "Realiza inspecciones eficientes, detalladas y precisas, sin exponer a tu equipo técnico a riesgos no necesarios a zonas de acceso complicado.",
     image: "/fenix/media/inspection.webp",
     alt: "Infraestructura para operaciones de inspección",
-    tag: "INFRAESTRUCTURA / ANÁLISIS",
+    tag: "INFRAESTRUCTURA",
     detailTitle: "Inspecciona sin perder de vista el contexto.",
     detailText:
       "Obtén imágenes de estructuras, instalaciones y espacios reducidos mediante una plataforma configurada para cada entorno.",
@@ -88,10 +88,10 @@ export const sectors = [
     name: "Construcción",
     title: "Tu proyecto, desde otra perspectiva.",
     description:
-      "Documenta el entorno y el avance de obra con imágenes aéreas que ayuden a tu equipo a entender el terreno.",
+      "Optimiza la logística y genera mapas ortomosaicos y nubes de puntos con precisión centimétrica en menos tiempo. Captura, procesa y analiza los datos de tu obra.",
     image: "/fenix/media/construction.webp",
     alt: "Entorno de construcción visto desde el aire",
-    tag: "OBRA / SEGUIMIENTO",
+    tag: "OBRA ",
     detailTitle: "Observa el avance completo de tu proyecto.",
     detailText:
       "Registra el terreno, las diferentes etapas de obra y el contexto general del proyecto desde una perspectiva aérea.",
