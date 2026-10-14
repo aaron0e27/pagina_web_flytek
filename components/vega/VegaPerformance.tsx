@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { vegaCopy } from "@/lib/vega/copy";
 import { vegaData } from "@/lib/vega/data";
 import { perfMetrics } from "@/lib/vega/performance-data";
+import { VegaInstrument } from "@/components/vega/VegaInstruments";
 import type { PerfMode, PerfSceneAPI } from "@/lib/vega/perf-scene";
 
 const CYCLE_MS = 5200;
-const TICKS = Array.from({ length: 45 }, (_, i) => i);
 
 function useCountUp(target: number, decimals: number, run: boolean) {
   const [shown, setShown] = useState(0);
@@ -39,8 +39,10 @@ export function VegaPerformance() {
   const [auto, setAuto] = useState(true); // se detiene si la persona elige una métrica
   const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(false);
+  const [variant, setVariant] = useState(0);
   const metric = perfMetrics[index];
-  const number = useCountUp(metric.value, metric.decimals ?? 0, inView);
+  const v = metric.variants?.[variant] ?? metric;
+  const number = useCountUp(v.value, v.decimals ?? 0, inView);
 
   useEffect(() => {
     setReduced(matchMedia("(prefers-reduced-motion: reduce)").matches);
@@ -80,7 +82,7 @@ export function VegaPerformance() {
   const cycling = auto && !paused && inView && !reduced;
   useEffect(() => {
     if (!cycling) return;
-    const t = setTimeout(() => setIndex((i) => (i + 1) % perfMetrics.length), CYCLE_MS);
+    const t = setTimeout(() => { setVariant(0); setIndex((i) => (i + 1) % perfMetrics.length); }, CYCLE_MS);
     return () => clearTimeout(t);
   }, [cycling, index]);
 
@@ -97,6 +99,7 @@ export function VegaPerformance() {
 
   const choose = (i: number) => {
     setAuto(false);
+    setVariant(0);
     setIndex(i);
     keepInView();
   };
@@ -140,27 +143,29 @@ export function VegaPerformance() {
         </div>
 
         <div className="vega-perf__panel" aria-live="polite">
-          <div className="vega-perf__gauge">
-            <svg viewBox="0 0 240 240" aria-hidden="true">
-              <g className="vega-perf__ticks">
-                {TICKS.map((t) => (
-                  <line key={t} x1="120" y1="14" x2="120" y2={t % 5 === 0 ? 26 : 21} transform={`rotate(${-135 + t * (270 / 44)} 120 120)`} />
-                ))}
-              </g>
-              <circle className="vega-perf__track" cx="120" cy="120" r="88" />
-              <circle key={metric.id} className="vega-perf__arc" cx="120" cy="120" r="88" />
-            </svg>
-            <div className="vega-perf__readout">
-              {metric.prefix && <small>{metric.prefix}</small>}
-              <strong>{number}</strong>
-              <span>{metric.unit}</span>
+          <div className="vega-perf__top">
+            <div className="vega-perf__gauge" data-instrument={metric.id}>
+              <VegaInstrument id={metric.id} variant={variant} />
+            </div>
+            <div className="vega-perf__reading">
+              <span className="vega-perf__label">0{index + 1} / {metric.label}</span>
+              <div className="vega-perf__readout">
+                {v.prefix && <small>{v.prefix}</small>}
+                <strong>{number}</strong>
+                <span>{metric.unit}</span>
+              </div>
+              {metric.variants && (
+                <div className="vega-perf__variants" role="group" aria-label={`Variante de ${metric.label}`}>
+                  {metric.variants.map((o, i) => (
+                    <button key={o.label} type="button" aria-pressed={i === variant} className={i === variant ? "is-active" : ""} onClick={() => setVariant(i)}>
+                      {o.label}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
-          <div className="vega-perf__copy" key={metric.id}>
-            <span className="eyebrow">0{index + 1} / {metric.label}</span>
-            <p>{metric.text}</p>
-            <span className="vega-perf__note">{metric.note}</span>
-          </div>
+          <p className="vega-perf__copy" key={metric.id}>{metric.text}</p>
         </div>
       </div>
 

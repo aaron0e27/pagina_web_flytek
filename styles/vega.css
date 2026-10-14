@@ -1484,3 +1484,283 @@ html[data-theme="dark"] .vega-redesign .subnav {
   .vega-redesign .vega-ospecs__panel dl>div,.vega-redesign .vega-ospecs__download-arrow{animation:none!important}
   .vega-redesign .vega-ospecs__ch{opacity:1;transform:none;transition:none}
 }
+/* ===== VEGA · ronda 4 (pegar al FINAL de styles/vega.css) ===== */
+
+/* 01 · cifras sin líneas + "lo que distingue" */
+.vega-redesign .vega-intro{display:block}
+.vega-redesign .vega-intro__top{align-items:center;display:grid;gap:6%;grid-template-columns:1fr 1.1fr}
+.vega-redesign .vega-intro__stats{background:none;border:0;gap:clamp(28px,4vw,52px) 24px}
+.vega-redesign .vega-intro__stats>div{background:none;padding:0}
+.vega-redesign .vega-intro__copy>p:not(.eyebrow){margin-bottom:0}
+.vega-redesign .vega-intro__why{margin-top:clamp(56px,7vw,96px)}
+.vega-redesign .vega-intro__why ul{display:grid;gap:clamp(24px,3vw,40px) 32px;grid-template-columns:repeat(3,1fr);list-style:none;margin:28px 0 0;padding:0}
+.vega-redesign .vega-intro__why li{align-items:start;column-gap:14px;display:grid;grid-template-columns:44px 1fr;grid-template-rows:auto 1fr;row-gap:6px}
+.vega-redesign .vega-intro__icon{align-items:center;background:var(--vega-surface);color:var(--blue-deep);display:flex;grid-row:span 2;height:44px;justify-content:center;width:44px;transition:background .3s,color .3s,transform .3s}
+.vega-redesign .vega-intro__why li:hover .vega-intro__icon{background:var(--blue);color:#fff;transform:translateY(-2px)}
+.vega-redesign .vega-intro__why h3{font-size:16px;font-weight:600;letter-spacing:-.02em;margin:0}
+.vega-redesign .vega-intro__why p:not(.eyebrow){color:var(--vega-muted);font-size:14px;line-height:1.6;margin:0}
+@media(max-width:900px){
+  .vega-redesign .vega-intro__top{gap:40px;grid-template-columns:1fr}
+  .vega-redesign .vega-intro__why ul{grid-template-columns:1fr}
+}
+
+/* Galería más abajo */
+.vega-redesign .vega-field .shutter{margin-top:36px}
+
+/* Acompañamiento */
+.vega-redesign .vega-service__head{max-width:62ch}
+.vega-redesign .vega-service__head p:not(.eyebrow){color:var(--vega-muted);font-size:16px;line-height:1.65;margin:22px 0 0}
+.vega-redesign .vega-service__list{display:grid;gap:clamp(24px,3vw,40px);grid-template-columns:repeat(3,1fr);list-style:none;margin:48px 0 0;padding:0}
+.vega-redesign .vega-service__list li{align-items:start;column-gap:14px;display:grid;grid-template-columns:44px 1fr;grid-template-rows:auto 1fr;row-gap:6px}
+.vega-redesign .vega-service__list li>span{align-items:center;background:var(--vega-surface);color:var(--blue-deep);display:flex;grid-row:span 2;height:44px;justify-content:center;width:44px}
+.vega-redesign .vega-service__list h3{font-size:17px;font-weight:600;letter-spacing:-.02em;margin:0}
+.vega-redesign .vega-service__list p{color:var(--vega-muted);font-size:14px;line-height:1.6;margin:0}
+@media(max-width:900px){.vega-redesign .vega-service__list{grid-template-columns:1fr}}
+.vega-redesign .contact-lines{display:flex;flex-wrap:wrap;font-size:14px;gap:8px 28px;margin:36px 0 0}
+.vega-redesign .contact-lines a{color:inherit;opacity:.8;text-decoration:none}
+.vega-redesign .contact-lines a:hover{opacity:1;text-decoration:underline}
+
+/* Seguridad pública: iconos */
+.vega-redesign .vega-security__item{align-content:start;display:grid;grid-template-columns:1fr auto}
+.vega-redesign .vega-security__item h3,.vega-redesign .vega-security__item p{grid-column:1/-1}
+.vega-redesign .vega-security__icon{color:#72c5f4;opacity:.9}
+
+/* 03 · instrumentos */
+.vega-redesign .vega-perf{--pi-ink:#edf3f7;--pi-muted:#8fa3b0;--pi-line:rgba(255,255,255,.14);--pi-accent:#60bdff;--pi-fill:rgba(96,189,255,.16);--pi-face:rgba(255,255,255,.04)}
+.vega-redesign .vega-perf__gauge{aspect-ratio:1;max-width:300px;width:100%}
+.vega-redesign .vega-pi{display:block;height:100%;overflow:visible;width:100%}
+.vega-pi .pi-face{fill:var(--pi-face);stroke:var(--pi-line);stroke-width:1.2}
+.vega-pi .pi-track{fill:none;stroke:var(--pi-line);stroke-width:4}
+.vega-pi .pi-ring{fill:none;stroke:var(--pi-accent);stroke-linecap:round;stroke-width:4;transform:rotate(-90deg);transform-origin:120px 120px;stroke-dasharray:var(--on) var(--len);animation:pi-ring 1.6s cubic-bezier(.22,1,.36,1) both}
+@keyframes pi-ring{from{stroke-dasharray:0 var(--len)}}
+.vega-pi .pi-tick{stroke:var(--pi-muted);stroke-width:1.4}
+.vega-pi .pi-label{fill:var(--pi-muted);font-size:13px;letter-spacing:.06em}
+.vega-pi .pi-hand line{stroke:var(--pi-ink);stroke-linecap:round}
+.vega-pi .pi-hand--h line{stroke-width:5}
+.vega-pi .pi-hand--m line{stroke-width:3}
+.vega-pi .pi-hand{transform-origin:120px 120px;animation:pi-hand 2.2s cubic-bezier(.22,1,.36,1) both}
+@keyframes pi-hand{from{transform:rotate(0)}to{transform:rotate(var(--to))}}
+.vega-pi .pi-sec{transform-origin:120px 120px;animation:pi-spin 12s linear infinite}
+.vega-pi .pi-sec line{stroke:var(--pi-accent);stroke-width:1.2}
+.vega-pi .pi-hub{fill:var(--pi-accent)}
+@keyframes pi-spin{to{transform:rotate(360deg)}}
+/* anemómetro */
+.vega-pi .pi-arc-track,.vega-pi .pi-arc{transform:rotate(135deg);transform-origin:120px 120px}
+.vega-pi .pi-arc-track{stroke-dasharray:509 679}
+.vega-pi .pi-arc{--on:247;--len:679;stroke-dasharray:247 679;animation:pi-arc 1.6s cubic-bezier(.22,1,.36,1) both}
+@keyframes pi-arc{from{stroke-dasharray:0 679}}
+.vega-pi .pi-mast{stroke:var(--pi-muted);stroke-width:3}
+.vega-pi .pi-cups{transform-origin:120px 120px;animation:pi-spin 2.6s linear infinite}
+.vega-pi .pi-arm{fill:none;stroke:var(--pi-ink);stroke-linecap:round;stroke-width:3}
+.vega-pi .pi-cup{fill:var(--pi-fill);stroke:var(--pi-accent);stroke-width:2}
+.vega-pi .pi-gusts line{stroke:var(--pi-accent);stroke-dasharray:36 70;stroke-linecap:round;stroke-width:2;opacity:.7;animation:pi-gust 2.4s linear infinite}
+.vega-pi .pi-gusts line:nth-child(2){animation-delay:-.8s}
+.vega-pi .pi-gusts line:nth-child(3){animation-delay:-1.6s}
+@keyframes pi-gust{from{stroke-dashoffset:70}to{stroke-dashoffset:-36}}
+/* balanza */
+.vega-pi .pi-base{fill:none;stroke:var(--pi-ink);stroke-linecap:round;stroke-width:4}
+.vega-pi .pi-beam{transform-origin:120px 64px;animation:pi-beam 3.6s ease-out both}
+.vega-pi .pi-pan{animation:pi-pan 3.6s ease-out both}
+.vega-pi .pi-pan:last-child{animation-name:pi-pan}
+.vega-pi .pi-string{fill:none;stroke:var(--pi-muted);stroke-width:1.2}
+.vega-pi .pi-drone line{stroke:var(--pi-ink);stroke-width:2}
+.vega-pi .pi-drone circle{fill:none;stroke:var(--pi-accent);stroke-width:1.5}
+.vega-pi .pi-solid{fill:var(--pi-accent)}
+.vega-pi .pi-weight{fill:var(--pi-fill);stroke:var(--pi-accent);stroke-width:2}
+.vega-pi .pi-wtext{fill:var(--pi-ink);font-size:10px;font-weight:600}
+.vega-pi .pi-wtext--s{font-size:8px}
+@keyframes pi-beam{0%{transform:rotate(-12deg)}18%{transform:rotate(7deg)}36%{transform:rotate(-4deg)}54%{transform:rotate(2deg)}72%{transform:rotate(-1deg)}100%{transform:rotate(0)}}
+@keyframes pi-pan{0%{transform:rotate(12deg)}18%{transform:rotate(-7deg)}36%{transform:rotate(4deg)}54%{transform:rotate(-2deg)}72%{transform:rotate(1deg)}100%{transform:rotate(0)}}
+/* cota */
+.vega-pi .pi-plan{animation:vega-3d-in .7s cubic-bezier(.22,1,.36,1) both}
+.vega-pi .pi-rotor{fill:var(--pi-fill);stroke:var(--pi-accent);stroke-width:1.5}
+.vega-pi .pi-dim line{stroke:var(--pi-accent);stroke-width:1.4;stroke-dasharray:240;animation:pi-dim 1.1s cubic-bezier(.22,1,.36,1) both}
+.vega-pi .pi-dim text{fill:var(--pi-accent);font-size:13px;font-weight:600;letter-spacing:.08em}
+@keyframes pi-dim{from{stroke-dashoffset:240}to{stroke-dashoffset:0}}
+.vega-redesign .vega-perf__readout{align-items:baseline;column-gap:8px;display:grid;grid-template-columns:auto auto;inset:auto;justify-content:center;position:static}
+.vega-redesign .vega-perf__readout small{grid-column:1/-1;text-align:center}
+.vega-redesign .vega-perf__variants{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.vega-redesign .vega-perf__variants button{background:transparent;border:1px solid var(--pi-line);color:var(--pi-muted);cursor:pointer;font:inherit;font-size:11px;letter-spacing:.08em;padding:8px 14px;transition:background .25s,color .25s,border-color .25s}
+.vega-redesign .vega-perf__variants button:hover{border-color:var(--pi-accent);color:var(--pi-ink)}
+.vega-redesign .vega-perf__variants button.is-active{background:var(--blue);border-color:var(--blue);color:#fff}
+.vega-redesign .vega-perf__panel{gap:16px}
+@media(max-width:900px){
+  .vega-redesign .vega-perf__gauge{max-width:min(170px,22svh)}
+  .vega-redesign .vega-perf__variants button{font-size:10px;padding:7px 10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .vega-pi *{animation:none!important}
+}
+
+/* ===== MODO CLARO (todo lo que no sea data-theme="dark") ===== */
+html:not([data-theme="dark"]) .vega-redesign .vega-3d{background:#f5f6f7;color:#171a1f}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d h2{color:#171a1f}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d .eyebrow,
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-note{color:#5f6f7a}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-shell{background:radial-gradient(ellipse 60% 62% at 50% 46%,#ffffff 0%,#eaf1f6 38%,#d3e1ea 72%,#c2d3df 100%);border:1px solid #c4d0da;color:#171a1f}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-shell:before{background-image:linear-gradient(rgba(23,70,105,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(23,70,105,.10) 1px,transparent 1px)}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-shell:after{background:radial-gradient(ellipse,rgba(23,70,105,.28),transparent 70%)}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-badge span,
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-info span{color:#0876c4}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-help{color:#5f6f7a}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-views button,
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-zoom button,
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-parts button{background:rgba(255,255,255,.88);border-color:#b9c9d5;color:#27414f}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-parts button span{color:#0876c4}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-views button[aria-pressed=true],
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-views button:hover:not(:disabled),
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-zoom button:hover:not(:disabled),
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-parts button:hover:not(:disabled),
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-parts button[aria-pressed=true]{background:#0876c4;border-color:#0876c4;color:#fff}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-parts button:hover:not(:disabled) span,
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-parts button[aria-pressed=true] span{color:#fff}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-hotspot:before{border-color:#0876c4}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-hotspot{background:#0876c4}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-hotspot[aria-pressed=true]{background:#fff;color:#0876c4}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-info{background:rgba(255,255,255,.94);border-color:#9cc4e0;box-shadow:0 12px 32px rgba(23,70,105,.14)}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-info h3{color:#171a1f}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-info p{color:#44586a}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-info button{border-bottom-color:#0876c4;color:#171a1f}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-fallback{color:#44586a}
+html:not([data-theme="dark"]) .vega-redesign .vega-3d-orbit{border-color:rgba(8,118,196,.25);border-top-color:#0876c4}
+
+html:not([data-theme="dark"]) .vega-redesign .vega-perf{--pi-ink:#171a1f;--pi-muted:#5f6f7a;--pi-line:#c4d0da;--pi-accent:#0876c4;--pi-fill:rgba(8,118,196,.12);--pi-face:#fff;background:#eef3f7;color:#171a1f}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf:before{background-image:linear-gradient(rgba(23,70,105,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(23,70,105,.08) 1px,transparent 1px)}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf h2{color:#171a1f}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf .muted{color:#5f6f7a}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__frame img{filter:none}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__corner{border-color:rgba(8,118,196,.6)}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__ov--autonomia i,
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__ov--peso i:last-child{border-color:#0876c4}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__ov--viento i,
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__ov--viento b{background:linear-gradient(90deg,transparent,rgba(8,118,196,.75),transparent)}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__ov--peso i:first-child{background:linear-gradient(#0876c4,transparent)}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__ov--longitud i,
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__ov--longitud i:before,
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__ov--longitud i:after{background:#0876c4}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__ov--longitud em{color:#0876c4}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__readout small,
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__note{color:#5f6f7a}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__readout span{color:#0876c4}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__copy p{color:#44586a}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__tabs button{background:#fff;border-color:#c4d0da;color:#27414f}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__tabs button:hover{border-color:#0876c4}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__tabs button.is-active{background:rgba(8,118,196,.1);border-color:#0876c4;color:#171a1f}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__tab-index{color:#0876c4}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__tabs i{background:#0876c4}
+html:not([data-theme="dark"]) .vega-pi .pi-hand--h line,html:not([data-theme="dark"]) .vega-pi .pi-hand--m line{stroke:#171a1f}
+
+html:not([data-theme="dark"]) .vega-redesign .vega-security{background:#eef3f7;color:#171a1f}
+html:not([data-theme="dark"]) .vega-redesign .vega-security h2{color:#171a1f}
+html:not([data-theme="dark"]) .vega-redesign .vega-security .eyebrow{color:#5f6f7a}
+html:not([data-theme="dark"]) .vega-redesign .vega-security h2 .muted{color:#7d8e9a}
+html:not([data-theme="dark"]) .vega-redesign .vega-security__grid{background:#c4d0da;border-color:#c4d0da}
+html:not([data-theme="dark"]) .vega-redesign .vega-security__item{background:#fff}
+html:not([data-theme="dark"]) .vega-redesign .vega-security__item:hover{background:#f3f8fc}
+html:not([data-theme="dark"]) .vega-redesign .vega-security__item span{color:#0876c4}
+html:not([data-theme="dark"]) .vega-redesign .vega-security__icon{color:#0876c4}
+html:not([data-theme="dark"]) .vega-redesign .vega-security__item h3{color:#171a1f}
+html:not([data-theme="dark"]) .vega-redesign .vega-security__item p{color:#44586a}
+html:not([data-theme="dark"]) .vega-redesign .vega-security__cta{border-color:#0876c4;color:#0876c4}
+html:not([data-theme="dark"]) .vega-redesign .vega-security__cta:hover{background:#0876c4;color:#fff}
+
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs{--v-blue:#0876c4;--v-black:#f5f6f7;background:#f5f6f7;color:#171a1f}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs h2{color:#171a1f}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__tag span{color:#fff}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__intro>p{color:#5f6f7a}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__tabs button{border-color:#c4d0da;color:#44586a}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__tabs button:hover{color:#171a1f}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__tabs button.is-active{color:#fff}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__tabs button.is-active span{color:#d6ecfb}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__tabs button:focus-visible,
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__download:focus-visible{outline-color:#0876c4}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__panel dl>div{border-bottom-color:#d9dde3}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__panel dl>div:hover{background:linear-gradient(90deg,rgba(8,118,196,.1),transparent)}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__panel dt{color:#5f6f7a}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__panel dd{color:#171a1f}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__hint{color:#7d8e9a}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__download{background:linear-gradient(135deg,rgba(8,118,196,.12),rgba(8,118,196,.03));border-color:rgba(8,118,196,.5);color:#171a1f}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__download:before{background:linear-gradient(100deg,transparent,rgba(255,255,255,.7),transparent)}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__doc{color:#fff}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__doc i{background:#fff}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__download-copy small{color:#5f6f7a}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__download-arrow{border-color:#9cb2c2}
+html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__download:hover .vega-ospecs__download-arrow{color:#fff}
+/* ===== VEGA · ronda 5 (pegar al FINAL de styles/vega.css, después de la ronda 4) ===== */
+
+/* Menos aire entre secciones */
+.vega-redesign .section{padding-bottom:72px;padding-top:72px}
+.vega-redesign .section-head{margin-bottom:22px}
+.vega-redesign .section-head>span.eyebrow{display:none} /* textos de relleno a la derecha */
+.vega-redesign .vega-ospecs{padding-bottom:clamp(56px,6vw,88px);padding-top:clamp(56px,6vw,88px)}
+.vega-redesign .vega-3d h2,.vega-redesign .vega-perf h2{margin-bottom:24px}
+@media(max-width:900px){.vega-redesign .section{padding-bottom:52px;padding-top:52px}}
+
+/* 01 · reestructura */
+.vega-redesign .vega-intro__top{align-items:end;gap:6%;grid-template-columns:1.15fr 1fr}
+.vega-redesign .vega-intro__lead{color:var(--vega-muted);font-size:17px;line-height:1.65;margin:0;max-width:44ch}
+.vega-redesign .vega-intro__stats{display:grid;gap:24px;grid-template-columns:repeat(3,1fr);margin:clamp(36px,4vw,56px) 0 0}
+.vega-redesign .vega-intro__stats>div{background:var(--vega-surface);padding:26px 28px 24px;transition:transform .3s}
+.vega-redesign .vega-intro__stats>div:hover{transform:translateY(-3px)}
+.vega-redesign .vega-intro__stats dt:before{background:var(--blue);content:"";display:inline-block;height:7px;margin-right:10px;width:7px}
+.vega-redesign .vega-intro__stats dd{margin:18px 0 6px}
+.vega-redesign .vega-intro__why{margin-top:clamp(32px,4vw,52px)}
+.vega-redesign .vega-intro__why ul{margin-top:0}
+@media(max-width:900px){
+  .vega-redesign .vega-intro__top{gap:20px;grid-template-columns:1fr}
+  .vega-redesign .vega-intro__stats{gap:12px;grid-template-columns:1fr}
+  .vega-redesign .vega-intro__stats>div{padding:18px 20px}
+  .vega-redesign .vega-intro__stats dd{margin:10px 0 4px}
+}
+
+/* Servicio: tira compacta */
+.vega-redesign .vega-service{align-items:center;display:grid;gap:6%;grid-template-columns:.9fr 1.1fr}
+.vega-redesign .vega-service__head h2{font-size:clamp(30px,3.4vw,52px)}
+.vega-redesign .vega-service__head p:not(.eyebrow){font-size:15px;margin-top:16px}
+.vega-redesign .vega-service__list{gap:22px;grid-template-columns:1fr;margin:0}
+@media(max-width:900px){.vega-redesign .vega-service{gap:28px;grid-template-columns:1fr}}
+
+/* 03 · compacto: dron + instrumento visibles en una pantalla */
+.vega-redesign .vega-perf{padding-bottom:44px;padding-top:56px}
+.vega-redesign .vega-perf h2{font-size:clamp(34px,4.2vw,60px)}
+.vega-redesign .vega-perf__board{align-items:center;gap:clamp(20px,3vw,48px);grid-template-columns:1.1fr 1fr}
+.vega-redesign .vega-perf__stage{justify-self:center;width:min(100%,calc(46svh * 1.565))}
+.vega-redesign .vega-perf__panel{display:grid;gap:18px;justify-items:stretch;text-align:left}
+.vega-redesign .vega-perf__top{align-items:center;display:grid;gap:clamp(16px,2.4vw,32px);grid-template-columns:clamp(150px,15vw,210px) 1fr}
+.vega-redesign .vega-perf__gauge{max-width:none}
+.vega-redesign .vega-perf__reading{display:grid;gap:10px;justify-items:start}
+.vega-redesign .vega-perf__label{color:var(--pi-accent);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.vega-redesign .vega-perf__readout{justify-content:start}
+.vega-redesign .vega-perf__readout small{text-align:left}
+.vega-redesign .vega-perf__readout strong{font-size:clamp(46px,4.6vw,72px)}
+.vega-redesign .vega-perf__variants{justify-content:flex-start}
+.vega-redesign .vega-perf__copy{font-size:14px;line-height:1.65;margin:0;max-width:52ch}
+.vega-redesign .vega-perf__tabs{margin-top:28px}
+.vega-redesign .vega-perf__tabs button{padding:14px 16px 18px}
+@media(max-width:900px){
+  .vega-redesign .vega-perf{padding-bottom:36px;padding-top:44px}
+  .vega-redesign .vega-perf__stage{width:min(100%,calc(24svh * 1.565))}
+  .vega-redesign .vega-perf__panel{gap:10px}
+  .vega-redesign .vega-perf__top{grid-template-columns:min(30vw,22svh) 1fr}
+  .vega-redesign .vega-perf__readout strong{font-size:clamp(38px,11vw,50px)}
+  .vega-redesign .vega-perf__copy{font-size:13px;line-height:1.55;min-height:0}
+  .vega-redesign .vega-perf__tabs{margin-top:12px}
+}
+.vega-redesign .vega-perf__copy{color:#b8c6d0}
+html:not([data-theme="dark"]) .vega-redesign .vega-perf__copy{color:#44586a}
+@media(max-width:900px){
+  .vega-redesign .vega-intro__lead{font-size:15px}
+  .vega-redesign .vega-intro__stats{gap:8px;grid-template-columns:repeat(3,1fr)}
+  .vega-redesign .vega-intro__stats>div{padding:14px 12px}
+  .vega-redesign .vega-intro__stats dt{font-size:9px;letter-spacing:.08em;line-height:1.35}
+  .vega-redesign .vega-intro__stats dt:before{margin-right:6px}
+  .vega-redesign .vega-intro__stats strong{font-size:34px}
+  .vega-redesign .vega-intro__stats dd{flex-wrap:wrap;gap:2px 6px}
+  .vega-redesign .vega-intro__stats dd span{font-size:12px}
+  .vega-redesign .vega-intro__stats small{font-size:10.5px;line-height:1.35}
+  .vega-redesign .vega-perf__board{gap:10px;grid-template-columns:1fr}
+  .vega-redesign .vega-perf__stage{justify-self:stretch;margin:0 auto;width:min(100%,calc(30svh * 1.565))}
+  .vega-redesign .vega-perf__label{font-size:10px;letter-spacing:.08em}
+  .vega-redesign .vega-perf__variants{flex-wrap:nowrap;gap:6px}
+  .vega-redesign .vega-perf__variants button{font-size:10px;letter-spacing:.04em;padding:6px 8px;white-space:nowrap}
+}

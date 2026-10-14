@@ -13,6 +13,7 @@ import { VegaTechnology } from "./VegaTechnology";
 import { VegaPayloads } from "./VegaPayloads";
 import { VegaSecurity } from "./VegaSecurity";
 import { VegaSpecs } from "./VegaSpecs";
+import { VegaService } from "./VegaService";
 import { vegaData, SPEC_PDF, SPEC_PDF_NAME } from "@/lib/vega/data";
 
 export default function VegaPage() {
@@ -29,13 +30,25 @@ export default function VegaPage() {
           <VegaSubNav />
           <VegaHero />
           <VegaStats />
-          <VegaGallery />
           <VegaViewer />
           <VegaPerformance />
           <VegaTechnology />
           <VegaPayloads />
           <VegaSecurity />
+          <section className="section vega-field" id="galeria" aria-labelledby="vega-field-title">
+            <div className="section-head" data-reveal>
+              <p className="eyebrow">VEGA EN CAMPO</p>
+              <span className="eyebrow">OPERACIÓN REAL</span>
+            </div>
+            <h2 id="vega-field-title" data-reveal>
+              Así vuela
+              <br />
+              <span className="muted">VEGA.</span>
+            </h2>
+            <VegaGallery />
+          </section>
           <VegaSpecs />
+          <VegaService />
           <section className="contact section" id="contacto">
             <p className="eyebrow" data-reveal>
               08 / CONTACTO
@@ -54,6 +67,11 @@ export default function VegaPage() {
                 </a>
               </div>
             </div>
+            <p className="contact-lines">
+              <a href={`tel:${vegaData.phones[0].replace(/\s/g, "")}`}>{vegaData.phones[0]}</a>
+              <a href={`tel:${vegaData.phones[1].replace(/\s/g, "")}`}>{vegaData.phones[1]}</a>
+              <a href={`mailto:${vegaData.email}`}>{vegaData.email}</a>
+            </p>
           </section>
           <VegaAnimations />
         </main>

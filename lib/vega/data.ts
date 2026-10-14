@@ -8,6 +8,8 @@ export const vegaData = {
   intro:
     "VEGA combina gran autonomía, cargas útiles personalizables y navegación asistida o autónoma para que una sola plataforma resuelva distintas misiones, desde inspección hasta seguridad pública.",
   contactHref: "mailto:info@flytek.com.mx?subject=Cotizacion%20VEGA",
+  phones: ["+52 55 7158 3361", "+52 55 2218 8546"],
+  email: "info@flytek.com.mx",
   contactSecurityHref: "mailto:info@flytek.com.mx?subject=VEGA%20para%20seguridad%20publica",
   nav: [
     ["descripcion", "Descripción"],
@@ -28,8 +30,18 @@ export const vegaData = {
   stats: [
     { value: 90, unit: "min", label: "Autonomía máxima", note: "sin carga útil" },
     { value: 40, unit: "km", label: "Alcance de radiocontrol", note: "configurable de 10 a 40 km" },
-    { value: 35, unit: "km/h", label: "Resistencia al viento", note: "operación estable" },
     { value: 1.5, unit: "kg", label: "Carga útil máxima", note: "sugerida", decimals: 1 },
+  ],
+  // Lo que distingue a VEGA (ficha técnica + flytek.com.mx/vega_4.php)
+  highlights: [
+    { icon: "shield", title: "Vuelo estable y seguro", text: "Sistema de control avanzado, vuelo autónomo y redundancia de hasta triple." },
+    { icon: "package", title: "Plegable y portátil", text: "Hélices desplegables y estuche de alto impacto: fácil de transportar y de operar en interiores o exteriores." },
+    { icon: "layers", title: "Fibra de carbono", text: "Estructura ligera y resistente, preparada para el polvo del trabajo industrial." },
+  ],
+  service: [
+    { icon: "grad", title: "Capacitación incluida", text: "Capacitamos a tu equipo en tu zona de trabajo, sin que tengas que trasladarte." },
+    { icon: "wrench", title: "Mantenimiento mínimo", text: "Por su diseño y armado, VEGA requiere muy poco mantenimiento." },
+    { icon: "headset", title: "Soporte 24/7", text: "Soporte a nivel nacional las 24 horas, los siete días de la semana." },
   ],
   specs: [
     {
