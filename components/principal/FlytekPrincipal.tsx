@@ -4,7 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowUpRight, Minus, Plus, Pause, Play } from "lucide-react";
 import SiteHeader from "@/components/shared/SiteHeader";
 import { fenixAssets } from "@/lib/fenix/assets";
-import { homeCopy, platforms, sectors, support } from "@/lib/principal/data";
+import {
+  homeCopy,
+  platforms,
+  sectorBenefits,
+  sectorDetails,
+  sectors,
+  support,
+} from "@/lib/principal/data";
 export default function FlytekPrincipal({
   initiallyShowIntro,
 }: {
@@ -19,6 +26,7 @@ export default function FlytekPrincipal({
   const [showIntro, setShowIntro] = useState(initiallyShowIntro);
   const drone = platforms[platform];
   const mission = sectors[sector];
+  const missionDetail = sectorDetails[sector];
 useEffect(() => {
   if (!showIntro) return;
 
@@ -377,37 +385,119 @@ useScrollScenes(root, "home", !paused && !showIntro);
               <p className="home-label">{mission.tag}</p>
               <h3>{mission.title}</h3>
               <p>{mission.description}</p>
-              <a className="home-link-light" href={`#aplicacion-${mission.slug}`}>
+              <a className="home-link-light" href="#sector-expanded">
                 Ver aplicación a detalle <ArrowDown size={20} />
               </a>
             </div>
-            <span className="home-sector-number" aria-hidden="true">
-              0{sector + 1}
-            </span>
           </div>
-          <div className="home-application-details">
-            {sectors.map((item, index) => (
-              <article
-                className="home-application-card"
-                id={`aplicacion-${item.slug}`}
-                key={item.slug}
-                data-home-reveal
-              >
-                <div className="home-application-image">
-                  <img src={item.image} alt={item.alt} width="1200" height="800" loading="lazy" />
-                </div>
-                <div className="home-application-copy">
-                  <p className="home-label">{item.tag}</p>
-                  <h3>{item.detailTitle}</h3>
-                  <p>{item.detailText}</p>
-                  <ul>
-                    {item.capabilities.map((capability) => (
-                      <li key={capability}>{capability}</li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
+          <div
+            className="home-sector-expanded"
+            id="sector-expanded"
+            key={missionDetail.slug}
+            aria-live="polite"
+          >
+            <header className="home-detail-heading" data-home-reveal>
+              <div className="home-detail-heading-title">
+                <p className="home-label">{missionDetail.name}</p>
+                <h3>{missionDetail.title}</h3>
+              </div>
+              <p>{missionDetail.summary}</p>
+            </header>
+
+            <section className="home-capability-stage" aria-label={`Ventajas para ${missionDetail.name}`}>
+              <img
+                src={missionDetail.capabilityImage}
+                alt={missionDetail.capabilityAlt}
+                style={{ objectPosition: missionDetail.capabilityPosition }}
+                width="1600"
+                height="1000"
+                loading="lazy"
+              />
+              <div className="home-capability-shade" />
+              <div className="home-proof-grid">
+                {missionDetail.proofs.map((proof) => (
+                  <article className="home-proof" key={proof.title}>
+                    <h4>{proof.title}</h4>
+                    <p>{proof.text}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section className="home-applications">
+              <header className="home-applications-heading">
+                <p className="home-label">Aplicaciones</p>
+                <p>{missionDetail.applicationIntro}</p>
+              </header>
+              <div className={`home-application-grid${missionDetail.applications.length === 2 ? " is-pair" : ""}`}>
+                {missionDetail.applications.map((application) => (
+                  <article className="home-application" key={application.title}>
+                    <img
+                      src={application.image}
+                      alt={application.title}
+                      width="1000"
+                      height="600"
+                      loading="lazy"
+                    />
+                    <div>
+                      <h4>{application.title}</h4>
+                      <p>{application.text}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section className="home-recommended">
+              <header>
+                <p className="home-label">Drones recomendados</p>
+                <p>Plataformas que pueden configurarse alrededor de las necesidades de esta operación.</p>
+              </header>
+              <div className={`home-recommended-grid${missionDetail.drones.length === 1 ? " is-single" : ""}`}>
+                {missionDetail.drones.map((recommended) => (
+                  <article className="home-drone-card" key={recommended.name}>
+                    <div className="home-drone-copy">
+                      <p className="home-label">{recommended.context}</p>
+                      <h4>
+                        <a href={recommended.href} aria-label={`Conocer el drone ${recommended.name}`}>
+                          {recommended.name}
+                          <ArrowUpRight size={25} aria-hidden="true" />
+                        </a>
+                      </h4>
+                      <p>{recommended.text}</p>
+                      <dl className="home-drone-specs">
+                        {recommended.specs.map(([label, value]) => (
+                          <div key={label}>
+                            <dt>{label}</dt>
+                            <dd>{value}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </div>
+                    <div className="home-drone-image">
+                      <img
+                        src={recommended.image}
+                        alt={`Drone ${recommended.name}`}
+                        width="800"
+                        height="600"
+                        loading="lazy"
+                      />
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section className="home-benefits" aria-label="Beneficios en campo">
+              <ul>
+                {sectorBenefits.map((benefit) => (
+                  <li key={benefit.label}>
+                    <img src={benefit.icon} alt="" width="102" height="102" loading="lazy" />
+                    <span>{benefit.label}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
           </div>
         </section>
         <section className="home-support" id="soporte">
