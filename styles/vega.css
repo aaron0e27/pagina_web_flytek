@@ -1766,6 +1766,15 @@ html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__download:hover .vega-
 .vega-redesign .vega-perf__copy{color:#b8c6d0}
 html:not([data-theme="dark"]) .vega-redesign .vega-perf__copy{color:#44586a}
 
+/* Hero editorial compartido con FÉNIX: nombre detrás y producto flotando al frente. */
+.vega-redesign .hero h1{color:#7c8892;font-size:clamp(145px,22vw,360px);font-weight:550;left:0;letter-spacing:-.055em;line-height:.95;opacity:.38;right:0;text-align:center;top:48px;z-index:1}
+.vega-redesign .hero-stage{inset:18% 5% 13%;z-index:2}
+.vega-redesign .hero-stage .orbit{display:none}
+.vega-redesign .hero-product{animation:vega-hero-drone-floating 4s ease-in-out infinite;filter:brightness(1.08) drop-shadow(0 40px 22px rgba(0,0,0,.44));height:90%;max-width:1050px;transform-origin:center;width:78%;will-change:transform}
+.vega-redesign .hero-top,.vega-redesign .hero-bottom{z-index:4}
+@keyframes vega-hero-drone-floating{0%,100%{transform:translate3d(0,-2%,0) rotate(-.7deg)}50%{transform:translate3d(0,-7%,0) rotate(.7deg)}}
+@media(prefers-reduced-motion:reduce){.vega-redesign .hero-product{animation:none}}
+
 /* Misma superficie y cuadrícula que el tablero de ORION. */
 .vega-redesign .vega-perf{background-color:#0c1319;background-image:linear-gradient(color-mix(in srgb,#334a57 42%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,#334a57 42%,transparent) 1px,transparent 1px);background-size:56px 56px}
 .vega-redesign .vega-perf:before{display:none}

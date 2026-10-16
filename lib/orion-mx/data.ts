@@ -1,6 +1,7 @@
 // Fuente: ficha técnica oficial "Flytek_Orion_Ficha_Tecnica.pdf". Edita aquí los textos de las secciones 01 y 05.
 export const orionAssets = {
   hero: "/orion-mx/orion-hero.webp",
+  heroFront: "/orion-mx/orion-hero-front.webp",
   front: "/orion-mx/orion-front.webp", // vista frontal (fondo transparente)
   viewA: "/orion-mx/orion-view-a.jpg",
   viewB: "/orion-mx/orion-view-b.jpg",

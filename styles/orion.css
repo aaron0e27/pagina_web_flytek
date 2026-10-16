@@ -334,6 +334,21 @@ html[data-theme=dark] .orion-perf__frame{background:radial-gradient(ellipse 55% 
 @keyframes pi-beam{0%{transform:rotate(-12deg)}18%{transform:rotate(7deg)}36%{transform:rotate(-4deg)}54%{transform:rotate(2deg)}72%{transform:rotate(-1deg)}100%{transform:rotate(0)}}
 @keyframes pi-pan{0%{transform:rotate(12deg)}18%{transform:rotate(-7deg)}36%{transform:rotate(4deg)}54%{transform:rotate(-2deg)}72%{transform:rotate(1deg)}100%{transform:rotate(0)}}
 
+/* Hero editorial compartido con FÉNIX: nombre detrás y producto flotando al frente. */
+.orion-page .orion-hero{border-bottom:100px solid var(--o-black);border-top:70px solid var(--o-black);box-sizing:content-box;height:calc(100svh - 134px);max-height:1020px;min-height:670px}
+.orion-page .orion-hero__title{color:#7c8892;font-size:clamp(145px,22vw,360px);font-weight:550;inset:48px 0 auto;letter-spacing:-.055em;line-height:.95;margin:0!important;opacity:.38;position:absolute;text-align:center;z-index:1}
+.orion-page .orion-hero__copy{bottom:102px;left:5%;top:auto;z-index:4}
+.orion-page .orion-hero__lead{margin:0!important}
+.orion-page .orion-hero__visual{animation:orion-hero-drone-floating 4s ease-in-out infinite;bottom:auto;height:69%;left:5%;right:auto;top:18%;transform-origin:center;width:90%;z-index:2}
+.orion-page .orion-hero__visual:after{display:none}
+.orion-page .orion-hero__image{filter:brightness(1.04) drop-shadow(0 40px 22px rgba(0,0,0,.42));object-fit:contain;object-position:center}
+.orion-page .orion-scroll-cue{bottom:22px;color:#fff!important;display:grid;font-size:11px;gap:7px;justify-items:center;left:50%;letter-spacing:.13em;padding:8px 16px;position:absolute;right:auto;transform:translateX(-50%);z-index:5}
+.orion-page .orion-scroll-cue svg{transition:transform .22s ease-out}
+.orion-page .orion-scroll-cue:hover svg,.orion-page .orion-scroll-cue:focus-visible svg{transform:translateY(3px)}
+@keyframes orion-hero-drone-floating{0%,100%{transform:translate3d(0,-2%,0) rotate(-.7deg)}50%{transform:translate3d(0,-7%,0) rotate(.7deg)}}
+@media(prefers-reduced-motion:reduce){.orion-page .orion-hero__visual{animation:none}}
+@media(max-width:767px){.orion-page .orion-hero{border-bottom-width:48px;border-top-width:24px}}
+
 @media(max-width:900px){
   .orion-perf__board{gap:14px;grid-template-columns:1fr;padding:16px}
   .orion-perf__stage{width:min(100%,calc(30svh*1.23))}

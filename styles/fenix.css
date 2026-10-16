@@ -3431,7 +3431,7 @@ html:has(.fenix-page) {
   outline-offset: -4px;
 }
 /* Flotación continua del producto en el hero de /fenix. */
-.fenix-page .hero-product { animation:fenix-hero-drone-floating 4s ease-in-out infinite; transform-origin:center; will-change:transform; }
+.fenix-page .hero-product { animation:fenix-hero-drone-floating 4s ease-in-out infinite; filter:brightness(1.02); opacity:1; transform-origin:center; will-change:transform; }
 @keyframes fenix-hero-drone-floating { 0%,100%{transform:translate3d(0,-2%,0) rotate(-.7deg)} 50%{transform:translate3d(0,-7%,0) rotate(.7deg)} }
 @media(prefers-reduced-motion:reduce){.fenix-page .hero-product{animation:none}}
 
