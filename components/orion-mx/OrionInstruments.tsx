@@ -53,7 +53,7 @@ function Wind() {
   return (
     <svg viewBox="0 0 240 240" className="orion-pi" aria-hidden="true">
       <circle className="pi-track pi-arc-track" cx="120" cy="120" r="108" />
-      <circle className="pi-ring pi-arc" cx="120" cy="120" r="108" />
+      <circle className="pi-ring pi-arc" cx="120" cy="120" r="108" style={{ ["--on" as string]: 509 * 0.35, ["--len" as string]: 679 }} />
       {Array.from({ length: 10 }, (_, i) => (
         <line key={i} className="pi-tick" x1="120" y1="12" x2="120" y2={i % 2 === 0 ? 24 : 19} transform={`rotate(${-135 + i * 30} 120 120)`} />
       ))}
