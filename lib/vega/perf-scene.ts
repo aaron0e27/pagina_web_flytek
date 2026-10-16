@@ -3,7 +3,7 @@ import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
 
-export type PerfMode = "autonomia" | "viento" | "peso" | "longitud";
+export type PerfMode = "autonomia" | "alcance" | "viento" | "peso" | "longitud";
 
 export type PerfSceneAPI = {
   mode: (mode: PerfMode) => void;
@@ -16,10 +16,11 @@ const MODEL = "/vega/models/vega.glb";
 // Cámara y movimiento del modelo para cada métrica.
 // Si el dron se ve muy chico o muy grande, ajusta los números de "cam".
 const SHOTS: Record<PerfMode, { cam: [number, number, number]; spin: number }> = {
-  autonomia: { cam: [3.5, 1.9, 4.3], spin: 0.3 },  // giro lento
-  viento: { cam: [0.3, 0.8, 5.4], spin: 0 },        // frente, con balanceo
-  peso: { cam: [4.7, 0.6, 2.5], spin: 0.16 },       // giro lento + flotación
-  longitud: { cam: [0.01, 6.3, 0.9], spin: 0 },     // vista superior
+  autonomia: { cam: [2.85, 1.55, 3.5], spin: 0.3 }, // giro lento
+  alcance: { cam: [0.14, 0.97, 4.5], spin: 0.08 },  // GPS y radio
+  viento: { cam: [0.24, 0.65, 4.35], spin: 0 },     // frente, con balanceo
+  peso: { cam: [3.8, 0.49, 2.02], spin: 0.16 },     // giro lento + flotación
+  longitud: { cam: [0.01, 5.1, 0.74], spin: 0 },    // vista superior
 };
 
 export async function createPerfScene(

@@ -49,22 +49,28 @@ function Radar({ variant }: { variant: number }) {
   );
 }
 
-function Speed() {
-  // Arco de 270°; la aguja apunta a 72 km/h sobre una escala de 0 a 100.
-  const frac = 0.72;
+function Wind() {
   return (
     <svg viewBox="0 0 240 240" className="orion-pi" aria-hidden="true">
       <circle className="pi-track pi-arc-track" cx="120" cy="120" r="108" />
-      <circle className="pi-ring pi-arc" cx="120" cy="120" r="108" style={{ ["--on" as string]: 509 * frac, ["--len" as string]: 679 }} />
-      {Array.from({ length: 11 }, (_, i) => (
-        <line key={i} className="pi-tick" x1="120" y1="30" x2="120" y2={i % 5 === 0 ? 46 : 40} transform={`rotate(${-135 + i * 27} 120 120)`} />
+      <circle className="pi-ring pi-arc" cx="120" cy="120" r="108" />
+      {Array.from({ length: 10 }, (_, i) => (
+        <line key={i} className="pi-tick" x1="120" y1="12" x2="120" y2={i % 2 === 0 ? 24 : 19} transform={`rotate(${-135 + i * 30} 120 120)`} />
       ))}
-      <text className="pi-label" x="58" y="196" textAnchor="middle">0</text>
-      <text className="pi-label" x="182" y="196" textAnchor="middle">100</text>
-      <g className="pi-hand pi-needle" style={{ ["--to" as string]: `${-135 + frac * 270}deg`, ["--from" as string]: "-135deg" }}>
-        <line x1="120" y1="132" x2="120" y2="50" />
+      <g className="pi-gusts">
+        <line x1="22" y1="86" x2="82" y2="86" />
+        <line x1="30" y1="154" x2="96" y2="154" />
+        <line x1="14" y1="120" x2="54" y2="120" />
       </g>
-      <g className="pi-gusts"><line x1="26" y1="92" x2="76" y2="92" /><line x1="18" y1="148" x2="64" y2="148" /></g>
+      <line className="pi-mast" x1="120" y1="120" x2="120" y2="206" />
+      <g className="pi-cups">
+        {[0, 120, 240].map((angle) => (
+          <g key={angle} transform={`rotate(${angle} 120 120)`}>
+            <line className="pi-arm" x1="120" y1="120" x2="120" y2="64" />
+            <path className="pi-cup" d="M104 64 a16 16 0 0 0 32 0 z" />
+          </g>
+        ))}
+      </g>
       <circle className="pi-hub" cx="120" cy="120" r="8" />
     </svg>
   );
@@ -100,9 +106,28 @@ function Scale({ variant }: { variant: number }) {
   );
 }
 
+function Dimensions({ variant }: { variant: number }) {
+  const top = variant === 0;
+  return (
+    <svg viewBox="0 0 240 240" className="orion-pi" aria-hidden="true" key={variant}>
+      {top ? <>
+        <g className="pi-plan"><rect className="pi-face" x="66" y="70" width="108" height="108" />
+          <line className="pi-arm" x1="66" y1="70" x2="174" y2="178" /><line className="pi-arm" x1="174" y1="70" x2="66" y2="178" />
+          {[[66,70],[174,70],[66,178],[174,178]].map(([x,y]) => <circle key={`${x}${y}`} className="pi-rotor" cx={x} cy={y} r="18" />)}
+          <rect className="pi-solid" x="106" y="110" width="28" height="28" rx="5" /></g>
+        <g className="pi-dim pi-dim--h"><line x1="45" y1="38" x2="195" y2="38" /><line x1="45" y1="30" x2="45" y2="46" /><line x1="195" y1="30" x2="195" y2="46" /><text x="120" y="29" textAnchor="middle">0.86 m</text></g>
+      </> : <>
+        <g className="pi-plan"><rect className="pi-solid" x="92" y="112" width="56" height="25" rx="7" /><line className="pi-arm" x1="42" y1="106" x2="198" y2="106" /><path className="pi-arm" d="M104 137v22 M136 137v22 M92 159h24 M124 159h24" /></g>
+        <g className="pi-dim pi-dim--v pi-dim--alto"><line x1="205" y1="100" x2="205" y2="160" /><line x1="197" y1="100" x2="213" y2="100" /><line x1="197" y1="160" x2="213" y2="160" /><text x="194" y="134" textAnchor="end">0.44 m</text></g>
+      </>}
+    </svg>
+  );
+}
+
 export function OrionInstrument({ id, variant }: Props) {
   if (id === "autonomia") return <Clock variant={variant} />;
   if (id === "alcance") return <Radar variant={variant} />;
-  if (id === "velocidad") return <Speed />;
-  return <Scale variant={variant} />;
+  if (id === "viento") return <Wind />;
+  if (id === "peso") return <Scale variant={variant} />;
+  return <Dimensions variant={variant} />;
 }

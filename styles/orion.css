@@ -232,25 +232,27 @@ html[data-theme=dark] .orion-page .orion-support{--o-ink:#edf3f7;--o-copy:#b8c6d
 .orion-perf__frame{aspect-ratio:1000/812;background:radial-gradient(ellipse 55% 60% at 50% 50%,rgba(22,140,222,.14),transparent 72%);overflow:hidden;position:relative}
 html[data-theme=dark] .orion-perf__frame{background:radial-gradient(ellipse 55% 60% at 50% 50%,rgba(150,196,222,.3),transparent 72%)}
 .orion-perf__frame:before{background-image:linear-gradient(var(--o-line) 1px,transparent 1px),linear-gradient(90deg,var(--o-line) 1px,transparent 1px);background-size:40px 40px;content:"";inset:0;opacity:.5;-webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000,transparent 75%);mask-image:radial-gradient(ellipse at 50% 50%,#000,transparent 75%);position:absolute}
-.orion-perf__drone{filter:drop-shadow(0 14px 18px rgba(8,40,66,.28));height:100%;inset:0;object-fit:contain;position:absolute;width:100%}
-.orion-perf__ov{inset:0;opacity:0;pointer-events:none;position:absolute;transition:opacity .5s}
-.orion-perf[data-metric=autonomia] .orion-perf__ov--autonomia,.orion-perf[data-metric=alcance] .orion-perf__ov--alcance,.orion-perf[data-metric=velocidad] .orion-perf__ov--velocidad,.orion-perf[data-metric=peso] .orion-perf__ov--peso{opacity:1}
+.orion-perf__scene{inset:0;position:absolute;z-index:1}
+.orion-perf__scene canvas{display:block;height:100%;width:100%}
+.orion-perf__ov{inset:0;opacity:0;pointer-events:none;position:absolute;transition:opacity .5s;z-index:2}
+.orion-perf[data-metric=autonomia] .orion-perf__ov--autonomia,.orion-perf[data-metric=alcance] .orion-perf__ov--alcance,.orion-perf[data-metric=viento] .orion-perf__ov--viento,.orion-perf[data-metric=peso] .orion-perf__ov--peso,.orion-perf[data-metric=dimensiones] .orion-perf__ov--dimensiones{opacity:1}
 .orion-perf__ov i{position:absolute}
-/* autonomía: pulso de batería en el cuerpo */
-.orion-perf__ov--autonomia i{animation:orion-ring 2.6s ease-out infinite;border:1.5px solid var(--o-accent);border-radius:50%;height:36%;left:calc(48.5% - 7%);top:calc(38% - 18%);width:14%}
-.orion-perf__ov--autonomia i+i{animation-delay:1.3s}
+/* autonomía: batería compacta sobre el cuerpo */
+.orion-perf__ov--autonomia i:first-child{border:1.5px solid var(--o-accent);border-radius:3px;height:9%;left:45%;top:43%;width:9%}.orion-perf__ov--autonomia i:first-child:after{background:var(--o-accent);content:"";height:42%;position:absolute;right:-9%;top:29%;width:7%}
+.orion-perf__ov--autonomia i:last-child{animation:orion-charge 2.5s ease-in-out infinite;background:var(--o-accent);border-radius:1px;height:6%;left:46%;top:44.5%;transform-origin:left;width:7%}@keyframes orion-charge{0%,15%{opacity:.35;transform:scaleX(.18)}75%,100%{opacity:.9;transform:scaleX(1)}}
 /* alcance: anillos que salen de la antena */
-.orion-perf__ov--alcance i{animation:orion-ring 3.2s ease-out infinite;aspect-ratio:1;border:1.5px solid var(--o-accent);border-radius:50%;left:calc(48.5% - 16%);top:calc(7% - 16%*1.27);width:32%}
+.orion-perf__ov--alcance i{animation:orion-ring 3.2s ease-out infinite;aspect-ratio:1;border:1.5px solid var(--o-accent);border-radius:50%;left:calc(48.5% - 14%);top:4%;width:28%}
 .orion-perf__ov--alcance i:nth-child(2){animation-delay:1.05s}
 .orion-perf__ov--alcance i:nth-child(3){animation-delay:2.1s}
-/* velocidad: estelas */
-.orion-perf__ov--velocidad i{animation:orion-gust 1.9s linear infinite;background:linear-gradient(90deg,transparent,var(--o-accent),transparent);height:2px;left:-30%;width:30%}
-.orion-perf__ov--velocidad i:nth-child(1){top:26%}
-.orion-perf__ov--velocidad i:nth-child(2){animation-delay:.7s;top:52%}
-.orion-perf__ov--velocidad i:nth-child(3){animation-delay:1.3s;top:76%}
-/* peso: línea de carga y onda en el suelo */
-.orion-perf__ov--peso i:first-child{animation:orion-grow 1.2s cubic-bezier(.22,1,.36,1) both;background:linear-gradient(var(--o-accent),transparent);height:46%;left:48.5%;top:42%;transform-origin:top;width:2px}
-.orion-perf__ov--peso i:last-child{animation:orion-ring 2.6s ease-out infinite;border:1.5px solid var(--o-accent);border-radius:50%;height:12%;left:calc(48.5% - 8%);top:84%;width:16%}
+/* viento: estelas */
+.orion-perf__ov--viento i{animation:orion-gust 1.9s linear infinite;background:linear-gradient(90deg,transparent,var(--o-accent),transparent);height:2px;left:-30%;width:30%}
+.orion-perf__ov--viento i:nth-child(1){top:26%}
+.orion-perf__ov--viento i:nth-child(2){animation-delay:.7s;top:52%}
+.orion-perf__ov--viento i:nth-child(3){animation-delay:1.3s;top:76%}
+/* peso: misma lectura vertical y pulso de apoyo que VEGA */
+.orion-perf__ov--peso i:first-child{animation:orion-grow 1.4s cubic-bezier(.22,1,.36,1) both;background:linear-gradient(var(--o-accent),transparent);height:44%;left:50.8%;top:34%;transform-origin:top;width:1px}
+.orion-perf__ov--peso i:last-child{animation:orion-ring 2.4s ease-out infinite;border:1px solid var(--o-accent);border-radius:50%;height:10%;left:45.8%;top:68%;width:10%}
+.orion-perf__ov--dimensiones i{background:var(--o-accent);position:absolute}.orion-perf__ov--dimensiones i:first-child{bottom:9%;height:1px;left:9%;right:9%}.orion-perf__ov--dimensiones i:last-of-type{bottom:9%;right:9%;top:9%;width:1px}.orion-perf__ov--dimensiones i:before,.orion-perf__ov--dimensiones i:after{background:var(--o-accent);content:"";position:absolute}.orion-perf__ov--dimensiones i:first-child:before,.orion-perf__ov--dimensiones i:first-child:after{height:13px;top:-6px;width:1px}.orion-perf__ov--dimensiones i:first-child:before{left:0}.orion-perf__ov--dimensiones i:first-child:after{right:0}.orion-perf__ov--dimensiones i:last-of-type:before,.orion-perf__ov--dimensiones i:last-of-type:after{height:1px;left:-6px;width:13px}.orion-perf__ov--dimensiones i:last-of-type:before{top:0}.orion-perf__ov--dimensiones i:last-of-type:after{bottom:0}.orion-perf__ov--dimensiones em{bottom:11%;color:var(--o-accent);font-size:10px;font-style:normal;left:50%;letter-spacing:.12em;position:absolute;transform:translateX(-50%)}
 @keyframes orion-ring{0%{opacity:.85;transform:scale(.3)}100%{opacity:0;transform:scale(1.5)}}
 @keyframes orion-gust{from{transform:translateX(0)}to{transform:translateX(480%)}}
 @keyframes orion-grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
@@ -267,10 +269,10 @@ html[data-theme=dark] .orion-perf__frame{background:radial-gradient(ellipse 55% 
 .orion-perf__variants button{background:transparent;border:1px solid var(--o-line);color:var(--o-muted);cursor:pointer;font:inherit;font-size:11px;letter-spacing:.08em;padding:8px 14px;transition:background .25s,color .25s,border-color .25s}
 .orion-perf__variants button:hover{border-color:var(--o-blue);color:var(--o-ink)}
 .orion-perf__variants button.is-active{background:var(--o-blue);border-color:var(--o-blue);color:#fff}
-.orion-perf__copy{animation:orion-in .6s cubic-bezier(.22,1,.36,1) both;color:var(--o-copy);font-size:14px;line-height:1.65;margin:0;max-width:38ch}
+.orion-perf__copy{animation:orion-in .6s cubic-bezier(.22,1,.36,1) both;color:var(--o-copy);font-size:clamp(15px,1.05vw,17px);grid-column:1/-1;justify-self:center;line-height:1.7;margin:0;max-width:46ch;text-align:center;width:100%}
 @keyframes orion-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-.orion-perf__tabs{display:grid;gap:12px;grid-template-columns:repeat(4,1fr);margin-top:14px}
+.orion-perf__tabs{display:grid;gap:12px;grid-template-columns:repeat(5,1fr);margin-top:14px}
 .orion-perf__tabs button{background:var(--o-tile);border:1px solid var(--o-line);color:var(--o-copy);cursor:pointer;display:grid;font:inherit;gap:6px;overflow:hidden;padding:16px 18px 20px;position:relative;text-align:left;transition:border-color .3s,background .3s}
 .orion-perf__tabs button:hover{border-color:var(--o-blue)}
 .orion-perf__tabs button.is-active{background:var(--o-surface);border-color:var(--o-blue);color:var(--o-ink)}
@@ -306,6 +308,7 @@ html[data-theme=dark] .orion-perf__frame{background:radial-gradient(ellipse 55% 
 .orion-pi .pi-sweep path{fill:var(--pi-accent);opacity:.16}
 .orion-pi .pi-blip{animation:pi-blink 2s ease-in-out infinite}
 .orion-pi .pi-blip-ring{animation:pi-blip 2s ease-out infinite;fill:none;stroke:var(--pi-accent);transform-origin:center;transform-box:fill-box}
+.orion-pi .pi-plan{animation:orion-in .7s cubic-bezier(.22,1,.36,1) both}.orion-pi .pi-rotor{fill:var(--pi-fill);stroke:var(--pi-accent);stroke-width:1.5}.orion-pi .pi-dim line{stroke:var(--pi-accent);stroke-width:1.4}.orion-pi .pi-dim text{fill:var(--pi-accent);font-size:13px;font-weight:600;letter-spacing:.08em}
 @keyframes pi-blink{50%{opacity:.5}}
 @keyframes pi-blip{from{opacity:.9;transform:scale(1)}to{opacity:0;transform:scale(3.4)}}
 .orion-pi .pi-arc-track,.orion-pi .pi-arc{transform:rotate(135deg);transform-origin:120px 120px}
@@ -315,6 +318,8 @@ html[data-theme=dark] .orion-perf__frame{background:radial-gradient(ellipse 55% 
 .orion-pi .pi-gusts line{animation:pi-gust 2.4s linear infinite;opacity:.7;stroke:var(--pi-accent);stroke-dasharray:36 70;stroke-linecap:round;stroke-width:2}
 .orion-pi .pi-gusts line:nth-child(2){animation-delay:-1.2s}
 @keyframes pi-gust{from{stroke-dashoffset:70}to{stroke-dashoffset:-36}}
+.orion-pi .pi-mast{stroke:var(--pi-muted);stroke-width:3}
+.orion-pi .pi-cups{animation:pi-spin 2.6s linear infinite;transform-origin:120px 120px}
 .orion-pi .pi-base{fill:none;stroke:var(--pi-ink);stroke-linecap:round;stroke-width:4}
 .orion-pi .pi-beam{animation:pi-beam 3.6s ease-out both;transform-origin:120px 64px}
 .orion-pi .pi-pan{animation:pi-pan 3.6s ease-out both}
@@ -341,6 +346,14 @@ html[data-theme=dark] .orion-perf__frame{background:radial-gradient(ellipse 55% 
   .orion-perf__tabs strong{font-size:16px}
 }
 @media(max-width:480px){.orion-perf__variants button{font-size:10px;padding:7px 10px}}
+
+/* Rendimiento abierto: el escenario se integra al fondo de la sección. */
+.orion-page .orion-intro{background-color:var(--o-bg);background-image:linear-gradient(color-mix(in srgb,var(--o-line) 42%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--o-line) 42%,transparent) 1px,transparent 1px);background-size:56px 56px}
+.orion-perf__board{background:transparent;border:0;gap:clamp(28px,4vw,68px);padding:0}
+.orion-perf__board:before,.orion-perf__board:after{display:none}
+.orion-perf__stage{width:min(100%,calc(46svh*1.23))}
+.orion-perf__frame:before{opacity:.28}
+@media(max-width:900px){.orion-perf__board{padding:0}.orion-perf__stage{width:min(100%,calc(34svh*1.23))}}
 
 /* ===== 02 · Vuelo (2D, ligero) ===== */
 .orion-fly{align-items:center;background:var(--o-surface);display:grid;gap:clamp(24px,4vw,64px);grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);overflow:hidden;padding:clamp(56px,6vw,88px) clamp(28px,6vw,96px);position:relative}

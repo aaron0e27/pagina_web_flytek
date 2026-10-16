@@ -3,6 +3,7 @@
 // Instrumentos SVG por métrica: reloj, anemómetro, balanza y cota.
 // Los colores salen de variables CSS (--pi-*) para verse bien en modo claro y oscuro.
 import type { PerfMetric } from "@/lib/vega/performance-data";
+import { OrionInstrument } from "@/components/orion-mx/OrionInstruments";
 
 type Props = { id: PerfMetric["id"]; variant: number };
 
@@ -135,6 +136,7 @@ function Ruler({ variant }: { variant: number }) {
 
 export function VegaInstrument({ id, variant }: Props) {
   if (id === "autonomia") return <Clock variant={variant} />;
+  if (id === "alcance") return <OrionInstrument id="alcance" variant={variant} />;
   if (id === "viento") return <Wind />;
   if (id === "peso") return <Scale variant={variant} />;
   return <Ruler variant={variant} />;

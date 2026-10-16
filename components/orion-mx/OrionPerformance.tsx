@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import { orionAssets, orionMetrics } from "@/lib/orion-mx/data";
+import { orionMetrics } from "@/lib/orion-mx/data";
 import { OrionInstrument } from "@/components/orion-mx/OrionInstruments";
+import type { OrionPerfMode, OrionPerfSceneAPI } from "@/lib/orion-mx/perf-scene";
 
 const CYCLE_MS = 5200;
 
@@ -27,22 +27,53 @@ function useCountUp(target: number, decimals: number, run: boolean) {
 
 export default function OrionPerformance() {
   const root = useRef<HTMLDivElement>(null);
+  const host = useRef<HTMLDivElement>(null);
+  const scene = useRef<OrionPerfSceneAPI | null>(null);
+  const [ready, setReady] = useState(false);
   const [index, setIndex] = useState(0);
   const [variant, setVariant] = useState(orionMetrics[0].start ?? 0);
   const [inView, setInView] = useState(false);
   const [auto, setAuto] = useState(true);
   const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(false);
+  const [near, setNear] = useState(false);
   const metric = orionMetrics[index];
   const v = metric.variants[variant] ?? metric.variants[0];
   const number = useCountUp(v.value, v.decimals ?? 0, inView);
 
   useEffect(() => {
     setReduced(matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const element = root.current!;
     const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.25 });
-    io.observe(root.current!);
-    return () => io.disconnect();
+    const ioNear = new IntersectionObserver(([e]) => { if (e.isIntersecting) setNear(true); }, { rootMargin: "1000px 0px" });
+    io.observe(element);
+    ioNear.observe(element);
+    return () => { io.disconnect(); ioNear.disconnect(); };
   }, []);
+
+  useEffect(() => {
+    if (!near || scene.current || !host.current) return;
+    let cancelled = false;
+    void (async () => {
+      try {
+        const { createOrionPerfScene } = await import("@/lib/orion-mx/perf-scene");
+        const api = await createOrionPerfScene(host.current!, {
+          reduced: matchMedia("(prefers-reduced-motion: reduce)").matches,
+          onReady: () => !cancelled && setReady(true),
+          onError: () => undefined,
+        });
+        if (cancelled) { api.dispose(); return; }
+        scene.current = api;
+        api.mode(metric.id as OrionPerfMode);
+      } catch { /* la sección conserva el espacio mientras el modelo no está disponible */ }
+    })();
+    return () => { cancelled = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [near]);
+
+  useEffect(() => { scene.current?.mode(metric.id as OrionPerfMode); }, [metric.id]);
+  useEffect(() => { scene.current?.active(inView && !document.hidden); }, [inView, ready]);
+  useEffect(() => () => { scene.current?.dispose(); scene.current = null; }, []);
 
   const cycling = auto && !paused && inView && !reduced;
   useEffect(() => {
@@ -77,12 +108,13 @@ export default function OrionPerformance() {
     >
       <div className="orion-perf__board">
         <div className="orion-perf__stage" aria-hidden="true">
-          <div className="orion-perf__frame">
-            <Image unoptimized src={orionAssets.top} alt="" width={1000} height={812} sizes="(max-width: 900px) 70vw, 40vw" className="orion-perf__drone" />
+          <div className={`orion-perf__frame${ready ? " is-3d" : ""}`}>
+            <div ref={host} className="orion-perf__scene" />
             <span className="orion-perf__ov orion-perf__ov--autonomia"><i /><i /></span>
             <span className="orion-perf__ov orion-perf__ov--alcance"><i /><i /><i /></span>
-            <span className="orion-perf__ov orion-perf__ov--velocidad"><i /><i /><i /></span>
+            <span className="orion-perf__ov orion-perf__ov--viento"><i /><i /><i /></span>
             <span className="orion-perf__ov orion-perf__ov--peso"><i /><i /></span>
+            <span className="orion-perf__ov orion-perf__ov--dimensiones"><i /><i /><em>86 cm</em></span>
           </div>
         </div>
 
@@ -102,8 +134,8 @@ export default function OrionPerformance() {
                 ))}
               </div>
             )}
-            <p className="orion-perf__copy" key={metric.id}>{metric.text}</p>
           </div>
+          <p className="orion-perf__copy" key={metric.id}>{metric.text}</p>
         </div>
       </div>
 

@@ -1,7 +1,6 @@
 // Fuente: ficha técnica oficial "Flytek_Orion_Ficha_Tecnica.pdf". Edita aquí los textos de las secciones 01 y 05.
 export const orionAssets = {
   hero: "/orion-mx/orion-hero.webp",
-  top: "/orion-mx/orion-top.webp", // vista superior (fondo transparente)
   front: "/orion-mx/orion-front.webp", // vista frontal (fondo transparente)
   viewA: "/orion-mx/orion-view-a.jpg",
   viewB: "/orion-mx/orion-view-b.jpg",
@@ -13,7 +12,7 @@ export const orionIntro =
 
 // 01 · Tablero de rendimiento. "variants" son las dos lecturas de la ficha (ej. sin carga / con carga estándar).
 export type OrionMetric = {
-  id: "autonomia" | "alcance" | "velocidad" | "peso";
+  id: "autonomia" | "alcance" | "viento" | "peso" | "dimensiones";
   label: string;
   prefix?: string;
   unit: string;
@@ -47,12 +46,11 @@ export const orionMetrics: OrionMetric[] = [
     ],
   },
   {
-    id: "velocidad",
-    label: "Velocidad",
-    prefix: "Máx.",
+    id: "viento",
+    label: "Resistencia al viento",
     unit: "km/h",
-    text: "Velocidad máxima de 72 km/h, con resistencia al viento de 35 km/h y temperatura de operación de 0 a 40 °C.",
-    variants: [{ label: "Máxima", value: 72 }],
+    text: "Estabilidad frente a ráfagas de hasta 35 km/h, con velocidad máxima de 72 km/h y operación de 0 a 40 °C.",
+    variants: [{ label: "Resistencia", value: 35 }],
   },
   {
     id: "peso",
@@ -62,6 +60,16 @@ export const orionMetrics: OrionMetric[] = [
     variants: [
       { label: "Sin carga", value: 3, decimals: 1 },
       { label: "Carga estándar", value: 3.3, decimals: 1 },
+    ],
+  },
+  {
+    id: "dimensiones",
+    label: "Dimensiones",
+    unit: "m",
+    text: "86 × 86 × 44 cm con las hélices desplegadas.",
+    variants: [
+      { label: "Largo y ancho", value: 0.86, decimals: 2 },
+      { label: "Alto", value: 0.44, decimals: 2 },
     ],
   },
 ];
