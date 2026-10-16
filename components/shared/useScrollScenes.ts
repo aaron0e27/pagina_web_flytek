@@ -37,7 +37,7 @@ export function useScrollScenes(root: RefObject<HTMLElement | null>, page: Page,
             .to(".hero-top,.hero-bottom", { opacity: 0, ease: "none" }, 0);
           gsap.fromTo(".product-motion img", { xPercent: -6, yPercent: 6, rotation: -5, scale: .93 }, { xPercent: 4, yPercent: -3, rotation: 3, scale: 1, ease: "none", scrollTrigger: { trigger: ".product-motion", start: "top bottom", end: "bottom top", scrub: 1.2 } });
         }
-        const targets = page === "home" ? ".home-company-grid h2, .home-fleet-heading h2, .home-sectors-title h2, .home-support h2, .home-contact h2, .home-application-image, .home-sector-detail>img" : page === "orion" ? ".orion-intro h2, .orion-anatomy h2, .orion-explorer h2, .orion-contact h2, .orion-anatomy__media img" : "h2, .feature-image, .design-image, .performance-stage img";
+        const targets = page === "home" ? ".home-company-grid h2, .home-fleet-heading h2, .home-sectors-title h2, .home-support h2, .home-contact h2, .home-application-image, .home-sector-detail>img" : page === "orion" ? ".orion-intro h2, .orion-fly h2, .orion-explorer h2, .orion-missions h2, .orion-pay h2, .orion-specs h2, .orion-support h2" : "h2, .feature-image, .design-image, .performance-stage img";
         gsap.utils.toArray<HTMLElement>(targets, host).forEach(element => {
           gsap.fromTo(element, { y: desktop ? 44 : 32 }, { y: 0, ease: "none", scrollTrigger: { trigger: element, start: "top 95%", end: "top 55%", scrub: 1 } });
         });
