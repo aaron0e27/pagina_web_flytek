@@ -1,9 +1,8 @@
 "use client";
 
 import { useRef, useState, type KeyboardEvent, type TouchEvent } from "react";
-import { ArrowDown, FileText } from "lucide-react";
-import { SPEC_PDF, SPEC_PDF_NAME, specTabs } from "@/lib/orion-mx/specs-data";
-
+import { ArrowDown, ArrowUpRight, FileText } from "lucide-react";
+import { QUOTE_HREF, SPEC_PDF, SPEC_PDF_NAME, specTabs } from "@/lib/orion-mx/specs-data";
 
 export default function OrionSpecs() {
   const [tab, setTab] = useState(0);
@@ -35,22 +34,24 @@ export default function OrionSpecs() {
   return (
     <section className="orion-specs" id="especificaciones" aria-labelledby="specs-title">
       <div className="orion-specs__intro">
-        <div className="orion-section-tag orion-section-tag--light"><span>05</span> DATOS TÉCNICOS</div>
+        <div className="orion-section-tag orion-section-tag--light"><span>06</span> DATOS TÉCNICOS</div>
         <h2 id="specs-title">La precisión también se mide.</h2>
-        <p>Configuración de referencia. Nuestro equipo puede ayudarte a definir la integración adecuada para tu operación.</p>
+        <p>Datos de la ficha técnica oficial. Nuestro equipo puede ayudarte a definir la integración adecuada para tu operación.</p>
 
-        <a className="orion-specs__download" href={SPEC_PDF} download={SPEC_PDF_NAME}>
-          <span className="orion-specs__doc" aria-hidden="true"><FileText size={22} strokeWidth={1.4} /><i /><i /><i /></span>
-          <span className="orion-specs__download-copy">
-            <b>Descargar especificaciones</b>
-            <small>Ficha técnica ORION MX · PDF · 10 páginas</small>
-          </span>
-          <span className="orion-specs__download-arrow" aria-hidden="true"><ArrowDown size={18} /></span>
-        </a>
+        <div className="orion-specs__actions">
+          <a className="orion-specs__download" href={SPEC_PDF} download={SPEC_PDF_NAME}>
+            <span className="orion-specs__doc" aria-hidden="true"><FileText size={22} strokeWidth={1.4} /><i /><i /><i /></span>
+            <span className="orion-specs__download-copy">
+              <b>Descargar especificaciones</b>
+              <small>Ficha técnica ORION MX · PDF · 1 página</small>
+            </span>
+            <span className="orion-specs__download-arrow" aria-hidden="true"><ArrowDown size={18} /></span>
+          </a>
+          <a className="orion-specs__quote" href={QUOTE_HREF}>Solicitar cotización <ArrowUpRight size={16} /></a>
+        </div>
       </div>
 
       <div className="orion-specs__body">
-
         <div className="orion-specs__tabs" role="tablist" aria-label="Categorías de especificaciones" ref={list} onKeyDown={onKey}>
           {specTabs.map((t, i) => (
             <button key={t.id} role="tab" id={`spec-tab-${t.id}`} aria-selected={i === tab} aria-controls="spec-panel" tabIndex={i === tab ? 0 : -1} className={i === tab ? "is-active" : ""} onClick={() => go(i)} type="button">
