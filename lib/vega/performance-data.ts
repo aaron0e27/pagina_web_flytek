@@ -1,6 +1,6 @@
 // Valores de la ficha técnica de VEGA.
 export type PerfMetric = {
-  id: "autonomia" | "viento" | "peso" | "longitud";
+  id: "autonomia" | "alcance" | "viento" | "peso" | "longitud";
   label: string;
   prefix?: string;
   value: number;
@@ -8,6 +8,7 @@ export type PerfMetric = {
   unit: string;
   text: string;
   note: string;
+  start?: number;
   variants?: { label: string; value: number; decimals?: number; prefix?: string }[];
 };
 
@@ -23,6 +24,20 @@ export const perfMetrics: PerfMetric[] = [
     variants: [
       { label: "Sin carga", value: 90, prefix: "Hasta" },
       { label: "Carga estándar", value: 60, prefix: "Hasta" },
+    ],
+  },
+  {
+    id: "alcance",
+    label: "Alcance",
+    prefix: "Hasta",
+    value: 40,
+    unit: "km",
+    text: "Radiocontrol configurable de 10 a 40 km en espacio sin obstrucción, en frecuencias de 2.4 y/o 5.8 GHz.",
+    note: "Configurable de 10 a 40 km",
+    start: 1,
+    variants: [
+      { label: "Mínimo", value: 10, prefix: "Desde" },
+      { label: "Máximo", value: 40, prefix: "Hasta" },
     ],
   },
   {

@@ -82,7 +82,11 @@ export function VegaPerformance() {
   const cycling = auto && !paused && inView && !reduced;
   useEffect(() => {
     if (!cycling) return;
-    const t = setTimeout(() => { setVariant(0); setIndex((i) => (i + 1) % perfMetrics.length); }, CYCLE_MS);
+    const t = setTimeout(() => {
+      const next = (index + 1) % perfMetrics.length;
+      setVariant(perfMetrics[next].start ?? 0);
+      setIndex(next);
+    }, CYCLE_MS);
     return () => clearTimeout(t);
   }, [cycling, index]);
 
@@ -99,7 +103,7 @@ export function VegaPerformance() {
 
   const choose = (i: number) => {
     setAuto(false);
-    setVariant(0);
+    setVariant(perfMetrics[i].start ?? 0);
     setIndex(i);
     keepInView();
   };
@@ -134,9 +138,10 @@ export function VegaPerformance() {
             <div ref={host} className="vega-perf__scene" />
             {/* Resaltes por métrica: se muestran según data-metric */}
             <span className="vega-perf__ov vega-perf__ov--autonomia"><i /><i /></span>
+            <span className="vega-perf__ov vega-perf__ov--alcance"><i /><i /><i /></span>
             <span className="vega-perf__ov vega-perf__ov--viento"><i /><i /><b /><b /><b /></span>
             <span className="vega-perf__ov vega-perf__ov--peso"><i /><i /></span>
-            <span className="vega-perf__ov vega-perf__ov--longitud"><i /><em>{perfMetrics[3].value} m</em></span>
+            <span className="vega-perf__ov vega-perf__ov--longitud"><i /><em>1.23 m</em></span>
           </div>
           <span className="vega-perf__corner vega-perf__corner--a" />
           <span className="vega-perf__corner vega-perf__corner--b" />

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, Crosshair } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import SiteHeader from "@/components/shared/SiteHeader";
 import Orion3DViewer from "@/components/orion-mx/Orion3DViewer";
 import OrionMissions from "@/components/orion-mx/OrionMissions";
@@ -33,10 +33,12 @@ export default function OrionPage() {
 </nav>
 
     <section className="orion-hero" aria-labelledby="orion-title">
-      <div className="orion-hero__grid" aria-hidden="true" /><div className="orion-hero__signal"><span />SISTEMA LISTO</div>
-      <div className="orion-hero__copy"><p className="orion-eyebrow orion-reveal">PLATAFORMA AÉREA MULTIPROPÓSITO</p><h1 id="orion-title" className="orion-hero__title">ORION</h1><p className="orion-hero__lead orion-reveal">Hasta 50 minutos de vuelo.<br />Cargas útiles a tu medida.</p></div>
-      <div className="orion-hero__visual" aria-hidden="true"><Image unoptimized src={orionAssets.hero} alt="" fill priority sizes="(max-width: 900px) 100vw, 70vw" className="orion-hero__image" /><span className="orion-crosshair orion-crosshair--one"><Crosshair /></span><span className="orion-crosshair orion-crosshair--two"><Crosshair /></span></div>
-      <div className="orion-hero__footer"><div><span>PLATAFORMA</span><strong>MULTIPROPÓSITO</strong></div><div><span>ALCANCE</span><strong>HASTA 40 KM</strong></div><Link href="#sistema" className="orion-scroll-cue">DESCUBRIR <ArrowDown size={16} /></Link></div>
+      <div className="orion-hero__grid" aria-hidden="true" />
+      <h1 id="orion-title" className="orion-hero__title">ORION</h1>
+      <div className="orion-hero__copy"><p className="orion-hero__lead orion-reveal">Hasta 50 minutos de vuelo.<br />Cargas útiles a tu medida.</p></div>
+      <div className="orion-hero__visual" aria-hidden="true"><Image unoptimized src={orionAssets.heroFront} alt="" fill priority sizes="(max-width: 900px) 100vw, 90vw" className="orion-hero__image" /></div>
+      <div className="orion-hero__footer"><div><span>PLATAFORMA</span><strong>MULTIPROPÓSITO</strong></div><div><span>ALCANCE</span><strong>HASTA 40 KM</strong></div></div>
+      <Link href="#sistema" className="orion-scroll-cue"><span>CONOCER MÁS</span><ArrowDown size={20} /></Link>
     </section>
 
     <section className="orion-intro" id="sistema" aria-labelledby="intro-title">
