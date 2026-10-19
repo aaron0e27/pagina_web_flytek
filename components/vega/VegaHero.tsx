@@ -1,5 +1,7 @@
 import { vegaCopy } from "@/lib/vega/copy";
 import { vegaData } from "@/lib/vega/data";
+
+export const VEGA_HERO_IMAGE = "/vega/images/vega-portada-cutout.webp";
 export function VegaHero() {
   return (
     <section className="hero" id="descripcion" aria-labelledby="vega-title">
@@ -12,10 +14,10 @@ export function VegaHero() {
         <div className="orbit" />
         <img
           className="hero-product"
-          src={vegaData.assets.hero}
-          alt="VEGA: vista de tres cuartos del modelo original"
-          width="1440"
-          height="920"
+          src={VEGA_HERO_IMAGE}
+          alt="Dron VEGA, vista frontal"
+          width="1700"
+          height="840"
           fetchPriority="high"
         />
       </div>

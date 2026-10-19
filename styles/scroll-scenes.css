@@ -8,10 +8,6 @@
 .scroll-page.scroll-scenes-active :is(.home-application-image, .home-application-image img) {
   transition: none;
 }
-.scroll-page.scroll-scenes-active .home-application-card:hover .home-application-image img {
-  transform: none;
-  scale: 1;
-}
 .scroll-page { overflow-x: clip; }
 @media (min-width: 1025px) and (min-height: 680px) and (pointer: fine) {
   .scroll-page.scroll-scenes-active.home-page .home-hero {
