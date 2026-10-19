@@ -193,31 +193,6 @@ html:has(.fenix-page) {
 .fenix-page .skip:focus {
   top: 10px;
 }
-.fenix-page .main-nav {
-  height: 76px;
-  padding: 0 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #111619;
-  color: #fff;
-}
-.fenix-page .main-nav img {
-  width: 138px;
-  height: auto;
-}
-.fenix-page .main-nav nav {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  font-size: 13px;
-}
-.fenix-page .nav-contact {
-  display: flex;
-  gap: 32px;
-  align-items: center;
-  margin-left: 35px;
-}
 .fenix-page .product-nav {
   position: sticky;
   top: 0;
@@ -271,22 +246,6 @@ html:has(.fenix-page) {
   background: #11171b;
   color: white;
   isolation: isolate;
-}
-.fenix-page .hero-video {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  inset: 0;
-  object-fit: cover;
-  filter: grayscale(1);
-  opacity: 0.17;
-  z-index: -3;
-}
-.fenix-page .hero-shade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10, 15, 19, 0.7), rgba(13, 19, 23, 0.05) 45%, #0e1419);
-  z-index: -2;
 }
 .fenix-page .hero-topline {
   position: absolute;
@@ -351,34 +310,6 @@ html:has(.fenix-page) {
   font-size: 12px;
   color: #aeb7bf;
   margin-top: 14px;
-}
-.fenix-page .video-toggle {
-  position: absolute;
-  bottom: 16px;
-  left: 64px;
-  width: 32px;
-  height: 32px;
-  border: 1px solid #62717b;
-  background: transparent;
-  color: #d9e0e4;
-  display: grid;
-  place-items: center;
-  z-index: 5;
-}
-.fenix-page .media-note {
-  position: absolute;
-  bottom: 26px;
-  left: 108px;
-  font-size: 10px;
-  color: #89969f;
-  z-index: 4;
-}
-.fenix-page .scroll-mark {
-  position: absolute;
-  bottom: 20px;
-  right: 64px;
-  color: #bdc6cc;
-  z-index: 4;
 }
 .fenix-page .intro {
   padding: 112px 0 118px;
@@ -579,12 +510,6 @@ html:has(.fenix-page) {
   gap: 14px;
   font-size: 12px;
   min-height: 36px;
-}
-.fenix-page .asset-disclaimer {
-  font-size: 11px;
-  margin-top: 18px;
-  color: #66717a;
-  line-height: 1.5;
 }
 .fenix-page .arrival {
   position: relative;
@@ -1095,53 +1020,6 @@ html:has(.fenix-page) {
   padding: 90px 0 100px;
   background: #f1f3f4;
 }
-.fenix-page .applications-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  grid-template-rows: 330px 330px;
-  gap: 22px;
-  margin-top: 45px;
-}
-.fenix-page .applications-grid article {
-  position: relative;
-  overflow: hidden;
-  color: white;
-  background: #1d262d;
-}
-.fenix-page .applications-grid .application-main {
-  grid-row: span 2;
-}
-.fenix-page .applications-grid img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.64) saturate(0.6);
-  transition: transform 600ms var(--ease-out);
-}
-.fenix-page .applications-grid article > div {
-  position: absolute;
-  bottom: 28px;
-  left: 30px;
-  right: 25px;
-}
-.fenix-page .applications-grid article span {
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  display: block;
-  margin-bottom: 15px;
-}
-.fenix-page .applications-grid article h3 {
-  font-size: 30px;
-  font-weight: 450;
-}
-.fenix-page .applications-grid .application-main h3 {
-  font-size: 44px;
-}
-.fenix-page .applications-grid article p {
-  font-size: 12px;
-  color: #e4e9ed;
-  margin-top: 12px;
-}
 .fenix-page .specifications {
   padding: 110px 0;
   display: grid;
@@ -1355,13 +1233,6 @@ html:has(.fenix-page) {
   .fenix-page .product-nav a:hover {
     color: #086eaf;
   }
-  .fenix-page .main-nav a:hover,
-  .fenix-page .hero-secondary:hover {
-    color: #71bff6;
-  }
-  .fenix-page .applications-grid article:hover img {
-    transform: scale(1.025);
-  }
   .fenix-page .viewer-controls button:not([aria-pressed="true"]):hover,
   .fenix-page .zoom-controls button:hover {
     background: #d8e8f2;
@@ -1390,12 +1261,8 @@ html:has(.fenix-page) {
   .fenix-page .wrap {
     width: calc(100% - 72px);
   }
-  .fenix-page .main-nav,
-  .fenix-page .product-nav {
+  .fenix-page .product-nav{
     padding-inline: 36px;
-  }
-  .fenix-page .main-nav nav {
-    gap: 25px;
   }
   .fenix-page .product-nav > div {
     gap: 18px;
@@ -1408,15 +1275,6 @@ html:has(.fenix-page) {
     left: 36px;
     right: 36px;
     bottom: 65px;
-  }
-  .fenix-page .video-toggle {
-    left: 36px;
-  }
-  .fenix-page .media-note {
-    left: 80px;
-  }
-  .fenix-page .scroll-mark {
-    right: 36px;
   }
   .fenix-page .hero {
     min-height: 620px;
@@ -1461,12 +1319,6 @@ html:has(.fenix-page) {
   }
 }
 @media (max-width: 1023px) {
-  .fenix-page .main-nav nav {
-    gap: 20px;
-  }
-  .fenix-page .main-nav nav a:nth-child(3) {
-    display: none;
-  }
   .fenix-page .engineering-track {
     display: block;
     transform: none !important;
@@ -1486,8 +1338,7 @@ html:has(.fenix-page) {
   .fenix-page .control-top > .section-index {
     grid-column: span 2;
   }
-  .fenix-page .intro-grid,
-  .fenix-page .section-heading {
+  .fenix-page .section-heading{
     grid-template-columns: 1fr 1.6fr;
     gap: 30px;
   }
@@ -1511,10 +1362,6 @@ html:has(.fenix-page) {
   .fenix-page .payload-closeup img {
     width: 80px;
     height: 80px;
-  }
-  .fenix-page .applications-grid {
-    grid-template-rows: 270px 270px;
-    gap: 15px;
   }
   .fenix-page .specifications {
     grid-template-columns: 38% 62%;
@@ -1553,20 +1400,8 @@ html:has(.fenix-page) {
   .fenix-page h2 {
     font-size: 38px;
   }
-  .fenix-page .main-nav {
-    height: 68px;
-    padding-inline: 20px;
-  }
-  .fenix-page .main-nav img {
-    width: 116px;
-  }
   .fenix-page .main-nav nav > a:not(:last-child) {
     display: none;
-  }
-  .fenix-page .nav-contact {
-    margin: 0;
-    font-size: 12px;
-    gap: 20px;
   }
   .fenix-page .product-nav {
     padding-inline: 20px;
@@ -1631,22 +1466,6 @@ html:has(.fenix-page) {
   .fenix-page .hero-bottom > div > span {
     font-size: 11px;
     margin-top: 10px;
-  }
-  .fenix-page .video-toggle {
-    left: 20px;
-    bottom: 17px;
-  }
-  .fenix-page .media-note {
-    left: 62px;
-    bottom: 28px;
-    font-size: 8px;
-  }
-  .fenix-page .scroll-mark {
-    right: 20px;
-    bottom: 20px;
-  }
-  .fenix-page .hero-shade {
-    background: linear-gradient(180deg, #10171d99, #121b2230 40%, #0e1419 85%);
   }
   .fenix-page .intro {
     padding: 66px 0;
@@ -1742,9 +1561,6 @@ html:has(.fenix-page) {
   }
   .fenix-page .hotspot-info h3 {
     font-size: 22px;
-  }
-  .fenix-page .asset-disclaimer {
-    font-size: 10px;
   }
   .fenix-page .arrival {
     height: 660px;
@@ -2003,29 +1819,6 @@ html:has(.fenix-page) {
   .fenix-page .applications {
     padding: 65px 0;
   }
-  .fenix-page .applications-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 30px;
-  }
-  .fenix-page .applications-grid article {
-    height: 330px;
-  }
-  .fenix-page .applications-grid .application-main {
-    height: 440px;
-  }
-  .fenix-page .applications-grid article > div {
-    left: 22px;
-    right: 22px;
-    bottom: 25px;
-  }
-  .fenix-page .applications-grid .application-main h3 {
-    font-size: 38px;
-  }
-  .fenix-page .applications-grid article p {
-    font-size: 12px;
-  }
   .fenix-page .specifications {
     padding: 65px 0;
     display: block;
@@ -2158,9 +1951,6 @@ html:has(.fenix-page) {
   }
   .fenix-page .engineering-panel {
     min-height: 750px;
-  }
-  .fenix-page .hero-video {
-    opacity: 0.1;
   }
 }
 /* Progressive enhancement: all engineering chapters remain readable without JS. */
@@ -2331,21 +2121,6 @@ html:has(.fenix-page) {
 .fenix-page .hero-discover:hover svg,
 .fenix-page .hero-discover:focus-visible svg {
   transform: translateY(3px);
-}
-.fenix-page .video-toggle {
-  bottom: 28px;
-  right: 5%;
-  left: auto;
-  width: 44px;
-  height: 44px;
-  border-color: #7f8d97;
-}
-.fenix-page .media-note {
-  bottom: 43px;
-  right: calc(5% + 57px);
-  left: auto;
-  color: #c0cbd1;
-  font-size: 11px;
 }
 .fenix-page .key-stats {
   padding-block: 72px 84px;
@@ -2768,24 +2543,6 @@ html:has(.fenix-page) {
 .fenix-page .payload-description {
   padding-left: 36px;
 }
-.fenix-page .applications-grid article::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 10%, #091522d9 100%);
-  z-index: 1;
-  pointer-events: none;
-}
-.fenix-page .applications-grid img {
-  filter: brightness(0.83);
-}
-.fenix-page .applications-grid article > div {
-  z-index: 2;
-  padding-right: 24px;
-}
-.fenix-page .applications-grid article p {
-  color: #e1e7eb;
-}
 .fenix-page .specifications {
   grid-template-columns: minmax(0, 43fr) minmax(0, 57fr);
 }
@@ -3031,15 +2788,6 @@ html:has(.fenix-page) {
     font-size: 9px;
     padding-inline: 8px;
   }
-  .fenix-page .video-toggle {
-    right: 24px;
-    bottom: 26px;
-  }
-  .fenix-page .media-note {
-    right: 24px;
-    bottom: 78px;
-    font-size: 9px;
-  }
   .fenix-page .key-stats {
     padding-block: 40px 48px;
   }
@@ -3275,10 +3023,6 @@ html:has(.fenix-page) {
   .fenix-page .payload-description {
     padding: 32px 0 0;
   }
-  .fenix-page .applications-grid article > div {
-    right: 24px;
-    padding: 0;
-  }
   .fenix-page .support {
     padding-block: 65px;
   }
@@ -3330,18 +3074,12 @@ html:has(.fenix-page) {
 }
 
 /* Corrections from responsive and interaction review. */
-.fenix-page .main-nav nav a.nav-contact {
-  display: inline-flex;
-}
 .fenix-page .contact-form input::placeholder,
 .fenix-page .contact-form textarea::placeholder {
   color: #626f7a;
 }
 .fenix-page .contact-form label {
   font-size: 13px;
-}
-.fenix-page .applications-grid img {
-  transition: transform 220ms var(--ease-out);
 }
 .fenix-page .hero-discover:focus-visible svg {
   transform: none;
@@ -3357,11 +3095,6 @@ html:has(.fenix-page) {
 }
 @media (hover: none), (pointer: coarse) {
   .fenix-page .hero-discover:hover svg {
-    transform: none;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .fenix-page .applications-grid article:hover img {
     transform: none;
   }
 }
@@ -3600,9 +3333,6 @@ html:has(.fenix-page) {
   box-shadow: 0 20px 48px rgba(4, 17, 25, .28);
   backdrop-filter: blur(16px);
 }
-.fenix-page .asset-disclaimer {
-  color: #62727c;
-}
 
 @media (max-width: 800px) {
   .fenix-page .fenix-viewer-wrap {
@@ -3687,9 +3417,6 @@ html:has(.fenix-page) {
     border-bottom: 0;
     border-left: 0;
     box-shadow: none;
-  }
-  .fenix-page .asset-disclaimer {
-    padding-inline: 20px;
   }
 }
 

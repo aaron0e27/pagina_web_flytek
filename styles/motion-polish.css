@@ -35,12 +35,10 @@
   to { opacity: 1; translate: 0 0; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .home-hero-copy, .vega-hero-bottom, .orion-hero-copy {
+  .home-hero-copy{
     animation: flytek-content-in .8s var(--motion-ease) both;
   }
-  .vega-application-copy,
-  .home-accordion [role="region"]:not([hidden]),
-  .vega-integration details[open] > p {
+  .home-accordion [role="region"]:not([hidden]){
     animation: flytek-content-in .45s var(--motion-ease) both;
   }
 }
@@ -56,16 +54,10 @@
     translate: 0 -3px;
     box-shadow: 0 12px 32px #1028380a;
   }
-  .home-application-card:hover .home-application-image img { scale: 1.025; }
 }
 /* En pantallas pequeñas se evita el movimiento decorativo continuo. */
-@media (max-width: 767px), (pointer: coarse) {
-  .orion-page .orion-ring {
-    animation: none;
-  }
-}
 /* Pausar revela el estado final; no deja contenido congelado a media entrada. */
-.home-page.home-paused *, .vega-page.vega-paused * {
+.home-page.home-paused *{
   animation: none !important;
 }
 @media (prefers-reduced-motion: reduce) {

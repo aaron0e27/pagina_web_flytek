@@ -1,7 +1,8 @@
 "use client";
 import { useScrollScenes } from "@/components/shared/useScrollScenes";
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowUpRight, Minus, Plus, Pause, Play } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Pause, Play } from "lucide-react";
+import SupportSection from "@/components/shared/SupportSection";
 import SiteHeader from "@/components/shared/SiteHeader";
 import { fenixAssets } from "@/lib/fenix/assets";
 import {
@@ -10,7 +11,6 @@ import {
   sectorBenefits,
   sectorDetails,
   sectors,
-  support,
 } from "@/lib/principal/data";
 export default function FlytekPrincipal({
   initiallyShowIntro,
@@ -22,7 +22,6 @@ export default function FlytekPrincipal({
   const [paused, setPaused] = useState(true);
   const [platform, setPlatform] = useState(0);
   const [sector, setSector] = useState(0);
-  const [openSupport, setOpenSupport] = useState<number | null>(0);
   const [showIntro, setShowIntro] = useState(initiallyShowIntro);
   const drone = platforms[platform];
   const mission = sectors[sector];
@@ -55,6 +54,23 @@ useEffect(() => {
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
   }, []);
+  // Aparición suave de las tarjetas del sector cuando entran en pantalla.
+  useEffect(() => {
+    const root = document.querySelector<HTMLElement>(".home-sector-expanded");
+    if (!root) return;
+    const items = Array.from(root.querySelectorAll<HTMLElement>("[data-rise]"));
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+      items.forEach((el) => el.classList.add("is-in"));
+      return;
+    }
+    root.classList.add("is-armed");
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } }),
+      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
+    );
+    items.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [sector]);
   useEffect(() => {
     const element = video.current;
     if (!element) return;
@@ -404,21 +420,29 @@ useScrollScenes(root, "home", !paused && !showIntro);
               <p>{missionDetail.summary}</p>
             </header>
 
-            <section className="home-capability-stage" aria-label={`Ventajas para ${missionDetail.name}`}>
-              <img
-                src={missionDetail.capabilityImage}
-                alt={missionDetail.capabilityAlt}
-                style={{ objectPosition: missionDetail.capabilityPosition }}
-                width="1600"
-                height="1000"
-                loading="lazy"
-              />
-              <div className="home-capability-shade" />
-              <div className="home-proof-grid">
-                {missionDetail.proofs.map((proof) => (
-                  <article className="home-proof" key={proof.title}>
-                    <h4>{proof.title}</h4>
-                    <p>{proof.text}</p>
+            <section className="home-adv" aria-label={`Ventajas para ${missionDetail.name}`}>
+              <figure className="home-adv-photo" data-rise>
+                <img
+                  src={missionDetail.capabilityImage}
+                  alt={missionDetail.capabilityAlt}
+                  style={{ objectPosition: missionDetail.capabilityPosition }}
+                  width="1600"
+                  height="1000"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <span>{missionDetail.name}</span>
+                  Ventajas Flytek
+                </figcaption>
+              </figure>
+              <div className="home-adv-list">
+                {missionDetail.proofs.map((proof, i) => (
+                  <article className="home-adv-item" key={proof.title} data-rise style={{ ["--i" as string]: i }}>
+                    <span className="home-adv-n" aria-hidden="true">0{i + 1}</span>
+                    <div>
+                      <h4>{proof.title}</h4>
+                      <p>{proof.text}</p>
+                    </div>
                   </article>
                 ))}
               </div>
@@ -429,17 +453,19 @@ useScrollScenes(root, "home", !paused && !showIntro);
                 <p className="home-label">Aplicaciones</p>
                 <p>{missionDetail.applicationIntro}</p>
               </header>
-              <div className={`home-application-grid${missionDetail.applications.length === 2 ? " is-pair" : ""}`}>
-                {missionDetail.applications.map((application) => (
-                  <article className="home-application" key={application.title}>
+              <div className={`home-app-grid is-n${missionDetail.applications.length}`}>
+                {missionDetail.applications.map((application, i) => (
+                  <article className="home-app" key={application.title} data-rise style={{ ["--i" as string]: i % 2 }}>
                     <img
+                      className="home-app-bg"
                       src={application.image}
-                      alt={application.title}
+                      alt=""
                       width="1000"
                       height="600"
                       loading="lazy"
                     />
-                    <div>
+                    <span className="home-app-n" aria-hidden="true">0{i + 1}</span>
+                    <div className="home-app-body">
                       <h4>{application.title}</h4>
                       <p>{application.text}</p>
                     </div>
@@ -451,11 +477,19 @@ useScrollScenes(root, "home", !paused && !showIntro);
             <section className="home-recommended">
               <header>
                 <p className="home-label">Drones recomendados</p>
-                <p>Plataformas que pueden configurarse alrededor de las necesidades de esta operación.</p>
               </header>
               <div className={`home-recommended-grid${missionDetail.drones.length === 1 ? " is-single" : ""}`}>
                 {missionDetail.drones.map((recommended) => (
-                  <article className="home-drone-card" key={recommended.name}>
+                  <article className="home-drone-card" key={recommended.name} data-rise>
+                    <a className="home-drone-image" href={recommended.href} tabIndex={-1} aria-hidden="true" data-name={recommended.name}>
+                      <img
+                        src={recommended.image}
+                        alt=""
+                        width="800"
+                        height="600"
+                        loading="lazy"
+                      />
+                    </a>
                     <div className="home-drone-copy">
                       <p className="home-label">{recommended.context}</p>
                       <h4>
@@ -465,23 +499,14 @@ useScrollScenes(root, "home", !paused && !showIntro);
                         </a>
                       </h4>
                       <p>{recommended.text}</p>
-                      <dl className="home-drone-specs">
+                      <ul className="home-drone-chips">
                         {recommended.specs.map(([label, value]) => (
-                          <div key={label}>
-                            <dt>{label}</dt>
-                            <dd>{value}</dd>
-                          </div>
+                          <li key={label}>
+                            <small>{label}</small>
+                            {value}
+                          </li>
                         ))}
-                      </dl>
-                    </div>
-                    <div className="home-drone-image">
-                      <img
-                        src={recommended.image}
-                        alt={`Drone ${recommended.name}`}
-                        width="800"
-                        height="600"
-                        loading="lazy"
-                      />
+                      </ul>
                     </div>
                   </article>
                 ))}
@@ -489,10 +514,11 @@ useScrollScenes(root, "home", !paused && !showIntro);
             </section>
 
             <section className="home-benefits" aria-label="Beneficios en campo">
+              <p className="home-label">Beneficios en campo</p>
               <ul>
-                {sectorBenefits.map((benefit) => (
-                  <li key={benefit.label}>
-                    <img src={benefit.icon} alt="" width="102" height="102" loading="lazy" />
+                {sectorBenefits.map((benefit, i) => (
+                  <li key={benefit.label} data-rise style={{ ["--i" as string]: i }}>
+                    <span className="home-benefit-ico" aria-hidden="true" style={{ ["--ico" as string]: `url(${benefit.icon})` }} />
                     <span>{benefit.label}</span>
                   </li>
                 ))}
@@ -500,76 +526,14 @@ useScrollScenes(root, "home", !paused && !showIntro);
             </section>
           </div>
         </section>
-        <section className="home-support" id="soporte">
-          <div className="home-container home-support-grid">
-            <div data-home-reveal>
-              <h2>
-                No solo un dron.
-                <br />
-                <em>Todo un equipo.</em>
-              </h2>
-              <p>
-                La tecnología es el comienzo. Nuestro equipo te acompaña en lo que viene después.
-              </p>
-              <div className="home-support-mark" aria-hidden="true">
-                MX
-                <span>
-                  INGENIERÍA
-                  <br />Y SOPORTE NACIONAL
-                </span>
-              </div>
-            </div>
-            <div className="home-accordion">
-              {support.map((item, index) => (
-                <article key={item.title}>
-                  <h3>
-                    <button
-                      onClick={() => setOpenSupport(openSupport === index ? null : index)}
-                      aria-expanded={openSupport === index}
-                      aria-controls={`support-${index}`}
-                      id={`support-button-${index}`}
-                    >
-                      <span>0{index + 1}</span>
-                      {item.title}
-                      {openSupport === index ? <Minus size={20} /> : <Plus size={20} />}
-                    </button>
-                  </h3>
-                  <div
-                    id={`support-${index}`}
-                    role="region"
-                    aria-labelledby={`support-button-${index}`}
-                    hidden={openSupport !== index}
-                  >
-                    <p>{item.text}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-        <section className="home-contact home-container" id="contacto">
-          <div data-home-reveal>
-            <p className="home-label">LA SIGUIENTE MISIÓN EMPIEZA CONTIGO</p>
-            <h2>
-              Hagamos que
-              <br />
-              <em>suceda.</em>
-              <span>↗</span>
-            </h2>
-          </div>
-          <div className="home-contact-bottom">
-            <p>
-              Cuéntanos qué necesitas observar,
-              <br />
-              inspeccionar o resolver.
-            </p>
-            <a href={`mailto:${homeCopy.email}`} className="home-text-link">
-              {homeCopy.email}
-              <ArrowUpRight size={22} />
-            </a>
-            <a href="tel:+525654407312">{homeCopy.phone}</a>
-          </div>
-        </section>
+        <div id="soporte">
+          <SupportSection
+            variant="home"
+            quoteHref={`mailto:${homeCopy.email}?subject=Contacto%20Flytek`}
+            email={homeCopy.email}
+            phones={[homeCopy.phone]}
+          />
+        </div>
       </main>
       <footer className="home-footer">
         <div className="home-container">

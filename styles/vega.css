@@ -28,18 +28,6 @@ html:has(.vega-redesign) {
   outline: 2px solid #7098ff;
   outline-offset: 5px;
 }
-.vega-redesign .brand {
-  font-size: 27px;
-  letter-spacing: -1.5px;
-  font-weight: 800;
-  line-height: 0.9;
-}
-.vega-redesign .brand span {
-  display: block;
-  font-size: 8px;
-  letter-spacing: 4px;
-  margin-top: 9px;
-}
 .vega-redesign .eyebrow,
 .vega-redesign .hero-top {
   font: 10px/1.7 monospace;
@@ -474,18 +462,6 @@ html:has(.vega-redesign) {
   max-width: 1000px;
   font-size: clamp(48px, 7vw, 108px);
 }
-.vega-redesign .contact-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid #ffffff35;
-  padding-top: 30px;
-  margin-top: 70px;
-}
-.vega-redesign .contact-bottom p {
-  font: 11px monospace;
-  color: #9faeac;
-}
 .vega-redesign .contact .button {
   border-color: #a8babc;
   min-width: 230px;
@@ -494,27 +470,6 @@ html:has(.vega-redesign) {
 }
 .vega-redesign .contact .button:hover {
   background: #bdd0e0;
-}
-.vega-redesign .site-footer {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr;
-  gap: 45px;
-  align-items: center;
-  background: #11181b;
-  color: #c8d1cb;
-  padding: 60px 6% 28px;
-}
-.vega-redesign .site-footer p {
-  font-size: 12px;
-  color: #93a099;
-}
-.vega-redesign .site-footer > a:last-of-type {
-  text-align: right;
-  font: 9px monospace;
-}
-.vega-redesign .site-footer small {
-  font: 9px/1.6 monospace;
-  color: #82928b;
 }
 .vega-redesign .skip-link {
   position: fixed;
@@ -637,21 +592,8 @@ html:has(.vega-redesign) {
     font-size: 8px;
     overflow-wrap: anywhere;
   }
-  .vega-redesign .site-footer {
-    gap: 30px;
-  }
-  .vega-redesign .site-footer p {
-    font-size: 10px;
-  }
 }
 @media (max-width: 540px) {
-  .vega-redesign .brand {
-    font-size: 23px;
-  }
-  .vega-redesign .brand span {
-    font-size: 6px;
-    letter-spacing: 3.6px;
-  }
   .vega-redesign .hero {
     min-height: 580px;
     max-height: 840px;
@@ -761,29 +703,6 @@ html:has(.vega-redesign) {
   }
   .vega-redesign .contact h2 {
     font-size: 49px;
-  }
-  .vega-redesign .contact-bottom {
-    display: block;
-    margin-top: 40px;
-  }
-  .vega-redesign .contact-bottom .button {
-    margin-top: 20px;
-    width: 100%;
-  }
-  .vega-redesign .site-footer {
-    grid-template-columns: 1fr 1fr;
-    padding: 50px 6% 25px;
-    gap: 30px 20px;
-  }
-  .vega-redesign .site-footer p {
-    grid-column: span 2;
-    grid-row: 2;
-  }
-  .vega-redesign .site-footer > a:last-of-type {
-    font-size: 8px;
-  }
-  .vega-redesign .site-footer small {
-    font-size: 8px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -916,16 +835,6 @@ html:has(.vega-redesign) {
 .vega-redesign .performance .muted,
 .vega-redesign .performance .pending {
   color: #b8c6d0;
-}
-
-.vega-redesign .site-footer {
-  background: #091116;
-  color: #dce8ee;
-}
-
-.vega-redesign .site-footer p,
-.vega-redesign .site-footer small {
-  color: #a9bbc5;
 }
 
 /* Tipografía pequeña más legible */
@@ -1233,10 +1142,6 @@ html[data-theme="dark"] .vega-redesign .subnav {
 .vega-redesign .vega-perf__panel{display:grid;gap:26px;justify-items:center;text-align:center}
 .vega-redesign .vega-perf__gauge{aspect-ratio:1;max-width:320px;position:relative;width:100%}
 .vega-redesign .vega-perf__gauge svg{height:100%;inset:0;position:absolute;width:100%}
-.vega-redesign .vega-perf__ticks line{stroke:rgba(143,163,176,.45);stroke-width:1.2}
-.vega-redesign .vega-perf__track,.vega-redesign .vega-perf__arc{fill:none;stroke-linecap:round;stroke-width:5;transform:rotate(135deg);transform-origin:120px 120px}
-.vega-redesign .vega-perf__track{stroke:rgba(255,255,255,.1);stroke-dasharray:414.7 552.9}
-.vega-redesign .vega-perf__arc{animation:vega-perf-arc 1.3s cubic-bezier(.22,1,.36,1) both;stroke:var(--blue);stroke-dasharray:414.7 552.9;filter:drop-shadow(0 0 6px rgba(22,140,222,.55))}
 @keyframes vega-perf-arc{from{stroke-dasharray:0 552.9}to{stroke-dasharray:414.7 552.9}}
 .vega-redesign .vega-perf__readout{align-items:center;display:flex;flex-direction:column;inset:0;justify-content:center;position:absolute}
 .vega-redesign .vega-perf__readout small{color:#8fa3b0;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
@@ -1244,7 +1149,6 @@ html[data-theme="dark"] .vega-redesign .subnav {
 .vega-redesign .vega-perf__readout span{color:#72c5f4;font-size:14px;letter-spacing:.12em}
 .vega-redesign .vega-perf__copy{animation:vega-3d-in .6s cubic-bezier(.22,1,.36,1) both;max-width:380px}
 .vega-redesign .vega-perf__copy p{color:#b8c6d0;font-size:14px;line-height:1.65;margin:12px 0}
-.vega-redesign .vega-perf__note{color:#8fa3b0;font-size:9px;letter-spacing:.14em;text-transform:uppercase}
 
 /* Selector */
 .vega-redesign .vega-perf__tabs{display:grid;gap:12px;grid-template-columns:repeat(5,1fr);margin-top:48px}
@@ -1286,7 +1190,7 @@ html[data-theme="dark"] .vega-redesign .subnav {
   .vega-redesign .vega-perf__tabs button{padding:8px 12px 12px}
 }
 @media(prefers-reduced-motion:reduce){
-  .vega-redesign .vega-perf__ov *,.vega-redesign .vega-perf__arc,.vega-redesign .vega-perf__copy{animation:none!important}
+  .vega-redesign .vega-perf__ov *,.vega-redesign .vega-perf__copy{animation:none!important}
   .vega-redesign .vega-perf__tabs button.is-active i{animation:none}
 }
 
@@ -1348,13 +1252,6 @@ html[data-theme="dark"] .vega-redesign .vega-perf__frame{background:radial-gradi
 @media(max-width:900px){.vega-redesign .vega-security__grid{grid-template-columns:1fr}}
 
 /* Contacto: dos acciones */
-.vega-redesign .contact-actions{display:flex;flex-wrap:wrap;gap:14px}
-.vega-redesign .contact .button--ghost{background:transparent;border-color:#a8babc;color:#e9eee7}
-.vega-redesign .contact .button--ghost:hover{background:#ffffff18}
-@media(max-width:700px){.vega-redesign .contact-actions{width:100%}.vega-redesign .contact-actions .button{flex:1 1 100%}}
-.vega-redesign .contact-bottom{gap:40px}
-.vega-redesign .contact-bottom p{max-width:56ch}
-.vega-redesign .contact-actions{flex-shrink:0}
 
 /* Modo oscuro: textos que quedaban sin contraste */
 
@@ -1511,17 +1408,7 @@ html[data-theme="dark"] .vega-redesign .vega-perf__frame{background:radial-gradi
 .vega-redesign .vega-field .shutter{margin-top:36px}
 
 /* Acompañamiento */
-.vega-redesign .vega-service__head{max-width:62ch}
 .vega-redesign .vega-service__head p:not(.eyebrow){color:var(--vega-muted);font-size:16px;line-height:1.65;margin:22px 0 0}
-.vega-redesign .vega-service__list{display:grid;gap:clamp(24px,3vw,40px);grid-template-columns:repeat(3,1fr);list-style:none;margin:48px 0 0;padding:0}
-.vega-redesign .vega-service__list li{align-items:start;column-gap:14px;display:grid;grid-template-columns:44px 1fr;grid-template-rows:auto 1fr;row-gap:6px}
-.vega-redesign .vega-service__list li>span{align-items:center;background:var(--vega-surface);color:var(--blue-deep);display:flex;grid-row:span 2;height:44px;justify-content:center;width:44px}
-.vega-redesign .vega-service__list h3{font-size:17px;font-weight:600;letter-spacing:-.02em;margin:0}
-.vega-redesign .vega-service__list p{color:var(--vega-muted);font-size:14px;line-height:1.6;margin:0}
-@media(max-width:900px){.vega-redesign .vega-service__list{grid-template-columns:1fr}}
-.vega-redesign .contact-lines{display:flex;flex-wrap:wrap;font-size:14px;gap:8px 28px;margin:36px 0 0}
-.vega-redesign .contact-lines a{color:inherit;opacity:.8;text-decoration:none}
-.vega-redesign .contact-lines a:hover{opacity:1;text-decoration:underline}
 
 /* Seguridad pública: iconos */
 .vega-redesign .vega-security__item{align-content:start;display:grid;grid-template-columns:1fr auto}
@@ -1731,11 +1618,7 @@ html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__download:hover .vega-
 }
 
 /* Servicio: tira compacta */
-.vega-redesign .vega-service{align-items:center;display:grid;gap:6%;grid-template-columns:.9fr 1.1fr}
-.vega-redesign .vega-service__head h2{font-size:clamp(30px,3.4vw,52px)}
 .vega-redesign .vega-service__head p:not(.eyebrow){font-size:15px;margin-top:16px}
-.vega-redesign .vega-service__list{gap:22px;grid-template-columns:1fr;margin:0}
-@media(max-width:900px){.vega-redesign .vega-service{gap:28px;grid-template-columns:1fr}}
 
 /* 03 · compacto: dron + instrumento visibles en una pantalla */
 .vega-redesign .vega-perf{padding-bottom:44px;padding-top:56px}
@@ -1803,3 +1686,12 @@ html:not([data-theme="dark"]) .vega-redesign .vega-perf__tabs button.is-active{b
   .vega-redesign .vega-perf__variants button{font-size:10px;letter-spacing:.04em;padding:6px 8px;white-space:nowrap}
   .vega-redesign .vega-perf__copy{font-size:14px;max-width:42ch}
 }
+/* ===== 08 · Contacto integrado en Acompañamiento ===== */
+.vega-redesign .vega-service__actions .button:not(.button--ghost){background:#168cde;border-color:#168cde;color:#fff}
+.vega-redesign .vega-service__actions .button:not(.button--ghost):hover{background:#0876c4;border-color:#0876c4}
+/* ===== Portada VEGA: foto del dron recortada ===== */
+.vega-redesign .hero-stage{inset:20% 3% 12%}
+.vega-redesign .hero-stage:before{background:radial-gradient(ellipse at 50% 46%,rgba(120,190,235,.26),rgba(120,190,235,0) 62%);content:"";inset:-10% -4%;pointer-events:none;position:absolute}
+.vega-redesign .hero-product{filter:brightness(1.12) contrast(1.05) drop-shadow(0 38px 26px rgba(0,0,0,.5)) drop-shadow(0 0 36px rgba(96,189,255,.16));height:auto;max-height:100%;object-fit:contain;width:min(100%,1180px);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 3.5%,#000 96%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 3.5%,#000 96%,transparent 100%)}
+@media(max-width:720px){.vega-redesign .hero-stage{inset:24% 0 16%}.vega-redesign .hero-product{width:104%;max-width:none}}
+
