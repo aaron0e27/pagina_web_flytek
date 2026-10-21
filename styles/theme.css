@@ -18,8 +18,7 @@ html[data-theme="dark"] .home-page .home-fleet { background:#121d25; }
 html[data-theme="dark"] .home-page .home-values article,html[data-theme="dark"] .home-page .home-footer-bottom,html[data-theme="dark"] .home-page .home-platform-selector{ border-color:#33424c; }
 html[data-theme="dark"] .home-page .home-platform-stage { background:#121d25; }
 html[data-theme="dark"] .home-page .home-company-grid p,html[data-theme="dark"] .home-page .home-fleet-heading p,html[data-theme="dark"] .home-page .home-sectors-title p,html[data-theme="dark"] .home-page .home-values p,html[data-theme="dark"] .home-page .home-platform-copy>p:not(.home-label){ color:#aebbc4; }
-html[data-theme="dark"] .home-page .home-company-grid .home-lead,
-html[data-theme="dark"] .home-page .home-flight-copy { color:#edf3f7; }
+html[data-theme="dark"] .home-page .home-company-grid .home-lead{ color:#edf3f7; }
 html[data-theme="dark"] .home-page .home-platform-selector button:hover { background:#1b2933; }
 html[data-theme="dark"] .home-page .home-platform-stage>span { color:#263640; }
 html[data-theme="dark"] .home-page .home-platform-stage small { color:#9eb0bc; }
@@ -27,8 +26,6 @@ html[data-theme="dark"] .home-page .home-platform-copy li { border-color:#40505b
 html[data-theme="dark"] .home-page .home-platform-pending { background:linear-gradient(135deg,#18242d,#101920); }
 html[data-theme="dark"] .home-page .home-pending-art { border-color:#4d606d; color:#93a5b0; }
 html[data-theme="dark"] .home-page .home-flight-scene { background:linear-gradient(135deg,#121d25,#182630); border-color:#34444f; color:#557082; }
-html[data-theme="dark"] .home-page .home-flight-copy p { color:#aebbc4; }
-html[data-theme="dark"] .home-page .home-flight-data { color:#91a6b4; }
 html[data-theme="dark"] .home-page .home-footer { background:#111a21; color:#edf3f7; }
 html[data-theme="dark"] .home-page .home-application-copy>p:not(.home-label) { color:#aebbc4; }
 html[data-theme="dark"] .home-page .home-application-image { background:#152129; }
@@ -40,7 +37,6 @@ html[data-theme="dark"] .fenix-page :is(.key-stats,.intro,.explore,.arrival,.eng
 html[data-theme="dark"] .fenix-page :is(.intro-visual,.viewer-shell,.navigation-panel,.payload-stage,.payload-closeup,.custom-integration) { background:#152129; }
 html[data-theme="dark"] .fenix-page :is(.stat-length,.stat-endurance,.stat-wind,.stat-weight) { border-color:#34434d; }
 html[data-theme="dark"] .fenix-page :is(.viewer-controls button,.zoom-controls button,.hotspot-info) { background:#17242c; color:#edf3f7; border-color:#3b4b56; }
-html[data-theme="dark"] .fenix-page .viewer-controls button[aria-pressed="true"] { background:#e8f0f5; color:#121a20; }
 html[data-theme="dark"] .fenix-page .control-panel { background:#111c23; }
 html[data-theme="dark"] .fenix-page .connection-path svg { background:#111c23; }
 html[data-theme="dark"] .fenix-page .support-grid article { background:#121d24; border-color:#34434d; }

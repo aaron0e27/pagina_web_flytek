@@ -329,29 +329,6 @@ html:has(.fenix-page) {
   width: 100%;
   mix-blend-mode: multiply;
 }
-.fenix-page .explore {
-  padding: 90px 0 70px;
-  background: #f1f3f4;
-}
-.fenix-page .explore-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  margin-bottom: 46px;
-}
-.fenix-page .explore-heading > div {
-  padding-right: 5%;
-  max-width: 370px;
-}
-.fenix-page .explore-heading p {
-  margin-bottom: 20px;
-}
-.fenix-page .viewer-shell {
-  position: relative;
-  height: 660px;
-  background: #e6e9ec;
-  overflow: hidden;
-}
 .fenix-page .scene {
   height: 100%;
   width: 100%;
@@ -387,81 +364,10 @@ html:has(.fenix-page) {
   max-width: 500px;
   margin: 24px auto 0;
 }
-.fenix-page .viewer-top {
-  position: absolute;
-  left: 26px;
-  right: 26px;
-  top: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  pointer-events: none;
-  gap: 15px;
-}
 .fenix-page .eyebrow {
   font-size: 11px;
   letter-spacing: 0.12em;
   font-weight: 550;
-}
-.fenix-page .model-note {
-  font-size: 11px;
-  color: #65707a;
-}
-.fenix-page .viewer-controls {
-  position: absolute;
-  bottom: 62px;
-  left: 24px;
-  right: 24px;
-  display: flex;
-  justify-content: center;
-  gap: 3px;
-  flex-wrap: wrap;
-  pointer-events: none;
-}
-.fenix-page .viewer-controls button {
-  border: 0;
-  min-height: 40px;
-  font-size: 12px;
-  padding: 0 14px;
-  background: #fff;
-  color: #444e57;
-  pointer-events: auto;
-  transition:
-    background var(--duration-fast),
-    color var(--duration-fast);
-}
-.fenix-page .viewer-controls button[aria-pressed="true"] {
-  background: #1c242c;
-  color: #fff;
-}
-.fenix-page .zoom-controls {
-  position: absolute;
-  right: 24px;
-  top: 82px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.fenix-page .zoom-controls button {
-  width: 40px;
-  height: 40px;
-  border: 0;
-  background: white;
-  display: grid;
-  place-items: center;
-  color: #24303b;
-}
-.fenix-page .viewer-help {
-  position: absolute;
-  bottom: 25px;
-  width: 100%;
-  text-align: center;
-  font-size: 11px;
-  color: #68717b;
-  pointer-events: none;
-}
-.fenix-page .viewer-help span {
-  margin-inline: 12px;
 }
 .fenix-page .hotspot {
   position: absolute;
@@ -479,37 +385,6 @@ html:has(.fenix-page) {
   place-items: center;
   z-index: 3;
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.2);
-}
-.fenix-page .hotspot-info {
-  position: absolute;
-  right: 24px;
-  bottom: 133px;
-  width: 270px;
-  background: white;
-  padding: 24px;
-  box-shadow: 0 10px 30px #0d1f3020;
-  z-index: 4;
-}
-.fenix-page .hotspot-info h3 {
-  margin: 12px 0;
-  font-size: 24px;
-}
-.fenix-page .hotspot-info p {
-  font-size: 13px;
-  line-height: 1.6;
-}
-.fenix-page .hotspot-info button {
-  padding: 0;
-  margin-top: 18px;
-  background: none;
-  border: 0;
-  border-bottom: 1px solid #c6cbd0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  font-size: 12px;
-  min-height: 36px;
 }
 .fenix-page .arrival {
   position: relative;
@@ -1020,53 +895,6 @@ html:has(.fenix-page) {
   padding: 90px 0 100px;
   background: #f1f3f4;
 }
-.fenix-page .specifications {
-  padding: 110px 0;
-  display: grid;
-  grid-template-columns: 43% 57%;
-  gap: 30px;
-  align-items: start;
-}
-.fenix-page .spec-heading {
-  position: sticky;
-  top: 110px;
-}
-.fenix-page .spec-heading h2 {
-  margin-top: 22px;
-}
-.fenix-page .spec-heading p {
-  font-size: 15px;
-  margin-top: 24px;
-}
-.fenix-page .spec-heading a {
-  margin-top: 32px;
-  font-size: 12px;
-}
-.fenix-page .spec-groups section {
-  margin-bottom: 42px;
-}
-.fenix-page .spec-groups section:last-child {
-  margin-bottom: 0;
-}
-.fenix-page .spec-groups h3 {
-  font-size: 20px;
-  margin-bottom: 18px;
-}
-.fenix-page .spec-groups dl > div {
-  display: grid;
-  grid-template-columns: 1fr 1.25fr;
-  gap: 24px;
-  border-top: 1px solid var(--flytek-border);
-  padding: 15px 0;
-  font-size: 13px;
-  line-height: 1.55;
-}
-.fenix-page .spec-groups dt {
-  color: #6d747c;
-}
-.fenix-page .spec-groups dd {
-  color: #272e36;
-}
 .fenix-page .support {
   padding: 80px 0 90px;
   background: #edf0f2;
@@ -1233,8 +1061,7 @@ html:has(.fenix-page) {
   .fenix-page .product-nav a:hover {
     color: #086eaf;
   }
-  .fenix-page .viewer-controls button:not([aria-pressed="true"]):hover,
-  .fenix-page .zoom-controls button:hover {
+  .fenix-page .viewer-controls button:not([aria-pressed="true"]):hover{
     background: #d8e8f2;
   }
   .fenix-page .hotspot:hover {
@@ -1342,9 +1169,6 @@ html:has(.fenix-page) {
     grid-template-columns: 1fr 1.6fr;
     gap: 30px;
   }
-  .fenix-page .viewer-shell {
-    height: 600px;
-  }
   .fenix-page .payload-panel {
     grid-template-columns: 60% 40%;
   }
@@ -1362,13 +1186,6 @@ html:has(.fenix-page) {
   .fenix-page .payload-closeup img {
     width: 80px;
     height: 80px;
-  }
-  .fenix-page .specifications {
-    grid-template-columns: 38% 62%;
-    gap: 20px;
-  }
-  .fenix-page .spec-heading h2 {
-    font-size: 39px;
   }
   .fenix-page .support-grid {
     gap: 25px;
@@ -1483,84 +1300,6 @@ html:has(.fenix-page) {
   .fenix-page .intro-visual > img {
     min-height: 210px;
     object-fit: cover;
-  }
-  .fenix-page .explore {
-    padding: 65px 0 50px;
-  }
-  .fenix-page .explore-heading {
-    display: block;
-    margin-bottom: 28px;
-  }
-  .fenix-page .explore-heading > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    margin-top: 22px;
-    max-width: none;
-    padding: 0;
-  }
-  .fenix-page .explore-heading p {
-    font-size: 13px;
-    margin: 0;
-  }
-  .fenix-page .explore-heading .section-index {
-    max-width: 95px;
-    font-size: 9px;
-    text-align: right;
-  }
-  .fenix-page .viewer-shell {
-    height: 530px;
-  }
-  .fenix-page .viewer-top {
-    left: 15px;
-    right: 15px;
-    top: 18px;
-    align-items: start;
-  }
-  .fenix-page .viewer-top .eyebrow {
-    font-size: 9px;
-  }
-  .fenix-page .model-note {
-    font-size: 9px;
-    text-align: right;
-    max-width: 105px;
-  }
-  .fenix-page .viewer-controls {
-    left: 12px;
-    right: 12px;
-    bottom: 64px;
-    gap: 3px;
-  }
-  .fenix-page .viewer-controls button {
-    font-size: 10px;
-    min-height: 36px;
-    padding: 0 10px;
-  }
-  .fenix-page .viewer-help {
-    padding: 0 18px;
-    bottom: 20px;
-    font-size: 9px;
-    line-height: 1.6;
-  }
-  .fenix-page .viewer-help span {
-    margin-inline: 4px;
-  }
-  .fenix-page .zoom-controls {
-    right: 13px;
-    top: 65px;
-  }
-  .fenix-page .zoom-controls button {
-    width: 36px;
-    height: 36px;
-  }
-  .fenix-page .hotspot-info {
-    width: 230px;
-    right: 14px;
-    bottom: 151px;
-    padding: 18px;
-  }
-  .fenix-page .hotspot-info h3 {
-    font-size: 22px;
   }
   .fenix-page .arrival {
     height: 660px;
@@ -1819,34 +1558,6 @@ html:has(.fenix-page) {
   .fenix-page .applications {
     padding: 65px 0;
   }
-  .fenix-page .specifications {
-    padding: 65px 0;
-    display: block;
-  }
-  .fenix-page .spec-heading {
-    position: static;
-  }
-  .fenix-page .spec-heading h2 {
-    font-size: 40px;
-  }
-  .fenix-page .spec-heading p {
-    font-size: 14px;
-  }
-  .fenix-page .spec-heading a {
-    margin-top: 22px;
-  }
-  .fenix-page .spec-groups {
-    margin-top: 45px;
-  }
-  .fenix-page .spec-groups h3 {
-    font-size: 20px;
-  }
-  .fenix-page .spec-groups dl > div {
-    grid-template-columns: 1fr 1.1fr;
-    gap: 20px;
-    font-size: 12px;
-    padding: 14px 0;
-  }
   .fenix-page .support {
     padding: 65px 0;
   }
@@ -2031,13 +1742,6 @@ html:has(.fenix-page) {
     height: 100%;
     top: 0;
   }
-  .fenix-page .viewer-controls button {
-    min-height: 40px;
-  }
-  .fenix-page .zoom-controls button {
-    width: 42px;
-    height: 42px;
-  }
   .fenix-page .hotspot {
     width: 40px;
     height: 40px;
@@ -2045,10 +1749,6 @@ html:has(.fenix-page) {
 }
 @media (pointer: coarse) {
   .fenix-page .hotspot {
-    width: 44px;
-    height: 44px;
-  }
-  .fenix-page .zoom-controls button {
     width: 44px;
     height: 44px;
   }
@@ -2543,9 +2243,6 @@ html:has(.fenix-page) {
 .fenix-page .payload-description {
   padding-left: 36px;
 }
-.fenix-page .specifications {
-  grid-template-columns: minmax(0, 43fr) minmax(0, 57fr);
-}
 .fenix-page .support {
   background: #eef1f3;
   padding-block: 95px 90px;
@@ -2609,9 +2306,6 @@ html:has(.fenix-page) {
   background: #0879bd;
   color: white;
   border-color: #0879bd;
-}
-.fenix-page .hotspot-info {
-  border-top: 2px solid #087fcb;
 }
 @keyframes connector-reveal {
   from {
@@ -3121,30 +2815,6 @@ html:has(.fenix-page) {
   }
 }
 /* Small-screen details sit below the canvas so the selected part remains visible. */
-@media (max-width: 700px) {
-  .fenix-page .viewer-shell.has-selection {
-    height: auto;
-  }
-  .fenix-page .viewer-shell.has-selection .scene {
-    height: 530px;
-  }
-  .fenix-page .viewer-shell.has-selection .viewer-controls {
-    bottom: auto;
-    top: 386px;
-  }
-  .fenix-page .viewer-shell.has-selection .viewer-help {
-    bottom: auto;
-    top: 483px;
-  }
-  .fenix-page .viewer-shell.has-selection .hotspot-info {
-    position: relative;
-    inset: auto;
-    width: auto;
-    margin: 0;
-    padding: 22px;
-    box-shadow: none;
-  }
-}
 /* Keep the active underline inside the horizontal strip; it must never add vertical scroll. */
 .fenix-page .product-nav > div {
   height: 100%;
@@ -3169,285 +2839,6 @@ html:has(.fenix-page) {
 @media(prefers-reduced-motion:reduce){.fenix-page .hero-product{animation:none}}
 
 /* FÉNIX 3D — modelo oficial, composición inmersiva y controles responsive. */
-.fenix-page .fenix-viewer-wrap {
-  width: min(94vw, 1680px);
-  max-width: none;
-}
-.fenix-page .viewer-shell {
-  position: relative;
-  height: min(82svh, 820px);
-  min-height: 680px;
-  isolation: isolate;
-  overflow: hidden;
-  border: 1px solid #294350;
-  background:
-    radial-gradient(circle at 50% 42%, rgba(70, 125, 151, .5), transparent 37%),
-    linear-gradient(145deg, #203844 0%, #101f28 48%, #081117 100%);
-  box-shadow: 0 28px 70px rgba(6, 20, 29, .18);
-}
-.fenix-page .viewer-shell::before {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  content: "";
-  pointer-events: none;
-  opacity: .55;
-  background:
-    linear-gradient(rgba(117, 193, 230, .07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(117, 193, 230, .07) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: linear-gradient(to bottom, transparent 2%, #000 20%, #000 78%, transparent 100%);
-}
-.fenix-page .viewer-shell::after {
-  position: absolute;
-  right: 14%;
-  bottom: 9%;
-  left: 14%;
-  z-index: 1;
-  height: 16%;
-  content: "";
-  pointer-events: none;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(0, 0, 0, .72), transparent 69%);
-  filter: blur(17px);
-}
-.fenix-page .viewer-shell .scene {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  height: auto;
-}
-.fenix-page .viewer-shell .viewer-top {
-  z-index: 6;
-  color: #eef8fc;
-}
-.fenix-page .viewer-shell .viewer-top .eyebrow {
-  color: #65c5fa;
-}
-.fenix-page .viewer-shell .model-note {
-  color: #a9c2cf;
-  letter-spacing: .1em;
-}
-.fenix-page .viewer-shell .viewer-controls {
-  z-index: 7;
-  right: auto;
-  bottom: 84px;
-  justify-content: flex-start;
-  max-width: calc(100% - 190px);
-  gap: 7px;
-}
-.fenix-page .viewer-shell .viewer-controls button,
-.fenix-page .viewer-components button {
-  min-height: 38px;
-  padding: 8px 13px;
-  border: 1px solid rgba(168, 202, 220, .3);
-  background: rgba(9, 24, 33, .82);
-  color: #bad3df;
-  font-size: 10px;
-  letter-spacing: .06em;
-  backdrop-filter: blur(12px);
-}
-.fenix-page .viewer-shell .viewer-controls button:hover,
-.fenix-page .viewer-shell .viewer-controls button[aria-pressed="true"],
-.fenix-page .viewer-components button:hover,
-.fenix-page .viewer-components button[aria-pressed="true"] {
-  border-color: #168cde;
-  background: #168cde;
-  color: #fff;
-}
-.fenix-page .viewer-shell .zoom-controls {
-  z-index: 7;
-  top: 70px;
-  gap: 0;
-}
-.fenix-page .viewer-shell .zoom-controls button {
-  width: 44px;
-  height: 44px;
-  border: 1px solid rgba(168, 202, 220, .3);
-  background: rgba(9, 24, 33, .82);
-  color: #e5f3f9;
-  backdrop-filter: blur(12px);
-}
-.fenix-page .viewer-shell .zoom-controls button + button {
-  border-top: 0;
-}
-.fenix-page .viewer-shell .zoom-controls button:hover {
-  background: #168cde;
-  color: #fff;
-}
-.fenix-page .viewer-components {
-  position: absolute;
-  bottom: 28px;
-  left: 24px;
-  z-index: 7;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  max-width: calc(100% - 310px);
-}
-.fenix-page .viewer-components button {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-}
-.fenix-page .viewer-components button span {
-  color: #5bc3fb;
-  font-size: 17px;
-  line-height: 1;
-}
-.fenix-page .viewer-components button:hover span,
-.fenix-page .viewer-components button[aria-pressed="true"] span {
-  color: #fff;
-}
-.fenix-page .viewer-shell .viewer-help {
-  z-index: 6;
-  right: 24px;
-  bottom: 34px;
-  width: 245px;
-  color: #91aab7;
-  font-size: 9px;
-  letter-spacing: .08em;
-  text-align: right;
-}
-.fenix-page .viewer-shell .hotspot {
-  z-index: 8;
-  width: 34px;
-  height: 34px;
-  border-color: #fff;
-  background: #168cde;
-  color: #fff;
-  box-shadow: 0 0 0 7px rgba(22, 140, 222, .17);
-}
-.fenix-page .viewer-shell .hotspot[aria-pressed="true"] {
-  background: #fff;
-  color: #0876c4;
-}
-.fenix-page .viewer-shell .hotspot-info {
-  z-index: 9;
-  right: 24px;
-  bottom: 92px;
-  width: min(330px, calc(100% - 48px));
-  border: 1px solid rgba(132, 173, 195, .72);
-  border-top: 2px solid #168cde;
-  background: rgba(247, 251, 253, .96);
-  box-shadow: 0 20px 48px rgba(4, 17, 25, .28);
-  backdrop-filter: blur(16px);
-}
-
-@media (max-width: 800px) {
-  .fenix-page .fenix-viewer-wrap {
-    width: 100%;
-    padding: 0;
-  }
-  .fenix-page .viewer-shell,
-  .fenix-page .viewer-shell.has-selection {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    min-height: 0;
-    overflow: visible;
-    border-right: 0;
-    border-left: 0;
-  }
-  .fenix-page .viewer-shell::before,
-  .fenix-page .viewer-shell::after {
-    bottom: auto;
-    height: 520px;
-  }
-  .fenix-page .viewer-shell .scene,
-  .fenix-page .viewer-shell.has-selection .scene {
-    position: relative;
-    inset: auto;
-    flex: none;
-    width: 100%;
-    height: clamp(410px, 62svh, 560px);
-  }
-  .fenix-page .viewer-shell .viewer-top {
-    top: 17px;
-    left: 16px;
-    right: 16px;
-  }
-  .fenix-page .viewer-shell .zoom-controls {
-    top: 62px;
-    right: 16px;
-  }
-  .fenix-page .viewer-shell .scene .hotspot {
-    display: none;
-  }
-  .fenix-page .viewer-shell .viewer-controls,
-  .fenix-page .viewer-shell.has-selection .viewer-controls {
-    position: relative;
-    inset: auto;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    max-width: none;
-    padding: 18px 16px 0;
-    background: #0b171f;
-  }
-  .fenix-page .viewer-shell .viewer-controls button {
-    min-width: 0;
-    padding-inline: 7px;
-  }
-  .fenix-page .viewer-components {
-    position: relative;
-    inset: auto;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-width: none;
-    padding: 12px 16px 20px;
-    background: #0b171f;
-  }
-  .fenix-page .viewer-components button {
-    justify-content: center;
-    min-width: 0;
-    min-height: 44px;
-  }
-  .fenix-page .viewer-shell .viewer-help,
-  .fenix-page .viewer-shell.has-selection .viewer-help {
-    display: none;
-  }
-  .fenix-page .viewer-shell .hotspot-info,
-  .fenix-page .viewer-shell.has-selection .hotspot-info {
-    position: relative;
-    inset: auto;
-    width: auto;
-    margin: 0;
-    padding: 26px 20px 30px;
-    border-right: 0;
-    border-bottom: 0;
-    border-left: 0;
-    box-shadow: none;
-  }
-}
-
-@media (max-width: 520px) {
-  .fenix-page .viewer-shell .scene,
-  .fenix-page .viewer-shell.has-selection .scene {
-    height: 430px;
-  }
-  .fenix-page .viewer-shell::before,
-  .fenix-page .viewer-shell::after {
-    height: 430px;
-  }
-  .fenix-page .viewer-shell .viewer-controls {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .fenix-page .viewer-components {
-    grid-template-columns: 1fr;
-  }
-  .fenix-page .model-note {
-    max-width: 120px;
-    font-size: 8px;
-    text-align: right;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .fenix-page .fenix-viewer-wrap {
-    clip-path: none !important;
-    transform: none !important;
-  }
-}
 
 /* Más fondo alrededor del contenido original del hero */
 .fenix-page .hero {

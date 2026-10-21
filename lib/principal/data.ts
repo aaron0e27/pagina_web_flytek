@@ -38,7 +38,7 @@ export const platforms: readonly { id: string; name: string; title: string; desc
     title: "El drone que necesitas.",
     description:
       "Versátil y robusto para el trabajo.",
-    image: "/vega/images/vega-estudio.png",
+    image: "/vega/images/vega-portada-cutout.webp",
     href: "/vega",
     available: true,
     features: ["Estructura plegable", "Delivery", "Uso en exteriores"],

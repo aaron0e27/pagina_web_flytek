@@ -1,0 +1,114 @@
+/* Especificaciones técnicas de FÉNIX — mismo formato que ORION/VEGA. Reemplaza el bloque .specifications del fenix.css (se puede podar). */
+.fenix-page .dspec{--d-blue:#168cde;--d-blue-deep:#0876c4;--d-black:#0c1319}
+.fenix-page .dspec-tag{align-items:center;display:flex;font-size:10px;font-weight:650;gap:13px;letter-spacing:.14em;text-transform:uppercase}
+.fenix-page .dspec-tag span{align-items:center;background:var(--d-blue);color:#071c2d;display:flex;height:30px;justify-content:center;width:30px}
+.fenix-page .dspec-tag--light{color:#fff}
+.fenix-page .dspec{padding-block:clamp(64px,7vw,100px)!important}
+.fenix-page .dspec{background:var(--d-black);color:#fff;display:grid;gap:9vw;grid-template-columns:.9fr 1.1fr;padding:clamp(110px,14vw,200px) clamp(28px,6vw,96px)}
+.fenix-page .dspec__intro{align-self:start;position:sticky;top:105px}
+.fenix-page .dspec__intro h2{font-size:clamp(54px,6vw,90px);font-weight:480;letter-spacing:-.06em;line-height:.95;margin:55px 0 36px}
+.fenix-page .dspec__intro>p{color:#9da5ab;font-size:14px;line-height:1.7}
+/* ===== Datos técnicos interactivos (05) ===== */
+.fenix-page .dspec__body{min-width:0}
+
+.fenix-page .dspec__tabs{display:flex;gap:8px;margin-bottom:28px;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x proximity;scrollbar-width:none}
+.fenix-page .dspec__tabs::-webkit-scrollbar{display:none}
+.fenix-page .dspec__tabs button{align-items:center;background:transparent;border:1px solid rgba(255,255,255,.22);color:#c3c9ce;cursor:pointer;display:inline-flex;flex:0 0 auto;font:inherit;font-size:13px;gap:10px;min-height:44px;padding:0 18px;scroll-snap-align:center;transition:background .25s,border-color .25s,color .25s}
+.fenix-page .dspec__tabs button span{color:var(--d-blue);font-size:10px;letter-spacing:.1em}
+.fenix-page .dspec__tabs button:hover{border-color:var(--d-blue);color:#fff}
+.fenix-page .dspec__tabs button.is-active{background:var(--d-blue);border-color:var(--d-blue);color:#fff}
+.fenix-page .dspec__tabs button.is-active span{color:#062033}
+.fenix-page .dspec__tabs button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+.fenix-page .dspec__panel{min-height:320px}
+.fenix-page .dspec__section+.dspec__section{margin-top:34px}
+.fenix-page .dspec__section h3{align-items:center;color:#fff;display:flex;font-size:18px;font-weight:480;gap:14px;margin:0 0 6px}
+.fenix-page .dspec__section h3:after{background:rgba(255,255,255,.16);content:"";flex:1;height:1px}
+.fenix-page .dspec__panel dl{margin:0}
+.fenix-page .dspec__panel dl>div{animation:dspec-row .55s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(var(--r)*45ms);border-bottom:1px solid rgba(255,255,255,.1);display:grid;gap:18px;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);padding:16px 0;transition:background .2s,padding .2s}
+.fenix-page .dspec__panel dl>div:hover{background:linear-gradient(90deg,rgba(24,151,242,.14),transparent);padding-left:12px}
+.fenix-page .dspec__panel dt{color:#91999e;font-size:12px}
+.fenix-page .dspec__panel dd{font-size:14px;margin:0;text-align:right}
+@keyframes dspec-row{from{opacity:0;transform:translateX(18px)}
+to{opacity:1;transform:none}
+}
+.fenix-page .dspec__hint{color:#6f777d;display:none;font-size:10px;letter-spacing:.12em;margin:22px 0 0;text-align:center;text-transform:uppercase}
+
+/* Botón descargar */
+.fenix-page .dspec__download{align-items:center;background:linear-gradient(135deg,rgba(24,151,242,.18),rgba(24,151,242,.04));border:1px solid rgba(24,151,242,.55);color:#fff;display:flex;gap:16px;margin-top:40px;max-width:430px;overflow:hidden;padding:16px 18px;position:relative;text-decoration:none;transition:border-color .3s,transform .3s}
+.fenix-page .dspec__download:before{background:linear-gradient(100deg,transparent,rgba(255,255,255,.18),transparent);content:"";inset:0;position:absolute;transform:translateX(-120%);transition:transform .8s}
+.fenix-page .dspec__download:hover:before,.fenix-page .dspec__download:focus-visible:before{transform:translateX(120%)}
+.fenix-page .dspec__download:hover{border-color:#72c5f4;transform:translateY(-2px)}
+.fenix-page .dspec__download:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.fenix-page .dspec__doc{align-items:center;background:var(--d-blue);color:#062033;display:flex;flex:0 0 auto;height:54px;justify-content:center;position:relative;width:44px}
+.fenix-page .dspec__doc i{background:#062033;height:1px;opacity:0;position:absolute;width:20px}
+.fenix-page .dspec__doc i:nth-of-type(1){bottom:16px}
+.fenix-page .dspec__doc i:nth-of-type(2){bottom:11px;width:14px}
+.fenix-page .dspec__doc i:nth-of-type(3){bottom:6px;width:17px}
+.fenix-page .dspec__download:hover .dspec__doc i{opacity:.7}
+.fenix-page .dspec__download-copy{display:flex;flex:1;flex-direction:column;gap:4px;min-width:0}
+.fenix-page .dspec__download-copy b{font-size:15px;font-weight:560}
+.fenix-page .dspec__download-copy small{color:#9fb4c3;font-size:11px;letter-spacing:.04em}
+.fenix-page .dspec__download-arrow{align-items:center;border:1px solid rgba(255,255,255,.35);display:flex;flex:0 0 auto;height:38px;justify-content:center;width:38px}
+.fenix-page .dspec__download:hover .dspec__download-arrow{animation:dspec-arrow .9s ease-in-out infinite;background:var(--d-blue);border-color:var(--d-blue)}
+@keyframes dspec-arrow{0%,100%{transform:translateY(-2px)}
+50%{transform:translateY(3px)}
+}
+
+@media(max-width:980px){
+  .fenix-page .dspec__download{max-width:none}
+}
+@media(max-width:720px){
+  .fenix-page .dspec__tabs{margin-left:-20px;margin-right:-20px;padding:0 20px 6px}
+  .fenix-page .dspec__panel dl>div{gap:12px;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);padding:14px 0}
+  .fenix-page .dspec__panel dl>div:hover{padding-left:0}
+  .fenix-page .dspec__hint{display:block}
+  .fenix-page .dspec__panel{min-height:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .fenix-page .dspec__panel dl>div,.fenix-page .dspec__download-arrow{animation:none!important}
+}
+.fenix-page .dspec__actions{align-items:stretch;display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.fenix-page .dspec__actions .dspec__download{flex:1 1 320px;margin-top:0;max-width:430px}
+.fenix-page .dspec__quote{align-items:center;border:1px solid rgba(255,255,255,.3);color:#fff;display:inline-flex;font-size:13px;gap:10px;padding:0 22px;text-decoration:none;transition:background .25s,border-color .25s,color .25s}
+.fenix-page .dspec__quote:hover{background:var(--d-blue);border-color:var(--d-blue)}
+@media(max-width:720px){.fenix-page .dspec__quote{justify-content:center;min-height:48px}
+.fenix-page .dspec__actions .dspec__download{max-width:none}
+}
+html:not([data-theme=dark]) .fenix-page .dspec{background:#f5f7f9;color:#171a1f}
+html:not([data-theme=dark]) .fenix-page .dspec .dspec-tag--light{color:#171a1f}
+html:not([data-theme=dark]) .fenix-page .dspec .dspec-tag span{color:#fff;background:#0876c4}
+html:not([data-theme=dark]) .fenix-page .dspec__intro h2{color:#171a1f}
+html:not([data-theme=dark]) .fenix-page .dspec__intro>p{color:#5f6f7a}
+html:not([data-theme=dark]) .fenix-page .dspec__tabs button{border-color:#c4d0da;color:#44586a}
+html:not([data-theme=dark]) .fenix-page .dspec__tabs button span{color:#0876c4}
+html:not([data-theme=dark]) .fenix-page .dspec__tabs button:hover{border-color:#0876c4;color:#171a1f}
+html:not([data-theme=dark]) .fenix-page .dspec__tabs button.is-active{background:#0876c4;border-color:#0876c4;color:#fff}
+html:not([data-theme=dark]) .fenix-page .dspec__tabs button.is-active span{color:#d6ecfb}
+html:not([data-theme=dark]) .fenix-page .dspec__tabs button:focus-visible,html:not([data-theme=dark]) .fenix-page .dspec__download:focus-visible{outline-color:#0876c4}
+html:not([data-theme=dark]) .fenix-page .dspec__section h3{color:#171a1f}
+html:not([data-theme=dark]) .fenix-page .dspec__section h3:after{background:#d3dde4}
+html:not([data-theme=dark]) .fenix-page .dspec__panel dl>div{border-bottom-color:#d9dde3}
+html:not([data-theme=dark]) .fenix-page .dspec__panel dl>div:hover{background:linear-gradient(90deg,rgba(8,118,196,.1),transparent)}
+html:not([data-theme=dark]) .fenix-page .dspec__panel dt{color:#5f6f7a}
+html:not([data-theme=dark]) .fenix-page .dspec__panel dd{color:#171a1f}
+html:not([data-theme=dark]) .fenix-page .dspec__hint{color:#7d8e9a}
+html:not([data-theme=dark]) .fenix-page .dspec__download{background:linear-gradient(135deg,rgba(8,118,196,.12),rgba(8,118,196,.03));border-color:rgba(8,118,196,.5);color:#171a1f}
+html:not([data-theme=dark]) .fenix-page .dspec__download:before{background:linear-gradient(100deg,transparent,rgba(255,255,255,.7),transparent)}
+html:not([data-theme=dark]) .fenix-page .dspec__doc{background:#0876c4;color:#fff}
+html:not([data-theme=dark]) .fenix-page .dspec__doc i{background:#fff}
+html:not([data-theme=dark]) .fenix-page .dspec__download-copy small{color:#5f6f7a}
+html:not([data-theme=dark]) .fenix-page .dspec__download-arrow{border-color:#9cb2c2}
+html:not([data-theme=dark]) .fenix-page .dspec__download:hover .dspec__download-arrow{color:#fff}
+html:not([data-theme=dark]) .fenix-page .dspec__quote{border-color:#9cb2c2;color:#171a1f}
+html:not([data-theme=dark]) .fenix-page .dspec__quote:hover{background:#0876c4;border-color:#0876c4;color:#fff}
+.fenix-page .dspec__intro h2{font-size:clamp(42px,4.8vw,76px);margin:40px 0 28px}
+@media(max-width:980px){.fenix-page .dspec{grid-template-columns:1fr}
+.fenix-page .dspec__intro{position:static}
+}
+@media(max-width:720px){.fenix-page .dspec{padding-block:52px!important}
+}
+.fenix-page .dspec{padding-inline:64px}
+.fenix-page .dspec__quote{min-height:56px}
+@media(max-width:980px){.fenix-page .dspec{padding-inline:32px}}
+@media(max-width:720px){.fenix-page .dspec{padding-inline:20px}}

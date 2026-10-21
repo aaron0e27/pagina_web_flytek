@@ -1,0 +1,61 @@
+/* Galería FÉNIX · ORION · VEGA (sección "Diseño / integración / operación" de la home) */
+.home-page .dgal{--g-bg1:#fff;--g-bg2:#eef2f5;--g-line:#d5dde3;--g-ink:#171a1f;--g-muted:#616a71;--g-blue:#168cde;margin:10px 0 70px;border:1px solid var(--g-line);background:var(--g-bg1);color:var(--g-ink)}
+.home-page .dgal__stage{position:relative;height:540px;overflow:hidden;background:linear-gradient(180deg,var(--g-bg1) 0%,var(--g-bg2) 100%);touch-action:pan-y}
+.home-page .dgal__copy{position:absolute;z-index:4;top:35px;left:35px;max-width:330px}
+.home-page .dgal__copy p{margin:18px 0 0;color:var(--g-muted);font-size:13px;line-height:1.6}
+.home-page .dgal__count{position:absolute;z-index:4;top:36px;right:35px;font-size:10px;letter-spacing:.14em;color:var(--g-muted)}
+.home-page .dgal__slide{position:absolute;inset:0;margin:0;opacity:0;visibility:hidden;transition:opacity .8s ease,visibility 0s .8s}
+.home-page .dgal__slide.is-active{opacity:1;visibility:visible;transition:opacity .8s ease}
+.home-page .dgal__terrain{position:absolute;left:0;bottom:0;width:100%;height:auto;max-height:100%;transform:translateY(14px);transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+.home-page .dgal__slide.is-active .dgal__terrain{transform:none}
+.home-page .dgal__drone{position:absolute;z-index:2;left:56%;bottom:36%;width:clamp(300px,33%,470px);height:auto;filter:drop-shadow(0 16px 12px rgba(22,45,59,.22));animation:dgal-float 6s ease-in-out infinite}
+.home-page .dgal__shadow{position:absolute;z-index:1;left:calc(56% + 8%);bottom:29%;width:clamp(180px,20%,300px);height:22px;border-radius:50%;background:radial-gradient(ellipse,rgba(23,70,105,.38),transparent 70%);filter:blur(6px);animation:dgal-shadow 6s ease-in-out infinite}
+.home-page .dgal figcaption{position:absolute;z-index:4;left:35px;bottom:22px;display:flex;flex-direction:column;gap:4px;padding:10px 14px;background:rgba(255,255,255,.88);border:1px solid var(--g-line);backdrop-filter:blur(4px)}
+.home-page .dgal figcaption b{font-size:12px;font-weight:650;letter-spacing:.12em}
+.home-page .dgal figcaption small{font-size:10px;letter-spacing:.08em;color:var(--g-muted)}
+.home-page .dgal__bar{display:flex;align-items:stretch;justify-content:space-between;gap:16px;border-top:1px solid var(--g-line);background:var(--g-bg1)}
+.home-page .dgal__tabs{display:flex}
+.home-page .dgal__tabs button{position:relative;display:flex;align-items:center;gap:10px;padding:0 26px;min-height:56px;border:0;border-right:1px solid var(--g-line);background:transparent;color:var(--g-muted);font-size:12px;font-weight:600;letter-spacing:.1em;cursor:pointer}
+.home-page .dgal__tabs button span{color:var(--g-blue);font-size:10px}
+.home-page .dgal__tabs button:hover{color:var(--g-ink)}
+.home-page .dgal__tabs button.is-active{color:var(--g-ink)}
+.home-page .dgal__fill{position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--g-blue);transform-origin:left;transform:scaleX(0);animation:dgal-fill 6.5s linear forwards}
+.home-page .dgal.is-paused .dgal__fill{animation-play-state:paused}
+.home-page .dgal__link{display:inline-flex;align-items:center;gap:8px;padding:0 24px;font-size:12px;letter-spacing:.06em;color:var(--g-ink);text-decoration:none}
+.home-page .dgal__link:hover{color:var(--g-blue)}
+.home-page .dgal :is(button,a):focus-visible{outline:2px solid var(--g-blue);outline-offset:-3px}
+.home-page .dgal.is-paused .dgal__drone,.home-page .dgal.is-paused .dgal__shadow{animation-play-state:paused}
+@keyframes dgal-float{0%,100%{transform:translateY(0) rotate(-.6deg)}50%{transform:translateY(-14px) rotate(.8deg)}}
+@keyframes dgal-shadow{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(.86);opacity:.6}}
+@keyframes dgal-fill{to{transform:scaleX(1)}}
+/* Modo oscuro */
+html[data-theme="dark"] .home-page .dgal{--g-bg1:#101920;--g-bg2:#16232c;--g-line:#33424c;--g-ink:#edf3f7;--g-muted:#9eb0bc}
+html[data-theme="dark"] .home-page .dgal__terrain{filter:brightness(.6) contrast(1.1)}
+html[data-theme="dark"] .home-page .dgal__drone{filter:brightness(.92) drop-shadow(0 16px 12px rgba(0,0,0,.5))}
+html[data-theme="dark"] .home-page .dgal__shadow{background:radial-gradient(ellipse,rgba(0,0,0,.55),transparent 70%)}
+html[data-theme="dark"] .home-page .dgal figcaption{background:rgba(16,25,32,.85)}
+/* Celular */
+@media(max-width:720px){
+  .home-page .dgal{margin-bottom:50px}
+  .home-page .dgal__stage{height:470px}
+  .home-page .dgal__copy{top:22px;left:20px;right:20px;max-width:none}
+  .home-page .dgal__copy p{margin-top:12px}
+  .home-page .dgal__count{display:none}
+  .home-page .dgal__terrain{height:190px;width:100%;object-fit:cover;object-position:50% 100%}
+  .home-page .dgal__drone{left:50%;margin-left:-41%;width:82%;bottom:30%}
+  .home-page .dgal__shadow{left:50%;margin-left:-14%;width:28%;bottom:24%}
+  .home-page .dgal figcaption{left:20px;bottom:14px;padding:8px 12px}
+  .home-page .dgal__bar{flex-direction:column;gap:0}
+  .home-page .dgal__tabs button{flex:1;justify-content:center;padding:0 6px;gap:6px;font-size:11px;letter-spacing:.06em}
+  .home-page .dgal__tabs button:last-child{border-right:0}
+  .home-page .dgal__link{justify-content:center;min-height:48px;border-top:1px solid var(--g-line)}
+}
+@media(prefers-reduced-motion:reduce){
+  .home-page .dgal__drone,.home-page .dgal__shadow{animation:none}
+  .home-page .dgal__slide,.home-page .dgal__terrain{transition:none}
+  .home-page .dgal__fill{animation:none;transform:scaleX(1)}
+}
+/* VEGA en "Una misión. Tu plataforma.": recorte flotando, sin máscara */
+.home-page .home-platform-stage img.home-platform-photo-cutout{mix-blend-mode:normal;-webkit-mask-image:none;mask-image:none;width:92%;max-height:360px;filter:drop-shadow(0 30px 18px rgba(23,44,68,.28));animation:dgal-float 6s ease-in-out infinite}
+html[data-theme="dark"] .home-page .home-platform-stage img.home-platform-photo-cutout{filter:drop-shadow(0 30px 18px rgba(0,0,0,.55))}
+@media(prefers-reduced-motion:reduce){.home-page .home-platform-stage img.home-platform-photo-cutout{animation:none}}

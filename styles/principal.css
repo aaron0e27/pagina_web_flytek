@@ -121,15 +121,8 @@
 @keyframes home-drone-float { 0%,100% { transform:translateY(0) rotate(-1deg); } 50% { transform:translateY(-13px) rotate(1deg); } }
 /* Escena técnica de la sección Empresa. */
 .home-flight-scene { position:relative; height:460px; margin:10px 0 70px; overflow:hidden; background:linear-gradient(135deg,#f6f8f9,#e8edf0); border:1px solid #d9dfe3; color:#8d9aa3; }
-.home-flight-copy { position:absolute; z-index:3; top:35px; left:35px; max-width:330px; color:#171a1f; }
-.home-flight-copy p { margin-top:18px; color:#616a71; font-size:13px; line-height:1.6; }
-.home-terrain { position:absolute; bottom:-8px; left:0; width:100%; height:62%; color:#8796a0; opacity:.58; }
-.home-flight-path { position:absolute; z-index:2; left:20%; top:29%; width:64%; height:34%; border:1px dashed #6c8da5; border-radius:50%; transform:rotate(-7deg); opacity:.65; }
-.home-flight-drone { position:absolute; z-index:3; left:48%; top:22%; width:240px; height:auto; filter:drop-shadow(0 18px 13px #162d3b44); animation:home-flight-around 10s ease-in-out infinite; }
-.home-flight-data { position:absolute; z-index:3; right:28px; bottom:25px; display:flex; gap:20px; font-size:8px; letter-spacing:.12em; color:#52636f; }
 @keyframes home-flight-around { 0%,100% { transform:translate(-150px,55px) scale(.62) rotate(-7deg); } 28% { transform:translate(35px,-40px) scale(.78) rotate(3deg); } 55% { transform:translate(215px,15px) scale(.58) rotate(8deg); } 78% { transform:translate(45px,85px) scale(.7) rotate(-3deg); } }
-.home-paused .home-flight-drone { animation:none; transform:scale(.72); }
-@media(max-width:600px) { .home-flight-scene { height:430px; margin-bottom:50px; } .home-flight-copy { top:25px; left:22px; right:22px; } .home-flight-path { left:3%; width:94%; top:38%; } .home-flight-drone { width:180px; top:39%; left:38%; animation-name:home-flight-around-mobile; } .home-flight-data { left:20px; right:20px; justify-content:space-between; gap:6px; } @keyframes home-flight-around-mobile { 0%,100% { transform:translate(-85px,45px) scale(.62); } 33% { transform:translate(45px,-20px) scale(.72); } 66% { transform:translate(100px,75px) scale(.55); } } }
+@media(max-width:600px) { .home-flight-scene { height:430px; margin-bottom:50px; } @keyframes home-flight-around-mobile { 0%,100% { transform:translate(-85px,45px) scale(.62); } 33% { transform:translate(45px,-20px) scale(.72); } 66% { transform:translate(100px,75px) scale(.55); } } }
 
 /* Introducción breve: se muestra una vez por pestaña y dura 2.6 segundos. */
 .home-loader { position:fixed; inset:0; z-index:10000; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; background:radial-gradient(circle at center,#1d3444 0,#0d1a23 48%,#071016 100%); color:#eaf5fb; animation:home-loader-exit .55s ease 2.05s forwards; }
@@ -150,7 +143,6 @@
 
 /* ORION comparte la escena de vuelo con FÉNIX. */
 @keyframes home-flight-around-orion { 0%,100% { transform:translate(230px,65px) scale(.48) rotate(7deg); } 30% { transform:translate(75px,-55px) scale(.62) rotate(-3deg); } 60% { transform:translate(-155px,8px) scale(.5) rotate(-8deg); } 82% { transform:translate(-10px,105px) scale(.56) rotate(3deg); } }
-.home-paused .home-flight-drone--fenix { transform:translate(-115px,40px) scale(.62); }
 
 /* Detalle dinámico del sector seleccionado. */
 .home-sector-expanded { margin-top:120px; scroll-margin-top:100px; animation:home-switch .45s ease-out both; }
