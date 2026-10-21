@@ -6,7 +6,7 @@ import "@/styles/redesign-integration.css";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
         <script dangerouslySetInnerHTML={{ __html: `(function(){try{var saved=localStorage.getItem('flytek-theme');var dark=saved?saved==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.dataset.theme=dark?'dark':'light';document.documentElement.style.colorScheme=dark?'dark':'light'}catch(e){}})()` }} />
       </head>

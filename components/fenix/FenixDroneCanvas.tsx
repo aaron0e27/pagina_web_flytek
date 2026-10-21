@@ -82,12 +82,10 @@ export default function FenixDroneCanvas({ arrival = false }: { arrival?: boolea
     setSelected(null);
   };
   return (
-    <div
-      className={arrival ? "arrival-viewer" : "viewer-shell" + (selected ? " has-selection" : "")}
-    >
+    <div className={arrival ? "arrival-viewer" : "v3d-shell"}>
       <div
         ref={host}
-        className="scene"
+        className={arrival ? "scene" : "v3d-scene"}
         tabIndex={arrival ? -1 : 0}
         aria-label={
           arrival
@@ -96,7 +94,8 @@ export default function FenixDroneCanvas({ arrival = false }: { arrival?: boolea
         }
       >
         {(!ready || error) && (
-          <div className="scene-fallback">
+          <div className={arrival ? "scene-fallback" : "v3d-fallback"} role={arrival ? undefined : "status"} aria-live={arrival ? undefined : "polite"}>
+            {!arrival && !error && <span className="v3d-orbit" aria-hidden="true" />}
             <img
               src={fenixAssets.product}
               alt="FÉNIX — fotografía oficial"
@@ -105,10 +104,10 @@ export default function FenixDroneCanvas({ arrival = false }: { arrival?: boolea
               loading="lazy"
             />
             {!arrival && (
-              <p role="status">
+              <p>
                 {error
-                  ? "La vista 3D no está disponible en este dispositivo. Puedes seguir explorando las fotografías y especificaciones."
-                  : "Cargando exploración 3D…"}
+                  ? "LA VISTA 3D NO ESTÁ DISPONIBLE EN ESTE DISPOSITIVO"
+                  : "CARGANDO MODELO 3D…"}
               </p>
             )}
           </div>
@@ -129,14 +128,15 @@ export default function FenixDroneCanvas({ arrival = false }: { arrival?: boolea
       )}
       {!arrival && (
         <>
-          <div className="viewer-top">
-            <span className="eyebrow">EXPLORACIÓN 360°</span>
-            <span className="model-note">INTERACTIVO</span>
+          <div className="v3d-badge">
+            <span>MODELO WEB</span>
+            <strong>FÉNIX</strong>
           </div>
-          <div className="viewer-controls" aria-label="Vistas del modelo">
+          <div className="v3d-views" aria-label="Vistas del modelo">
             {views.map(([id, label]) => (
               <button
                 key={id}
+                type="button"
                 onClick={() => {
                   api.current?.view(id);
                   setView(id);
@@ -149,8 +149,9 @@ export default function FenixDroneCanvas({ arrival = false }: { arrival?: boolea
               </button>
             ))}
           </div>
-          <div className="zoom-controls">
+          <div className="v3d-zoom">
             <button
+              type="button"
               aria-label="Acercar modelo"
               disabled={!ready || error}
               onClick={() => api.current?.zoom(0.8)}
@@ -158,17 +159,19 @@ export default function FenixDroneCanvas({ arrival = false }: { arrival?: boolea
               <Plus size={18} />
             </button>
             <button
+              type="button"
               aria-label="Alejar modelo"
               disabled={!ready || error}
               onClick={() => api.current?.zoom(1.25)}
             >
               <Minus size={18} />
             </button>
-            <button aria-label="Volver a vista inicial" disabled={!ready || error} onClick={reset}>
+            <button type="button" aria-label="Volver a vista inicial" disabled={!ready || error} onClick={reset}>
               <RotateCcw size={17} />
             </button>
           </div>
-          <div className="viewer-components" aria-label="Partes de FÉNIX">
+          <p className="v3d-help">ARRASTRA PARA GIRAR · UTILIZA LOS BOTONES PARA ACERCAR</p>
+          <div className="v3d-parts" aria-label="Componentes de FÉNIX">
             {points.map((point) => (
               <button
                 key={point.id}
@@ -182,15 +185,12 @@ export default function FenixDroneCanvas({ arrival = false }: { arrival?: boolea
               </button>
             ))}
           </div>
-          <div className="viewer-help">
-             ARRASTRA. GIRA. DESCUBRE.
-          </div>
           {selected && (
-            <aside className="hotspot-info" aria-live="polite">
-              <span className="eyebrow">EXPLORA EL COMPONENTE</span>
+            <aside className="v3d-info" aria-live="polite">
+              <span>EXPLORA EL COMPONENTE</span>
               <h3>{pointInfo[selected][0]}</h3>
               <p>{pointInfo[selected][1]}</p>
-              <button onClick={reset}>
+              <button type="button" onClick={reset}>
                 Volver a vista general <RotateCcw size={14} />
               </button>
             </aside>

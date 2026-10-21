@@ -5,6 +5,7 @@ import { ArrowDown, ArrowUpRight, Pause, Play } from "lucide-react";
 import SupportSection from "@/components/shared/SupportSection";
 import SiteHeader from "@/components/shared/SiteHeader";
 import { fenixAssets } from "@/lib/fenix/assets";
+import DroneGallery from "./DroneGallery";
 import {
   homeCopy,
   platforms,
@@ -209,55 +210,7 @@ useScrollScenes(root, "home", !paused && !showIntro);
               <p>{homeCopy.company}</p>
             </div>
           </div>
-          <div
-            className="home-flight-scene"
-            data-home-reveal
-            aria-label="Representación animada de FÉNIX sobre un terreno digital"
-          >
-            <div className="home-flight-copy">
-              <span className="home-label">DISEÑO / INTEGRACIÓN / OPERACIÓN</span>
-              <p>
-                Configuramos cada sistema alrededor de la información que necesitas obtener, desde
-                vigilancia e inspección hasta construcción y búsqueda.
-              </p>
-            </div>
-            <div className="home-flight-path" aria-hidden="true" />
-            <img
-              className="home-flight-drone home-flight-drone--fenix"
-              src={fenixAssets.product}
-              alt=""
-              width="900"
-              height="447"
-              loading="lazy"
-            />
-            <svg
-              className="home-terrain"
-              viewBox="0 0 1000 280"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <defs>
-                <pattern id="flytek-grid" width="52" height="30" patternUnits="userSpaceOnUse">
-                  <path d="M52 0H0V30" fill="none" stroke="currentColor" strokeWidth="1" />
-                </pattern>
-              </defs>
-              <path
-                d="M0 135 C160 45 270 210 430 128 C610 37 725 220 1000 90 V280 H0Z"
-                fill="url(#flytek-grid)"
-              />
-              <path
-                d="M0 135 C160 45 270 210 430 128 C610 37 725 220 1000 90"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.4"
-              />
-            </svg>
-            <div className="home-flight-data">
-              <span>19.4326° N</span>
-              <span>99.1332° W</span>
-              <span>SISTEMA ACTIVO</span>
-            </div>
-          </div>
+          <DroneGallery />
           <div className="home-values">
             <article>
               <span>01</span>

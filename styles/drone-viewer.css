@@ -1,0 +1,97 @@
+/* Visor 3D de FÉNIX — mismo diseño que el de ORION, con fondo que sigue el tema claro/oscuro. */
+.fenix-page .v3d{--d-blue:#168cde;--d-blue-deep:#0876c4;background:#0c1319;color:#fff;padding:clamp(64px,7vw,96px) clamp(28px,6vw,96px)}
+.fenix-page .v3d-tag{align-items:center;display:flex;font-size:10px;font-weight:650;gap:13px;letter-spacing:.14em;text-transform:uppercase}
+.fenix-page .v3d-tag span{align-items:center;background:var(--d-blue);color:#071c2d;display:flex;height:30px;justify-content:center;min-width:30px;padding:0 6px}
+.fenix-page .v3d__heading{align-items:end;display:grid;gap:18px 40px;grid-template-columns:1.6fr 1fr;margin:0 auto 36px;max-width:1440px}
+.fenix-page .v3d__heading .v3d-tag{grid-column:1/-1}
+.fenix-page .v3d__heading h2{font-size:clamp(46px,5.6vw,88px);font-weight:480;letter-spacing:-.06em;line-height:.95;margin:0}
+.fenix-page .v3d__heading p{color:#9babb5;font-size:14px;line-height:1.65;margin:0;max-width:340px}
+.fenix-page .v3d__stage{margin:0 auto;max-width:1440px}
+.fenix-page .v3d-shell{background:radial-gradient(circle at 50% 45%,#253945,#111d25 49%,#091116 100%);border:1px solid #294452;height:680px;overflow:hidden;position:relative}
+.fenix-page .v3d-shell:before{background-image:linear-gradient(rgba(117,181,219,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(117,181,219,.14) 1px,transparent 1px);background-size:52px 52px;content:"";inset:0;mask-image:linear-gradient(to bottom,#000,transparent 88%);pointer-events:none;position:absolute}
+.fenix-page .v3d-shell:after{background:radial-gradient(ellipse,rgba(0,0,0,.62),transparent 68%);border-radius:50%;bottom:8%;content:"";filter:blur(14px);height:18%;left:12%;pointer-events:none;position:absolute;right:12%}
+.fenix-page .v3d-scene{cursor:grab;inset:0;outline:none;position:absolute;z-index:2}
+.fenix-page .v3d-scene:active{cursor:grabbing}
+.fenix-page .v3d-scene canvas{display:block;height:100%;width:100%}
+.fenix-page .v3d-scene:focus-visible{outline:2px solid var(--d-blue);outline-offset:-4px}
+.fenix-page .v3d-fallback{color:#b8c8d2;display:grid;inset:0;place-items:center;pointer-events:none;position:absolute;z-index:5}
+.fenix-page .v3d-fallback img{height:75%;object-fit:contain;opacity:.65;width:70%}
+.fenix-page .v3d-fallback p{bottom:34px;font-size:10px;letter-spacing:.1em;margin:0;position:absolute;text-align:center}
+.fenix-page .v3d-orbit{animation:v3d-spin 1.1s linear infinite;border:2px solid rgba(114,197,244,.25);border-top-color:#72c5f4;border-radius:50%;height:34px;position:absolute;top:calc(50% - 17px);width:34px;z-index:1}
+@keyframes v3d-spin{to{transform:rotate(360deg)}
+}
+.fenix-page .v3d-badge{color:#eaf5fa;display:flex;flex-direction:column;gap:6px;left:27px;pointer-events:none;position:absolute;top:25px;z-index:3}
+.fenix-page .v3d-badge span{color:#72c5f4;font-size:9px;letter-spacing:.16em}
+.fenix-page .v3d-badge strong{font-size:20px;font-weight:500}
+.fenix-page .v3d-views{bottom:88px;display:flex;gap:7px;left:27px;position:absolute;z-index:4}
+.fenix-page .v3d-views button,.fenix-page .v3d-zoom button,.fenix-page .v3d-parts button{cursor:pointer;font-family:inherit}
+.fenix-page .v3d-views button{background:rgba(13,24,34,.75);border:1px solid rgba(168,194,208,.27);color:#b9cbd5;font-size:10px;letter-spacing:.08em;padding:10px 14px}
+.fenix-page .v3d-views button[aria-pressed=true],.fenix-page .v3d-views button:hover:not(:disabled){background:var(--d-blue);border-color:var(--d-blue);color:#fff}
+.fenix-page .v3d-zoom{display:flex;flex-direction:column;position:absolute;right:27px;top:25px;z-index:4}
+.fenix-page .v3d-zoom button{background:rgba(13,24,34,.75);border:1px solid rgba(168,194,208,.27);color:#dcecf4;display:grid;height:44px;place-items:center;width:44px;padding:0}
+.fenix-page .v3d-zoom button+button{border-top:0}
+.fenix-page .v3d-zoom button:hover:not(:disabled){background:var(--d-blue);border-color:var(--d-blue);color:#fff}
+.fenix-page .v3d-help{bottom:31px;color:#91a9b7;font-size:9px;letter-spacing:.13em;margin:0;position:absolute;right:27px;z-index:3}
+.fenix-page .v3d-parts{bottom:26px;display:flex;flex-wrap:wrap;gap:7px;left:27px;max-width:calc(100% - 240px);position:absolute;z-index:8}
+.fenix-page .v3d-parts button{align-items:center;background:rgba(13,24,34,.82);border:1px solid rgba(168,194,208,.35);color:#b9dfff;display:inline-flex;font-size:10px;gap:7px;min-height:34px;padding:7px 11px}
+.fenix-page .v3d-parts button span{color:var(--d-blue);font-size:17px;line-height:1}
+.fenix-page .v3d-parts button:hover:not(:disabled),.fenix-page .v3d-parts button[aria-pressed=true]{background:var(--d-blue);border-color:var(--d-blue);color:#fff}
+.fenix-page .v3d-parts button:hover:not(:disabled) span,.fenix-page .v3d-parts button[aria-pressed=true] span{color:#fff}
+.fenix-page .v3d-shell button:disabled{cursor:default;opacity:.55}
+.fenix-page .v3d-info{background:rgba(255,255,255,.95);border:1px solid #8ca7b9;bottom:78px;color:#162d3c;padding:20px;position:absolute;right:27px;width:min(330px,calc(100% - 54px));z-index:7}
+.fenix-page .v3d-info>span{color:var(--d-blue-deep);font-size:9px;letter-spacing:.14em}
+.fenix-page .v3d-info h3{color:inherit;font-size:22px;margin:10px 0}
+.fenix-page .v3d-info p{color:#435d6d;font-size:13px;line-height:1.55;margin:0}
+.fenix-page .v3d-info button{align-items:center;background:transparent;border:0;border-bottom:1px solid;color:var(--d-blue-deep);cursor:pointer;display:inline-flex;font-family:inherit;gap:8px;margin-top:10px;padding:6px 0}
+/* puntos "+" que coloca la escena sobre el modelo */
+.fenix-page .v3d-scene .hotspot{background:var(--d-blue);border:1px solid #fff;border-radius:50%;box-shadow:none;color:#fff;cursor:pointer;display:block;font-size:24px;height:34px;left:0;line-height:1;padding:0;position:absolute;top:0;width:34px;z-index:6}
+.fenix-page .v3d-scene .hotspot:hover{background:var(--d-blue-deep)}
+.fenix-page .v3d-scene .hotspot[aria-pressed=true]{background:#fff;color:var(--d-blue-deep)}
+@media(pointer:coarse){.fenix-page .v3d-scene .hotspot{height:44px;width:44px}
+}
+.fenix-page .v3d :is(a,button):focus-visible{outline:2px solid var(--d-blue);outline-offset:3px}
+/* Modo claro */
+html:not([data-theme=dark]) .fenix-page .v3d{background:#f5f7f9;color:#171a1f}
+html:not([data-theme=dark]) .fenix-page .v3d__heading p{color:#44586a}
+html:not([data-theme=dark]) .fenix-page .v3d-tag span{background:#0876c4;color:#fff}
+html:not([data-theme=dark]) .fenix-page .v3d-shell{background:radial-gradient(ellipse 60% 62% at 50% 46%,#fff 0%,#eaf1f6 38%,#d3e1ea 72%,#c2d3df 100%);border-color:#c4d0da;color:#171a1f}
+html:not([data-theme=dark]) .fenix-page .v3d-shell:before{background-image:linear-gradient(rgba(23,70,105,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(23,70,105,.1) 1px,transparent 1px)}
+html:not([data-theme=dark]) .fenix-page .v3d-shell:after{background:radial-gradient(ellipse,rgba(23,70,105,.28),transparent 70%)}
+html:not([data-theme=dark]) .fenix-page .v3d-badge{color:#171a1f}
+html:not([data-theme=dark]) .fenix-page .v3d-badge span{color:#0876c4}
+html:not([data-theme=dark]) .fenix-page .v3d-help{color:#5f6f7a}
+html:not([data-theme=dark]) .fenix-page .v3d-fallback{color:#44586a}
+html:not([data-theme=dark]) .fenix-page .v3d-orbit{border-color:rgba(8,118,196,.2);border-top-color:#0876c4}
+html:not([data-theme=dark]) .fenix-page :is(.v3d-views button,.v3d-zoom button,.v3d-parts button){background:rgba(255,255,255,.9);border-color:#b9c9d5;color:#27414f}
+html:not([data-theme=dark]) .fenix-page .v3d-parts button span{color:#0876c4}
+html:not([data-theme=dark]) .fenix-page :is(.v3d-views button[aria-pressed=true],.v3d-views button:hover:not(:disabled),.v3d-zoom button:hover:not(:disabled),.v3d-parts button:hover:not(:disabled),.v3d-parts button[aria-pressed=true]){background:#0876c4;border-color:#0876c4;color:#fff}
+html:not([data-theme=dark]) .fenix-page :is(.v3d-parts button:hover:not(:disabled) span,.v3d-parts button[aria-pressed=true] span){color:#fff}
+html:not([data-theme=dark]) .fenix-page .v3d-scene .hotspot{background:#0876c4}
+html:not([data-theme=dark]) .fenix-page .v3d-scene .hotspot[aria-pressed=true]{background:#fff;color:#0876c4}
+html:not([data-theme=dark]) .fenix-page .v3d-info{background:rgba(255,255,255,.95);border-color:#9cc4e0;box-shadow:0 12px 32px rgba(23,70,105,.14)}
+/* Responsive */
+@media(max-width:980px){.fenix-page .v3d__heading{grid-template-columns:1fr}
+.fenix-page .v3d__heading p{max-width:none}
+}
+@media(max-width:720px){
+  .fenix-page .v3d{padding-block:52px}
+  .fenix-page .v3d-shell{display:flex;flex-direction:column;height:auto;padding-bottom:16px}
+  .fenix-page .v3d-shell:after{display:none}
+  .fenix-page .v3d-scene{flex:none;height:clamp(300px,44svh,400px);inset:auto;order:0;position:relative}
+  .fenix-page .v3d-badge{left:14px;top:14px}
+  .fenix-page .v3d-zoom{right:14px;top:14px}
+  .fenix-page .v3d-help{display:none}
+  .fenix-page .v3d-views{bottom:auto;display:flex;gap:7px;left:auto;margin:12px 14px 0;order:1;overflow-x:auto;position:static;scrollbar-width:none}
+  .fenix-page .v3d-views::-webkit-scrollbar{display:none}
+  .fenix-page .v3d-views button{flex:0 0 auto}
+  .fenix-page .v3d-parts{bottom:auto;left:auto;margin:10px 14px 0;max-width:none;order:2;position:static}
+  .fenix-page .v3d-info{margin:12px 14px 0;order:3;padding:14px 16px;position:static;right:auto;width:auto}
+  .fenix-page .v3d-info h3{font-size:18px;margin:8px 0}
+  .fenix-page .v3d-info p{font-size:12.5px;line-height:1.5}
+}
+@media(prefers-reduced-motion:reduce){.fenix-page .v3d-orbit{animation:none}
+}
+.fenix-page .v3d,.fenix-page .dspec{scroll-margin-top:58px}
+.fenix-page .v3d{padding-inline:64px}
+@media(max-width:980px){.fenix-page .v3d{padding-inline:32px}}
+@media(max-width:720px){.fenix-page .v3d{padding-inline:20px}}

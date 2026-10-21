@@ -1,11 +1,8 @@
 export const views = [
   ["general", "General"],
-  ["top", "Superior"],
-  ["bottom", "Inferior"],
   ["front", "Frontal"],
-  ["back", "Posterior"],
-  ["left", "Izquierda"],
-  ["right", "Derecha"],
+  ["top", "Superior"],
+  ["right", "Lateral"],
 ];
 export const pointInfo: Record<string, [string, string]> = {
   motor: ["Motores", "Explora la disposición del sistema de propulsión de FÉNIX."],
