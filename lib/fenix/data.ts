@@ -5,13 +5,12 @@ import { fenixAssets } from "./assets";
  * Las especificaciones publicadas se mantienen al final de este archivo. */
 export const fenixCopy = {
   hero: {
-    nomenclature: "[INFORMACIÓN A DETALLAR]",
-    headline: "[FRASE PRINCIPAL FÉNIX]",
+    headline: ["Hasta 45 minutos de vuelo.", "Diseñado para la industria."],
     more: "CONOCER MÁS",
   },
   intro: {
     label: "CONOCE FÉNIX",
-    title: "[TÍTULO EDITORIAL]",
+    title: "Robusto en campo. Preciso en cada misión.",
     description:
       "Una plataforma aérea de Flytek Innovations, concebida para el trabajo profesional. Estructura en fibra de carbono, tecnología de vuelo y posibilidades de integración que parten de una misma idea:",
     emphasis: "el equipo debe responder a tu operación.",

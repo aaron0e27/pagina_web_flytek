@@ -14,7 +14,7 @@ const items = [
 ] as const;
 
 type Props = {
-  variant: "orion" | "vega" | "home";
+  variant: "orion" | "vega" | "fenix" | "home";
   num?: string;
   quoteHref: string;
   email: string;

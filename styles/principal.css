@@ -84,12 +84,6 @@
 .home-page .home-contact { padding-block:100px 0; }
 .home-page .home-contact h2 { font-size:clamp(65px,10vw,154px); margin:40px 0; position:relative; }
 .home-contact h2>span { position:absolute; right:5%; top:0; color:#1897f2; font-weight:300; }
-.home-page .home-footer { background:#f3f5f6; padding:35px 0 22px; }
-.home-page .home-footer>.home-container { display:flex; justify-content:space-between; gap:30px; align-items:center; font-size:12px; }
-.home-footer img { width:140px; height:46px; object-fit:contain; }
-.home-footer nav { display:flex; gap:25px; }
-.home-footer a { display:flex; align-items:center; gap:10px; }
-.home-page .home-footer>.home-footer-bottom { border-top:1px solid #d9dde3; padding-top:20px; margin-top:30px; font-size:10px; color:#626a72; }
 .home-paused .home-word-group,.home-paused .home-platform-stage,.home-paused .home-platform-copy,.home-paused .home-sector-detail>img,.home-paused .home-sector-copy { animation:none; }
 @keyframes home-word-float { 0%,100% { transform:translate(-50%,0) perspective(900px) rotateX(0deg); } 50% { transform:translate(-50%,-18px) perspective(900px) rotateX(3deg); } }
 @keyframes home-switch { from { opacity:.25; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
@@ -110,11 +104,8 @@
  .home-sector-detail { min-height:570px; } .home-sector-copy { padding:30px 25px 75px; } .home-page .home-sector-copy h3 { font-size:36px; margin-top:80px; } .home-sector-overlay { background:linear-gradient(0deg,#07131cf5,#07131c55); }
  .home-page .home-support { padding:60px 0; }
  .home-page .home-contact h2 { font-size:65px; } .home-contact h2>span { font-size:65px; right:0; }
- .home-page .home-footer>.home-container { flex-wrap:wrap; gap:25px; } .home-footer nav { order:3; width:100%; justify-content:space-between; gap:10px; } .home-page .home-footer>.home-footer-bottom { gap:10px; }
 }
 @media(prefers-reduced-motion:reduce) { html:has(.home-page) { scroll-behavior:auto; } .home-page *, .home-page *::before, .home-page *::after { animation:none!important; transition:none!important; } }
-
-.home-page .home-footer { color:#171a1f; }
 /* El único producto disponible flota en el selector; se detiene con el control de movimiento. */
 .home-platform-stage>img { animation:home-drone-float 5.5s ease-in-out infinite; }
 .home-paused .home-platform-stage>img { animation:none; }

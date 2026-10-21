@@ -86,8 +86,8 @@ export const orionPayloads = [
 
 // 04 · Misiones: para qué se usa ORION y con qué carga útil.
 export const orionMissions = [
-  { id: "seguridad", kicker: "Seguridad pública", title: "Vigilancia y disuasión", copy: "Seguimiento automático de objetivos, observación nocturna con cámaras térmicas y disuasión con altavoces y luces.", payload: "Multisensor 4 en 1", image: "/orion-mx/orion-hero.webp", alt: "ORION en vuelo", fit: "cover" },
+  { id: "seguridad", kicker: "Seguridad pública", title: "Vigilancia y disuasión", copy: "Seguimiento automático de objetivos, observación nocturna con cámaras térmicas y disuasión con altavoces y luces.", payload: "Multisensor 4 en 1", image: "/orion-mx/mision-seguridad.webp", alt: "Perímetro con cerca y alumbrado de noche, vigilado desde el aire", fit: "cover" },
   { id: "infraestructura", kicker: "Infraestructura", title: "Inspección sin exponer a tu personal", copy: "Túneles, puentes y obra civil. Zoom óptico para ver el detalle a distancia y navegación asistida para mantener la posición.", payload: "Zoom 30× / 10×", image: "/orion-mx/orion-tunnel.webp", alt: "ORION volando en un túnel", fit: "cover" },
   { id: "industrial", kicker: "Industria", title: "Equipos de difícil acceso", copy: "Plantas, tuberías y turbinas. Imagen térmica y de alta resolución para detectar fallas a tiempo.", payload: "Multisensor 4 en 1", image: "/orion-mx/orion-turbine.webp", alt: "ORION inspeccionando una turbina", fit: "cover" },
-  { id: "mapeo", kicker: "Mapeo", title: "Levantamientos y fotogrametría", copy: "Misiones autónomas por puntos de control con cámara full frame de 42 MP para modelos y planos.", payload: "Fotogramétrica 42 MP", image: "/orion-mx/payloads/fotogrametrica.webp", alt: "Cámara fotogramétrica de 42 MP", fit: "contain" },
+  { id: "mapeo", kicker: "Mapeo", title: "Levantamientos y fotogrametría", copy: "Misiones autónomas por puntos de control con cámara full frame de 42 MP para modelos y planos.", payload: "Fotogramétrica 42 MP", image: "/orion-mx/mision-mapeo.webp", alt: "Vista aérea de una mina a cielo abierto, terreno para levantamiento", fit: "cover" },
 ] as const;

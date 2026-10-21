@@ -13,6 +13,7 @@ import { VegaPayloads } from "./VegaPayloads";
 import { VegaSecurity } from "./VegaSecurity";
 import { VegaSpecs } from "./VegaSpecs";
 import { VegaService } from "./VegaService";
+import SiteFooter from "@/components/shared/SiteFooter";
 
 export default function VegaPage() {
   // La imagen principal empieza a descargarse antes de que React termine de pintar la página.
@@ -49,6 +50,7 @@ export default function VegaPage() {
           <VegaService />
           <VegaAnimations />
         </main>
+        <SiteFooter current="vega" product="VEGA · Plataforma aérea multipropósito" backHref="#descripcion" />
       </div>
     </>
   );

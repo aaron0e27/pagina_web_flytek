@@ -10,8 +10,7 @@ import FenixHorizontalStory from "@/components/fenix/FenixHorizontalStory";
 import FenixPayloads from "@/components/fenix/FenixPayloads";
 import FenixSpecs from "@/components/fenix/FenixSpecs";
 import FenixSupport from "@/components/fenix/FenixSupport";
-import FenixContact from "@/components/fenix/FenixContact";
-import FenixFooter from "@/components/fenix/FenixFooter";
+import SiteFooter from "@/components/shared/SiteFooter";
 import FenixAnimations from "@/components/fenix/FenixAnimations";
 import "@/styles/fenix.css";
 
@@ -40,9 +39,8 @@ export default function FenixPage() {
         <FenixPayloads />
         <FenixSpecs />
         <FenixSupport />
-        <FenixContact />
       </main>
-      <FenixFooter />
+      <SiteFooter current="fenix" product="FÉNIX · Plataforma aérea industrial" backHref="#descripcion" />
     </div>
   );
 }

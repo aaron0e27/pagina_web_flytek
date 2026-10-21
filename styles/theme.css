@@ -2,8 +2,7 @@
 html[data-theme="dark"] { color-scheme:dark; --page-bg:#0c1319; --page-text:#edf3f7; }
 body { background:var(--page-bg); color:var(--page-text); transition:background-color .25s ease,color .25s ease; }
 html[data-theme="dark"] .flytek-header { background:#0f181f; color:#edf3f7; border-color:#2b3943; }
-html[data-theme="dark"] .flytek-header .flytek-brand img,
-html[data-theme="dark"] .home-footer img { filter:brightness(0) invert(1); }
+html[data-theme="dark"] .flytek-header .flytek-brand img{ filter:brightness(0) invert(1); }
 html[data-theme="dark"] .flytek-icon-button,
 html[data-theme="dark"] .flytek-menu-button { border-color:#40505c; }
 html[data-theme="dark"] .flytek-icon-button:hover,
@@ -15,7 +14,7 @@ html[data-theme="dark"] .home-page .home-company,
 html[data-theme="dark"] .home-page .home-sectors,
 html[data-theme="dark"] .home-page .home-contact { background:#0c1319; }
 html[data-theme="dark"] .home-page .home-fleet { background:#121d25; }
-html[data-theme="dark"] .home-page .home-values article,html[data-theme="dark"] .home-page .home-footer-bottom,html[data-theme="dark"] .home-page .home-platform-selector{ border-color:#33424c; }
+html[data-theme="dark"] .home-page .home-values article,html[data-theme="dark"] .home-page .home-platform-selector{ border-color:#33424c; }
 html[data-theme="dark"] .home-page .home-platform-stage { background:#121d25; }
 html[data-theme="dark"] .home-page .home-company-grid p,html[data-theme="dark"] .home-page .home-fleet-heading p,html[data-theme="dark"] .home-page .home-sectors-title p,html[data-theme="dark"] .home-page .home-values p,html[data-theme="dark"] .home-page .home-platform-copy>p:not(.home-label){ color:#aebbc4; }
 html[data-theme="dark"] .home-page .home-company-grid .home-lead{ color:#edf3f7; }
@@ -26,7 +25,6 @@ html[data-theme="dark"] .home-page .home-platform-copy li { border-color:#40505b
 html[data-theme="dark"] .home-page .home-platform-pending { background:linear-gradient(135deg,#18242d,#101920); }
 html[data-theme="dark"] .home-page .home-pending-art { border-color:#4d606d; color:#93a5b0; }
 html[data-theme="dark"] .home-page .home-flight-scene { background:linear-gradient(135deg,#121d25,#182630); border-color:#34444f; color:#557082; }
-html[data-theme="dark"] .home-page .home-footer { background:#111a21; color:#edf3f7; }
 html[data-theme="dark"] .home-page .home-application-copy>p:not(.home-label) { color:#aebbc4; }
 html[data-theme="dark"] .home-page .home-application-image { background:#152129; }
 

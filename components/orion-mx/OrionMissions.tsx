@@ -17,7 +17,7 @@ export default function OrionMissions() {
       <div className="orion-missions__body orion-reveal">
         <div className="orion-missions__stage" aria-hidden="true">
           {orionMissions.map((x, k) => (
-            <Image key={x.id} unoptimized src={x.image} alt="" fill sizes="(max-width: 900px) 100vw, 55vw" className={`${k === i ? "is-on " : ""}${x.fit === "contain" ? "is-contain" : ""}`} loading="lazy" />
+            <Image key={x.id} unoptimized src={x.image} alt="" fill sizes="(max-width: 900px) 100vw, 55vw" className={k === i ? "is-on" : undefined} loading="lazy" />
           ))}
           <span className="orion-missions__badge"><i /> {m.payload}</span>
         </div>

@@ -11,7 +11,7 @@ import OrionPayloads from "@/components/orion-mx/OrionPayloads";
 import OrionAscent from "@/components/orion-mx/OrionAscent";
 import OrionPerformance from "@/components/orion-mx/OrionPerformance";
 import OrionSupport from "@/components/orion-mx/OrionSupport";
-
+import SiteFooter from "@/components/shared/SiteFooter";
 export default function OrionPage() {
   return <main className="orion-page" id="inicio">
     <SiteHeader /><OrionMotion />
@@ -61,6 +61,7 @@ export default function OrionPage() {
     <OrionSpecs />
 
     <OrionSupport />
+    <SiteFooter current="orion" product="ORION MX · Plataforma aérea compacta" />
 
   </main>;
 }

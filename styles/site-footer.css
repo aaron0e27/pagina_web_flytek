@@ -1,0 +1,22 @@
+/* Pie de página compartido (home, FÉNIX, ORION MX, VEGA). Siempre oscuro: contrasta en tema claro y oscuro. */
+html body .flytek-footer{background:#101920;color:#edf3f7;padding:44px max(64px,calc((100% - 1440px)/2)) 24px;font-family:"Inter Variable",Inter,sans-serif}
+html body .flytek-footer__row{align-items:center;display:grid;gap:24px;grid-template-columns:1fr auto 1fr}
+html body .flytek-footer__row>:last-child{justify-self:end}
+html body .flytek-footer__logo img{display:block;filter:brightness(0) invert(1);height:46px;object-fit:contain;object-position:left;width:140px}
+html body .flytek-footer p{color:#edf3f7;font-size:14px;margin:0;text-align:center}
+html body .flytek-footer a{color:inherit;text-decoration:none}
+html body .flytek-footer__top{align-items:center;display:inline-flex;font-size:13px;gap:10px}
+html body .flytek-footer__top:hover,html body .flytek-footer__bottom a:hover{color:#60bdff}
+html body .flytek-footer__bottom{border-top:1px solid #2c3a44;color:#b3c0ca;font-size:11px;margin-top:30px;padding-top:20px}
+html body .flytek-footer__bottom>span:nth-child(2){text-align:center}
+html body .flytek-footer__bottom nav{display:flex;gap:20px}
+html body .flytek-footer__bottom a[aria-current]{color:#fff;font-weight:600}
+html body .flytek-footer :is(a):focus-visible{outline:2px solid #60bdff;outline-offset:3px}
+@media(max-width:900px){.flytek-footer{padding-inline:32px}}
+@media(max-width:720px){
+  html body .flytek-footer{padding:36px 20px 22px}
+  html body .flytek-footer__row{gap:16px;grid-template-columns:1fr}
+  html body .flytek-footer__row>:last-child{justify-self:start}
+  html body .flytek-footer p,html body .flytek-footer__bottom>span:nth-child(2){text-align:left}
+  html body .flytek-footer__bottom{margin-top:24px}
+}

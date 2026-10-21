@@ -3,8 +3,8 @@
 .orion-page .flytek-support{--sp-ink:var(--o-ink);--sp-copy:var(--o-copy);--sp-muted:var(--o-muted);--sp-line:var(--o-line);--sp-surface:var(--o-surface);--sp-accent:var(--o-accent);background:var(--o-bg)}
 .vega-redesign .flytek-support{--sp-ink:var(--ink);--sp-copy:var(--vega-muted);--sp-muted:var(--vega-muted);--sp-line:var(--line);--sp-surface:var(--vega-surface);--sp-accent:var(--blue-deep);background:var(--mineral)}
 html[data-theme=dark] .vega-redesign .flytek-support{--sp-accent:var(--blue)}
-.home-page .flytek-support{--sp-ink:#10161b;--sp-copy:#4a555d;--sp-muted:#6b7780;--sp-line:#d4dce1;--sp-surface:#f3f6f8;--sp-accent:#0876c4;background:#fff;padding:clamp(64px,7vw,100px) max(5%,calc((100% - 1440px)/2))}
-html[data-theme=dark] .home-page .flytek-support{--sp-ink:#edf3f7;--sp-copy:#b8c6d0;--sp-muted:#9badb9;--sp-line:#33424c;--sp-surface:#101920;--sp-accent:#60bdff;background:#0c1319}
+.home-page .flytek-support, .fenix-page .flytek-support{--sp-ink:#10161b;--sp-copy:#4a555d;--sp-muted:#6b7780;--sp-line:#d4dce1;--sp-surface:#f3f6f8;--sp-accent:#0876c4;background:#fff;padding:clamp(64px,7vw,100px) max(5%,calc((100% - 1440px)/2))}
+html[data-theme=dark] .home-page .flytek-support,html[data-theme=dark] .fenix-page .flytek-support{--sp-ink:#edf3f7;--sp-copy:#b8c6d0;--sp-muted:#9badb9;--sp-line:#33424c;--sp-surface:#101920;--sp-accent:#60bdff;background:#0c1319}
 
 .flytek-support .flytek-support__head{align-items:end;display:grid;gap:8vw;grid-template-columns:1.2fr .8fr;margin-bottom:clamp(36px,5vw,64px)}
 .flytek-support .flytek-support__tag{color:var(--sp-muted);font-size:12px;letter-spacing:.16em;margin:0 0 22px;text-transform:uppercase}
@@ -66,3 +66,6 @@ html[data-theme=dark] .home-page .flytek-support{--sp-ink:#edf3f7;--sp-copy:#b8c
 @media(hover:none){.flytek-support .flytek-support__item:before{transform:scaleX(1)}}
 @media(prefers-reduced-motion:reduce){.flytek-support .flytek-support__item i{animation:none}.flytek-support [data-rise]{transition:none}.flytek-support.is-armed [data-rise]:not([data-in]){opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.flytek-support .flytek-support__more,.flytek-support .flytek-support__chev{transition:none}}
+      .fenix-page .flytek-support{padding-inline:max(64px,calc((100% - 1440px)/2));scroll-margin-top:58px}
+      @media(max-width:900px){.fenix-page .flytek-support{padding-inline:32px}}
+      @media(max-width:720px){.fenix-page .flytek-support{padding-inline:20px}}
