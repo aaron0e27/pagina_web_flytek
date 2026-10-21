@@ -19,7 +19,6 @@ export const vegaData = {
     ["payloads", "Cargas útiles"],
     ["seguridad-publica", "Seguridad pública"],
     ["especificaciones", "Especificaciones"],
-    ["contacto", "Contacto"],
   ],
   assets: {
     model: "/vega/models/vega.glb",

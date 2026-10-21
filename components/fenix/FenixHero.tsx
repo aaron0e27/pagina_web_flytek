@@ -4,9 +4,6 @@ import { fenixCopy } from "@/lib/fenix/data";
 export default function FenixHero() {
   return (
     <section className="hero" id="descripcion">
-      <div className="hero-topline">
-        <span>{fenixCopy.hero.nomenclature}</span>
-      </div>
       <h1>
         <span className="hero-word">FÉNIX</span>
       </h1>
@@ -21,7 +18,7 @@ export default function FenixHero() {
         />
       </div>
       <div className="hero-bottom">
-        <p>{fenixCopy.hero.headline}</p>
+        <p>{fenixCopy.hero.headline[0]}<br />{fenixCopy.hero.headline[1]}</p>
       </div>
       <a className="hero-discover" href="#caracteristicas">
         <span>{fenixCopy.hero.more}</span>

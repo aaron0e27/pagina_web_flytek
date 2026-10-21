@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { vegaData } from "@/lib/vega/data";
+import { ArrowUpRight } from "lucide-react";
 export function VegaSubNav() {
   const [active, setActive] = useState("descripcion");
   const nav = useRef<HTMLElement>(null);
@@ -64,6 +65,7 @@ export function VegaSubNav() {
           </a>
         ))}
       </nav>
+      <a className="subnav-talk" href="#contacto">Hablemos <ArrowUpRight size={14} /></a>
     </div>
   );
 }

@@ -1645,4 +1645,12 @@ html:not([data-theme="dark"]) .vega-redesign .vega-perf__tabs button.is-active{b
 .vega-redesign .hero-stage:before{background:radial-gradient(ellipse at 50% 46%,rgba(120,190,235,.26),rgba(120,190,235,0) 62%);content:"";inset:-10% -4%;pointer-events:none;position:absolute}
 .vega-redesign .hero-product{filter:brightness(1.12) contrast(1.05) drop-shadow(0 38px 26px rgba(0,0,0,.5)) drop-shadow(0 0 36px rgba(96,189,255,.16));height:auto;max-height:100%;object-fit:contain;width:min(100%,1180px);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 3.5%,#000 96%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 3.5%,#000 96%,transparent 100%)}
 @media(max-width:720px){.vega-redesign .hero-stage{inset:24% 0 16%}.vega-redesign .hero-product{width:104%;max-width:none}}
-
+  .vega-redesign .hero-copy{position:absolute;left:5%;bottom:102px;z-index:4;max-width:600px}
+  .vega-redesign .hero-copy p{margin:0;color:#fff;font-size:clamp(22px,2.2vw,32px);font-weight:400;line-height:1.35;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+  .vega-redesign .hero-more{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:5;display:grid;justify-items:center;gap:7px;padding:8px 16px;color:#fff;font-size:11px;letter-spacing:.13em}
+  .vega-redesign .hero-more svg{transition:transform .22s ease-out}
+  .vega-redesign .hero-more:hover svg,.vega-redesign .hero-more:focus-visible svg{transform:translateY(3px)}
+  .vega-redesign .subnav .subnav-talk{margin-left:auto;display:flex;align-items:center;gap:18px;white-space:nowrap;color:#51565e;font-size:12px}
+  .vega-redesign .subnav .subnav-talk:hover{color:#0876c4}
+  @media(max-width:1023px){.vega-redesign .subnav .subnav-talk{display:none}}
+  @media(max-width:720px){.vega-redesign .hero-copy{left:20px;right:20px;bottom:44px}.vega-redesign .hero-copy p{font-size:20px}.vega-redesign .hero-more{display:none}}

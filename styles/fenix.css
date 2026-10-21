@@ -247,17 +247,6 @@ html:has(.fenix-page) {
   color: white;
   isolation: isolate;
 }
-.fenix-page .hero-topline {
-  position: absolute;
-  left: 64px;
-  right: 64px;
-  top: 28px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  color: #b9c0c7;
-}
 .fenix-page .hero h1 {
   position: absolute;
   inset: 48px 0 auto;
@@ -1094,10 +1083,6 @@ html:has(.fenix-page) {
   .fenix-page .product-nav > div {
     gap: 18px;
   }
-  .fenix-page .hero-topline {
-    left: 36px;
-    right: 36px;
-  }
   .fenix-page .hero-bottom {
     left: 36px;
     right: 36px;
@@ -1241,19 +1226,6 @@ html:has(.fenix-page) {
     height: calc(100svh - 124px);
     min-height: 660px;
     max-height: 900px;
-  }
-  .fenix-page .hero-topline {
-    left: 20px;
-    right: 20px;
-    top: 25px;
-    font-size: 8px;
-    letter-spacing: 0.08em;
-  }
-  .fenix-page .hero-topline > span:first-child {
-    display: none;
-  }
-  .fenix-page .hero-topline > span:last-child {
-    margin-left: auto;
   }
   .fenix-page .hero h1 {
     font-size: 29vw;
@@ -1781,10 +1753,6 @@ html:has(.fenix-page) {
 }
 .fenix-page .hero {
   min-height: 620px;
-}
-.fenix-page .hero-topline {
-  justify-content: flex-end;
-  font-size: 11px;
 }
 .fenix-page .hero-word {
   display: inline-block;
@@ -2446,15 +2414,6 @@ html:has(.fenix-page) {
     min-height: 620px;
     height: calc(100svh - 124px);
     max-height: 850px;
-  }
-  .fenix-page .hero-topline {
-    top: 24px;
-    left: 22px;
-    right: 22px;
-    font-size: 9px;
-  }
-  .fenix-page .hero-topline > span:first-child {
-    display: inline;
   }
   .fenix-page .hero h1 {
     top: 95px;

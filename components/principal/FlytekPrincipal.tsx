@@ -6,6 +6,7 @@ import SupportSection from "@/components/shared/SupportSection";
 import SiteHeader from "@/components/shared/SiteHeader";
 import { fenixAssets } from "@/lib/fenix/assets";
 import DroneGallery from "./DroneGallery";
+import SiteFooter from "@/components/shared/SiteFooter";
 import {
   homeCopy,
   platforms,
@@ -488,32 +489,7 @@ useScrollScenes(root, "home", !paused && !showIntro);
           />
         </div>
       </main>
-      <footer className="home-footer">
-        <div className="home-container">
-          <a href="/" aria-label="Flytek — inicio">
-            <img src={fenixAssets.logo} alt="Flytek Innovations" width="150" height="50" />
-          </a>
-          <nav aria-label="Páginas de drones">
-            {platforms.map((item) =>
-              item.href ? (
-                <a key={item.id} href={item.href}>
-                  {item.name}
-                  <ArrowUpRight size={14} />
-                </a>
-              ) : (
-                <span key={item.id}>{item.name} · Próximamente</span>
-              ),
-            )}
-          </nav>
-          <a href="#inicio">
-            Volver arriba <ArrowUpRight size={17} />
-          </a>
-        </div>
-        <div className="home-container home-footer-bottom">
-          <span>© {new Date().getFullYear()} Flytek Innovations</span>
-          <span>Diseño e integración de drones industriales · México</span>
-        </div>
-      </footer>
+      <SiteFooter current="home" product="Diseño e integración de drones industriales · México" credit={{ label: "Video ilustrativo: Mixkit", href: "https://mixkit.co/free-stock-video/close-up-view-of-a-drone-flying-outdoors-44644/" }} />
     </div>
   );
 }
