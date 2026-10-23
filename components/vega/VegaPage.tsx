@@ -30,9 +30,10 @@ export default function VegaPage() {
           <VegaSubNav />
           <VegaHero />
           <VegaStats />
-          <VegaViewer />
           <VegaPerformance />
           <VegaTechnology />
+          <VegaViewer />
+          <VegaService />
           <VegaPayloads />
           <VegaSecurity />
           <section className="section vega-field" id="galeria" aria-labelledby="vega-field-title">
@@ -48,10 +49,9 @@ export default function VegaPage() {
             <VegaGallery />
           </section>
           <VegaSpecs />
-          <VegaService />
           <section className="contact section" id="contacto">
             <p className="eyebrow" data-reveal>
-              08 / CONTACTO
+              CONTACTO
             </p>
             <h2 data-reveal>{vegaData.cta.title}</h2>
             <div className="contact-bottom">

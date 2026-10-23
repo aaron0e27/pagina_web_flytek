@@ -34,10 +34,7 @@ export function VegaSpecs() {
   useEffect(() => {
     const io = new IntersectionObserver(
       ([e]) => {
-        if (e.isIntersecting) {
-          setSeen(true);
-          io.disconnect();
-        }
+        setSeen(e.isIntersecting);
       },
       { threshold: 0.25 },
     );
@@ -73,8 +70,7 @@ export function VegaSpecs() {
   return (
     <section ref={root} className={"vega-ospecs" + (seen ? " is-in" : "")} id="especificaciones" aria-labelledby="vega-specs-title">
       <div className="vega-ospecs__intro">
-        <div className="vega-ospecs__tag"><span>07</span> DATOS TÉCNICOS</div>
-        <h2 id="vega-specs-title" aria-label="Especificaciones técnicas.">
+        <h2 id="vega-specs-title" className="vega-ospecs__scroll-title" aria-label="Especificaciones técnicas.">
           <Letters text={l1} />
           <br />
           <Letters text={l2} from={l1.length} />

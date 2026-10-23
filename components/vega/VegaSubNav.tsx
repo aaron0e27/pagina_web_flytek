@@ -1,9 +1,25 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, type MouseEvent } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { vegaData } from "@/lib/vega/data";
+import { scrollToSection } from "@/components/shared/scrollToSection";
 export function VegaSubNav() {
-  const [active, setActive] = useState("descripcion");
+  const [active, setActive] = useState("caracteristicas");
   const nav = useRef<HTMLElement>(null);
+  const scrollTarget = useRef<string | null>(null);
+  const cancelScroll = useRef<(() => void) | null>(null);
+
+  const goTo = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
+    const target = document.getElementById(id);
+    if (!target) return;
+    event.preventDefault();
+    scrollTarget.current = id;
+    setActive(id);
+    cancelScroll.current?.();
+    cancelScroll.current = scrollToSection(id, ".vega-redesign .subnav", () => {
+      if (scrollTarget.current === id) scrollTarget.current = null;
+    });
+  };
   useEffect(() => {
     let frame = 0;
     const sections = vegaData.nav
@@ -11,7 +27,11 @@ export function VegaSubNav() {
       .filter((el): el is HTMLElement => !!el);
     const update = () => {
       frame = 0;
-      let current = "descripcion";
+      if (scrollTarget.current) {
+        setActive(scrollTarget.current);
+        return;
+      }
+      let current = "caracteristicas";
       for (const section of sections) {
         if (section.getBoundingClientRect().top <= innerHeight * 0.3)
           current = section.id;
@@ -28,6 +48,7 @@ export function VegaSubNav() {
       removeEventListener("scroll", schedule);
       removeEventListener("resize", schedule);
       cancelAnimationFrame(frame);
+      cancelScroll.current?.();
     };
   }, []);
   useEffect(() => {
@@ -50,7 +71,7 @@ export function VegaSubNav() {
   }, [active]);
   return (
     <div className="subnav">
-      <a href="#descripcion" className="sub-brand">
+      <a href="#descripcion" className="sub-brand" onClick={(event) => goTo(event, "descripcion")}>
         VEGA<span> / </span>
       </a>
       <nav ref={nav} aria-label="Secciones de VEGA">
@@ -58,12 +79,16 @@ export function VegaSubNav() {
           <a
             key={id}
             href={"#" + id}
+            onClick={(event) => goTo(event, id)}
             aria-current={active === id ? "location" : undefined}
           >
             {label}
           </a>
         ))}
       </nav>
+      <a href="#contacto" className="subnav-talk" onClick={(event) => goTo(event, "contacto")}>
+        Hablemos <ArrowUpRight size={14} />
+      </a>
     </div>
   );
 }

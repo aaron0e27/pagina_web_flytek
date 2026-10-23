@@ -14,7 +14,7 @@ html:has(.orion-page){scroll-behavior:smooth;scroll-padding-top:58px}.orion-page
 @media(max-width:720px){.orion-hero{height:760px}.orion-hero__copy{top:105px}.orion-hero__visual{height:58%;right:-36%;width:145%}.orion-hero__footer{grid-template-columns:1fr 1fr}.orion-scroll-cue{display:none}.orion-stats{grid-template-columns:1fr 1fr}.orion-3d-shell{height:540px}.orion-3d-views{bottom:18px;left:14px;overflow-x:auto;right:14px}.orion-3d-help{display:none}.orion-capabilities{grid-template-columns:1fr}.orion-capabilities article{border-bottom:1px solid var(--o-line);border-right:0;min-height:390px}.orion-contact__copy{width:100%}.orion-contact__actions{align-items:start;flex-direction:column}}
 .orion-3d>.orion-section-head{display:none}.drone-component-list{bottom:26px;display:flex;flex-wrap:wrap;gap:7px;left:27px;max-width:calc(100% - 240px);position:absolute;z-index:8}.drone-component-list button{align-items:center;background:rgba(13,24,34,.82);border:1px solid rgba(168,194,208,.35);color:#b9dfff;cursor:pointer;display:inline-flex;font-size:10px;gap:7px;min-height:34px;padding:7px 11px}.drone-component-list button span{color:var(--o-blue);font-size:17px}.drone-component-list button:hover,.drone-component-list button[aria-pressed=true]{background:var(--o-blue);border-color:var(--o-blue);color:#fff}.drone-component-list button:hover span,.drone-component-list button[aria-pressed=true] span{color:#fff}
 @media(prefers-reduced-motion:reduce){.orion-hero__signal span{animation:none}}
-.orion-rail{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:25px;height:58px;padding:0 64px;background:#fff;border-bottom:1px solid #e3e5e8}.orion-rail__brand{font-size:20px;font-weight:650;letter-spacing:-.04em;white-space:nowrap;transform:none}.orion-rail__brand span{margin-left:17px;color:#c7cbd0;font-weight:300}.orion-rail__links{flex:1;display:flex;align-items:center;gap:23px;overflow-x:auto;scrollbar-width:none;white-space:nowrap}.orion-rail__links::-webkit-scrollbar{display:none}.orion-rail__links a{font-size:12px;line-height:44px;color:#51565e}.orion-rail__links a:hover{color:#0876c4}.orion-rail__talk{display:flex;align-items:center;gap:18px;justify-self:auto;white-space:nowrap;border-bottom:0;padding:0;color:#51565e;font-size:12px}.orion-rail__talk:hover{color:#0876c4}@media(max-width:1023px){.orion-rail{height:56px;padding-inline:20px;gap:16px}.orion-rail__brand{font-size:18px}.orion-rail__brand span{margin-left:10px}.orion-rail__links{gap:20px}.orion-rail__talk{display:none}}
+.orion-rail{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:25px;height:58px;padding:0 64px;background:#fff;border-bottom:1px solid #e3e5e8}.orion-rail__brand{font-size:20px;font-weight:650;letter-spacing:-.04em;white-space:nowrap;transform:none}.orion-rail__brand span{margin-left:17px;color:#c7cbd0;font-weight:300}.orion-rail__links{flex:1;display:flex;align-items:center;gap:23px;overflow-x:auto;scrollbar-width:none;white-space:nowrap}.orion-rail__links::-webkit-scrollbar{display:none}.orion-rail__links a{align-items:center;border-bottom:2px solid transparent;color:#51565e;display:flex;font-size:12px;line-height:44px}.orion-rail__links a:hover{color:#0876c4}.orion-rail__links a[aria-current]{border-color:var(--o-blue);color:var(--o-blue-deep)}.orion-rail__talk{display:flex;align-items:center;gap:18px;justify-self:auto;white-space:nowrap;border-bottom:0;padding:0;color:#51565e;font-size:12px}.orion-rail__talk:hover{color:#0876c4}@media(max-width:1023px){.orion-rail{height:56px;padding-inline:20px;gap:16px}.orion-rail__brand{font-size:18px}.orion-rail__brand span{margin-left:10px;color:#c7cbd0;font-weight:300}.orion-rail__links{gap:20px}.orion-rail__talk{display:none}}
 /* ===== Visor 3D en celular: la descripción va debajo del modelo, nunca encima ===== */
 @media (max-width: 720px) {
   .orion-page .orion-3d-shell { height: auto; display: flex; flex-direction: column; padding-bottom: 16px; }
@@ -217,6 +217,9 @@ html:not([data-theme=dark]) .orion-page .orion-specs__quote:hover{background:#08
 
 /* Ajustes finos */
 .orion-page .orion-specs__intro h2{font-size:clamp(42px,4.8vw,76px);margin:40px 0 28px}
+.orion-page .orion-specs__word{display:inline-block;white-space:nowrap}.orion-page .orion-specs__word:not(:last-child){margin-right:.24em}
+.orion-page .orion-specs__ch{display:inline-block;opacity:0;transform:translateY(.5em);transition:opacity .6s ease,transform .7s cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--i)*38ms)}
+.orion-page .orion-specs.is-in .orion-specs__ch{opacity:1;transform:none}
 .orion-specs__quote{min-height:56px}
 /* Acompañamiento: variables propias por tema (la hoja anterior las fijaba en claro) */
 html:not([data-theme=dark]) .orion-page .orion-support{--o-ink:#171a1f;--o-copy:#44586a;--o-muted:#5f6f7a;--o-line:#cbd7df;--o-surface:#f5f7f9;color:#171a1f}
@@ -273,12 +276,11 @@ html[data-theme=dark] .orion-perf__frame{background:radial-gradient(ellipse 55% 
 @keyframes orion-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
 .orion-perf__tabs{display:grid;gap:12px;grid-template-columns:repeat(5,1fr);margin-top:14px}
-.orion-perf__tabs button{background:var(--o-tile);border:1px solid var(--o-line);color:var(--o-copy);cursor:pointer;display:grid;font:inherit;gap:6px;overflow:hidden;padding:16px 18px 20px;position:relative;text-align:left;transition:border-color .3s,background .3s}
+.orion-perf__tabs button{align-content:center;background:var(--o-tile);border:1px solid var(--o-line);color:var(--o-copy);cursor:pointer;display:grid;font:inherit;gap:8px;min-height:108px;overflow:hidden;padding:18px;position:relative;text-align:left;transition:border-color .3s,background .3s}
 .orion-perf__tabs button:hover{border-color:var(--o-blue)}
 .orion-perf__tabs button.is-active{background:var(--o-surface);border-color:var(--o-blue);color:var(--o-ink)}
-.orion-perf__tab-index{color:var(--o-accent);font-size:10px;letter-spacing:.14em}
-.orion-perf__tab-label{font-size:12px}
-.orion-perf__tabs strong{color:var(--o-ink);font-size:clamp(17px,1.8vw,24px);font-weight:480;letter-spacing:-.03em}
+.orion-perf__tab-label{font-size:14px}
+.orion-perf__tabs strong{color:var(--o-ink);font-size:clamp(19px,2vw,27px);font-weight:480;letter-spacing:-.03em}
 .orion-perf__tabs i{background:var(--o-blue);bottom:0;height:3px;left:0;position:absolute;transform:scaleX(0);transform-origin:left;width:100%}
 .orion-perf__tabs button.is-active i{transform:scaleX(1)}
 .orion-perf__tabs button.is-active i.is-running{animation:orion-fill 5.2s linear both}
@@ -518,3 +520,10 @@ html[data-theme=dark] .orion-fly__shadow{background:radial-gradient(ellipse,rgba
 .orion-support__links .orion-support__mail:hover{background:var(--o-blue-deep);color:#fff}
 .orion-support__links .orion-support__mail svg{color:#fff}
 @media(max-width:860px){.orion-support__contact{grid-template-columns:1fr}.orion-support__links .orion-support__mail{justify-content:center;width:100%}}
+
+
+/* ===== Galería ORION: espacio reservado para contenido futuro ===== */
+.orion-gallery{background:var(--o-bg);padding:clamp(64px,7vw,100px) clamp(28px,6vw,96px)}
+.orion-gallery h2{color:var(--o-ink);font-size:clamp(42px,4.8vw,76px);font-weight:480;letter-spacing:-.06em;line-height:.95;margin:40px 0 20px}
+.orion-gallery>p{color:var(--o-copy);font-size:15px;line-height:1.7}
+@media(prefers-reduced-motion:reduce){.orion-page .orion-specs__ch{opacity:1;transform:none;transition:none}}

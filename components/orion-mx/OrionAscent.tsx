@@ -64,9 +64,9 @@ export default function OrionAscent() {
   }, []);
 
   return (
-    <section ref={root} className="orion-fly" id="vuelo" aria-labelledby="orion-fly-title">
+    <section ref={root} className="orion-fly" id="tecnologia" aria-labelledby="orion-fly-title">
       <div className="orion-fly__text">
-        <div className="orion-section-tag orion-reveal"><span>02</span> VUELO</div>
+        <div className="orion-section-tag orion-reveal">VUELO</div>
         <h2 id="orion-fly-title" className="orion-reveal">Despega.<br /><em>Mantén la posición.</em></h2>
         <p className="orion-reveal">Navegación asistida por GPS, misiones autónomas por puntos de control y regreso a casa automático. Mueve el cursor, o desplázate en el celular, para ver a ORION desde otro ángulo.</p>
         <ul className="orion-fly__chips orion-reveal">

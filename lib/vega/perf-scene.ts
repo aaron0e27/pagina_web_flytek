@@ -105,6 +105,7 @@ export async function createPerfScene(
 
   const api: PerfSceneAPI = {
     mode(next) {
+      if (next === "peso" && current !== "peso") yaw = Math.PI;
       current = next;
       if (!running) { place(1); renderer.render(scene, camera); }
     },

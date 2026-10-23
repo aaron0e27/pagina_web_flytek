@@ -13,7 +13,7 @@ export const vegaCopy = {
   datos_tecnicos: "DATOS TÉCNICOS",
   la_capacidad: "La capacidad.",
   en_perspectiva: "En perspectiva.",
-  label_02_explorador_interactivo: "02 / EXPLORADOR INTERACTIVO",
+  label_02_explorador_interactivo: "EXPLORADOR INTERACTIVO",
   tu_punto_de_vista: "Tu punto de vista.",
   tambien_puedes_explorar_vega_usando_los_botones_de: "También puedes explorar VEGA usando los botones de vista y zoom. En el lienzo activo usa flechas para girar, + o − para acercar o alejar y Escape para salir.",
 } as const;
