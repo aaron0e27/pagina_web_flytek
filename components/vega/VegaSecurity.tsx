@@ -24,9 +24,9 @@ const items = [
 
 export function VegaSecurity() {
   return (
-    <section className="section vega-security" id="seguridad-publica" aria-labelledby="vega-security-title">
+    <section className="section vega-security" id="aplicaciones" aria-labelledby="vega-security-title">
       <div className="section-head" data-reveal>
-        <p className="eyebrow">06 / SEGURIDAD PÚBLICA</p>
+        <p className="eyebrow">SEGURIDAD PÚBLICA</p>
         <span className="eyebrow">OPCIONES PARA CORPORACIONES</span>
       </div>
       <h2 id="vega-security-title" data-reveal>

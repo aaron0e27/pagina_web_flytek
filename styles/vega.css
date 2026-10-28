@@ -204,7 +204,7 @@ html:has(.vega-redesign) {
   font-weight: 300;
 }
 .vega-redesign .subnav nav {
-  flex: 0 1 auto;
+  flex: 1;
   display: flex;
   align-items: center;
   gap: 23px;
@@ -229,6 +229,24 @@ html:has(.vega-redesign) {
 .vega-redesign .subnav nav a[aria-current] {
   color: var(--blue);
   border-color: var(--blue);
+}
+.vega-redesign .subnav-talk {
+  align-items: center;
+  color: #51565e;
+  display: flex;
+  flex: 0 0 auto;
+  font-size: 12px;
+  gap: 10px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+.vega-redesign .subnav-talk:hover {
+  color: var(--blue);
+}
+@media (max-width: 1023px) {
+  .vega-redesign .subnav-talk {
+    display: none;
+  }
 }
 .vega-redesign .section-head {
   display: flex;
@@ -1107,8 +1125,8 @@ html[data-theme="dark"] .vega-redesign .subnav {
 .vega-redesign .vega-perf__tabs button:hover{border-color:rgba(114,197,244,.55)}
 .vega-redesign .vega-perf__tabs button.is-active{background:rgba(22,140,222,.14);border-color:var(--blue);color:#fff}
 .vega-redesign .vega-perf__tab-index{color:#72c5f4;font-size:10px;letter-spacing:.14em}
-.vega-redesign .vega-perf__tab-label{font-size:12px}
-.vega-redesign .vega-perf__tabs strong{font-size:clamp(18px,1.9vw,26px);font-weight:480;letter-spacing:-.03em}
+.vega-redesign .vega-perf__tab-label{font-size:14px}
+.vega-redesign .vega-perf__tabs strong{font-size:clamp(19px,2vw,27px);font-weight:480;letter-spacing:-.03em}
 .vega-redesign .vega-perf__tabs i{background:var(--blue);bottom:0;height:3px;left:0;position:absolute;transform:scaleX(0);transform-origin:left;width:100%}
 .vega-redesign .vega-perf__tabs button.is-active i{transform:scaleX(1)}
 .vega-redesign .vega-perf__tabs button.is-active i.is-running{animation:vega-perf-fill 5.2s linear both}
@@ -1285,9 +1303,10 @@ html[data-theme="dark"] .vega-redesign .vega-perf__frame{background:radial-gradi
 .vega-redesign .vega-ospecs__tag{align-items:center;display:flex;font-size:10px;font-weight:650;gap:13px;letter-spacing:.14em;text-transform:uppercase}
 .vega-redesign .vega-ospecs__tag span{align-items:center;background:var(--v-blue);color:#071c2d;display:flex;height:30px;justify-content:center;width:30px}
 .vega-redesign .vega-ospecs h2{color:#fff;font-size:clamp(46px,5.4vw,84px);font-weight:480;letter-spacing:-.06em;line-height:.98;margin:55px 0 36px;text-align:left}
-.vega-redesign .vega-ospecs__word{display:inline-block;white-space:nowrap}
+.vega-redesign .vega-ospecs__word{display:inline-block;white-space:nowrap}.vega-redesign .vega-ospecs__word:not(:last-child){margin-right:.24em}
 .vega-redesign .vega-ospecs__ch{display:inline-block;opacity:0;transform:translateY(.5em);transition:opacity .6s ease,transform .7s cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--i)*38ms)}
-.vega-redesign .vega-ospecs.is-in .vega-ospecs__ch{opacity:1;transform:none}
+.vega-redesign .vega-ospecs.is-in .vega-ospecs__ch{animation:vega-ospec-letter-in .7s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(var(--i)*38ms)}
+@keyframes vega-ospec-letter-in{from{opacity:0;transform:translateY(.5em)}to{opacity:1;transform:none}}
 .vega-redesign .vega-ospecs__intro>p{color:#9da5ab;font-size:14px;line-height:1.7;max-width:46ch}
 .vega-redesign .vega-ospecs__body{min-width:0}
 .vega-redesign .vega-ospecs__tabs{display:flex;gap:8px;margin-bottom:28px;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x proximity;scrollbar-width:none}
@@ -1586,8 +1605,9 @@ html:not([data-theme="dark"]) .vega-redesign .vega-ospecs__download:hover .vega-
 .vega-redesign .vega-perf__readout strong{font-size:clamp(46px,4.6vw,72px)}
 .vega-redesign .vega-perf__variants{justify-content:flex-start}
 .vega-redesign .vega-perf__copy{font-size:14px;line-height:1.65;margin:0;max-width:52ch}
-.vega-redesign .vega-perf__tabs{margin-top:28px}
-.vega-redesign .vega-perf__tabs button{padding:14px 16px 18px}
+.vega-redesign .vega-perf__tabs{margin-top:14px}
+.vega-redesign .vega-perf__tabs button{align-content:center;gap:8px;min-height:108px;padding:18px;}
+
 @media(max-width:900px){
   .vega-redesign .vega-perf{padding-bottom:36px;padding-top:44px}
   .vega-redesign .vega-perf__stage{width:min(100%,calc(24svh * 1.565))}
@@ -1654,3 +1674,9 @@ html:not([data-theme="dark"]) .vega-redesign .vega-perf__tabs button.is-active{b
   .vega-redesign .subnav .subnav-talk:hover{color:#0876c4}
   @media(max-width:1023px){.vega-redesign .subnav .subnav-talk{display:none}}
   @media(max-width:720px){.vega-redesign .hero-copy{left:20px;right:20px;bottom:44px}.vega-redesign .hero-copy p{font-size:20px}.vega-redesign .hero-more{display:none}}
+
+/* Especificaciones: conserva el revelado por letras y replica el recorrido fijo de ORION. */
+.vega-redesign .vega-ospecs{align-items:start}
+.vega-redesign .vega-ospecs__intro{align-self:start;height:max-content;position:sticky;top:105px;z-index:1}
+.vega-redesign .vega-ospecs__body{min-height:620px}
+@media(max-width:980px){.vega-redesign .vega-ospecs__intro{position:static}.vega-redesign .vega-ospecs__body{min-height:0}}

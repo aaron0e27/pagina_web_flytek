@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { vegaCopy } from "@/lib/vega/copy";
-import { vegaData } from "@/lib/vega/data";
 import { perfMetrics } from "@/lib/vega/performance-data";
 import { VegaInstrument } from "@/components/vega/VegaInstruments";
 import type { PerfMode, PerfSceneAPI } from "@/lib/vega/perf-scene";
@@ -35,7 +34,6 @@ export function VegaPerformance() {
   const [ready, setReady] = useState(false);
   const [index, setIndex] = useState(0);
   const [inView, setInView] = useState(false);
-  const [near, setNear] = useState(false); // la escena 3D empieza a cargar antes de llegar
   const [auto, setAuto] = useState(true); // se detiene si la persona elige una métrica
   const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(false);
@@ -49,14 +47,12 @@ export function VegaPerformance() {
     const el = root.current!;
     const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.3 });
     io.observe(el);
-    const ioNear = new IntersectionObserver(([e]) => { if (e.isIntersecting) setNear(true); }, { rootMargin: "1000px 0px" });
-    ioNear.observe(el);
-    return () => { io.disconnect(); ioNear.disconnect(); };
+    return () => io.disconnect();
   }, []);
 
-  // Modelo 3D del dron: se carga cuando la sección entra en pantalla.
+  // Precarga el modelo al montar la página para que esté listo al llegar a la sección.
   useEffect(() => {
-    if (!near || scene.current || !host.current) return;
+    if (scene.current || !host.current) return;
     let cancelled = false;
     (async () => {
       try {
@@ -64,16 +60,16 @@ export function VegaPerformance() {
         const api = await createPerfScene(host.current!, {
           reduced: matchMedia("(prefers-reduced-motion: reduce)").matches,
           onReady: () => !cancelled && setReady(true),
-          onError: () => undefined, // si falla se queda la foto
+        onError: () => undefined,
         });
         if (cancelled) { api.dispose(); return; }
         scene.current = api;
         api.mode(metric.id as PerfMode);
-      } catch { /* se queda la foto */ }
+      } catch { /* la sección conserva su espacio si el modelo no está disponible */ }
     })();
     return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [near]);
+  }, []);
 
   useEffect(() => { scene.current?.mode(metric.id as PerfMode); }, [metric.id]);
   useEffect(() => { scene.current?.active(inView && !document.hidden); }, [inView, ready]);
@@ -121,7 +117,7 @@ export function VegaPerformance() {
       onBlurCapture={() => setPaused(false)}
     >
       <div className="section-head">
-        <p className="eyebrow">03 / RENDIMIENTO</p>
+        <p className="eyebrow">RENDIMIENTO</p>
         <span className="eyebrow">{vegaCopy.datos_tecnicos}</span>
       </div>
       <h2 id="vega-perf-title" data-title-motion>
@@ -134,14 +130,17 @@ export function VegaPerformance() {
       <div className="vega-perf__board">
         <div className="vega-perf__stage" aria-hidden="true">
           <div className={`vega-perf__frame${ready ? " is-3d" : ""}`}>
-            <img src={vegaData.assets.side} width="1440" height="920" loading="lazy" alt="" />
             <div ref={host} className="vega-perf__scene" />
-            {/* Resaltes por métrica: se muestran según data-metric */}
-            <span className="vega-perf__ov vega-perf__ov--autonomia"><i /><i /></span>
-            <span className="vega-perf__ov vega-perf__ov--alcance"><i /><i /><i /></span>
-            <span className="vega-perf__ov vega-perf__ov--viento"><i /><i /><b /><b /><b /></span>
-            <span className="vega-perf__ov vega-perf__ov--peso"><i /><i /></span>
-            <span className="vega-perf__ov vega-perf__ov--longitud"><i /><em>1.23 m</em></span>
+            {/* Los resaltes se montan con la escena para iniciar sus animaciones sincronizados. */}
+            {ready && (
+              <>
+                <span className="vega-perf__ov vega-perf__ov--autonomia"><i /><i /></span>
+                <span className="vega-perf__ov vega-perf__ov--alcance"><i /><i /><i /></span>
+                <span className="vega-perf__ov vega-perf__ov--viento"><i /><i /><b /><b /><b /></span>
+                <span className="vega-perf__ov vega-perf__ov--peso"><i /><i /></span>
+                <span className="vega-perf__ov vega-perf__ov--longitud"><i /><em>1.23 m</em></span>
+              </>
+            )}
           </div>
           <span className="vega-perf__corner vega-perf__corner--a" />
           <span className="vega-perf__corner vega-perf__corner--b" />
@@ -153,7 +152,7 @@ export function VegaPerformance() {
               <VegaInstrument id={metric.id} variant={variant} />
             </div>
             <div className="vega-perf__reading">
-              <span className="vega-perf__label">0{index + 1} / {metric.label}</span>
+              <span className="vega-perf__label"> {metric.label}</span>
               <div className="vega-perf__readout">
                 {v.prefix && <small>{v.prefix}</small>}
                 <strong>{number}</strong>
@@ -184,7 +183,6 @@ export function VegaPerformance() {
             className={i === index ? "is-active" : ""}
             onClick={() => choose(i)}
           >
-            <span className="vega-perf__tab-index">0{i + 1}</span>
             <span className="vega-perf__tab-label">{m.label}</span>
             <strong>{m.prefix ? m.prefix + " " : ""}{m.value.toFixed(m.decimals ?? 0)} {m.unit}</strong>
             <i className={cycling && i === index ? "is-running" : ""} aria-hidden="true" />

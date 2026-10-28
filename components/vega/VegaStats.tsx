@@ -40,7 +40,7 @@ export function VegaStats() {
     <section ref={root} className="section vega-intro" id="caracteristicas" aria-label="VEGA en cifras">
       <div className="vega-intro__top">
         <div className="vega-intro__copy">
-          <p className="eyebrow" data-reveal>01 / VEGA</p>
+          <p className="eyebrow" data-reveal>VEGA</p>
           <h2 data-title-motion>
             Una plataforma.
             <br />

@@ -69,7 +69,7 @@ export function VegaTechnology() {
       onBlurCapture={() => setPaused(false)}
     >
       <div className="section-head" data-reveal>
-        <p className="eyebrow">04 / NAVEGACIÓN</p>
+        <p className="eyebrow">NAVEGACIÓN</p>
         <span className="eyebrow">CONTROL Y SEGURIDAD</span>
       </div>
       <h2 id="vega-nav-title" data-title-motion>

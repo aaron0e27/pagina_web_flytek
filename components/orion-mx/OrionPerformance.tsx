@@ -99,6 +99,7 @@ export default function OrionPerformance() {
   return (
     <div
       className="orion-perf orion-reveal"
+      id="rendimiento"
       ref={root}
       data-metric={metric.id}
       onMouseEnter={() => setPaused(true)}
@@ -110,18 +111,23 @@ export default function OrionPerformance() {
         <div className="orion-perf__stage" aria-hidden="true">
           <div className={`orion-perf__frame${ready ? " is-3d" : ""}`}>
             <div ref={host} className="orion-perf__scene" />
-            <span className="orion-perf__ov orion-perf__ov--autonomia"><i /><i /></span>
-            <span className="orion-perf__ov orion-perf__ov--alcance"><i /><i /><i /></span>
-            <span className="orion-perf__ov orion-perf__ov--viento"><i /><i /><i /></span>
-            <span className="orion-perf__ov orion-perf__ov--peso"><i /><i /></span>
-            <span className="orion-perf__ov orion-perf__ov--dimensiones"><i /><i /><em>86 cm</em></span>
+            {/* Los resaltes se montan con la escena para iniciar sus animaciones sincronizados. */}
+            {ready && (
+              <>
+                <span className="orion-perf__ov orion-perf__ov--autonomia"><i /><i /></span>
+                <span className="orion-perf__ov orion-perf__ov--alcance"><i /><i /><i /></span>
+                <span className="orion-perf__ov orion-perf__ov--viento"><i /><i /><i /></span>
+                <span className="orion-perf__ov orion-perf__ov--peso"><i /><i /></span>
+                <span className="orion-perf__ov orion-perf__ov--dimensiones"><i /><i /><em>86 cm</em></span>
+              </>
+            )}
           </div>
         </div>
 
         <div className="orion-perf__panel" aria-live="polite">
           <div className="orion-perf__gauge"><OrionInstrument id={metric.id} variant={variant} /></div>
           <div className="orion-perf__reading">
-            <span className="orion-perf__label">0{index + 1} / {metric.label}</span>
+            <span className="orion-perf__label">{metric.label}</span>
             <div className="orion-perf__readout">
               {metric.prefix && <small>{metric.prefix}</small>}
               <strong>{number}</strong>
@@ -144,7 +150,6 @@ export default function OrionPerformance() {
           const top = m.variants[m.start ?? 0];
           return (
             <button key={m.id} type="button" role="tab" aria-selected={i === index} className={i === index ? "is-active" : ""} onClick={() => choose(i)}>
-              <span className="orion-perf__tab-index">0{i + 1}</span>
               <span className="orion-perf__tab-label">{m.label}</span>
               <strong>{m.prefix ? m.prefix + " " : ""}{top.value.toFixed(top.decimals ?? 0)} {m.unit}</strong>
               <i className={cycling && i === index ? "is-running" : ""} aria-hidden="true" />

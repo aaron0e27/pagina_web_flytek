@@ -81,7 +81,7 @@ export default function Orion3DViewer() {
   return (
     <section className="orion-3d wrap" id="explorar-3d" aria-labelledby="orion-3d-title">
       <div className="orion-section-head">
-        <span>02 / EXPLORACIÓN 3D</span>
+        <span>EXPLORACIÓN 3D</span>
         <p>Arrastra, gira y revisa la estructura.</p>
       </div>
       <div className="orion-3d-heading" data-orion-reveal>

@@ -97,7 +97,7 @@ export async function createOrionPerfScene(
     }
 
     const motion = options.reduced ? 0 : 1;
-    model.rotation.y = yaw;
+    model.rotation.y = yaw + (current === "viento" ? Math.PI : 0);
     model.rotation.z = current === "viento" ? Math.sin(elapsed * 1.8) * 0.05 * motion : 0;
     model.rotation.x = current === "viento" ? 0.065 * motion : 0;
     model.position.y =
@@ -119,6 +119,7 @@ export async function createOrionPerfScene(
 
   const api: OrionPerfSceneAPI = {
     mode(next) {
+      if (next === "peso" && current !== "peso") yaw = Math.PI;
       current = next;
       if (!running) {
         place(1);

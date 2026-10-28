@@ -96,9 +96,6 @@ export default function DroneGallery() {
             </figcaption>
           </figure>
         ))}
-        <span className="dgal__count" aria-hidden="true">
-          0{i + 1} / 0{DRONES.length}
-        </span>
       </div>
       <div className="dgal__bar">
         <div className="dgal__tabs" role="tablist" aria-label="Plataformas">
@@ -111,7 +108,6 @@ export default function DroneGallery() {
               className={n === i ? "is-active" : ""}
               onClick={() => go(n)}
             >
-              <span>0{n + 1}</span>
               {d.name}
               {n === i && (
                 <i
