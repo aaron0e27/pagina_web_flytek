@@ -170,10 +170,6 @@ html:has(.fenix-page) {
     color var(--duration-fast);
   border-radius: 0;
 }
-.fenix-page .primary {
-  background: var(--flytek-blue);
-  color: #071c2d;
-}
 .fenix-page .text-link {
   display: inline-flex;
   align-items: center;
@@ -912,91 +908,6 @@ html:has(.fenix-page) {
   grid-template-columns: 1fr 1fr;
   gap: 70px;
 }
-.fenix-page .contact-heading h2 {
-  font-size: clamp(36px, 4.5vw, 66px);
-  margin-top: 24px;
-}
-.fenix-page .contact-heading h2 > span {
-  color: #148acb;
-}
-.fenix-page .contact-heading p {
-  font-size: 15px;
-  margin-top: 25px;
-}
-.fenix-page .contact-email {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  margin-top: 42px;
-  font-size: 18px;
-}
-.fenix-page .contact-phone {
-  display: block;
-  margin-top: 12px;
-  font-size: 13px;
-  color: #67727b;
-}
-.fenix-page .contact-form {
-  padding-top: 30px;
-}
-.fenix-page .form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
-}
-.fenix-page .contact-form label {
-  display: block;
-  font-size: 12px;
-  font-weight: 550;
-  margin-bottom: 26px;
-}
-.fenix-page .contact-form label > span {
-  color: #7b858e;
-  font-weight: 400;
-  margin-left: 4px;
-}
-.fenix-page .contact-form input,
-.fenix-page .contact-form textarea {
-  display: block;
-  width: 100%;
-  border: 0;
-  border-bottom: 1px solid #bfc6ce;
-  border-radius: 0;
-  padding: 14px 0;
-  background: white;
-  font-size: 14px;
-  color: #252f38;
-  resize: vertical;
-  font-weight: 400;
-  caret-color: #1897f2;
-}
-.fenix-page .contact-form input::placeholder,
-.fenix-page .contact-form textarea::placeholder {
-  color: #7d858d;
-}
-.fenix-page .form-submit {
-  display: flex;
-  gap: 22px;
-  align-items: center;
-}
-.fenix-page .form-submit > span {
-  font-size: 10px;
-  color: #717d86;
-  line-height: 1.5;
-  max-width: 135px;
-}
-.fenix-page .form-status {
-  font-size: 12px;
-  color: #35546a;
-  display: flex;
-  gap: 10px;
-  align-items: start;
-  margin-top: 20px;
-}
-.fenix-page .form-status svg {
-  flex: none;
-  margin-top: 3px;
-}
 .fenix-page footer {
   background: #141b20;
   color: #c9d1d7;
@@ -1022,16 +933,6 @@ html:has(.fenix-page) {
   align-items: center;
   gap: 15px;
 }
-.fenix-page footer .footer-bottom {
-  border-top: 1px solid #364149;
-  margin-top: 36px;
-  padding-top: 23px;
-  font-size: 10px;
-  color: #8c9aa6;
-}
-.fenix-page .footer-bottom a {
-  font-size: 10px;
-}
 @keyframes content-in {
   from {
     opacity: 0.4;
@@ -1043,9 +944,6 @@ html:has(.fenix-page) {
   }
 }
 @media (hover: hover) and (pointer: fine) {
-  .fenix-page .primary:hover {
-    background: #54b2f6;
-  }
   .fenix-page .text-link:hover,
   .fenix-page .product-nav a:hover {
     color: #086eaf;
@@ -1178,12 +1076,6 @@ html:has(.fenix-page) {
   .fenix-page .contact {
     grid-template-columns: 1fr;
     gap: 35px;
-  }
-  .fenix-page .contact-heading h2 {
-    font-size: 60px;
-  }
-  .fenix-page .contact-form {
-    max-width: 750px;
   }
   .fenix-page .hero-product {
     width: 96%;
@@ -1551,43 +1443,6 @@ html:has(.fenix-page) {
     padding: 65px 0;
     gap: 25px;
   }
-  .fenix-page .contact-heading h2 {
-    font-size: 43px;
-  }
-  .fenix-page .contact-heading p {
-    font-size: 14px;
-  }
-  .fenix-page .contact-email {
-    font-size: 17px;
-    margin-top: 28px;
-  }
-  .fenix-page .form-row {
-    gap: 20px;
-  }
-  .fenix-page .contact-form input,
-  .fenix-page .contact-form textarea {
-    font-size: 16px;
-  }
-  .fenix-page .contact-form label {
-    font-size: 11px;
-    margin-bottom: 24px;
-  }
-  .fenix-page .contact-form label > span {
-    font-size: 9px;
-  }
-  .fenix-page .form-submit {
-    align-items: center;
-    gap: 16px;
-  }
-  .fenix-page .form-submit .button {
-    font-size: 12px;
-    gap: 18px;
-    padding-inline: 18px;
-  }
-  .fenix-page .form-submit > span {
-    font-size: 9px;
-    max-width: 110px;
-  }
   .fenix-page footer {
     padding: 35px 0 24px;
   }
@@ -1603,17 +1458,6 @@ html:has(.fenix-page) {
   }
   .fenix-page footer a {
     font-size: 11px;
-  }
-  .fenix-page footer .footer-bottom {
-    margin-top: 30px;
-    gap: 15px;
-    font-size: 9px;
-  }
-  .fenix-page .footer-bottom > span:nth-child(2) {
-    display: none;
-  }
-  .fenix-page .footer-bottom a {
-    font-size: 9px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1662,14 +1506,6 @@ html:has(.fenix-page) {
   min-height: 40px;
   padding: 0 14px;
   font-size: 11px;
-}
-.fenix-page .selected-integration {
-  font-size: 13px;
-  color: #2e5f80;
-  padding: 12px 0 18px;
-}
-.fenix-page .selected-integration strong {
-  font-weight: 550;
 }
 .fenix-page .performance-image img {
   mix-blend-mode: normal;
@@ -2727,23 +2563,12 @@ html:has(.fenix-page) {
 }
 
 /* Corrections from responsive and interaction review. */
-.fenix-page .contact-form input::placeholder,
-.fenix-page .contact-form textarea::placeholder {
-  color: #626f7a;
-}
-.fenix-page .contact-form label {
-  font-size: 13px;
-}
 .fenix-page .hero-discover:focus-visible svg {
   transform: none;
 }
 @media (max-width: 767px) {
   .fenix-page .hero h1 {
     top: 130px;
-  }
-  .fenix-page .contact-form input,
-  .fenix-page .contact-form textarea {
-    font-size: 16px;
   }
 }
 @media (hover: none), (pointer: coarse) {
