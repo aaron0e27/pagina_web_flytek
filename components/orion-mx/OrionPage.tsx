@@ -52,7 +52,7 @@ export default function OrionPage() {
     <OrionSpecs />
 
     <OrionSupport />
+    
     <SiteFooter current="orion" product="ORION MX · Plataforma aérea compacta" />
-
   </main>;
 }

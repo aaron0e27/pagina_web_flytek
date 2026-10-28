@@ -15,6 +15,8 @@ export default function DroneGallery() {
   const [visible, setVisible] = useState(false);
   const [hold, setHold] = useState(false);
   const [still, setStill] = useState(false);
+  const [mobile, setMobile] = useState(false);
+  const track = useRef<HTMLDivElement>(null);
   const root = useRef<HTMLDivElement>(null);
   const touch = useRef<number | null>(null);
 
@@ -23,25 +25,38 @@ export default function DroneGallery() {
     const sync = () => setStill(mq.matches);
     sync();
     mq.addEventListener("change", sync);
+    const mm = matchMedia("(max-width: 720px)");
+    const syncMobile = () => setMobile(mm.matches);
+    syncMobile();
+    mm.addEventListener("change", syncMobile);
     const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.35 });
     if (root.current) io.observe(root.current);
     return () => {
       mq.removeEventListener("change", sync);
+      mm.removeEventListener("change", syncMobile);
       io.disconnect();
     };
   }, []);
 
   const go = (n: number) => setI((n + DRONES.length) % DRONES.length);
+  // Celular: el carrusel se desliza con el dedo (scroll-snap); aquí solo se lee en qué diapositiva quedó.
+  const onScroll = () => {
+    const el = track.current;
+    if (!el) return;
+    const n = Math.round(el.scrollLeft / el.clientWidth);
+    if (n !== i && n >= 0 && n < DRONES.length) setI(n);
+  };
   const onStart = (e: TouchEvent) => {
+    if (mobile) return;
     touch.current = e.touches[0].clientX;
   };
   const onEnd = (e: TouchEvent) => {
-    if (touch.current === null) return;
+    if (mobile || touch.current === null) return;
     const dx = e.changedTouches[0].clientX - touch.current;
     touch.current = null;
     if (Math.abs(dx) > 50) go(i + (dx < 0 ? 1 : -1));
   };
-  const playing = visible && !hold && !still;
+  const playing = visible && !hold && !still && !mobile;
   const cur = DRONES[i];
 
   return (
@@ -65,11 +80,12 @@ export default function DroneGallery() {
             vigilancia e inspección hasta construcción y búsqueda.
           </p>
         </div>
+        <div className="dgal__track" ref={track} onScroll={onScroll}>
         {DRONES.map((d, n) => (
           <figure
             key={d.id}
             className={`dgal__slide dgal__slide--${d.id}${n === i ? " is-active" : ""}`}
-            aria-hidden={n !== i}
+            aria-hidden={mobile ? undefined : n !== i}
           >
             <img
               className="dgal__terrain"
@@ -94,8 +110,20 @@ export default function DroneGallery() {
               <b>{d.name}</b>
               <small>{d.tag}</small>
             </figcaption>
+            <a className="dgal__open" href={d.href} tabIndex={mobile ? 0 : -1}>
+              Explorar {d.name} <ArrowUpRight size={15} />
+            </a>
           </figure>
         ))}
+        </div>
+        <div className="dgal__dots" aria-hidden="true">
+          {DRONES.map((d, n) => (
+            <i key={d.id} className={n === i ? "is-active" : ""} />
+          ))}
+        </div>
+        <span className="dgal__count" aria-hidden="true">
+          0{i + 1} / 0{DRONES.length}
+        </span>
       </div>
       <div className="dgal__bar">
         <div className="dgal__tabs" role="tablist" aria-label="Plataformas">
@@ -108,6 +136,7 @@ export default function DroneGallery() {
               className={n === i ? "is-active" : ""}
               onClick={() => go(n)}
             >
+              <span>0{n + 1}</span>
               {d.name}
               {n === i && (
                 <i

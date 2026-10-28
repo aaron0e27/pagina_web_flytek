@@ -6,14 +6,9 @@ import SupportSection from "@/components/shared/SupportSection";
 import SiteHeader from "@/components/shared/SiteHeader";
 import DroneGallery from "@/components/principal/DroneGallery";
 import { fenixAssets } from "@/lib/fenix/assets";
+import SectorAccordion from "./SectorAccordion";
 import SiteFooter from "@/components/shared/SiteFooter";
-import {
-  homeCopy,
-  platforms,
-  sectorBenefits,
-  sectorDetails,
-  sectors,
-} from "@/lib/principal/data";
+import {homeCopy, platforms,} from "@/lib/principal/data";
 export default function FlytekPrincipal({
   initiallyShowIntro,
 }: {
@@ -23,11 +18,15 @@ export default function FlytekPrincipal({
   const video = useRef<HTMLVideoElement>(null);
   const [paused, setPaused] = useState(true);
   const [platform, setPlatform] = useState(0);
-  const [sector, setSector] = useState(0);
   const [showIntro, setShowIntro] = useState(initiallyShowIntro);
-  const drone = platforms[platform];
-  const mission = sectors[sector];
-  const missionDetail = sectorDetails[sector];
+  const track = useRef<HTMLDivElement>(null);
+  // Celular: las plataformas se deslizan con el dedo; aquí se lee cuál quedó al centro.
+  const onTrackScroll = () => {
+    const el = track.current;
+       if (!el || el.scrollWidth <= el.clientWidth + 1) return;
+       const n = Math.round(el.scrollLeft / el.clientWidth);
+       if (n >= 0 && n < platforms.length && n !== platform) setPlatform(n);
+     };
 useEffect(() => {
   if (!showIntro) return;
 
@@ -56,23 +55,7 @@ useEffect(() => {
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
   }, []);
-  // Aparición suave de las tarjetas del sector cuando entran en pantalla.
-  useEffect(() => {
-    const root = document.querySelector<HTMLElement>(".home-sector-expanded");
-    if (!root) return;
-    const items = Array.from(root.querySelectorAll<HTMLElement>("[data-rise]"));
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
-      items.forEach((el) => el.classList.add("is-in"));
-      return;
-    }
-    root.classList.add("is-armed");
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } }),
-      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
-    );
-    items.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, [sector]);
+  
   useEffect(() => {
     const element = video.current;
     if (!element) return;
@@ -257,58 +240,68 @@ useScrollScenes(root, "home", !paused && !showIntro);
                 </button>
               ))}
             </div>
-            <div
-              id="platform-detail"
-              className="home-platform-detail"
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              <div
-                className={`home-platform-stage${drone.available ? "" : " home-platform-pending"}`}
-                key={`${drone.id}-image`}
-              >
-                <span aria-hidden="true">{drone.name}</span>
-                <div className="home-orbit" />
-                                {drone.image ? (
-                  <img
-                    src={drone.image}
-                    alt={`Plataforma ${drone.name} de Flytek`}
-                    width="1000"
-                    height="600"
-                    loading="lazy"
-                    className={drone.id === "vega" ? "home-platform-photo-cutout" : undefined}
-                  />
-                ) : (
-                  <div
-                    className="home-pending-art"
-                    aria-label={`Imagen de ${drone.name} pendiente`}
+            <div className="home-platform-track" ref={track} onScroll={onTrackScroll}>
+              {platforms.map((p, idx) => (
+                <div
+                  key={p.id}
+                  id={idx === platform ? "platform-detail" : undefined}
+                  className={`home-platform-detail${idx === platform ? " is-active" : ""}`}
+                  aria-live={idx === platform ? "polite" : undefined}
+                  aria-atomic="true"
+                >
+                <div
+                  className={`home-platform-stage${p.available ? "" : " home-platform-pending"}`}
+                  key={`${p.id}-image`}
                   >
-                    <i />
-                    <small>IMAGEN / MODELO PENDIENTE</small>
+                  <span aria-hidden="true">{p.name}</span>
+                  <div className="home-orbit" />
+                    {p.image ? (
+                      <img
+                        src={p.image}
+                        alt={`Plataforma ${p.name} de Flytek`}
+                        width="1000"
+                        height="600"
+                        loading="lazy"
+                        className={p.id === "vega" ? "home-platform-photo-cutout" : undefined}
+                      />
+                    ) : (
+                      <div
+                        className="home-pending-art"
+                        aria-label={`Imagen de ${p.name} pendiente`}
+                      >
+                        <i />
+                        <small>IMAGEN / MODELO PENDIENTE</small>
+                      </div>
+                    )}
+                <small>{p.name}</small>
                   </div>
-                )}
-                <small>{drone.name}</small>
-              </div>
-              <div className="home-platform-copy" key={drone.id}>
-                <p className="home-label">PLATAFORMAS FLYTEK</p>
-                <h3>{drone.title}</h3>
-                <p>{drone.description}</p>
-                <ul>
-                  {drone.features.map((feature) => (
-                    <li key={feature}>{feature}</li>
-                  ))}
-                </ul>
-                {drone.href ? (
-                  <a className="home-button" href={drone.href}>
-                    Explorar {drone.name}
-                    <ArrowUpRight size={19} />
-                  </a>
-                ) : (
-                  <span className="home-button home-button-disabled" aria-disabled="true">
-                    Página en preparación
-                  </span>
-                )}
-              </div>
+                  <div className="home-platform-copy" key={p.id}>
+                    <p className="home-label">PLATAFORMAS FLYTEK</p>
+                    <h3>{p.title}</h3>
+                    <p>{p.description}</p>
+                    <ul>
+                      {p.features.map((feature) => (
+                        <li key={feature}>{feature}</li>
+                      ))}
+                    </ul>
+                    {p.href ? (
+                      <a className="home-button" href={p.href}>
+                        Explorar {p.name}
+                        <ArrowUpRight size={19} />
+                      </a>
+                    ) : (
+                      <span className="home-button home-button-disabled" aria-disabled="true">
+                        Página en preparación
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="home-platform-dots" aria-hidden="true">
+              {platforms.map((p, idx) => (
+                <i key={p.id} className={idx === platform ? "is-active" : ""} />
+              ))}
             </div>
           </div>
         </section>
@@ -325,157 +318,7 @@ useScrollScenes(root, "home", !paused && !showIntro);
               puede acompañar a tu industria.
             </p>
           </div>
-          <div className="home-sector-buttons" role="group" aria-label="Seleccionar sector">
-            {sectors.map((item, index) => (
-              <button
-                key={item.name}
-                aria-pressed={sector === index}
-                aria-controls="sector-detail"
-                onClick={() => setSector(index)}
-              >
-                {item.name}
-                <ArrowUpRight size={17} />
-              </button>
-            ))}
-          </div>
-          <div className="home-sector-detail" id="sector-detail" aria-live="polite">
-            <img
-              key={mission.image}
-              src={mission.image}
-              alt={mission.alt}
-              width="1400"
-              height="850"
-              loading="lazy"
-            />
-            <div className="home-sector-overlay" />
-            <div className="home-sector-copy" key={mission.name}>
-              <p className="home-label">{mission.tag}</p>
-              <h3>{mission.title}</h3>
-              <p>{mission.description}</p>
-              <a className="home-link-light" href="#sector-expanded">
-                Ver aplicación a detalle <ArrowDown size={20} />
-              </a>
-            </div>
-          </div>
-          <div
-            className="home-sector-expanded"
-            id="sector-expanded"
-            key={missionDetail.slug}
-            aria-live="polite"
-          >
-            <header className="home-detail-heading" data-home-reveal>
-              <div className="home-detail-heading-title">
-                <p className="home-label">{missionDetail.name}</p>
-                <h3>{missionDetail.title}</h3>
-              </div>
-              <p>{missionDetail.summary}</p>
-            </header>
-
-            <section className="home-adv" aria-label={`Ventajas para ${missionDetail.name}`}>
-              <figure className="home-adv-photo" data-rise>
-                <img
-                  src={missionDetail.capabilityImage}
-                  alt={missionDetail.capabilityAlt}
-                  style={{ objectPosition: missionDetail.capabilityPosition }}
-                  width="1600"
-                  height="1000"
-                  loading="lazy"
-                />
-                <figcaption>
-                  <span>{missionDetail.name}</span>
-                  Ventajas Flytek
-                </figcaption>
-              </figure>
-              <div className="home-adv-list">
-                {missionDetail.proofs.map((proof, i) => (
-                  <article className="home-adv-item" key={proof.title} data-rise style={{ ["--i" as string]: i }}>
-                    <span className="home-adv-n" aria-hidden="true">0{i + 1}</span>
-                    <div>
-                      <h4>{proof.title}</h4>
-                      <p>{proof.text}</p>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </section>
-
-            <section className="home-applications">
-              <header className="home-applications-heading">
-                <p className="home-label">Aplicaciones</p>
-                <p>{missionDetail.applicationIntro}</p>
-              </header>
-              <div className={`home-app-grid is-n${missionDetail.applications.length}`}>
-                {missionDetail.applications.map((application, i) => (
-                  <article className="home-app" key={application.title} data-rise style={{ ["--i" as string]: i % 2 }}>
-                    <img
-                      className="home-app-bg"
-                      src={application.image}
-                      alt=""
-                      width="1000"
-                      height="600"
-                      loading="lazy"
-                    />
-                    <span className="home-app-n" aria-hidden="true">0{i + 1}</span>
-                    <div className="home-app-body">
-                      <h4>{application.title}</h4>
-                      <p>{application.text}</p>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </section>
-
-            <section className="home-recommended">
-              <header>
-                <p className="home-label">Drones recomendados</p>
-              </header>
-              <div className={`home-recommended-grid${missionDetail.drones.length === 1 ? " is-single" : ""}`}>
-                {missionDetail.drones.map((recommended) => (
-                  <article className="home-drone-card" key={recommended.name} data-rise>
-                    <a className="home-drone-image" href={recommended.href} tabIndex={-1} aria-hidden="true" data-name={recommended.name}>
-                      <img
-                        src={recommended.image}
-                        alt=""
-                        width="800"
-                        height="600"
-                        loading="lazy"
-                      />
-                    </a>
-                    <div className="home-drone-copy">
-                      <p className="home-label">{recommended.context}</p>
-                      <h4>
-                        <a href={recommended.href} aria-label={`Conocer el drone ${recommended.name}`}>
-                          {recommended.name}
-                          <ArrowUpRight size={25} aria-hidden="true" />
-                        </a>
-                      </h4>
-                      <p>{recommended.text}</p>
-                      <ul className="home-drone-chips">
-                        {recommended.specs.map(([label, value]) => (
-                          <li key={label}>
-                            <small>{label}</small>
-                            {value}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </section>
-
-            <section className="home-benefits" aria-label="Beneficios en campo">
-              <p className="home-label">Beneficios en campo</p>
-              <ul>
-                {sectorBenefits.map((benefit, i) => (
-                  <li key={benefit.label} data-rise style={{ ["--i" as string]: i }}>
-                    <span className="home-benefit-ico" aria-hidden="true" style={{ ["--ico" as string]: `url(${benefit.icon})` }} />
-                    <span>{benefit.label}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </div>
+          <SectorAccordion />
         </section>
         <div id="soporte">
           <SupportSection
