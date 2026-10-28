@@ -11,8 +11,8 @@ export default function FenixSubNav() {
         {fenixNavigation.map(([id, label]) => (
           <a
             key={id}
-            href={"#" + id}
-            data-section={id}
+            href={id === "aplicaciones" || id === "galeria" ? undefined : "#" + id}
+            data-section={id === "aplicaciones" || id === "galeria" ? undefined : id}
             aria-current={id === "descripcion" ? "location" : undefined}
           >
             {label}

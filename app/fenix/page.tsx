@@ -34,9 +34,9 @@ export default function FenixPage() {
         <FenixHero />
         <FenixStats />
         <FenixIntro />
-        <Fenix3DViewer />
-        <FenixDroneEntrance />
         <FenixHorizontalStory />
+        <FenixDroneEntrance />
+        <Fenix3DViewer />
         <FenixPayloads />
         <FenixSpecs />
         <FenixSupport />

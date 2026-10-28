@@ -45,14 +45,14 @@ export default function FenixAnimations() {
           const st = horizontal?.scrollTrigger;
           if (st && window.scrollY >= st.start && section.getBoundingClientRect().bottom > top) {
             const panel = panels[Math.min(3, Math.round(st.progress * 3))];
-            id = panel.id === "control" ? "tecnologia" : panel.id;
+            id = panel.id === "control" ? "tecnologia" : panel.id === "diseno" ? "descripcion" : panel.id;
           } else if (!st) {
             for (const panel of panels)
               if (
                 panel.getBoundingClientRect().top <= top &&
                 panel.getBoundingClientRect().bottom > top
               )
-                id = panel.id === "control" ? "tecnologia" : panel.id;
+                id = panel.id === "control" ? "tecnologia" : panel.id === "diseno" ? "descripcion" : panel.id;
           }
           nav.dataset.pinned = String(nav.getBoundingClientRect().top <= 1);
           if (id === activeId) return;
