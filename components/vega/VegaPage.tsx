@@ -29,9 +29,9 @@ export default function VegaPage() {
           <VegaSubNav />
           <VegaHero />
           <VegaStats />
-          <VegaViewer />
           <VegaPerformance />
           <VegaTechnology />
+          <VegaViewer />
           <VegaPayloads />
           <VegaSecurity />
           <section className="section vega-field" id="galeria" aria-labelledby="vega-field-title">

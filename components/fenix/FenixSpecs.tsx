@@ -1,25 +1,59 @@
 "use client";
 
-import { useRef, useState, type KeyboardEvent, type TouchEvent } from "react";
-import { ArrowDown, ArrowUpRight, ExternalLink, FileText } from "lucide-react";
-import "@/styles/drone-specs.css";
-import { OFFICIAL_HREF, QUOTE_HREF, SPEC_PDF, SPEC_PDF_NAME, specTabs } from "@/lib/fenix/specs-data";
+import { useEffect, useRef, useState, type KeyboardEvent, type TouchEvent } from "react";
+import { ArrowUpRight, FileText } from "lucide-react";
+import { fenixSpecs as groups } from "@/lib/fenix/data";
+import "@/styles/fenix-specs.css";
+
+
+
+/** Texto que aparece letra por letra al entrar en pantalla (cada palabra se mantiene unida). */
+function Letters({ text, from = 0 }: { text: string; from?: number }) {
+  let n = from;
+  return (
+    <>
+      {text.split(" ").map((word, w) => (
+        <span key={w} className="fenix-specs__word" aria-hidden="true">
+          {word.split("").map((ch, i) => (
+            <span key={i} className="fenix-specs__ch" style={{ ["--i" as string]: n++ }}>{ch}</span>
+          ))}
+          {" "}
+        </span>
+      ))}
+    </>
+  );
+}
 
 export default function FenixSpecs() {
+  const root = useRef<HTMLElement>(null);
   const [tab, setTab] = useState(0);
+  const [seen, setSeen] = useState(false);
   const list = useRef<HTMLDivElement>(null);
   const touch = useRef<{ x: number; y: number } | null>(null);
-  const current = specTabs[tab];
+  const group = groups[tab];
+
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      ([e]) => {
+        setSeen(e.isIntersecting);
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(root.current!);
+    return () => io.disconnect();
+  }, []);
 
   const go = (n: number) => {
-    const next = (n + specTabs.length) % specTabs.length;
+    const next = (n + groups.length) % groups.length;
     setTab(next);
-    const btn = list.current?.children[next] as HTMLElement | undefined;
-    btn?.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+    (list.current?.children[next] as HTMLElement | undefined)?.scrollIntoView({ block: "nearest", inline: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   };
   const onKey = (e: KeyboardEvent) => {
-    if (e.key === "ArrowRight") { e.preventDefault(); go(tab + 1); (list.current?.children[(tab + 1) % specTabs.length] as HTMLElement).focus(); }
-    if (e.key === "ArrowLeft") { e.preventDefault(); go(tab - 1); (list.current?.children[(tab - 1 + specTabs.length) % specTabs.length] as HTMLElement).focus(); }
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    e.preventDefault();
+    const next = (tab + (e.key === "ArrowRight" ? 1 : -1) + groups.length) % groups.length;
+    go(next);
+    (list.current?.children[next] as HTMLElement).focus();
   };
   const onTouchStart = (e: TouchEvent) => { touch.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }; };
   const onTouchEnd = (e: TouchEvent) => {
@@ -31,62 +65,68 @@ export default function FenixSpecs() {
     if (Math.abs(dx) > 56 && Math.abs(dx) > Math.abs(dy) * 1.6) go(tab + (dx < 0 ? 1 : -1));
   };
 
-  let row = 0;
-  return (
-    <section className="dspec" id="especificaciones" aria-labelledby="fenix-specs-title">
-      <div className="dspec__intro">
-        <div className="dspec-tag dspec-tag--light"><span>FT</span> DATOS TÉCNICOS</div>
-        <h2 id="fenix-specs-title">La precisión también se mide.</h2>
-        <p>Datos publicados por Flytek. La configuración final de tu FÉNIX se define contigo, de acuerdo con tu operación.</p>
+  const l1 = "Especificaciones";
+  const l2 = "técnicas.";
 
-        <div className="dspec__actions">
-          {SPEC_PDF ? (
-            <a className="dspec__download" href={SPEC_PDF} download={SPEC_PDF_NAME}>
-              <span className="dspec__doc" aria-hidden="true"><FileText size={22} strokeWidth={1.4} /><i /><i /><i /></span>
-              <span className="dspec__download-copy">
-                <b>Descargar especificaciones</b>
-                <small>Ficha técnica FÉNIX · PDF</small>
-              </span>
-              <span className="dspec__download-arrow" aria-hidden="true"><ArrowDown size={18} /></span>
-            </a>
-          ) : (
-            <a className="dspec__download" href={OFFICIAL_HREF} target="_blank" rel="noreferrer">
-              <span className="dspec__doc" aria-hidden="true"><FileText size={22} strokeWidth={1.4} /><i /><i /><i /></span>
-              <span className="dspec__download-copy">
-                <b>Consultar ficha oficial</b>
-                <small>FÉNIX · flytek.com.mx</small>
-              </span>
-              <span className="dspec__download-arrow" aria-hidden="true"><ExternalLink size={17} /></span>
-            </a>
-          )}
-          <a className="dspec__quote" href={QUOTE_HREF}>Solicitar cotización <ArrowUpRight size={16} /></a>
-        </div>
+  return (
+    <section ref={root} className={"fenix-specs" + (seen ? " is-in" : "")} id="especificaciones" aria-labelledby="fenix-specs-title">
+      <div className="fenix-specs__intro">
+        <span className="fenix-specs__tag">FÉNIX EN DETALLE</span>
+        <h2 id="fenix-specs-title" className="fenix-specs__scroll-title" aria-label="Especificaciones técnicas.">
+          <Letters text={l1} />
+          <br />
+          <Letters text={l2} from={l1.length} />
+        </h2>
+        <p>Datos publicados por Flytek.<br />La configuración final se define contigo.</p>
+
+        <a className="fenix-specs__download" href="https://www.flytek.com.mx/fenix_2.php" target="_blank" rel="noreferrer">
+          <span className="fenix-specs__doc" aria-hidden="true"><FileText size={22} strokeWidth={1.4} /><i /><i /><i /></span>
+          <span className="fenix-specs__download-copy">
+            <b>Consultar fuente oficial</b>
+          </span>
+          <span className="fenix-specs__download-arrow" aria-hidden="true"><ArrowUpRight size={18} /></span>
+        </a>
       </div>
 
-      <div className="dspec__body">
-        <div className="dspec__tabs" role="tablist" aria-label="Categorías de especificaciones" ref={list} onKeyDown={onKey}>
-          {specTabs.map((t, i) => (
-            <button key={t.id} role="tab" id={`fenix-spec-tab-${t.id}`} aria-selected={i === tab} aria-controls="fenix-spec-panel" tabIndex={i === tab ? 0 : -1} className={i === tab ? "is-active" : ""} onClick={() => go(i)} type="button">
-              <span>{t.short}</span>{t.label}
+      <div className="fenix-specs__body">
+        <div className="fenix-specs__tabs" role="tablist" aria-label="Categorías de especificaciones" ref={list} onKeyDown={onKey}>
+          {groups.map((g, i) => (
+            <button
+              key={g.name}
+              type="button"
+              role="tab"
+              id={`fenix-spec-tab-${i}`}
+              aria-selected={i === tab}
+              aria-controls="fenix-spec-panel"
+              tabIndex={i === tab ? 0 : -1}
+              className={i === tab ? "is-active" : ""}
+              onClick={() => go(i)}
+            >
+              <span>0{i + 1}</span>
+              {g.name}
             </button>
           ))}
         </div>
 
-        <div id="fenix-spec-panel" role="tabpanel" aria-labelledby={`fenix-spec-tab-${current.id}`} className="dspec__panel" key={current.id} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-          {current.sections.map((s, si) => (
-            <div className="dspec__section" key={si}>
-              {s.title && <h3>{s.title}</h3>}
-              <dl>
-                {s.items.map(([label, value]) => (
-                  <div key={label} style={{ ["--r" as string]: row++ }}>
-                    <dt>{label}</dt>
-                    <dd>{value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          ))}
-          <p className="dspec__hint" aria-hidden="true">← desliza para cambiar de categoría →</p>
+        <div
+          id="fenix-spec-panel"
+          tabIndex={0}
+          role="tabpanel"
+          aria-labelledby={`fenix-spec-tab-${tab}`}
+          className="fenix-specs__panel"
+          key={group.name}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
+          <dl>
+            {group.items.map(([label, value], i) => (
+              <div key={label} style={{ ["--r" as string]: i }}>
+                <dt>{label}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="fenix-specs__hint" aria-hidden="true">← desliza para cambiar de categoría →</p>
         </div>
       </div>
     </section>

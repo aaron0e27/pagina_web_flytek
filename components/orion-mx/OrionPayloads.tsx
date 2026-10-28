@@ -10,7 +10,7 @@ export default function OrionPayloads() {
   return (
     <section className="orion-pay" id="cargas" aria-labelledby="orion-pay-title">
       <div className="orion-pay__head">
-        <div className="orion-section-tag orion-reveal"><span>05</span> CARGAS ÚTILES</div>
+        <div className="orion-section-tag orion-reveal">CARGAS ÚTILES</div>
         <h2 id="orion-pay-title" className="orion-reveal">Una plataforma.<br />Distintas miradas.</h2>
         <p className="orion-reveal">Elige la cámara que tu operación necesita. Admite hasta 500 g de carga útil y se integra a tu medida.</p>
       </div>

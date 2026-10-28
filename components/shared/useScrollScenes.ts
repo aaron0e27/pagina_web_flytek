@@ -36,17 +36,39 @@ export function useScrollScenes(root: RefObject<HTMLElement | null>, page: Page,
             .to(".hero-product", { yPercent: 14, scale: 1.035, rotation: 2, ease: "none" }, 0)
             .to(".hero-top,.hero-bottom", { opacity: 0, ease: "none" }, 0);
         }
-        const targets = page === "home" ? ".home-company-grid h2, .home-fleet-heading h2, .home-sectors-title h2, .home-support h2, .home-contact h2, .home-application-image, .home-sector-detail>img" : page === "orion" ? ".orion-intro h2, .orion-fly h2, .orion-explorer h2, .orion-missions h2, .orion-pay h2, .orion-specs h2, .orion-support h2" : "h2, .feature-image, .design-image, .performance-stage img";
+        const targets = page === "home" ? ".home-company-grid h2, .home-fleet-heading h2, .home-sectors-title h2, .home-support h2, .home-contact h2, .home-application-image, .home-sector-detail>img" : page === "orion" ? ".orion-intro h2, .orion-fly h2, .orion-explorer h2, .orion-missions h2, .orion-pay h2, .orion-gallery h2, .orion-specs h2, .orion-support h2" : "h2, .feature-image, .design-image, .performance-stage img";
         gsap.utils.toArray<HTMLElement>(targets, host).forEach(element => {
           gsap.fromTo(element, { y: desktop ? 44 : 32 }, { y: 0, ease: "none", scrollTrigger: { trigger: element, start: "top 95%", end: "top 55%", scrub: 1 } });
         });
         return () => { host.classList.remove("scroll-scenes-active"); };
       });
-      let frame = 0;
-      const refresh = () => { if (disposed) return; cancelAnimationFrame(frame); frame = requestAnimationFrame(() => { if (!disposed) ScrollTrigger.refresh(); }); };
+      let refreshTimer: ReturnType<typeof setTimeout> | null = null;
+      let lastScrollAt = 0;
+      const refresh = () => {
+        if (disposed) return;
+        if (refreshTimer) clearTimeout(refreshTimer);
+        refreshTimer = setTimeout(() => {
+          if (disposed) return;
+          if (performance.now() - lastScrollAt < 180) {
+            refresh();
+            return;
+          }
+          ScrollTrigger.refresh();
+        }, 120);
+      };
+      const onScroll = () => { lastScrollAt = performance.now(); };
+      const resize = new ResizeObserver(refresh);
+      resize.observe(host);
+      window.addEventListener("scroll", onScroll, { passive: true });
       if (page !== "home") host.addEventListener("load", refresh, true);
       void document.fonts.ready.then(refresh);
-      cleanup = () => { cancelAnimationFrame(frame); host.removeEventListener("load", refresh, true); media.revert(); };
+      cleanup = () => {
+        if (refreshTimer) clearTimeout(refreshTimer);
+        resize.disconnect();
+        window.removeEventListener("scroll", onScroll);
+        host.removeEventListener("load", refresh, true);
+        media.revert();
+      };
     });
     return () => { disposed = true; cleanup(); };
   }, [root, page, enabled]);

@@ -144,11 +144,12 @@ export const fenixSupport = [
 
 export const fenixNavigation = [
   ["descripcion", "Descripción"],
-  ["caracteristicas", "Características"],
-  ["diseno", "Diseño"],
   ["rendimiento", "Rendimiento"],
-  ["tecnologia", "Tecnología"],
-  ["payloads", "Payloads"],
+  ["tecnologia", "Navegación"],
+  ["explorar", "Modelo 3D"],
+  ["payloads", "Cargas útiles"],
+  ["aplicaciones", "Aplicaciones"],
+  ["galeria", "Galería"],
   ["especificaciones", "Especificaciones"],
 ];
 

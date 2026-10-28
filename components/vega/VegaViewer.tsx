@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Minus, Plus, RotateCcw } from "lucide-react";
 import { vegaCopy } from "@/lib/vega/copy";
-import { vegaData } from "@/lib/vega/data";
 import { vegaPoints } from "@/lib/vega/viewer-data";
 import type { VegaSceneAPI } from "@/lib/vega/viewer-scene";
 
@@ -59,12 +58,12 @@ export function VegaViewer() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         visible = entry.isIntersecting;
-        if (visible) void start();
         scene.current?.active(visible && !document.hidden);
       },
       { rootMargin: "800px 0px" },
     );
     const onVisibility = () => scene.current?.active(visible && !document.hidden);
+    void start();
     observer.observe(root);
     document.addEventListener("visibilitychange", onVisibility);
     return () => {
@@ -102,7 +101,6 @@ export function VegaViewer() {
         <div ref={host} className="vega-3d-scene" tabIndex={0}>
           {(!ready || error) && (
             <div className="vega-3d-fallback" role="status" aria-live="polite">
-              <img src={vegaData.assets.hero} alt="" width="1440" height="920" />
               <span className="vega-3d-orbit" aria-hidden="true" />
               <p>
                 {error

@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowUpRight, Pause, Play } from "lucide-react";
 import SupportSection from "@/components/shared/SupportSection";
 import SiteHeader from "@/components/shared/SiteHeader";
+import DroneGallery from "@/components/principal/DroneGallery";
 import { fenixAssets } from "@/lib/fenix/assets";
-import DroneGallery from "./DroneGallery";
 import SectorAccordion from "./SectorAccordion";
 import SiteFooter from "@/components/shared/SiteFooter";
 import {homeCopy, platforms,} from "@/lib/principal/data";
@@ -69,7 +69,7 @@ useEffect(() => {
   }, [paused]);
   useEffect(() => {
     const observer = new IntersectionObserver(entries => entries.forEach(entry => { (entry.target as HTMLElement).dataset.motionOffscreen = String(!entry.isIntersecting); }));
-    root.current?.querySelectorAll(".home-platform-stage, .home-flight-scene").forEach(element => observer.observe(element));
+    root.current?.querySelectorAll(".home-platform-stage").forEach(element => observer.observe(element));
     return () => observer.disconnect();
   }, [platform]);
   useEffect(() => {
@@ -197,17 +197,14 @@ useScrollScenes(root, "home", !paused && !showIntro);
           <DroneGallery />
           <div className="home-values">
             <article>
-              <span>01</span>
               <h3>Diseño industrial</h3>
               <p>Plataformas aéreas para las necesidades del trabajo en campo.</p>
             </article>
             <article>
-              <span>02</span>
               <h3>Integración de sensores</h3>
               <p>La información que buscas comienza con la carga útil adecuada.</p>
             </article>
             <article>
-              <span>03</span>
               <h3>Respaldo nacional</h3>
               <p>Refacciones, mantenimiento y soporte cerca de tu operación.</p>
             </article>

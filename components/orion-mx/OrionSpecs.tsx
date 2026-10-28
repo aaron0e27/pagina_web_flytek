@@ -1,14 +1,42 @@
 "use client";
 
-import { useRef, useState, type KeyboardEvent, type TouchEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent, type TouchEvent } from "react";
 import { ArrowDown, ArrowUpRight, FileText } from "lucide-react";
 import { QUOTE_HREF, SPEC_PDF, SPEC_PDF_NAME, specTabs } from "@/lib/orion-mx/specs-data";
 
+function Letters({ text, from = 0 }: { text: string; from?: number }) {
+  let n = from;
+  return (
+    <>
+      {text.split(" ").map((word, wordIndex) => (
+        <span key={wordIndex} className="orion-specs__word" aria-hidden="true">
+          {word.split("").map((character, characterIndex) => (
+            <span key={characterIndex} className="orion-specs__ch" style={{ ["--i" as string]: n++ }}>{character}</span>
+          ))}
+          {" "}
+        </span>
+      ))}
+    </>
+  );
+}
+
 export default function OrionSpecs() {
+  const root = useRef<HTMLElement>(null);
   const [tab, setTab] = useState(0);
+  const [seen, setSeen] = useState(false);
   const list = useRef<HTMLDivElement>(null);
   const touch = useRef<{ x: number; y: number } | null>(null);
   const current = specTabs[tab];
+
+  useEffect(() => {
+    const element = root.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setSeen(entry.isIntersecting);
+    }, { threshold: 0.25 });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
 
   const go = (n: number) => {
     const next = (n + specTabs.length) % specTabs.length;
@@ -32,10 +60,14 @@ export default function OrionSpecs() {
 
   let row = 0;
   return (
-    <section className="orion-specs" id="especificaciones" aria-labelledby="specs-title">
+    <section ref={root} className={"orion-specs" + (seen ? " is-in" : "")} id="especificaciones" aria-labelledby="specs-title">
       <div className="orion-specs__intro">
-        <div className="orion-section-tag orion-section-tag--light"><span>06</span> DATOS TÉCNICOS</div>
-        <h2 id="specs-title">La precisión también se mide.</h2>
+        <div className="orion-section-tag orion-section-tag--light">DATOS TÉCNICOS</div>
+        <h2 id="specs-title" aria-label="La precisión también se mide.">
+          <Letters text="La precisión" />
+          <br />
+          <Letters text="también se mide." from={11} />
+        </h2>
         <p>Datos de la ficha técnica oficial. Nuestro equipo puede ayudarte a definir la integración adecuada para tu operación.</p>
 
         <div className="orion-specs__actions">

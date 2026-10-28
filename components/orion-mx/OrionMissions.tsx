@@ -8,9 +8,9 @@ export default function OrionMissions() {
   const [i, setI] = useState(0);
   const m = orionMissions[i];
   return (
-    <section className="orion-missions" id="misiones" aria-labelledby="orion-missions-title">
+    <section className="orion-missions" id="aplicaciones" aria-labelledby="orion-missions-title">
       <div className="orion-missions__head">
-        <div className="orion-section-tag orion-reveal"><span>04</span> MISIONES</div>
+        <div className="orion-section-tag orion-reveal">MISIONES</div>
         <h2 id="orion-missions-title" className="orion-reveal">Tú eliges<br />la misión.</h2>
         <p className="orion-reveal">ORION se adapta a la operación: cambia la carga útil y el plan de vuelo, no el equipo.</p>
       </div>
