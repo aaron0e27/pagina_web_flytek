@@ -52,6 +52,7 @@ export const sectors = [
     description:
       "Apoya la vigilancia y la observación perimetral con una perspectiva aérea y cargas útiles adaptadas a tu operación.",
     image: "/fenix/media/thermal.webp",
+    position: "center",
     alt: "Vista térmica para observación del entorno",
     tag: "SEGURIDAD",
     detailTitle: "Información aérea para proteger tu operación.",
@@ -71,6 +72,7 @@ export const sectors = [
     description:
       "Realiza inspecciones eficientes, detalladas y precisas, sin exponer a tu equipo técnico a riesgos no necesarios a zonas de acceso complicado.",
     image: "/fenix/media/inspection.webp",
+    position: "center",
     alt: "Infraestructura para operaciones de inspección",
     tag: "INFRAESTRUCTURA",
     detailTitle: "Inspecciona sin perder de vista el contexto.",
@@ -89,7 +91,8 @@ export const sectors = [
     title: "Tu proyecto, desde otra perspectiva.",
     description:
       "Optimiza la logística y genera mapas ortomosaicos y nubes de puntos con precisión centimétrica en menos tiempo. Captura, procesa y analiza los datos de tu obra.",
-    image: "/fenix/media/construction.webp",
+    image: "/home/sectors/12.jpg",
+    position: "0% 40%",
     alt: "Entorno de construcción visto desde el aire",
     tag: "OBRA ",
     detailTitle: "Observa el avance completo de tu proyecto.",

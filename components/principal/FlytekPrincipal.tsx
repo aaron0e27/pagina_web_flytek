@@ -19,7 +19,14 @@ export default function FlytekPrincipal({
   const [paused, setPaused] = useState(true);
   const [platform, setPlatform] = useState(0);
   const [showIntro, setShowIntro] = useState(initiallyShowIntro);
-  const drone = platforms[platform];
+  const track = useRef<HTMLDivElement>(null);
+  // Celular: las plataformas se deslizan con el dedo; aquí se lee cuál quedó al centro.
+  const onTrackScroll = () => {
+    const el = track.current;
+       if (!el || el.scrollWidth <= el.clientWidth + 1) return;
+       const n = Math.round(el.scrollLeft / el.clientWidth);
+       if (n >= 0 && n < platforms.length && n !== platform) setPlatform(n);
+     };
 useEffect(() => {
   if (!showIntro) return;
 
@@ -236,58 +243,68 @@ useScrollScenes(root, "home", !paused && !showIntro);
                 </button>
               ))}
             </div>
-            <div
-              id="platform-detail"
-              className="home-platform-detail"
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              <div
-                className={`home-platform-stage${drone.available ? "" : " home-platform-pending"}`}
-                key={`${drone.id}-image`}
-              >
-                <span aria-hidden="true">{drone.name}</span>
-                <div className="home-orbit" />
-                                {drone.image ? (
-                  <img
-                    src={drone.image}
-                    alt={`Plataforma ${drone.name} de Flytek`}
-                    width="1000"
-                    height="600"
-                    loading="lazy"
-                    className={drone.id === "vega" ? "home-platform-photo-cutout" : undefined}
-                  />
-                ) : (
-                  <div
-                    className="home-pending-art"
-                    aria-label={`Imagen de ${drone.name} pendiente`}
+            <div className="home-platform-track" ref={track} onScroll={onTrackScroll}>
+              {platforms.map((p, idx) => (
+                <div
+                  key={p.id}
+                  id={idx === platform ? "platform-detail" : undefined}
+                  className={`home-platform-detail${idx === platform ? " is-active" : ""}`}
+                  aria-live={idx === platform ? "polite" : undefined}
+                  aria-atomic="true"
+                >
+                <div
+                  className={`home-platform-stage${p.available ? "" : " home-platform-pending"}`}
+                  key={`${p.id}-image`}
                   >
-                    <i />
-                    <small>IMAGEN / MODELO PENDIENTE</small>
+                  <span aria-hidden="true">{p.name}</span>
+                  <div className="home-orbit" />
+                    {p.image ? (
+                      <img
+                        src={p.image}
+                        alt={`Plataforma ${p.name} de Flytek`}
+                        width="1000"
+                        height="600"
+                        loading="lazy"
+                        className={p.id === "vega" ? "home-platform-photo-cutout" : undefined}
+                      />
+                    ) : (
+                      <div
+                        className="home-pending-art"
+                        aria-label={`Imagen de ${p.name} pendiente`}
+                      >
+                        <i />
+                        <small>IMAGEN / MODELO PENDIENTE</small>
+                      </div>
+                    )}
+                <small>{p.name}</small>
                   </div>
-                )}
-                <small>{drone.name}</small>
-              </div>
-              <div className="home-platform-copy" key={drone.id}>
-                <p className="home-label">PLATAFORMAS FLYTEK</p>
-                <h3>{drone.title}</h3>
-                <p>{drone.description}</p>
-                <ul>
-                  {drone.features.map((feature) => (
-                    <li key={feature}>{feature}</li>
-                  ))}
-                </ul>
-                {drone.href ? (
-                  <a className="home-button" href={drone.href}>
-                    Explorar {drone.name}
-                    <ArrowUpRight size={19} />
-                  </a>
-                ) : (
-                  <span className="home-button home-button-disabled" aria-disabled="true">
-                    Página en preparación
-                  </span>
-                )}
-              </div>
+                  <div className="home-platform-copy" key={p.id}>
+                    <p className="home-label">PLATAFORMAS FLYTEK</p>
+                    <h3>{p.title}</h3>
+                    <p>{p.description}</p>
+                    <ul>
+                      {p.features.map((feature) => (
+                        <li key={feature}>{feature}</li>
+                      ))}
+                    </ul>
+                    {p.href ? (
+                      <a className="home-button" href={p.href}>
+                        Explorar {p.name}
+                        <ArrowUpRight size={19} />
+                      </a>
+                    ) : (
+                      <span className="home-button home-button-disabled" aria-disabled="true">
+                        Página en preparación
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="home-platform-dots" aria-hidden="true">
+              {platforms.map((p, idx) => (
+                <i key={p.id} className={idx === platform ? "is-active" : ""} />
+              ))}
             </div>
           </div>
         </section>
